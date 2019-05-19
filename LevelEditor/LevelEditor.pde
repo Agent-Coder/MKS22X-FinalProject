@@ -90,6 +90,7 @@ PImage ups1;
 PImage ups2;
 PImage downs1;
 PImage downs2;
+PImage floor;
 String preKey="right";
 PImage[] images;
 
@@ -313,6 +314,7 @@ void setup() {
   downs2 = loadImage("GlaceonFrontIdle2.png");
   ups1 = loadImage("GlaceonBackIdle1.png");
   ups2 = loadImage("GlaceonBackIdle2.png");
+  floor = loadImage("MoveTile1.png");
 }
 void draw() {
   background(255);
