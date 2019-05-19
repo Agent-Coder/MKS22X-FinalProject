@@ -5,7 +5,7 @@ abstract class Block {
   boolean destroyed;
   public Block() {
     xB=0;
-    yb=0;
+    yB=0;
     type="block";
     destroyed=false;
   }
