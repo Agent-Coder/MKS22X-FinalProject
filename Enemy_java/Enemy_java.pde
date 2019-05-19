@@ -6,6 +6,7 @@ class Enemies {
   int box;
   int tx;
   int ty;
+  int[] moves=new int[8];
   public Enemies() {
     x=110;
     y=110;
@@ -13,6 +14,14 @@ class Enemies {
     box=0;
     tx=190;
     ty=190;
+    moves[0]=0;
+    moves[1]=1;
+    moves[2]=0;
+    moves[3]=-1;
+    moves[4]=-1;
+    moves[5]=0;
+    moves[6]=1;
+    moves[7]=0;
     clear();
   }
   void clear() {
@@ -24,7 +33,7 @@ class Enemies {
   }
   void update(int targetx, int targety) {
     //System.out.println("--->"+((targety-110)/20));
-    fillGrid((targetx-110)/20, (targety-110)/20, 1);
+    fillGrid((targety-110)/20, (targetx-110)/20, 1);
     board();
   }
   void fillGrid(int xer, int yer, int num) {
@@ -44,7 +53,7 @@ class Enemies {
       System.out.println();
     }
     System.out.println();
-    System.out.println(tx+" "+ty);
+    //System.out.println(x+" "+y);
   }
   int getX() {
     return tx;
@@ -61,7 +70,6 @@ class Enemies {
     ellipse(tx, ty, 20, 20);
   }
   void move() {
-      A.clear();
     if (keyPressed&&keyCode == RIGHT&&tx+speed<=190) {
       tx+=speed;
     } else if (keyPressed&&keyCode == UP&&ty-speed>0) {
@@ -72,6 +80,35 @@ class Enemies {
       tx-=speed;
     }
     delay(50);
+    System.out.println(grid[0][0]);
+  }
+  int min(int a, int b) {
+    if (a<b) {
+      return a;
+    } else {
+      return b;
+    }
+  }
+  void moveE() {
+    int a=(x-110)/20;
+    int b=(y-110)/20;
+    int smallest=grid[a][b];
+    System.out.println();
+    int index=-1;
+    for (int i=0; i<4; i++) {
+      if (a+moves[2*i]>=0&&a+moves[2*i]<5&&b+moves[2*i+1]>=0&&b+moves[2*i+1]<5) {
+        if (grid[a+moves[2*i]][b+moves[2*i+1]]<smallest) {
+          System.out.println((a+moves[2*i])+" "+(b+moves[2*i+1]));
+          smallest=grid[a+moves[2*i]][b+moves[2*i+1]];
+          index=i;
+        }
+      }
+    }
+    if (index!=-1) {
+      x+=moves[2*index]*20;
+      y+=moves[2*index+1]*20;
+      System.out.println(x+" "+y);
+    }
   }
 }
 
@@ -82,7 +119,9 @@ void setup() {
 }
 void draw() {
   background(255);
+  A.clear();
   A.move();
+  A.moveE();
   A.update(A.getX(), A.getY());
   line(100, 100, 200, 100);
   line(100, 120, 200, 120);
