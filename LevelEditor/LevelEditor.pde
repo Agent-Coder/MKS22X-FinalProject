@@ -78,6 +78,9 @@ class Level1 extends Levels {
         board[board.length-1][i].display();
       }
     }  
+  }
+  /*
+  void floorOut() {
     for (int col = 1; i < board2.length-2; i++) {
       for (int i = 1; i<board2.length-1; i++) {
         if (board2[i][col]!=null) {
@@ -87,8 +90,8 @@ class Level1 extends Levels {
      col=col+1;
     }
   }
+  */
 }
-
 int i =0;
 int j=0;
 int k=0;
@@ -349,4 +352,5 @@ void draw() {
   C.moveE();
   C.display();
   A.output();
+ // A.floorOut();
 }
