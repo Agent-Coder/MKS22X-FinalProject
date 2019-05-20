@@ -25,7 +25,6 @@ class BorderBlock extends Block {
     image(ice, xB, yB, 50, 49);
   }
 }
-
 class IceBlock extends Block {
   public IceBlock(int x, int y) {
     type="iceblock";
@@ -39,7 +38,6 @@ class IceBlock extends Block {
 }
 abstract class Levels {
   Block[][] board=new Block[15][15];
-  Block[][] board2=new Block[15][15];
   public Levels() {
   };
   abstract void output();
@@ -49,7 +47,6 @@ class Level1 extends Levels {
     for (int i=0; i<board.length; i++) {
       for (int j=0; j<board[0].length; j++) {
         board[i][j]=new BorderBlock(i*50, j*50);
-        //board2[i][j] = new moveBlock(i*50, j*50);
       }
     }
   }
@@ -67,9 +64,8 @@ class Level1 extends Levels {
       if (board[board.length-1][i]!=null) {
         board[board.length-1][i].display();
       }
-    }  
+    }
   }
-  
   void floorOut() {
     for (int col = 1; i < board2.length-2; i++) {
       for (int i = 1; i<board2.length-1; i++) {
@@ -80,14 +76,13 @@ class Level1 extends Levels {
      col=col+1;
     }
   }
-  
 }
 int i =0;
 int j=0;
 int k=0;
-PImage test;
-PImage test2;
-PImage test3;
+PImage rightm1;
+PImage rightm2;
+PImage rightm3;
 PImage leftm1;
 PImage leftm2;
 PImage leftm3;
@@ -105,17 +100,24 @@ PImage ups1;
 PImage ups2;
 PImage downs1;
 PImage downs2;
-PImage floor;
 String preKey="right";
-PImage[] images;
+PImage[] images={rightm1, rightm2, rightm3, 
+  leftm1, leftm2, leftm3, 
+  rights1, rights2, 
+  lefts1, lefts2, 
+  downm1, downm2, downm3, 
+  upm1, upm2, upm3, 
+  ups1, ups2, 
+  downs1, downs2};
 
 class Player {
-  float x, y,xcor,ycor;
+  float x, y, xcor, ycor, speed;
   Player(float x, float y) {
     this.x = x;
     this.y = y;
     xcor=x;
-    xcor=x;
+    ycor=y;
+    speed=2.5;
   }
   float getPX() {
     return xcor;
@@ -123,92 +125,102 @@ class Player {
   float getPY() {
     return ycor;
   }
+  void display(PImage i, float x, float y) {
+    image(i, x, y, 50, 50);
+  }
   void move() {
-    if (keyPressed&&keyCode == RIGHT&&x+i*20<=635) {
-      if (i%3 == 0) {
-        image(test, x+i*20, y+20*k, 50, 50);
-      } else if (i%3 == 1) {
-        image(test2, x+i*20, y+20*k, 50, 50);
+    if (keyPressed&&keyCode == RIGHT) {
+      PImage r=rightm1;
+      if (frameCount%30<10) {
+        r=rightm1;
+      } else if (frameCount%30<20) {
+        r=rightm2;
       } else {
-        image(test3, x+i*20, y+20*k, 50, 50);
+        r=rightm3;
       }
-      xcor=x+i*20;
-      ycor=y+20*k;
+      if (xcor+speed<650) {
+        xcor+=speed;
+        display(r, xcor+speed, ycor);
+      } else {
+        display(r, xcor, ycor);
+      }
       preKey="right";
-      delay(150);
       i++;
-    } else if (keyPressed&&keyCode == LEFT&&x+(i-1)*20>=50) {
+    } if (keyPressed&&keyCode == LEFT) {
       i--;
-      if (i%3 == 0) {
-        image(leftm1, x+i*20, y+20*k, 50, 50);
-      } else if (i%3 == 1) {
-        image(leftm2, x+i*20, y+20*k, 50, 50);
+      PImage r=leftm1;
+      if (frameCount%30<10) {
+        r=leftm1;
+      } else if (frameCount%30<20) {
+        r=leftm2;
       } else {
-        image(leftm3, x+i*20, y+20*k, 50, 50);
+        r=leftm3;
       }
-      xcor=x+i*20;
-      ycor=y+20*k;
-      preKey="left";
-      delay(150);
-    } else if (keyPressed&&keyCode == DOWN&&y+20*k<=630) {
-      if (k%3 == 0) {
-        image(downm1, x+i*20, y+20*k, 50, 50);
-      } else if (k%3 == 1) {
-        image(downm2, x+i*20, y+20*k, 50, 50);
+      if (xcor+speed>=50) {
+        xcor+=-1* speed;
+        display(r, xcor-speed, ycor);
       } else {
-        image(downm3, x+i*20, y+20*k, 50, 50);
+        display(r, xcor, ycor);
+      }
+      preKey="left";
+    }if (keyPressed&&keyCode == DOWN) {
+      PImage r=downm1;
+      if (frameCount%30<10) {
+        r=downm1;
+      } else if (frameCount%30<20) {
+        r=downm2;
+      } else {
+        r=downm3;
+      }
+      if (ycor+speed<650) {
+        ycor+=speed;
+        display(r, xcor, ycor+speed);
+      } else {
+        display(r, xcor, ycor);
       }
       preKey="down";
-      xcor=x+i*20;
-      ycor=y+20*k;
-      k++;
-      delay(150);
-    } else if (keyPressed&&keyCode == UP&&y+20*(k-1)>=40) {
+    }if (keyPressed&&keyCode == UP) {
       k--;
-      if (k%3 == 0) {
-        image(upm1, x+i*20, y+20*k, 50, 50);
-      } else if (k%3 == 1) {
-        image(upm2, x+i*20, y+20*k, 50, 50);
+      PImage r=upm1;
+      if (frameCount%30<10) {
+        r=upm1;
+      } else if (frameCount%30<10) {
+        r=upm2;
       } else {
-        image(upm3, x+i*20, y+20*k, 50, 50);
+        r=upm3;
       }
-      xcor=x+i*20;
-      ycor=y+20*k;
-      preKey="up";
-      delay(150);
-    } else {
-      if (preKey.equals("right")) {
-        if (j%2 == 0) {
-          image(rights1, x+i*20, y+20*k, 50, 50);
-        } else {
-          image(rights2, x+i*20, y+20*k, 50, 50);
-        }
-        delay(600);
-        j++;
-      } else if (preKey.equals("left")) {
-        if (j%2 == 0) {
-          image(lefts1, x+i*20, y+20*k, 50, 50);
-        } else {
-          image(lefts2, x+i*20, y+20*k, 50, 50);
-        }
-        delay(600);
-        j++;
-      } else if (preKey.equals("up")) {
-        if (j%2 == 0) {
-          image(ups1, x+i*20, y+20*k, 50, 50);
-        } else {
-          image(ups2, x+i*20, y+20*k, 50, 50);
-        }
-        delay(600);
-        j++;
+      if (ycor-speed>50) {
+        ycor-=speed;
+        display(r, xcor, ycor-speed);
       } else {
-        if (j%2 == 0) {
-          image(downs1, x+i*20, y+20*k, 50, 50);
+        display(r, xcor, ycor);
+      }
+      preKey="up";
+    } if(!keyPressed) {
+      if (preKey.equals("right")) {
+        if (frameCount%30<15) {
+          display(rights1, xcor, ycor);
         } else {
-          image(downs2, x+i*20, y+20*k, 50, 50);
+          display(rights2, xcor, ycor);
         }
-        delay(600);
-        j++;
+      } else if (preKey.equals("left")) {
+        if (frameCount%30<15) {
+          display(lefts1, xcor, ycor);
+        } else {
+          display(lefts2, xcor, ycor);
+        }
+      } else if (preKey.equals("up")) {
+        if (frameCount%30<15) {
+          display(ups1, xcor, ycor);
+        } else {
+          display(ups2, xcor, ycor);
+        }
+      } else {
+        if (frameCount%30<15) {
+          display(downs1, xcor, ycor);
+        } else {
+          display(downs2, xcor, ycor);
+        }
       }
     }
   }
@@ -256,9 +268,9 @@ class Enemies {
       grid[i][grid.length-1]=-1;
       grid[grid.length-1][i]=-1;
     }
-    board();
+    //board();
     moveE();
-    System.out.println(target.getPX()+" "+target.getPY());
+    //System.out.println(target.getPX()+" "+target.getPY());
   }
   void fillGrid(int xer, int yer, int num) {
     if (xer<grid.length&&xer>=0&&yer>=0&&yer<grid.length&&grid[xer][yer]!=1&&(grid[xer][yer]==0||grid[xer][yer]>num)) {
@@ -299,8 +311,8 @@ class Enemies {
       }
     }
     if (index!=-1) {
-      y+=moves[2*index]*5;
-      x+=moves[2*index+1]*5;
+      y+=moves[2*index];
+      x+=moves[2*index+1];
     }
   }
 }
@@ -309,9 +321,9 @@ void setup() {
   size(750, 750);
   //frameRate(64);
   ice=loadImage("Ice.png");
-  test = loadImage("GlaceonWalkRight1.png");
-  test2 = loadImage("GlaceonWalkRight2.png");
-  test3 = loadImage("GlaceonWalkRight3.png");
+  rightm1 = loadImage("GlaceonWalkRight1.png");
+  rightm2= loadImage("GlaceonWalkRight2.png");
+  rightm3 = loadImage("GlaceonWalkRight3.png");
   leftm1 = loadImage("GlaceonWalkLeft1.png"); 
   leftm2 = loadImage("GlaceonWalkLeft2.png");
   leftm3 = loadImage("GlaceonWalkLeft3.png");
@@ -329,15 +341,10 @@ void setup() {
   downs2 = loadImage("GlaceonFrontIdle2.png");
   ups1 = loadImage("GlaceonBackIdle1.png");
   ups2 = loadImage("GlaceonBackIdle2.png");
-  floor = loadImage("MoveTile1.png");
 }
 void draw() {
   background(255);
-  for (int i = 50; i<=700; i+=50) {
-    for (int j = 50; j <= 700; j+= 50) {
-        image(floor,i,j,50,50);
-    }
-  }
+  println(frameRate);
   for (int i=0; i<=750; i+=50) {
     line(0, i, 750, i);
     line(i, 0, i, 750);
@@ -347,5 +354,4 @@ void draw() {
   C.moveE();
   C.display();
   A.output();
-
 }
