@@ -25,17 +25,7 @@ class BorderBlock extends Block {
     image(ice, xB, yB, 50, 49);
   }
 }
-class moveBlock extends Block {
-  public moveBlock(int x, int y) {
-    type = "moveBlock";
-    xB=x;
-    yB=y;
-    destroyable=false;
-  }
-  void display() {
-    image(floor, xB, yB, 50,50);
-  }
-}
+
 class IceBlock extends Block {
   public IceBlock(int x, int y) {
     type="iceblock";
@@ -59,7 +49,7 @@ class Level1 extends Levels {
     for (int i=0; i<board.length; i++) {
       for (int j=0; j<board[0].length; j++) {
         board[i][j]=new BorderBlock(i*50, j*50);
-        board2[i][j] = new moveBlock(i*50, j*50);
+        //board2[i][j] = new moveBlock(i*50, j*50);
       }
     }
   }
@@ -79,7 +69,7 @@ class Level1 extends Levels {
       }
     }  
   }
-  /*
+  
   void floorOut() {
     for (int col = 1; i < board2.length-2; i++) {
       for (int i = 1; i<board2.length-1; i++) {
@@ -90,7 +80,7 @@ class Level1 extends Levels {
      col=col+1;
     }
   }
-  */
+  
 }
 int i =0;
 int j=0;
@@ -343,6 +333,11 @@ void setup() {
 }
 void draw() {
   background(255);
+  for (int i = 50; i<=700; i+=50) {
+    for (int j = 50; j <= 700; j+= 50) {
+        image(floor,i,j,50,50);
+    }
+  }
   for (int i=0; i<=750; i+=50) {
     line(0, i, 750, i);
     line(i, 0, i, 750);
@@ -352,5 +347,5 @@ void draw() {
   C.moveE();
   C.display();
   A.output();
- // A.floorOut();
+
 }
