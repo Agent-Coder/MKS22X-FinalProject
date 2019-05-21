@@ -1,6 +1,7 @@
 Level1 A=new Level1();
 Player B=new Player(250, 250);
 Enemies C=new Enemies(B);
+int frameCounter; 
 abstract class Block {
   int xB;
   int yB;
@@ -135,7 +136,7 @@ class Player {
       xcor=x+i*20;
       ycor=y+20*k;
       preKey="right";
-      delay(150);
+    //  delay(150);
       i++;
     } else if (keyPressed&&keyCode == LEFT&&x+(i-1)*20>=50) {
       i--;
@@ -149,7 +150,7 @@ class Player {
       xcor=x+i*20;
       ycor=y+20*k;
       preKey="left";
-      delay(150);
+   //   delay(150);
     } else if (keyPressed&&keyCode == DOWN&&y+20*k<=630) {
       if (k%3 == 0) {
         image(downm1, x+i*20, y+20*k, 50, 50);
@@ -162,7 +163,7 @@ class Player {
       xcor=x+i*20;
       ycor=y+20*k;
       k++;
-      delay(150);
+    //  delay(150);
     } else if (keyPressed&&keyCode == UP&&y+20*(k-1)>=40) {
       k--;
       if (k%3 == 0) {
@@ -175,7 +176,7 @@ class Player {
       xcor=x+i*20;
       ycor=y+20*k;
       preKey="up";
-      delay(150);
+   //   delay(150);
     } else {
       if (preKey.equals("right")) {
         if (j%2 == 0) {
@@ -183,7 +184,7 @@ class Player {
         } else {
           image(rights2, x+i*20, y+20*k, 50, 50);
         }
-        delay(600);
+   //     delay(600);
         j++;
       } else if (preKey.equals("left")) {
         if (j%2 == 0) {
@@ -191,7 +192,7 @@ class Player {
         } else {
           image(lefts2, x+i*20, y+20*k, 50, 50);
         }
-        delay(600);
+   //     delay(600);
         j++;
       } else if (preKey.equals("up")) {
         if (j%2 == 0) {
@@ -199,7 +200,7 @@ class Player {
         } else {
           image(ups2, x+i*20, y+20*k, 50, 50);
         }
-        delay(600);
+     //   delay(600);
         j++;
       } else {
         if (j%2 == 0) {
@@ -207,10 +208,11 @@ class Player {
         } else {
           image(downs2, x+i*20, y+20*k, 50, 50);
         }
-        delay(600);
+    //    delay(600);
         j++;
       }
-    }
+    
+  }
   }
 }
 class Enemies {
@@ -256,9 +258,9 @@ class Enemies {
       grid[i][grid.length-1]=-1;
       grid[grid.length-1][i]=-1;
     }
-    board();
+  //  board();
     moveE();
-    System.out.println(target.getPX()+" "+target.getPY());
+    // System.out.println(target.getPX()+" "+target.getPY());
   }
   void fillGrid(int xer, int yer, int num) {
     if (xer<grid.length&&xer>=0&&yer>=0&&yer<grid.length&&grid[xer][yer]!=1&&(grid[xer][yer]==0||grid[xer][yer]>num)) {
@@ -269,6 +271,7 @@ class Enemies {
       fillGrid(xer, yer-1, num+1);
     }
   }
+  /*
   void board() {
     for (int i=0; i<grid.length; i++) {
       for (int j=0; j<grid.length; j++) {
@@ -279,6 +282,7 @@ class Enemies {
     System.out.println();
     //System.out.println(x+" "+y);
   }
+  */
   void display() {
     fill(255, 255, 255);
     ellipseMode(CORNER);
@@ -307,7 +311,6 @@ class Enemies {
 PImage ice;
 void setup() {
   size(750, 750);
-  //frameRate(64);
   ice=loadImage("Ice.png");
   test = loadImage("GlaceonWalkRight1.png");
   test2 = loadImage("GlaceonWalkRight2.png");
@@ -330,11 +333,12 @@ void setup() {
   ups1 = loadImage("GlaceonBackIdle1.png");
   ups2 = loadImage("GlaceonBackIdle2.png");
   floor = loadImage("MoveTile1.png");
+ // frameRate(10);
 }
 void draw() {
   background(255);
-  for (int i = 50; i<=700; i+=50) {
-    for (int j = 50; j <= 700; j+= 50) {
+  for (int i = 0; i<=750; i+=50) {
+    for (int j = 00; j <= 750; j+= 50) {
         image(floor,i,j,50,50);
     }
   }
@@ -347,5 +351,6 @@ void draw() {
   C.moveE();
   C.display();
   A.output();
-
+  println(frameCount);
+  frameCounter = frameCount;
 }
