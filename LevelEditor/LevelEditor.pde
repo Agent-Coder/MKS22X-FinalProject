@@ -89,11 +89,11 @@ class Level1 extends Levels {
     }
   }
   void output() {
-    for (int i=0; i<board.length; i++) {
+    /*for (int i=0; i<board.length; i++) {
       for (int j=0; j<board[0].length; j++) {
         boardtile[i][j].display();
       }
-    }
+    }*/
     for (int i=0; i<board.length; i++) {
       if (board[i][0]!=null) {
         board[i][0].display();
@@ -319,6 +319,16 @@ class Enemies {
     }
   }
 }
+class Spoink extends Enemies{
+  public Spoink(){
+    super();
+  }
+  void display() {
+    fill(255, 255, 255);
+    ellipseMode(CORNER);
+    ellipse(x, y, 50, 50);
+  }
+}
 
 void setup() {
   size(750, 750);
@@ -348,11 +358,7 @@ void setup() {
 }
 void draw() {
   background(255);
-  println(frameRate);
-  for (int i=0; i<=750; i+=50) {
-    line(0, i, 750, i);
-    line(i, 0, i, 750);
-  }
+  //println(frameRate);
   A.output();
   B.move();
   C.update();
