@@ -46,7 +46,7 @@ class BorderBlock extends Block {
     destroyable=false;
   }
   void display() {
-    image(ice, xB, yB, 50, 49);
+    image(ice, xB, yB);
   }
 }
 class IceBlock extends Block {
@@ -70,7 +70,7 @@ class Tile {
     yer=y;
   }
   void display() {
-    image(floor, xer, yer, 50, 50);
+    image(floor, xer, yer);
   }
 }
 
@@ -108,11 +108,11 @@ class Level1 extends Levels {
     }
   }
   void output() {
-    /*for (int i=0; i<board.length; i++) {
+    for (int i=0; i<board.length; i++) {
       for (int j=0; j<board[0].length; j++) {
         boardtile[i][j].display();
       }
-    }*/
+    }
     for (int i=0; i<board.length; i++) {
       if (board[i][0]!=null) {
         board[i][0].display();
@@ -160,12 +160,14 @@ class Player {
     ups1, ups2, 
     downs1, downs2};
   float x, y, xcor, ycor, speed;
+  String prevKey;
   Player(float x, float y) {
     this.x = x;
     this.y = y;
     xcor=x;
     ycor=y;
     speed=2.5;
+    prevKey="right";
   }
   float getPX() {
     return xcor;
@@ -192,6 +194,7 @@ class Player {
       } else {
         display(r, xcor, ycor);
       }
+      prevKey="right";
     } else if (keyCodesDown.contains(LEFT)) {
       PImage r=leftm1;
       if (frameCount%30<10) {
@@ -207,6 +210,7 @@ class Player {
       } else {
         display(r, xcor, ycor);
       }
+      prevKey="left";
     } else if (keyCodesDown.contains(DOWN)) {
       PImage r=downm1;
       if (frameCount%30<10) {
@@ -222,6 +226,7 @@ class Player {
       } else {
         display(r, xcor, ycor);
       }
+      prevKey="down";
     } else if (keyCodesDown.contains(UP)) {
       PImage r=upm1;
       if (frameCount%30<10) {
@@ -237,20 +242,21 @@ class Player {
       } else {
         display(r, xcor, ycor);
       }
+      prevKey="up";
     } else {
-      if (prevKeyCodesDown.contains(RIGHT)) {
+      if (prevKey.equals("right")) {
         if (frameCount%30<15) {
           display(rights1, xcor, ycor);
         } else {
           display(rights2, xcor, ycor);
         }
-      } else if (prevKeyCodesDown.contains(LEFT)) {
+      } else if (prevKey.equals("left")) {
         if (frameCount%30<15) {
           display(lefts1, xcor, ycor);
         } else {
           display(lefts2, xcor, ycor);
         }
-      } else if (prevKeyCodesDown.contains(UP)) {
+      } else if (prevKey.equals("up")) {
         if (frameCount%30<15) {
           display(ups1, xcor, ycor);
         } else {
@@ -358,8 +364,8 @@ class Enemies {
   }
 }
 class Spoink extends Enemies{
-  public Spoink(){
-    super();
+  public Spoink(Player a){
+    super(a);
   }
   void display() {
     fill(255, 255, 255);
@@ -392,25 +398,24 @@ void setup() {
   ups2 = loadImage("GlaceonBackIdle2.png");
   floor = loadImage("MoveTile1.png");
   ice=loadImage("Ice.png");
+  ice.resize(50,49);
+  floor.resize(50,50);
   OranBerry = loadImage("OranBerry.png");
   //frameRate(64);
 }
 void draw() {
   background(255);
-  //println(frameRate);
+  println(frameRate);
   A.output();
   A.lvlStart1();
   B.move();
   C.update();
   C.moveE();
   C.display();
-  updatePrevKeys();
 }
 import java.util.*;
 Set<Character> keysDown= new HashSet<Character>();
-Set<Character> prevKeysDown= new HashSet<Character>(keysDown);
 Set<Integer> keyCodesDown= new HashSet<Integer>();
-Set<Integer> prevKeyCodesDown= new HashSet<Integer>(keyCodesDown);
 void keyPressed() {
   if (key==CODED) {
     keyCodesDown.add(keyCode);
@@ -424,8 +429,4 @@ void keyReleased() {
   } else {
     keysDown.add(key);
   }
-}
-void updatePrevKeys() {
-  prevKeysDown=new HashSet<Character>(keysDown);
-  prevKeyCodesDown=new HashSet<Integer>(keyCodesDown);
 }
