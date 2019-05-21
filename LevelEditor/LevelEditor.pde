@@ -23,6 +23,8 @@ PImage ups1;
 PImage ups2;
 PImage downs1;
 PImage downs2;
+
+PImage OranBerry; 
 abstract class Block {
   int xB;
   int yB;
@@ -69,6 +71,21 @@ class Tile {
   }
   void display() {
     image(floor, xer, yer, 50, 50);
+  }
+}
+
+//NEEDS EDITING & CHECKS
+class BerryTile {
+  String type;
+  int xer;
+  int yer;
+  public BerryTile(int x, int y) {
+    type = "Berry";
+    xer = x;
+    yer = y;
+  }
+  void display() {
+    image(OranBerry, xer, yer, 50, 50);
   }
 }
 
@@ -365,6 +382,7 @@ void setup() {
   ups2 = loadImage("GlaceonBackIdle2.png");
   floor = loadImage("MoveTile1.png");
   ice=loadImage("Ice.png");
+  OranBerry = loadImage("OranBerry.png");
   //frameRate(64);
 }
 void draw() {
