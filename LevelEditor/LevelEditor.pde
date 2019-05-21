@@ -36,6 +36,18 @@ class IceBlock extends Block {
     image(ice, xB, yB, 50, 50);
   }
 }
+class moveBlock extends Block {
+  public moveBlock(int x, int y) {
+    type = "moveBlock";
+    xB=x;
+    yB=y;
+    destroyable=false;
+  }
+  void display() {
+    image(floor, xB, yB, 50, 50);
+  }
+}
+
 abstract class Levels {
   Block[][] board=new Block[15][15];
   public Levels() {
@@ -51,6 +63,11 @@ class Level1 extends Levels {
     }
   }
   void output() {
+    /*for (int i = 0; i<=750; i+=50) {
+      for (int j = 0; j <= 750; j+= 50) {
+        image(floor, i, j, 50, 50);
+      }
+    }*/
     for (int i=0; i<board.length; i++) {
       if (board[i][0]!=null) {
         board[i][0].display();
@@ -64,16 +81,6 @@ class Level1 extends Levels {
       if (board[board.length-1][i]!=null) {
         board[board.length-1][i].display();
       }
-    }
-  }
-  void floorOut() {
-    for (int col = 1; i < board2.length-2; i++) {
-      for (int i = 1; i<board2.length-1; i++) {
-        if (board2[i][col]!=null) {
-          board2[i][col].display();
-        }
-      }
-     col=col+1;
     }
   }
 }
@@ -100,6 +107,7 @@ PImage ups1;
 PImage ups2;
 PImage downs1;
 PImage downs2;
+PImage floor;
 String preKey="right";
 PImage[] images={rightm1, rightm2, rightm3, 
   leftm1, leftm2, leftm3, 
@@ -129,7 +137,7 @@ class Player {
     image(i, x, y, 50, 50);
   }
   void move() {
-    if (keyPressed&&keyCode == RIGHT) {
+    if (keyCodesDown.contains(RIGHT)) {
       PImage r=rightm1;
       if (frameCount%30<10) {
         r=rightm1;
@@ -146,7 +154,8 @@ class Player {
       }
       preKey="right";
       i++;
-    } if (keyPressed&&keyCode == LEFT) {
+    } 
+    else if (keyCodesDown.contains(LEFT)) {
       i--;
       PImage r=leftm1;
       if (frameCount%30<10) {
@@ -163,7 +172,8 @@ class Player {
         display(r, xcor, ycor);
       }
       preKey="left";
-    }if (keyPressed&&keyCode == DOWN) {
+    }
+    else if (keyCodesDown.contains(DOWN)) {
       PImage r=downm1;
       if (frameCount%30<10) {
         r=downm1;
@@ -179,7 +189,8 @@ class Player {
         display(r, xcor, ycor);
       }
       preKey="down";
-    }if (keyPressed&&keyCode == UP) {
+    }
+    else if (keyCodesDown.contains(UP)) {
       k--;
       PImage r=upm1;
       if (frameCount%30<10) {
@@ -196,20 +207,21 @@ class Player {
         display(r, xcor, ycor);
       }
       preKey="up";
-    } if(!keyPressed) {
-      if (preKey.equals("right")) {
+    } 
+    else{
+      if (prevKeyCodesDown.contains(RIGHT)) {
         if (frameCount%30<15) {
           display(rights1, xcor, ycor);
         } else {
           display(rights2, xcor, ycor);
         }
-      } else if (preKey.equals("left")) {
+      } else if (prevKeyCodesDown.contains(LEFT)) {
         if (frameCount%30<15) {
           display(lefts1, xcor, ycor);
         } else {
           display(lefts2, xcor, ycor);
         }
-      } else if (preKey.equals("up")) {
+      } else if (prevKeyCodesDown.contains(UP)) {
         if (frameCount%30<15) {
           display(ups1, xcor, ycor);
         } else {
@@ -341,6 +353,7 @@ void setup() {
   downs2 = loadImage("GlaceonFrontIdle2.png");
   ups1 = loadImage("GlaceonBackIdle1.png");
   ups2 = loadImage("GlaceonBackIdle2.png");
+  floor = loadImage("MoveTile1.png");
 }
 void draw() {
   background(255);
@@ -349,9 +362,33 @@ void draw() {
     line(0, i, 750, i);
     line(i, 0, i, 750);
   }
+  A.output();
   B.move();
   C.update();
   C.moveE();
   C.display();
-  A.output();
+  updatePrevKeys();
+}
+import java.util.*;
+Set<Character> keysDown= new HashSet<Character>();
+Set<Character> prevKeysDown= new HashSet<Character>(keysDown);
+Set<Integer> keyCodesDown= new HashSet<Integer>();
+Set<Integer> prevKeyCodesDown= new HashSet<Integer>(keyCodesDown);
+void keyPressed() {
+  if (key==CODED) {
+    keyCodesDown.add(keyCode);
+  } else {
+    keysDown.add(key);
+  }
+}
+void keyReleased() {
+  if (key==CODED) {
+    keyCodesDown.remove(keyCode);
+  } else {
+    keysDown.add(key);
+  }
+}
+void updatePrevKeys() {
+  prevKeysDown=new HashSet<Character>(keysDown);
+  prevKeyCodesDown=new HashSet<Integer>(keyCodesDown);
 }
