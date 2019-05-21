@@ -1,6 +1,28 @@
 Level1 A=new Level1();
 Player B=new Player(250, 250);
 Enemies C=new Enemies(B);
+PImage floor;
+PImage ice;
+PImage rightm1;
+PImage rightm2;
+PImage rightm3;
+PImage leftm1;
+PImage leftm2;
+PImage leftm3;
+PImage rights1;
+PImage rights2;
+PImage lefts1;
+PImage lefts2;
+PImage downm1;
+PImage downm2;
+PImage downm3;
+PImage upm1;
+PImage upm2;
+PImage upm3;
+PImage ups1;
+PImage ups2;
+PImage downs1;
+PImage downs2;
 abstract class Block {
   int xB;
   int yB;
@@ -36,15 +58,17 @@ class IceBlock extends Block {
     image(ice, xB, yB, 50, 50);
   }
 }
-class moveBlock extends Block {
-  public moveBlock(int x, int y) {
-    type = "moveBlock";
-    xB=x;
-    yB=y;
-    destroyable=false;
+class Tile {
+  String type;
+  int xer;
+  int yer;
+  public Tile(int x, int y) {
+    type="tile";
+    xer=x;
+    yer=y;
   }
   void display() {
-    image(floor, xB, yB, 50, 50);
+    image(floor, xer, yer, 50, 50);
   }
 }
 
@@ -55,19 +79,21 @@ abstract class Levels {
   abstract void output();
 }
 class Level1 extends Levels {
+  Tile[][] boardtile=new Tile[15][15];
   public Level1() {
     for (int i=0; i<board.length; i++) {
       for (int j=0; j<board[0].length; j++) {
         board[i][j]=new BorderBlock(i*50, j*50);
+        boardtile[i][j]=new Tile(i*50, j*50);
       }
     }
   }
   void output() {
-    /*for (int i = 0; i<=750; i+=50) {
-      for (int j = 0; j <= 750; j+= 50) {
-        image(floor, i, j, 50, 50);
+    for (int i=0; i<board.length; i++) {
+      for (int j=0; j<board[0].length; j++) {
+        boardtile[i][j].display();
       }
-    }*/
+    }
     for (int i=0; i<board.length; i++) {
       if (board[i][0]!=null) {
         board[i][0].display();
@@ -84,41 +110,17 @@ class Level1 extends Levels {
     }
   }
 }
-int i =0;
-int j=0;
-int k=0;
-PImage rightm1;
-PImage rightm2;
-PImage rightm3;
-PImage leftm1;
-PImage leftm2;
-PImage leftm3;
-PImage rights1;
-PImage rights2;
-PImage lefts1;
-PImage lefts2;
-PImage downm1;
-PImage downm2;
-PImage downm3;
-PImage upm1;
-PImage upm2;
-PImage upm3;
-PImage ups1;
-PImage ups2;
-PImage downs1;
-PImage downs2;
-PImage floor;
-String preKey="right";
-PImage[] images={rightm1, rightm2, rightm3, 
-  leftm1, leftm2, leftm3, 
-  rights1, rights2, 
-  lefts1, lefts2, 
-  downm1, downm2, downm3, 
-  upm1, upm2, upm3, 
-  ups1, ups2, 
-  downs1, downs2};
+
 
 class Player {
+  PImage[] images={rightm1, rightm2, rightm3, 
+    leftm1, leftm2, leftm3, 
+    rights1, rights2, 
+    lefts1, lefts2, 
+    downm1, downm2, downm3, 
+    upm1, upm2, upm3, 
+    ups1, ups2, 
+    downs1, downs2};
   float x, y, xcor, ycor, speed;
   Player(float x, float y) {
     this.x = x;
@@ -152,11 +154,7 @@ class Player {
       } else {
         display(r, xcor, ycor);
       }
-      preKey="right";
-      i++;
-    } 
-    else if (keyCodesDown.contains(LEFT)) {
-      i--;
+    } else if (keyCodesDown.contains(LEFT)) {
       PImage r=leftm1;
       if (frameCount%30<10) {
         r=leftm1;
@@ -171,9 +169,7 @@ class Player {
       } else {
         display(r, xcor, ycor);
       }
-      preKey="left";
-    }
-    else if (keyCodesDown.contains(DOWN)) {
+    } else if (keyCodesDown.contains(DOWN)) {
       PImage r=downm1;
       if (frameCount%30<10) {
         r=downm1;
@@ -188,10 +184,7 @@ class Player {
       } else {
         display(r, xcor, ycor);
       }
-      preKey="down";
-    }
-    else if (keyCodesDown.contains(UP)) {
-      k--;
+    } else if (keyCodesDown.contains(UP)) {
       PImage r=upm1;
       if (frameCount%30<10) {
         r=upm1;
@@ -206,9 +199,7 @@ class Player {
       } else {
         display(r, xcor, ycor);
       }
-      preKey="up";
-    } 
-    else{
+    } else {
       if (prevKeyCodesDown.contains(RIGHT)) {
         if (frameCount%30<15) {
           display(rights1, xcor, ycor);
@@ -328,11 +319,9 @@ class Enemies {
     }
   }
 }
-PImage ice;
+
 void setup() {
   size(750, 750);
-  //frameRate(64);
-  ice=loadImage("Ice.png");
   rightm1 = loadImage("GlaceonWalkRight1.png");
   rightm2= loadImage("GlaceonWalkRight2.png");
   rightm3 = loadImage("GlaceonWalkRight3.png");
@@ -354,6 +343,8 @@ void setup() {
   ups1 = loadImage("GlaceonBackIdle1.png");
   ups2 = loadImage("GlaceonBackIdle2.png");
   floor = loadImage("MoveTile1.png");
+  ice=loadImage("Ice.png");
+  //frameRate(64);
 }
 void draw() {
   background(255);
