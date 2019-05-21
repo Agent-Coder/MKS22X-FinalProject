@@ -91,10 +91,12 @@ class BerryTile {
 
 abstract class Levels {
   Block[][] board=new Block[15][15];
+  Block[][] Map = new Block[15][15];
   public Levels() {
   };
   abstract void output();
 }
+
 class Level1 extends Levels {
   Tile[][] boardtile=new Tile[15][15];
   IceBlock[][] start = new IceBlock[15][15];
@@ -108,11 +110,12 @@ class Level1 extends Levels {
     }
   }
   void output() {
-    for (int i=0; i<board.length; i++) {
+    /*for (int i=0; i<board.length; i++) {
       for (int j=0; j<board[0].length; j++) {
         boardtile[i][j].display();
       }
     }
+    */
     for (int i=0; i<board.length; i++) {
       if (board[i][0]!=null) {
         board[i][0].display();
@@ -135,6 +138,7 @@ class Level1 extends Levels {
         start[a][b].display();
       }
     }
+    
     for (int a = 3; a < board.length-3; a++) {
       for (int b = 8; b < 11; b++) {
         start[a][b].display();
@@ -382,6 +386,7 @@ void setup() {
   ups2 = loadImage("GlaceonBackIdle2.png");
   floor = loadImage("MoveTile1.png");
   ice=loadImage("Ice.png");
+  floor.resize(50,50);
   OranBerry = loadImage("OranBerry.png");
   //frameRate(64);
 }
