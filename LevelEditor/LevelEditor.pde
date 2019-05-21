@@ -1,5 +1,5 @@
 Level1 A=new Level1();
-Player B=new Player(250, 250);
+Player B=new Player(350,350);
 Enemies C=new Enemies(B);
 PImage floor;
 PImage ice;
@@ -55,7 +55,7 @@ class IceBlock extends Block {
     destroyable=true;
   }
   void display() {
-    image(ice, xB, yB, 50, 50);
+    image(ice, xB, yB, 50, 49);
   }
 }
 class Tile {
@@ -80,11 +80,13 @@ abstract class Levels {
 }
 class Level1 extends Levels {
   Tile[][] boardtile=new Tile[15][15];
+  IceBlock[][] start = new IceBlock[15][15];
   public Level1() {
     for (int i=0; i<board.length; i++) {
       for (int j=0; j<board[0].length; j++) {
         board[i][j]=new BorderBlock(i*50, j*50);
         boardtile[i][j]=new Tile(i*50, j*50);
+        start[i][j]=new IceBlock(i*50, j*50);
       }
     }
   }
@@ -109,7 +111,26 @@ class Level1 extends Levels {
       }
     }
   }
-}
+  
+  void lvlStart1() {
+    for (int a = 3; a < board.length-3; a++) {
+      for (int b = 4; b < 7; b++) {
+        start[a][b].display();
+      }
+    }
+    for (int a = 3; a < board.length-3; a++) {
+      for (int b = 8; b < 11; b++) {
+        start[a][b].display();
+      }
+    }
+    start[3][7].display();
+    start[4][7].display();
+    start[5][7].display();
+    start[9][7].display();
+    start[10][7].display();
+    start[11][7].display();
+  } 
+ }
 
 
 class Player {
@@ -354,6 +375,7 @@ void draw() {
     line(i, 0, i, 750);
   }
   A.output();
+  A.lvlStart1();
   B.move();
   C.update();
   C.moveE();
