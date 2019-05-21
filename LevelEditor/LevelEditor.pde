@@ -1,7 +1,28 @@
 Level1 A=new Level1();
 Player B=new Player(250, 250);
 Enemies C=new Enemies(B);
-int frameCounter; 
+PImage floor;
+PImage ice;
+PImage rightm1;
+PImage rightm2;
+PImage rightm3;
+PImage leftm1;
+PImage leftm2;
+PImage leftm3;
+PImage rights1;
+PImage rights2;
+PImage lefts1;
+PImage lefts2;
+PImage downm1;
+PImage downm2;
+PImage downm3;
+PImage upm1;
+PImage upm2;
+PImage upm3;
+PImage ups1;
+PImage ups2;
+PImage downs1;
+PImage downs2;
 abstract class Block {
   int xB;
   int yB;
@@ -26,7 +47,6 @@ class BorderBlock extends Block {
     image(ice, xB, yB, 50, 49);
   }
 }
-
 class IceBlock extends Block {
   public IceBlock(int x, int y) {
     type="iceblock";
@@ -38,23 +58,42 @@ class IceBlock extends Block {
     image(ice, xB, yB, 50, 50);
   }
 }
+class Tile {
+  String type;
+  int xer;
+  int yer;
+  public Tile(int x, int y) {
+    type="tile";
+    xer=x;
+    yer=y;
+  }
+  void display() {
+    image(floor, xer, yer, 50, 50);
+  }
+}
+
 abstract class Levels {
   Block[][] board=new Block[15][15];
-  Block[][] board2=new Block[15][15];
   public Levels() {
   };
   abstract void output();
 }
 class Level1 extends Levels {
+  Tile[][] boardtile=new Tile[15][15];
   public Level1() {
     for (int i=0; i<board.length; i++) {
       for (int j=0; j<board[0].length; j++) {
         board[i][j]=new BorderBlock(i*50, j*50);
-        //board2[i][j] = new moveBlock(i*50, j*50);
+        boardtile[i][j]=new Tile(i*50, j*50);
       }
     }
   }
   void output() {
+    for (int i=0; i<board.length; i++) {
+      for (int j=0; j<board[0].length; j++) {
+        boardtile[i][j].display();
+      }
+    }
     for (int i=0; i<board.length; i++) {
       if (board[i][0]!=null) {
         board[i][0].display();
@@ -68,55 +107,27 @@ class Level1 extends Levels {
       if (board[board.length-1][i]!=null) {
         board[board.length-1][i].display();
       }
-    }  
-  }
-  
-  void floorOut() {
-    for (int col = 1; i < board2.length-2; i++) {
-      for (int i = 1; i<board2.length-1; i++) {
-        if (board2[i][col]!=null) {
-          board2[i][col].display();
-        }
-      }
-     col=col+1;
     }
   }
-  
 }
-int i =0;
-int j=0;
-int k=0;
-PImage test;
-PImage test2;
-PImage test3;
-PImage leftm1;
-PImage leftm2;
-PImage leftm3;
-PImage rights1;
-PImage rights2;
-PImage lefts1;
-PImage lefts2;
-PImage downm1;
-PImage downm2;
-PImage downm3;
-PImage upm1;
-PImage upm2;
-PImage upm3;
-PImage ups1;
-PImage ups2;
-PImage downs1;
-PImage downs2;
-PImage floor;
-String preKey="right";
-PImage[] images;
+
 
 class Player {
-  float x, y,xcor,ycor;
+  PImage[] images={rightm1, rightm2, rightm3, 
+    leftm1, leftm2, leftm3, 
+    rights1, rights2, 
+    lefts1, lefts2, 
+    downm1, downm2, downm3, 
+    upm1, upm2, upm3, 
+    ups1, ups2, 
+    downs1, downs2};
+  float x, y, xcor, ycor, speed;
   Player(float x, float y) {
     this.x = x;
     this.y = y;
     xcor=x;
-    xcor=x;
+    ycor=y;
+    speed=2.5;
   }
   float getPX() {
     return xcor;
@@ -124,95 +135,97 @@ class Player {
   float getPY() {
     return ycor;
   }
-  void move() {
-    if (keyPressed&&keyCode == RIGHT&&x+i*20<=635) {
-      if (i%3 == 0) {
-        image(test, x+i*20, y+20*k, 50, 50);
-      } else if (i%3 == 1) {
-        image(test2, x+i*20, y+20*k, 50, 50);
-      } else {
-        image(test3, x+i*20, y+20*k, 50, 50);
-      }
-      xcor=x+i*20;
-      ycor=y+20*k;
-      preKey="right";
-    //  delay(150);
-      i++;
-    } else if (keyPressed&&keyCode == LEFT&&x+(i-1)*20>=50) {
-      i--;
-      if (i%3 == 0) {
-        image(leftm1, x+i*20, y+20*k, 50, 50);
-      } else if (i%3 == 1) {
-        image(leftm2, x+i*20, y+20*k, 50, 50);
-      } else {
-        image(leftm3, x+i*20, y+20*k, 50, 50);
-      }
-      xcor=x+i*20;
-      ycor=y+20*k;
-      preKey="left";
-   //   delay(150);
-    } else if (keyPressed&&keyCode == DOWN&&y+20*k<=630) {
-      if (k%3 == 0) {
-        image(downm1, x+i*20, y+20*k, 50, 50);
-      } else if (k%3 == 1) {
-        image(downm2, x+i*20, y+20*k, 50, 50);
-      } else {
-        image(downm3, x+i*20, y+20*k, 50, 50);
-      }
-      preKey="down";
-      xcor=x+i*20;
-      ycor=y+20*k;
-      k++;
-    //  delay(150);
-    } else if (keyPressed&&keyCode == UP&&y+20*(k-1)>=40) {
-      k--;
-      if (k%3 == 0) {
-        image(upm1, x+i*20, y+20*k, 50, 50);
-      } else if (k%3 == 1) {
-        image(upm2, x+i*20, y+20*k, 50, 50);
-      } else {
-        image(upm3, x+i*20, y+20*k, 50, 50);
-      }
-      xcor=x+i*20;
-      ycor=y+20*k;
-      preKey="up";
-   //   delay(150);
-    } else {
-      if (preKey.equals("right")) {
-        if (j%2 == 0) {
-          image(rights1, x+i*20, y+20*k, 50, 50);
-        } else {
-          image(rights2, x+i*20, y+20*k, 50, 50);
-        }
-   //     delay(600);
-        j++;
-      } else if (preKey.equals("left")) {
-        if (j%2 == 0) {
-          image(lefts1, x+i*20, y+20*k, 50, 50);
-        } else {
-          image(lefts2, x+i*20, y+20*k, 50, 50);
-        }
-   //     delay(600);
-        j++;
-      } else if (preKey.equals("up")) {
-        if (j%2 == 0) {
-          image(ups1, x+i*20, y+20*k, 50, 50);
-        } else {
-          image(ups2, x+i*20, y+20*k, 50, 50);
-        }
-     //   delay(600);
-        j++;
-      } else {
-        if (j%2 == 0) {
-          image(downs1, x+i*20, y+20*k, 50, 50);
-        } else {
-          image(downs2, x+i*20, y+20*k, 50, 50);
-        }
-    //    delay(600);
-        j++;
-      }
-    
+  void display(PImage i, float x, float y) {
+    image(i, x, y, 50, 50);
   }
+  void move() {
+    if (keyCodesDown.contains(RIGHT)) {
+      PImage r=rightm1;
+      if (frameCount%30<10) {
+        r=rightm1;
+      } else if (frameCount%30<20) {
+        r=rightm2;
+      } else {
+        r=rightm3;
+      }
+      if (xcor+speed<650) {
+        xcor+=speed;
+        display(r, xcor+speed, ycor);
+      } else {
+        display(r, xcor, ycor);
+      }
+    } else if (keyCodesDown.contains(LEFT)) {
+      PImage r=leftm1;
+      if (frameCount%30<10) {
+        r=leftm1;
+      } else if (frameCount%30<20) {
+        r=leftm2;
+      } else {
+        r=leftm3;
+      }
+      if (xcor+speed>=50) {
+        xcor+=-1* speed;
+        display(r, xcor-speed, ycor);
+      } else {
+        display(r, xcor, ycor);
+      }
+    } else if (keyCodesDown.contains(DOWN)) {
+      PImage r=downm1;
+      if (frameCount%30<10) {
+        r=downm1;
+      } else if (frameCount%30<20) {
+        r=downm2;
+      } else {
+        r=downm3;
+      }
+      if (ycor+speed<650) {
+        ycor+=speed;
+        display(r, xcor, ycor+speed);
+      } else {
+        display(r, xcor, ycor);
+      }
+    } else if (keyCodesDown.contains(UP)) {
+      PImage r=upm1;
+      if (frameCount%30<10) {
+        r=upm1;
+      } else if (frameCount%30<10) {
+        r=upm2;
+      } else {
+        r=upm3;
+      }
+      if (ycor-speed>50) {
+        ycor-=speed;
+        display(r, xcor, ycor-speed);
+      } else {
+        display(r, xcor, ycor);
+      }
+    } else {
+      if (prevKeyCodesDown.contains(RIGHT)) {
+        if (frameCount%30<15) {
+          display(rights1, xcor, ycor);
+        } else {
+          display(rights2, xcor, ycor);
+        }
+      } else if (prevKeyCodesDown.contains(LEFT)) {
+        if (frameCount%30<15) {
+          display(lefts1, xcor, ycor);
+        } else {
+          display(lefts2, xcor, ycor);
+        }
+      } else if (prevKeyCodesDown.contains(UP)) {
+        if (frameCount%30<15) {
+          display(ups1, xcor, ycor);
+        } else {
+          display(ups2, xcor, ycor);
+        }
+      } else {
+        if (frameCount%30<15) {
+          display(downs1, xcor, ycor);
+        } else {
+          display(downs2, xcor, ycor);
+        }
+      }
+    }
   }
 }
 class Enemies {
@@ -258,9 +271,9 @@ class Enemies {
       grid[i][grid.length-1]=-1;
       grid[grid.length-1][i]=-1;
     }
-  //  board();
+    //board();
     moveE();
-    // System.out.println(target.getPX()+" "+target.getPY());
+    //System.out.println(target.getPX()+" "+target.getPY());
   }
   void fillGrid(int xer, int yer, int num) {
     if (xer<grid.length&&xer>=0&&yer>=0&&yer<grid.length&&grid[xer][yer]!=1&&(grid[xer][yer]==0||grid[xer][yer]>num)) {
@@ -271,7 +284,6 @@ class Enemies {
       fillGrid(xer, yer-1, num+1);
     }
   }
-  /*
   void board() {
     for (int i=0; i<grid.length; i++) {
       for (int j=0; j<grid.length; j++) {
@@ -282,7 +294,6 @@ class Enemies {
     System.out.println();
     //System.out.println(x+" "+y);
   }
-  */
   void display() {
     fill(255, 255, 255);
     ellipseMode(CORNER);
@@ -303,18 +314,17 @@ class Enemies {
       }
     }
     if (index!=-1) {
-      y+=moves[2*index]*5;
-      x+=moves[2*index+1]*5;
+      y+=moves[2*index];
+      x+=moves[2*index+1];
     }
   }
 }
-PImage ice;
+
 void setup() {
   size(750, 750);
-  ice=loadImage("Ice.png");
-  test = loadImage("GlaceonWalkRight1.png");
-  test2 = loadImage("GlaceonWalkRight2.png");
-  test3 = loadImage("GlaceonWalkRight3.png");
+  rightm1 = loadImage("GlaceonWalkRight1.png");
+  rightm2= loadImage("GlaceonWalkRight2.png");
+  rightm3 = loadImage("GlaceonWalkRight3.png");
   leftm1 = loadImage("GlaceonWalkLeft1.png"); 
   leftm2 = loadImage("GlaceonWalkLeft2.png");
   leftm3 = loadImage("GlaceonWalkLeft3.png");
@@ -333,24 +343,43 @@ void setup() {
   ups1 = loadImage("GlaceonBackIdle1.png");
   ups2 = loadImage("GlaceonBackIdle2.png");
   floor = loadImage("MoveTile1.png");
- // frameRate(10);
+  ice=loadImage("Ice.png");
+  //frameRate(64);
 }
 void draw() {
   background(255);
-  for (int i = 0; i<=750; i+=50) {
-    for (int j = 00; j <= 750; j+= 50) {
-        image(floor,i,j,50,50);
-    }
-  }
+  println(frameRate);
   for (int i=0; i<=750; i+=50) {
     line(0, i, 750, i);
     line(i, 0, i, 750);
   }
+  A.output();
   B.move();
   C.update();
   C.moveE();
   C.display();
-  A.output();
-  println(frameCount);
-  frameCounter = frameCount;
+  updatePrevKeys();
+}
+import java.util.*;
+Set<Character> keysDown= new HashSet<Character>();
+Set<Character> prevKeysDown= new HashSet<Character>(keysDown);
+Set<Integer> keyCodesDown= new HashSet<Integer>();
+Set<Integer> prevKeyCodesDown= new HashSet<Integer>(keyCodesDown);
+void keyPressed() {
+  if (key==CODED) {
+    keyCodesDown.add(keyCode);
+  } else {
+    keysDown.add(key);
+  }
+}
+void keyReleased() {
+  if (key==CODED) {
+    keyCodesDown.remove(keyCode);
+  } else {
+    keysDown.add(key);
+  }
+}
+void updatePrevKeys() {
+  prevKeysDown=new HashSet<Character>(keysDown);
+  prevKeyCodesDown=new HashSet<Integer>(keyCodesDown);
 }
