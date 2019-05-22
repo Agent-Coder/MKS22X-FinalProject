@@ -225,7 +225,7 @@ class Player {
       } else {
         r=rightm3;
       }
-      if (xcor+speed<650&&board[round(ycor/50)][round((xcor+20)/50)]==null) {
+      if (xcor+speed<650&&board[round(ycor/50)][round((xcor+speed)/50)]==null) {
         //println(round(ycor/50)+" "+(round((xcor)/50)+2));
         xcor+=speed;
         display(r, xcor+speed, ycor);
@@ -242,7 +242,7 @@ class Player {
       } else {
         r=leftm3;
       }
-      if (xcor+speed>=50) {
+      if (xcor+speed>=50&&board[round(ycor/50)][round((xcor-speed)/50)]==null) {
         xcor+=-1* speed;
         display(r, xcor-speed, ycor);
       } else {
@@ -258,7 +258,7 @@ class Player {
       } else {
         r=downm3;
       }
-      if (ycor+speed<650) {
+      if (ycor+speed<650&&board[round((ycor+speed)/50)][round(xcor/50)]==null) {
         ycor+=speed;
         display(r, xcor, ycor+speed);
       } else {
@@ -274,7 +274,7 @@ class Player {
       } else {
         r=upm3;
       }
-      if (ycor-speed>50) {
+      if (ycor-speed>50&&board[round((ycor-speed)/50)][round(xcor/50)]==null) {
         ycor-=speed;
         display(r, xcor, ycor-speed);
       } else {
