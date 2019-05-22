@@ -92,7 +92,7 @@ abstract class Levels {
   Player B;
   Enemies C;
   public Levels() {
-    B=new Player(350, 350);
+    B=new Player(350, 350, board);
     C=new Enemies(B);
   };
   abstract void output();
@@ -137,7 +137,8 @@ class Level1 extends Levels {
       }
     }
   }
-  void play() {  
+  void play() {
+    B.refreshBoard(board);
     attack();
     output();
     B.move();
@@ -150,7 +151,7 @@ class Level1 extends Levels {
       if (B.getPrevKey().equals("right")) {
         for (int i=round(B.getPX()/50)+1; i<board.length-1; i++) {
           if (board[round(B.getPY()/50)][i]==null) {
-                       println(round(B.getPY()/50)+1);
+            println(round(B.getPY()/50)+1);
             board[round(B.getPY()/50)][i]=new IceBlock(i*50, round(B.getPY()/50)*50);
           }
         }
@@ -166,13 +167,13 @@ class Level1 extends Levels {
             board[i][round(B.getPX()/50)]=new IceBlock(round(B.getPX()/50)*50, i*50);
           }
         }
-      } /*else {
-        for (int i=(int)(B.getPY()/50); i<board.length-1; i++) {
-          if (board[i][(int)B.getPY()/50]==null) {
-            board[i][(int)B.getPY()/50]=new IceBlock((int)B.getPX(), i*50);
+      } else {
+        for (int i=round(B.getPY()/50)+1; i<board.length-1; i++) {
+          if (board[i][round(B.getPX()/50)]==null) {
+            board[i][round(B.getPX()/50)]=new IceBlock(round(B.getPX()/50)*50, i*50);
           }
         }
-      }*/
+      }
     }
   }
 }   
@@ -187,18 +188,23 @@ class Player {
     upm1, upm2, upm3, 
     ups1, ups2, 
     downs1, downs2};
+  Block[][] board;
   float x, y, xcor, ycor, speed;
   String prevKey;
   String getPrevKey() {
     return prevKey;
   }
-  Player(float x, float y) {
+  Player(float x, float y, Block[][] gameboard) {
     this.x = x;
     this.y = y;
     xcor=x;
     ycor=y;
     speed=2.5;
     prevKey="right";
+    board=gameboard;
+  }
+  void refreshBoard(Block[][] gameboard) {
+    board=gameboard;
   }
   float getPX() {
     return xcor;
@@ -219,7 +225,8 @@ class Player {
       } else {
         r=rightm3;
       }
-      if (xcor+speed<650) {
+      if (xcor+speed<650&&board[round(ycor/50)][round((xcor+20)/50)]==null) {
+        //println(round(ycor/50)+" "+(round((xcor)/50)+2));
         xcor+=speed;
         display(r, xcor+speed, ycor);
       } else {
