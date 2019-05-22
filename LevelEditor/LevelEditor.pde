@@ -151,22 +151,22 @@ class Level1 extends Levels {
         for (int i=round(B.getPX()/50)+1; i<board.length-1; i++) {
           if (board[round(B.getPY()/50)][i]==null) {
                        println(round(B.getPY()/50)+1);
-            board[round(B.getPY()/50)][i]=new IceBlock(i*50, ((round(B.getPY()/50))*50));
+            board[round(B.getPY()/50)][i]=new IceBlock(i*50, round(B.getPY()/50)*50);
           }
         }
       } else if (B.getPrevKey().equals("left")) {
         for (int i=round(B.getPX()/50)-1; i>0; i--) {
           if (board[round(B.getPY()/50)][i]==null) {
-            board[round(B.getPY()/50)][i]=new IceBlock((i)*50, (round(B.getPY()/50)*50));
+            board[round(B.getPY()/50)][i]=new IceBlock((i)*50, round(B.getPY()/50)*50);
           }
         }
-      } /*else if (B.getPrevKey().equals("up")) {
-        for (int i=(int)B.getPY()/50; i>0; i--) {
-          if (board[i][(int)B.getPY()/50]==null) {
-            board[i][(int)B.getPY()/50]=new IceBlock((int)B.getPX(), i*50);
+      } else if (B.getPrevKey().equals("up")) {
+        for (int i=round(B.getPY()/50)-1; i>0; i--) {
+          if (board[i][round(B.getPX()/50)]==null) {
+            board[i][round(B.getPX()/50)]=new IceBlock(round(B.getPX()/50)*50, i*50);
           }
         }
-      } else {
+      } /*else {
         for (int i=(int)(B.getPY()/50); i<board.length-1; i++) {
           if (board[i][(int)B.getPY()/50]==null) {
             board[i][(int)B.getPY()/50]=new IceBlock((int)B.getPX(), i*50);
