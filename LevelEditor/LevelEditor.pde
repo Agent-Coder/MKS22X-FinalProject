@@ -154,9 +154,9 @@ class Level1 extends Levels {
           }
         }
       } else*/ if (B.getPrevKey().equals("left")) {
-        for (int i=(int)(B.getPX()/50)-1; i>0; i--) {
-          if (board[(int)(B.getPY()/50)][i]==null) {
-            board[(int)(B.getPY()/50)][i]=new IceBlock(i*50, (int)B.getPY());
+        for (int i=(int)(B.getPX()/50); i>0; i--) {
+          if (board[(int)(B.getPY()/50)+1][i]==null) {
+            board[(int)(B.getPY()/50)+1][i]=new IceBlock((i)*50, (((int)(B.getPY()/50))*50)+50);
           }
         }
       } /*else if (B.getPrevKey().equals("up")) {
