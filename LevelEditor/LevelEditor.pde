@@ -1,6 +1,4 @@
 Level1 A=new Level1();
-Player B=new Player(350,350);
-Enemies C=new Enemies(B);
 PImage floor;
 PImage ice;
 PImage rightm1;
@@ -57,7 +55,7 @@ class IceBlock extends Block {
     destroyable=true;
   }
   void display() {
-    image(ice, xB, yB, 50, 49);
+    image(ice, xB, yB);
   }
 }
 class Tile {
@@ -91,63 +89,92 @@ class BerryTile {
 
 abstract class Levels {
   Block[][] board=new Block[15][15];
+  Player B;
+  Enemies C;
   public Levels() {
+    B=new Player(350, 350);
+    C=new Enemies(B);
   };
   abstract void output();
 }
 class Level1 extends Levels {
   Tile[][] boardtile=new Tile[15][15];
-  IceBlock[][] start = new IceBlock[15][15];
   public Level1() {
+    super();
+    board[7][3]=new IceBlock(200, 350);
+    board[7][4]=new IceBlock(150, 350);
+    board[7][5]=new IceBlock(250, 350);
+    board[7][9]=new IceBlock(450, 350);
+    board[7][10]=new IceBlock(500, 350);
+    board[7][11]=new IceBlock(550, 350);
     for (int i=0; i<board.length; i++) {
+      board[i][0]=new BorderBlock(i*50, 0);
+      board[0][i]=new BorderBlock(0, i*50);
+      board[i][board.length-1]=new BorderBlock(i*50, (board.length-1)*50);
+      board[board.length-1][i]=new BorderBlock((board.length-1)*50, i*50);
       for (int j=0; j<board[0].length; j++) {
-        board[i][j]=new BorderBlock(i*50, j*50);
         boardtile[i][j]=new Tile(i*50, j*50);
-        start[i][j]=new IceBlock(i*50, j*50);
+        if (i>=3&&i<board.length-3&&((j>=8&&j<12)||(j>=3&&j<7))) {
+          board[j][i]=new IceBlock(i*50, j*50);
+        }
       }
     }
   }
+
   void output() {
     for (int i=0; i<board.length; i++) {
       for (int j=0; j<board[0].length; j++) {
-        boardtile[i][j].display();
+        if (boardtile[i][j]!=null) {
+          boardtile[i][j].display();
+        }
       }
     }
     for (int i=0; i<board.length; i++) {
-      if (board[i][0]!=null) {
-        board[i][0].display();
-      }
-      if (board[0][i]!=null) {
-        board[0][i].display();
-      }
-      if (board[i][board.length-1]!=null) {
-        board[i][board.length-1].display();
-      }
-      if (board[board.length-1][i]!=null) {
-        board[board.length-1][i].display();
+      for (int j=0; j<board[0].length; j++) {
+        if (board[i][j]!=null) {
+          board[i][j].display();
+        }
       }
     }
   }
-  
-  void lvlStart1() {
-    for (int a = 3; a < board.length-3; a++) {
-      for (int b = 4; b < 7; b++) {
-        start[a][b].display();
-      }
+  void play() {  
+    attack();
+    output();
+    B.move();
+    C.update();
+    C.moveE();
+    C.display();
+  }
+  void attack() {
+    if (keyCode == 32) {
+      /*if (B.getPrevKey().equals("right")) {
+        for (int i=(int)(B.getPX()/50); i<board.length-1; i++) {
+          if (board[(int)(B.getPX()/50)][i]==null) {
+            board[(int)(B.getPX()/50)][i]=new IceBlock(i*50, (int)B.getPY());
+          }
+        }
+      } else*/ if (B.getPrevKey().equals("left")) {
+        for (int i=(int)(B.getPX()/50)-1; i>0; i--) {
+          if (board[(int)(B.getPY()/50)][i]==null) {
+            board[(int)(B.getPY()/50)][i]=new IceBlock(i*50, (int)B.getPY());
+          }
+        }
+      } /*else if (B.getPrevKey().equals("up")) {
+        for (int i=(int)B.getPY()/50; i>0; i--) {
+          if (board[i][(int)B.getPY()/50]==null) {
+            board[i][(int)B.getPY()/50]=new IceBlock((int)B.getPX(), i*50);
+          }
+        }
+      } else {
+        for (int i=(int)(B.getPY()/50); i<board.length-1; i++) {
+          if (board[i][(int)B.getPY()/50]==null) {
+            board[i][(int)B.getPY()/50]=new IceBlock((int)B.getPX(), i*50);
+          }
+        }
+      }*/
     }
-    for (int a = 3; a < board.length-3; a++) {
-      for (int b = 8; b < 11; b++) {
-        start[a][b].display();
-      }
-    }
-    start[3][7].display();
-    start[4][7].display();
-    start[5][7].display();
-    start[9][7].display();
-    start[10][7].display();
-    start[11][7].display();
-  } 
- }
+  }
+}   
 
 
 class Player {
@@ -161,6 +188,9 @@ class Player {
     downs1, downs2};
   float x, y, xcor, ycor, speed;
   String prevKey;
+  String getPrevKey() {
+    return prevKey;
+  }
   Player(float x, float y) {
     this.x = x;
     this.y = y;
@@ -363,8 +393,8 @@ class Enemies {
     }
   }
 }
-class Spoink extends Enemies{
-  public Spoink(Player a){
+class Spoink extends Enemies {
+  public Spoink(Player a) {
     super(a);
   }
   void display() {
@@ -398,20 +428,15 @@ void setup() {
   ups2 = loadImage("GlaceonBackIdle2.png");
   floor = loadImage("MoveTile1.png");
   ice=loadImage("Ice.png");
-  ice.resize(50,49);
-  floor.resize(50,50);
+  ice.resize(50, 49);
+  floor.resize(50, 50);
   OranBerry = loadImage("OranBerry.png");
   //frameRate(64);
 }
 void draw() {
   background(255);
-  println(frameRate);
-  A.output();
-  A.lvlStart1();
-  B.move();
-  C.update();
-  C.moveE();
-  C.display();
+  //println(frameRate);
+  A.play();
 }
 import java.util.*;
 Set<Character> keysDown= new HashSet<Character>();
