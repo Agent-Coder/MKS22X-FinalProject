@@ -148,16 +148,16 @@ class Level1 extends Levels {
   void attack() {
     if (keyCode == 32) {
       if (B.getPrevKey().equals("right")) {
-        for (int i=(int)(B.getPX()/50)+2; i<board.length-1; i++) {
-          if (board[(int)(B.getPY()/50)+1][i]==null) {
-                       println((int)(B.getPY()/50)+1);
-            board[(int)(B.getPY()/50)+1][i]=new IceBlock(i*50, (((int)(B.getPY()/50))*50)+50);
+        for (int i=round(B.getPX()/50)+1; i<board.length-1; i++) {
+          if (board[round(B.getPY()/50)][i]==null) {
+                       println(round(B.getPY()/50)+1);
+            board[round(B.getPY()/50)][i]=new IceBlock(i*50, ((round(B.getPY()/50))*50));
           }
         }
       } else if (B.getPrevKey().equals("left")) {
-        for (int i=(int)(B.getPX()/50)-1; i>0; i--) {
-          if (board[(int)(B.getPY()/50)+1][i]==null) {
-            board[(int)(B.getPY()/50)+1][i]=new IceBlock((i)*50, (((int)(B.getPY()/50))*50)+50);
+        for (int i=round(B.getPX()/50)-1; i>0; i--) {
+          if (board[round(B.getPY()/50)][i]==null) {
+            board[round(B.getPY()/50)][i]=new IceBlock((i)*50, (round(B.getPY()/50)*50));
           }
         }
       } /*else if (B.getPrevKey().equals("up")) {
