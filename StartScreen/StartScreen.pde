@@ -11,8 +11,6 @@ String location = "startScreen";
 
 void setup() {
  size(750,750);
- //String[] fontList = PFont.list();
- //printArray(fontList);
  background = loadImage("StartScreen.png");
  bluebackground = loadImage("BlueBackground.png");
  OranBerry = loadImage("OranBerry.png");
@@ -46,8 +44,13 @@ void draw(){
   }
 }
 
+
+//WORK ON THIS SOON??
 void drawBerries() {
-  for (int i = 0; i < 1000; i = i + 50) {
-    image(OranBerry, 20 + i, 20);
-  }
+  int dist = 0;
+  for (int x = 0 = x < 12; x++) {
+    
+    image(OranBerry, 20, 20);
+    image(OranBerry, 80, 20);
+
 }
