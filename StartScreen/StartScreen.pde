@@ -27,7 +27,7 @@ void draw(){
   mX = mouseX;
   mY = mouseY;
   //print("X " + mX + ", Y " + mY);
-  if (location == "startScreen") {
+  if (location.equals("startScreen")) {
     boolean detectStart = false;
     image(background,0,0);
     drawBerries();
@@ -38,7 +38,7 @@ void draw(){
        // print("good");
       }
   }
-  if (location == "levelSelect") {
+  if (location.equals("levelSelect")) {
      boolean clickLevel = false;
      image(bluebackground,0,0);
   }
@@ -51,13 +51,14 @@ void drawBerries() {
   int disty = 0;
   int distx = 0;
   int berryswitch = 0;
+
   for (int i = 0; i < 6; i++) {
     for (int x = 0; x < 12; x++) {
       if (berryswitch % 5 == 0) {
        image(OranBerry, 22 + distx, 20 + disty);
       }
       if (berryswitch % 5 == 1) {
-       image(LumBerry, 22 + distx, 20 + disty );
+       image(LumBerry, 22 + distx, 20 + disty);
       }if (berryswitch % 5 == 2) {
        image(NanabBerry, 22 + distx, 20 + disty);
       }if (berryswitch % 5 == 3) {
@@ -65,10 +66,14 @@ void drawBerries() {
       }if (berryswitch % 5 == 4) {
        image(RazzBerry, 22 + distx, 20 + disty);
       }
+       berryswitch++;   
        distx = distx + 60;
-       berryswitch++;
     }
-    disty = disty + 50;
-    berryswitch++;
-  }
+    
+    
+    
+    
+       disty = disty + 45;
+       distx = 0;
+    }
 }
