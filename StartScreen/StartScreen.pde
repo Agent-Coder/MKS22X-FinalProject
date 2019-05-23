@@ -45,12 +45,30 @@ void draw(){
 }
 
 
+
 //WORK ON THIS SOON??
 void drawBerries() {
-  int dist = 0;
-  for (int x = 0 = x < 12; x++) {
-    
-    image(OranBerry, 20, 20);
-    image(OranBerry, 80, 20);
-
+  int disty = 0;
+  int distx = 0;
+  int berryswitch = 0;
+  for (int i = 0; i < 6; i++) {
+    for (int x = 0; x < 12; x++) {
+      if (berryswitch % 5 == 0) {
+       image(OranBerry, 22 + distx, 20 + disty);
+      }
+      if (berryswitch % 5 == 1) {
+       image(LumBerry, 22 + distx, 20 + disty );
+      }if (berryswitch % 5 == 2) {
+       image(NanabBerry, 22 + distx, 20 + disty);
+      }if (berryswitch % 5 == 3) {
+       image(SitrusBerry, 22 + distx, 20 + disty);
+      }if (berryswitch % 5 == 4) {
+       image(RazzBerry, 22 + distx, 20 + disty);
+      }
+       distx = distx + 60;
+       berryswitch++;
+    }
+    disty = disty + 50;
+    berryswitch++;
+  }
 }
