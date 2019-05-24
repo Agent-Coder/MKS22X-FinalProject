@@ -20,6 +20,16 @@ void setup() {
  NanabBerry = loadImage("NanabBerry.png");
  background.resize(1000,750);
  bluebackground.resize(1000,750);
+ one = loadImage("L1.png");
+ two = loadImage("L2.png");
+ three = loadImage("L3.png");
+ four = loadImage("L4.png");
+ five = loadImage("L5.png");
+ one.resize(100,100);
+ two.resize(100,100);
+ three.resize(100,100);
+ four.resize(100,100);
+ five.resize(100,100);
 }
 
 void draw(){
@@ -38,8 +48,12 @@ void draw(){
        // print("good");
       }
   }
+  
   if (location.equals("levelSelect")) {
      boolean clickLevel = false;
      image(bluebackground,0,0);
+     drawLevelScreen(); 
+     clickLevel = true;
+     //print("good");
   }
 }
