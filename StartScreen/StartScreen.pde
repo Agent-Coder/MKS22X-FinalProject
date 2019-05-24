@@ -30,6 +30,7 @@ void setup() {
  three.resize(100,100);
  four.resize(100,100);
  five.resize(100,100);
+ setupText();
 }
 
 void draw(){
