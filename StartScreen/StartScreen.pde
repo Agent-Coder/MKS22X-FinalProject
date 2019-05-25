@@ -38,14 +38,12 @@ void draw(){
   mX = mouseX;
   mY = mouseY;
   if (location.equals("startScreen")) {
-    boolean detectStart = false;
     image(background,0,0);
     drawBerries();
     drawBerries2();
     drawBerries3();
-    if (detectStart == false && mousePressed == true && mX >= 335 && mX <=425 &&
+    if (mousePressed == true && mX >= 335 && mX <=425 &&
       mY >= 395 && mY <=431) {
-        detectStart = true;
         location = "levelSelect";
       }
   }
@@ -53,8 +51,27 @@ void draw(){
   if (location.equals("levelSelect")) {
      boolean clickLevel = false;
      image(bluebackground,0,0);
-     drawLevelScreen(); 
+     drawLevelScreen();
+
+     //check & switch to specific level
+     
+     
+     //52,167 to 149,265
+     
+     //181,166 to 285,264
+     
+     //314,166 to 419,265
+     
+     //450,167 to 556,262
+     
+     //584,166 to 690,268
+     
      clickLevel = true;
-     //print("good");
   }
+  
+  
+}
+
+void mousePressed() {
+  println("" + mX + ", " + mY);
 }
