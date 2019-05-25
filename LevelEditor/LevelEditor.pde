@@ -34,6 +34,9 @@ abstract class Block {
     type="block";
     destroyable=false;
   }
+  boolean demolish() {
+    return destroyable;
+  }
   abstract void display();
 }
 class BorderBlock extends Block {
@@ -91,6 +94,7 @@ abstract class Levels {
   Block[][] board=new Block[15][15];
   Player B;
   Enemies C;
+  int space;
   public Levels() {
     B=new Player(350, 350, board);
     C=new Enemies(B);
@@ -139,6 +143,7 @@ class Level1 extends Levels {
   }
   void play() {
     B.refreshBoard(board);
+    //spaceTime();
     attack();
     output();
     B.move();
@@ -146,35 +151,57 @@ class Level1 extends Levels {
     C.moveE();
     C.display();
   }
+
   void attack() {
-    if (keyCode == 32) {
+    if (keyCode==32) {
+      boolean blockHere=false;
       if (B.getPrevKey().equals("right")) {
+        if (board[round(B.getPY()/50)][round(B.getPX()/50)+1]!=null) {
+          blockHere=true;
+        }
         for (int i=round(B.getPX()/50)+1; i<board.length-1; i++) {
-          if (board[round(B.getPY()/50)][i]==null) {
-            println(round(B.getPY()/50)+1);
+          if (!blockHere&&board[round(B.getPY()/50)][i]==null) {
             board[round(B.getPY()/50)][i]=new IceBlock(i*50, round(B.getPY()/50)*50);
+          } else if(blockHere&&board[round(B.getPY()/50)][i]==null){
+            board[round(B.getPY()/50)][i]=null;
           }
         }
       } else if (B.getPrevKey().equals("left")) {
+        if (board[round(B.getPY()/50)][round(B.getPX()/50)-1]!=null) {
+          blockHere=true;
+        }
         for (int i=round(B.getPX()/50)-1; i>0; i--) {
-          if (board[round(B.getPY()/50)][i]==null) {
+          if (!blockHere&&board[round(B.getPY()/50)][i]==null) {
             board[round(B.getPY()/50)][i]=new IceBlock((i)*50, round(B.getPY()/50)*50);
+          } else {
+            board[round(B.getPY()/50)][i]=null;
           }
         }
       } else if (B.getPrevKey().equals("up")) {
+        if (board[round(B.getPY()/50)-1][round(B.getPX()/50)]!=null) {
+          blockHere=true;
+        }
         for (int i=round(B.getPY()/50)-1; i>0; i--) {
-          if (board[i][round(B.getPX()/50)]==null) {
+          if (!blockHere) {
             board[i][round(B.getPX()/50)]=new IceBlock(round(B.getPX()/50)*50, i*50);
+          } else {
+            board[i][round(B.getPX()/50)]=null;
           }
         }
       } else {
+        if (board[round(B.getPY()/50)+1][round(B.getPX()/50)]!=null) {
+          blockHere=true;
+        }
         for (int i=round(B.getPY()/50)+1; i<board.length-1; i++) {
-          if (board[i][round(B.getPX()/50)]==null) {
+          if (!blockHere) {
             board[i][round(B.getPX()/50)]=new IceBlock(round(B.getPX()/50)*50, i*50);
+          } else {
+            board[i][round(B.getPX()/50)]=null;
           }
         }
       }
     }
+    //keyCodesDown.remove(32);
   }
 }   
 
@@ -438,7 +465,26 @@ void setup() {
   ice=loadImage("Ice.png");
   ice.resize(50, 49);
   floor.resize(50, 50);
-  OranBerry = loadImage("OranBerry.png");
+  rightm1.resize(50, 50);
+  rightm2.resize(50, 50);
+  rightm3.resize(50, 50);
+  leftm1.resize(50, 50) ;
+  leftm2.resize(50, 50);
+  leftm3.resize(50, 50);
+  rights1.resize(50, 50);
+  rights2.resize(50, 50);
+  lefts1.resize(50, 50);
+  lefts2.resize(50, 50);
+  downm1.resize(50, 50);
+  downm2.resize(50, 50);
+  downm3.resize(50, 50);
+  upm1.resize(50, 50);
+  upm2.resize(50, 50);
+  upm3.resize(50, 50);
+  downs1.resize(50, 50);
+  downs2.resize(50, 50);
+  ups1.resize(50, 50);
+  ups2.resize(50, 50);
   //frameRate(64);
 }
 void draw() {
