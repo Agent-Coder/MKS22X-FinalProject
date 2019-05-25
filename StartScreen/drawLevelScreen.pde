@@ -89,9 +89,10 @@ void drawReady() {
   textSize(25);
   showPokemon();
   textSize(25);
-  text("Level Selected: " + selectedLevel,123,665);
-  if (ready2Play==true && !playerChar.equals("")) {
-    
+  text("Level Selected: " + selectedLevel,123,665); 
+  if (!selectedLevel.equals("") && !playerChar.equals("")) {
+    textSize(35);
+    text("GO!",620,710);
   }
 }
 

@@ -11,7 +11,6 @@ String location = "startScreen";
 int animateCount = 0;
 String playerChar = "";
 String selectedLevel = "";
-boolean ready2Play = false;
 
 void setup() {
  size(750,750);
