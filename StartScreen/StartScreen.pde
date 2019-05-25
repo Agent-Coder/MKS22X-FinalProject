@@ -31,6 +31,18 @@ void setup() {
  four.resize(100,100);
  five.resize(100,100);
  setupText();
+ ManaphyIdle1 = loadImage("ManaphyIdleDown1.png");
+ ManaphyIdle2 = loadImage("ManaphyIdleDown2.png");
+ EmpoleonIdle1 = loadImage("EmpoleonIdleDown1.png");
+ EmpoleonIdle2 = loadImage("EmpoleonIdleDown2.png");
+ GlaceonIdle1 = loadImage("GlaceonIdleDown1.png");
+ GlaceonIdle2 = loadImage("GlaceonIdleDown2.png");
+ ManaphyIdle1.resize(50,50);
+ ManaphyIdle2.resize(50,50);
+ EmpoleonIdle1.resize(50,55);
+ EmpoleonIdle2.resize(50,55);
+ GlaceonIdle1.resize(50,50);
+ GlaceonIdle2.resize(50,50);
 }
 
 void draw(){

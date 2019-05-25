@@ -5,6 +5,13 @@ PImage four;
 PImage five;
 PFont font;
 
+PImage ManaphyIdle1;
+PImage ManaphyIdle2;
+PImage GlaceonIdle1;
+PImage GlaceonIdle2;
+PImage EmpoleonIdle1;
+PImage EmpoleonIdle2;
+
 void drawLevelScreen() { //goes in DRAW //top half level select
   image(one, 50, 160);
   image(two, 185, 160);
@@ -26,8 +33,18 @@ void drawCharSelect() {
   text("CHARACTER SELECT",133,345);
   noFill();
   rect(120,297,530,65,20);
-}
+  
+  //del
+  image(ManaphyIdle1,120,414);
+  image(GlaceonIdle1,355,414);
+  image(EmpoleonIdle1,590,414);
+  
+  textSize(20);
+  text("Manaphy",104,488);
+  text("Glaceon",343,488);
+  text("Empoleon",573,488);
 
+}
 
 void setupText() { //goes in SETUP
   font = loadFont("YuppyTC-Regular-48.vlw");
