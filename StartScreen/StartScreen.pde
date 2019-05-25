@@ -8,6 +8,8 @@ PImage RazzBerry;
 PImage SitrusBerry;
 PImage LumBerry;
 String location = "startScreen";
+int animateCount = 0;
+String playerChar;
 
 void setup() {
  size(750,750);
@@ -39,8 +41,8 @@ void setup() {
  GlaceonIdle2 = loadImage("GlaceonIdleDown2.png");
  ManaphyIdle1.resize(50,50);
  ManaphyIdle2.resize(50,50);
- EmpoleonIdle1.resize(50,55);
- EmpoleonIdle2.resize(50,55);
+ EmpoleonIdle1.resize(47,55);
+ EmpoleonIdle2.resize(51,55);
  GlaceonIdle1.resize(50,50);
  GlaceonIdle2.resize(50,50);
 }
@@ -61,13 +63,11 @@ void draw(){
   }
   
   if (location.equals("levelSelect")) {
-     boolean clickLevel = false;
      image(bluebackground,0,0);
      drawLevelScreen();
+     
 
-     //check & switch to specific level
-     
-     
+     //check & switch to specific level     
      //52,167 to 149,265
      
      //181,166 to 285,264
@@ -77,9 +77,15 @@ void draw(){
      //450,167 to 556,262
      
      //584,166 to 690,268
+     playerChar= "Empoleon";
+     animateCharSelect();
      
-     clickLevel = true;
-  }
+     
+     
+     
+    }
+     
+  
   
   
 }
