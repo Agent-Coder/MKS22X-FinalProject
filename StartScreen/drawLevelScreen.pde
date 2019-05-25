@@ -10,9 +10,9 @@ void drawLevelScreen() { //goes in DRAW
   image(one, 50, 175);
   image(two, 185, 175);
   image(three, 320, 175);
-  image(four, 445, 175);
-  image(five, 580, 175);
-  text("LEVEL SELECT", 100, 100);
+  image(four, 455, 175);
+  image(five, 590, 175);
+  text("LEVEL SELECT", 200, 100);
   
 }
 
