@@ -37,16 +37,16 @@ void draw(){
   background(255);
   mX = mouseX;
   mY = mouseY;
-  //print("X " + mX + ", Y " + mY);
   if (location.equals("startScreen")) {
     boolean detectStart = false;
     image(background,0,0);
     drawBerries();
-    if (detectStart == false && mousePressed == true && mX >= 315 && mX <=410 &&
-      mY >=385 && mY <=415) {
+    drawBerries2();
+    drawBerries3();
+    if (detectStart == false && mousePressed == true && mX >= 335 && mX <=425 &&
+      mY >= 395 && mY <=431) {
         detectStart = true;
         location = "levelSelect";
-       // print("good");
       }
   }
   
