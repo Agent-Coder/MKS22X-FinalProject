@@ -1,5 +1,5 @@
 void showPokemon() {
-  if (playerChar.equals("")) text("Character Selected: ",128,555);
+  if (playerChar.equals("")) text("Character Selected: ",123,545);
   if (playerChar.equals("Empoleon")) {
     text("Character Selected: Empoleon",123,545);
     textSize(18);
@@ -14,7 +14,7 @@ void showPokemon() {
     text("POKEDEX ENTRY #490: \n      Manaphy, the Seafaring Pokémon. It starts its life \n      with a wondrous power that permits it to bond with \n      any kind of Pokémon.",155,567);
   }
   if (playerChar.equals("Glaceon")) {
-    text("Character Selected: Glaceon",128,545);
+    text("Character Selected: Glaceon",123,545);
     textSize(18);
     //Pokedex entry creds @ Ultra Sun/Moon
     text("POKEDEX ENTRY #471: \n      Glaceon, the Fresh Snow Pokémon. It can \n      instantaneously freeze any moisture that's around it. It can \n      drop its body temperature below –75 degrees Fahrenheit.",155,567);
