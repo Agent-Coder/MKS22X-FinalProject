@@ -65,7 +65,7 @@ void draw(){
   if (location.equals("levelSelect")) {
      image(bluebackground,0,0);
      drawLevelScreen();
-     
+ 
 
      //check & switch to specific level     
      //52,167 to 149,265
@@ -79,15 +79,9 @@ void draw(){
      //584,166 to 690,268
      playerChar= "Empoleon";
      animateCharSelect();
-     
-     
-     
-     
+     drawReady();
+
     }
-     
-  
-  
-  
 }
 
 void mousePressed() {

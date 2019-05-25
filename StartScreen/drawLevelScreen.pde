@@ -28,19 +28,18 @@ void drawLevelScreen() { //goes in DRAW //top half level select
   drawCharSelect();
 }
 
-void drawCharSelect() {
+void drawCharSelect() { //setups char select
   textSize(50);
   text("CHARACTER SELECT",133,345);
   noFill();
   rect(120,297,530,65,20);
- 
   textSize(20);
   text("Manaphy",104,488);
   text("Glaceon",343,488);
   text("Empoleon",573,488);
 }
 
-void animateCharSelect() {
+void animateCharSelect() { //draw, animates
    if (playerChar.equals(null)) {
         image(ManaphyIdle1,120,414);
         image(GlaceonIdle2,355,414);
@@ -83,6 +82,23 @@ void animateCharSelect() {
       }
      }
    }
+}
+
+void drawReady() {
+  textSize(25);
+  if (playerChar.equals(null)) text("Character Selected: ",128,555);
+  if (playerChar.equals("Empoleon")) {
+    text("Character Selected: Empoleon",123,545);
+    textSize(18);
+    //155,567
+    text("POKEDEX ENTRY #395: \n      Empoleon, the Emperor Pokémon. It swims as fast as a \n      jet boat. The edges of its wings are sharp and can \n      slice apart drifitng ice. ",155,567);
+  }
+  
+ // It swims as fast a jet boat. The edges of its wings are sharp and can slice apart drifting ice
+  
+  
+  if (playerChar.equals("Manaphy")) text("Character Selected: Manaphy",128,555);
+  if (playerChar.equals("Glaceon")) text("Character Selected: Empoleon",128,555);
 }
 
 void setupText() { //goes in SETUP
