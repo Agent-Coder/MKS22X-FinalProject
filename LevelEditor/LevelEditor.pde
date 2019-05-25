@@ -92,9 +92,13 @@ class BerryTile {
 
 abstract class Levels {
   Block[][] board=new Block[15][15];
+
   Player B;
   Enemies C;
   int space;
+
+  Block[][] map = new Block[15][15];
+
   public Levels() {
     B=new Player(350, 350, board);
     C=new Enemies(B);
@@ -133,6 +137,7 @@ class Level1 extends Levels {
         }
       }
     }
+    
     for (int i=0; i<board.length; i++) {
       for (int j=0; j<board[0].length; j++) {
         if (board[i][j]!=null) {
