@@ -26,6 +26,7 @@ void drawLevelScreen() { //goes in DRAW //top half level select
   stroke(66,122,188);
   strokeWeight(3);
   drawCharSelect();
+  
 }
 
 void drawCharSelect() { //setups char select
@@ -42,8 +43,8 @@ void drawCharSelect() { //setups char select
 void animateCharSelect() { //draw, animates
    if (playerChar.equals("")) {
         image(ManaphyIdle1,120,414);
-        image(GlaceonIdle2,355,414);
-        image(EmpoleonIdle2,590,414);
+        image(GlaceonIdle1,355,414);
+        image(EmpoleonIdle1,590,414);
       } else {     
       if (playerChar.equals("Manaphy")) {
         if (frameCount % 50 < 25) {
@@ -87,9 +88,12 @@ void animateCharSelect() { //draw, animates
 void drawReady() {
   textSize(25);
   showPokemon();
+  textSize(25);
+  text("Level Selected: " + selectedLevel,123,665);
+  if (ready2Play==true && !playerChar.equals("")) {
+    
+  }
 }
-
-
 
 void setupText() { //goes in SETUP
   font = loadFont("YuppyTC-Regular-48.vlw");
