@@ -9,7 +9,8 @@ PImage SitrusBerry;
 PImage LumBerry;
 String location = "startScreen";
 int animateCount = 0;
-String playerChar;
+String playerChar = "";
+int selectedLevel = 0;
 
 void setup() {
  size(750,750);
@@ -66,18 +67,37 @@ void draw(){
      image(bluebackground,0,0);
      drawLevelScreen();
  
+     playerChar = "Glaceon";
 
      //check & switch to specific level     
-     //52,167 to 149,265
+     //50,160 to 151,260
+     //182,160 to 285,260
+     //318,160 to 420,260
+     //454,160 to 554,260
+     //590,160 to 690,260
      
-     //181,166 to 285,264
+     if (mousePressed == true && mX >= 50 && mX <=151 &&
+       mY >=160 && mY < 260) {
+     }
      
-     //314,166 to 419,265
+     if (mousePressed == true && mX >= 182 && mX <=285 &&
+       mY >=160 && mY < 260) {
+     }
+       
+     if (mousePressed == true && mX >= 52 && mX <=149 &&
+       mY >=160 && mY < 260) {
+     }
      
-     //450,167 to 556,262
+     if (mousePressed == true && mX >= 52 && mX <=149 &&
+       mY >=160 && mY < 260) {
+     }
      
-     //584,166 to 690,268
-     playerChar= "Empoleon";
+     if (mousePressed == true && mX >= 52 && mX <=149 &&
+       mY >=160 && mY < 260) {
+     }
+     
+
+
      animateCharSelect();
      drawReady();
 

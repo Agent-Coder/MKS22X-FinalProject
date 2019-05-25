@@ -40,7 +40,7 @@ void drawCharSelect() { //setups char select
 }
 
 void animateCharSelect() { //draw, animates
-   if (playerChar.equals(null)) {
+   if (playerChar.equals("")) {
         image(ManaphyIdle1,120,414);
         image(GlaceonIdle2,355,414);
         image(EmpoleonIdle2,590,414);
@@ -86,20 +86,10 @@ void animateCharSelect() { //draw, animates
 
 void drawReady() {
   textSize(25);
-  if (playerChar.equals(null)) text("Character Selected: ",128,555);
-  if (playerChar.equals("Empoleon")) {
-    text("Character Selected: Empoleon",123,545);
-    textSize(18);
-    //155,567
-    text("POKEDEX ENTRY #395: \n      Empoleon, the Emperor Pokémon. It swims as fast as a \n      jet boat. The edges of its wings are sharp and can \n      slice apart drifitng ice. ",155,567);
-  }
-  
- // It swims as fast a jet boat. The edges of its wings are sharp and can slice apart drifting ice
-  
-  
-  if (playerChar.equals("Manaphy")) text("Character Selected: Manaphy",128,555);
-  if (playerChar.equals("Glaceon")) text("Character Selected: Empoleon",128,555);
+  showPokemon();
 }
+
+
 
 void setupText() { //goes in SETUP
   font = loadFont("YuppyTC-Regular-48.vlw");
