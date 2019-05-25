@@ -67,35 +67,49 @@ void draw(){
      image(bluebackground,0,0);
      drawLevelScreen();
  
-     playerChar = "Glaceon";
-
      //check & switch to specific level     
-     //50,160 to 151,260
-     //182,160 to 285,260
-     //318,160 to 420,260
-     //454,160 to 554,260
-     //590,160 to 690,260
      
-     if (mousePressed == true && mX >= 50 && mX <=151 &&
+     if (mousePressed == true && mX >= 50 && mX <=150 &&
        mY >=160 && mY < 260) {
+         selectedLevel = 1;
      }
      
-     if (mousePressed == true && mX >= 182 && mX <=285 &&
+     if (mousePressed == true && mX >= 180 && mX <=280 &&
        mY >=160 && mY < 260) {
+         selectedLevel = 2;
      }
        
-     if (mousePressed == true && mX >= 52 && mX <=149 &&
+     if (mousePressed == true && mX >= 320 && mX <=420 &&
        mY >=160 && mY < 260) {
+         selectedLevel = 3;
      }
      
-     if (mousePressed == true && mX >= 52 && mX <=149 &&
+     if (mousePressed == true && mX >= 454 && mX <=554 &&
        mY >=160 && mY < 260) {
+         selectedLevel = 4;
      }
      
-     if (mousePressed == true && mX >= 52 && mX <=149 &&
+     if (mousePressed == true && mX >= 590 && mX <=690 &&
        mY >=160 && mY < 260) {
+         selectedLevel = 5;
      }
      
+     
+     if (mousePressed == true && mX >=120 && mX <170 &&
+       mY >= 415 && mY <465) {
+         playerChar = "Manaphy";
+       }
+     
+     if (mousePressed == true && mX >=350 && mX <412 &&
+       mY >= 415 && mY <465) {
+         playerChar = "Glaceon";
+       }
+
+     if (mousePressed == true && mX >=590 && mX <648 &&
+       mY >= 415 && mY <470) {
+         playerChar = "Empoleon";
+       }
+
 
 
      animateCharSelect();
