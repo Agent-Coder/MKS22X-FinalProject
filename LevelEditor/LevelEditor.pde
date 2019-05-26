@@ -276,15 +276,14 @@ void draw() {
     drawBerries3();
     detectStartGame();
   }
-
-  else if (location.equals("levelSelect")) {
+  else if (location.equals("levelSelect")&&!starting()) {
     image(bluebackground, 0, 0);
     drawLevelScreen();
     detectLevelSelect();
     detectPokemonSelect();
     animateCharSelect();
     drawReady();
-  }else{A.play();}
+  }else if(starting()){A.play();}
   
 }
 import java.util.*;
