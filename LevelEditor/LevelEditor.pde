@@ -35,10 +35,6 @@ abstract class Block {
     destroyable=false;
   }
 
-  boolean demolish() {
-    return destroyable;
-  }
-
   abstract void display();
 }
 class BorderBlock extends Block {
@@ -125,6 +121,7 @@ class Level1 extends Levels {
         if (i>=3&&i<board.length-3&&((j>=8&&j<12)||(j>=3&&j<7))) {
           board[j][i]=new IceBlock(i*50, j*50);
         }
+        start[i][j]=new IceBlock(i*50, j*50);
       }
     }
   }
@@ -149,10 +146,12 @@ class Level1 extends Levels {
     //spaceTime();
     attack();
     output();
+    lvlStart1();
     B.move();
     C.update();
     C.moveE();
     C.display();
+    
   }
 
   void attack() {
@@ -264,7 +263,7 @@ class Player {
     return ycor;
   }
   void display(PImage i, float x, float y) {
-    image(i, x, y, 50, 50);
+    image(i, x, y);
   }
   void move() {
     if (keyCodesDown.contains(RIGHT)) {
