@@ -158,50 +158,55 @@ class Level1 extends Levels {
   }
 
   void attack() {
-    if (keyCode==32) {
+    if (keysDown.contains(' ')) {
+      int x=round(B.getPX()/50);
+      int y=round(B.getPY()/50);
       boolean blockHere=false;
       if (B.getPrevKey().equals("right")) {
-        if (board[round(B.getPY()/50)][round(B.getPX()/50)+1]!=null) {
+        if (board[y][x+1]!=null) {
           blockHere=true;
         }
-        for (int i=round(B.getPX()/50)+1; i<board.length-1; i++) {
-          if (!blockHere&&board[round(B.getPY()/50)][i]==null) {
-            board[round(B.getPY()/50)][i]=new IceBlock(i*50, round(B.getPY()/50)*50);
-          } else if(blockHere&&board[round(B.getPY()/50)][i]==null){
-            board[round(B.getPY()/50)][i]=null;
+        for (int i=x+1; i<board.length-1; i++) {
+          if (!blockHere&&board[y][i]==null) {
+            println("hihi");
+            board[y][i]=new IceBlock(i*50, y*50);
+          } else if(blockHere&&board[y][i]!=null){
+           
+            println("shfio");
+            board[y][i]=null;
           }
         }
       } else if (B.getPrevKey().equals("left")) {
-        if (board[round(B.getPY()/50)][round(B.getPX()/50)-1]!=null) {
+        if (board[y][x-1]!=null) {
           blockHere=true;
         }
-        for (int i=round(B.getPX()/50)-1; i>0; i--) {
-          if (!blockHere&&board[round(B.getPY()/50)][i]==null) {
-            board[round(B.getPY()/50)][i]=new IceBlock((i)*50, round(B.getPY()/50)*50);
-          } else {
-            board[round(B.getPY()/50)][i]=null;
+        for (int i=x-1; i>0; i--) {
+          if (!blockHere&&board[y][i]==null) {
+            board[y][i]=new IceBlock((i)*50, y*50);
+          } else if(blockHere&&board[y][i]!=null){
+            board[y][i]=null;
           }
         }
       } else if (B.getPrevKey().equals("up")) {
-        if (board[round(B.getPY()/50)-1][round(B.getPX()/50)]!=null) {
+        if (board[y-1][x]!=null) {
           blockHere=true;
         }
-        for (int i=round(B.getPY()/50)-1; i>0; i--) {
-          if (!blockHere) {
-            board[i][round(B.getPX()/50)]=new IceBlock(round(B.getPX()/50)*50, i*50);
-          } else {
-            board[i][round(B.getPX()/50)]=null;
+        for (int i=y-1; i>0; i--) {
+          if (!blockHere&&board[i][x]==null) {
+            board[i][x]=new IceBlock(x*50, i*50);
+          } else if(blockHere&&board[i][x]!=null){
+            board[i][x]=null;
           }
         }
       } else {
-        if (board[round(B.getPY()/50)+1][round(B.getPX()/50)]!=null) {
+        if (board[y+1][x]!=null) {
           blockHere=true;
         }
-        for (int i=round(B.getPY()/50)+1; i<board.length-1; i++) {
-          if (!blockHere) {
-            board[i][round(B.getPX()/50)]=new IceBlock(round(B.getPX()/50)*50, i*50);
-          } else {
-            board[i][round(B.getPX()/50)]=null;
+        for (int i=y+1; i<board.length-1; i++) {
+          if (!blockHere&&board[i][x]==null) {
+            board[i][x]=new IceBlock(x*50, i*50);
+          } else if(blockHere&&board[i][x]!=null){
+            board[i][x]=null;
           }
         }
       }
@@ -491,10 +496,11 @@ void setup() {
   ups1.resize(50, 50);
   ups2.resize(50, 50);
   //frameRate(64);
-}
+} 
 void draw() {
   background(255);
   //println(frameRate);
+  //println(keysDown);
   A.play();
 }
 import java.util.*;
@@ -511,6 +517,6 @@ void keyReleased() {
   if (key==CODED) {
     keyCodesDown.remove(keyCode);
   } else {
-    keysDown.add(key);
+    keysDown.remove(key);
   }
 }
