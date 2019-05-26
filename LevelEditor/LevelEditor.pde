@@ -34,9 +34,11 @@ abstract class Block {
     type="block";
     destroyable=false;
   }
+
   boolean demolish() {
     return destroyable;
   }
+
   abstract void display();
 }
 class BorderBlock extends Block {
@@ -92,11 +94,8 @@ class BerryTile {
 
 abstract class Levels {
   Block[][] board=new Block[15][15];
-
   Player B;
   Enemies C;
-  int space;
-
   Block[][] map = new Block[15][15];
 
   public Levels() {
@@ -107,6 +106,7 @@ abstract class Levels {
 }
 class Level1 extends Levels {
   Tile[][] boardtile=new Tile[15][15];
+  IceBlock[][] start = new IceBlock[15][15];
   public Level1() {
     super();
     board[7][3]=new IceBlock(200, 350);
@@ -137,8 +137,7 @@ class Level1 extends Levels {
         }
       }
     }
-    
-    for (int i=0; i<board.length; i++) {
+   for (int i=0; i<board.length; i++) {
       for (int j=0; j<board[0].length; j++) {
         if (board[i][j]!=null) {
           board[i][j].display();
@@ -147,7 +146,6 @@ class Level1 extends Levels {
     }
   }
   void play() {
-    B.refreshBoard(board);
     //spaceTime();
     attack();
     output();
@@ -170,8 +168,8 @@ class Level1 extends Levels {
           if (!blockHere&&board[y][i]==null) {
             println("hihi");
             board[y][i]=new IceBlock(i*50, y*50);
-          } else if(blockHere&&board[y][i]!=null){
-           
+          } else if (blockHere&&board[y][i]!=null) {
+
             println("shfio");
             board[y][i]=null;
           }
@@ -183,7 +181,7 @@ class Level1 extends Levels {
         for (int i=x-1; i>0; i--) {
           if (!blockHere&&board[y][i]==null) {
             board[y][i]=new IceBlock((i)*50, y*50);
-          } else if(blockHere&&board[y][i]!=null){
+          } else if (blockHere&&board[y][i]!=null) {
             board[y][i]=null;
           }
         }
@@ -194,7 +192,7 @@ class Level1 extends Levels {
         for (int i=y-1; i>0; i--) {
           if (!blockHere&&board[i][x]==null) {
             board[i][x]=new IceBlock(x*50, i*50);
-          } else if(blockHere&&board[i][x]!=null){
+          } else if (blockHere&&board[i][x]!=null) {
             board[i][x]=null;
           }
         }
@@ -205,15 +203,34 @@ class Level1 extends Levels {
         for (int i=y+1; i<board.length-1; i++) {
           if (!blockHere&&board[i][x]==null) {
             board[i][x]=new IceBlock(x*50, i*50);
-          } else if(blockHere&&board[i][x]!=null){
+          } else if (blockHere&&board[i][x]!=null) {
             board[i][x]=null;
           }
         }
       }
     }
-    //keyCodesDown.remove(32);
+  }   
+
+
+  void lvlStart1() {
+    for (int a = 3; a < board.length-3; a++) {
+      for (int b = 4; b < 7; b++) {
+        start[a][b].display();
+      }
+    }
+    for (int a = 3; a < board.length-3; a++) {
+      for (int b = 8; b < 11; b++) {
+        start[a][b].display();
+      }
+    }
+    start[3][7].display();
+    start[4][7].display();
+    start[5][7].display();
+    start[9][7].display();
+    start[10][7].display();
+    start[11][7].display();
   }
-}   
+}
 
 
 class Player {
@@ -240,9 +257,6 @@ class Player {
     prevKey="right";
     board=gameboard;
   }
-  void refreshBoard(Block[][] gameboard) {
-    board=gameboard;
-  }
   float getPX() {
     return xcor;
   }
@@ -263,7 +277,6 @@ class Player {
         r=rightm3;
       }
       if (xcor+speed<650&&board[round(ycor/50)][round((xcor+speed)/50)]==null) {
-        //println(round(ycor/50)+" "+(round((xcor)/50)+2));
         xcor+=speed;
         display(r, xcor+speed, ycor);
       } else {
@@ -495,12 +508,10 @@ void setup() {
   downs2.resize(50, 50);
   ups1.resize(50, 50);
   ups2.resize(50, 50);
-  //frameRate(64);
 } 
 void draw() {
   background(255);
-  //println(frameRate);
-  //println(keysDown);
+  println(frameRate);
   A.play();
 }
 import java.util.*;
