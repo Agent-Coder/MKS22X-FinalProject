@@ -29,6 +29,15 @@ class Enemies {
       }
     }
   }
+  void setGrid(Block[][] map) {
+    for (int i=0; i<map.length; i++) {
+      for (int j=0; j<map[0].length; j++) {
+        if(map[i][j]!=null){
+          grid[i][j]=-1;
+        }
+      }
+    }
+  }
   void update() {
     //System.out.println("--->"+((targety-110)/20));
     clear();
@@ -54,16 +63,7 @@ class Enemies {
       fillGrid(xer, yer-1, num+1);
     }
   }
-  void board() {
-    for (int i=0; i<grid.length; i++) {
-      for (int j=0; j<grid.length; j++) {
-        System.out.print(grid[i][j]+" ");
-      }
-      System.out.println();
-    }
-    System.out.println();
-    //System.out.println(x+" "+y);
-  }
+
   void moveE() {
     int a=(int)(y-50)/50;
     int b=(int)(x-50)/50;
@@ -82,13 +82,13 @@ class Enemies {
       x+=moves[2*index+1];
     }
   }
-    void display() {
+  void display() {
     fill(255, 255, 255);
     ellipseMode(CORNER);
     ellipse(x, y, 50, 50);
   }
 }
-  class Spoink extends Enemies {
+class Spoink extends Enemies {
   public Spoink(Player a) {
     super(a);
   }
