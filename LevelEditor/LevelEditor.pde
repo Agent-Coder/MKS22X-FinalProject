@@ -47,7 +47,6 @@ PImage ups2;
 PImage downs1;
 PImage downs2;
 boolean pause = false;
-boolean pClick = false;
 
 abstract class Levels {
   Block[][] board=new Block[15][15];
@@ -306,7 +305,14 @@ void draw() {
   } else if (starting() && pause == false) {
     A.play();
   } else if (starting() && pause == true) {
-    background(20,52,123);
+    background(151,223,237);
+    textSize(80);
+    fill(10,10,10);
+    text("PAUSED",215,307);
+    textSize(25);
+    text("Press p to unpause",260,330);
+    
+    rect(210,352,50,100,15);
   }
 }
 
@@ -333,5 +339,8 @@ void keyReleased() {
   } else {
     keysDown.remove(key);
   }
+}
 
+void mousePressed() {
+  print(mX + "" + ", " + mY + " \n");
 }
