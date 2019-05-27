@@ -310,9 +310,16 @@ void draw() {
     fill(10,10,10);
     text("PAUSED",215,307);
     textSize(25);
-    text("Press p to unpause",260,330);
+    text("Press p to unpause",260,335);
+    noFill();
+    rect(165,360,200,50,15);
+    rect(380,360,200,50,15);
+    rect(265,420,210,50,15);
+    textSize(20);
+    text("Level Select",213,392);
+    text("Restart Level",425,392);
+    text("Unpause",333,450);
     
-    rect(210,352,50,100,15);
   }
 }
 
