@@ -101,7 +101,7 @@ The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or G
 :doughnut:
 - Decide to have character select screen on level screen as well
 
-### DAY 10
+### DAY 10 Sunday 5/26/19
 :cookie:
 - Create & update README
 - Did sprites for Mewoth & Spoink, uploaded to Drive
