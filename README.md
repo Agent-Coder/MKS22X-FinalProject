@@ -11,13 +11,29 @@ The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or G
 * ***UDPATE LATER****
 
 ## Development Logs:
-:zap: = Justin <br/>
+:cookie: = Justin <br/>
 :icecream: = Amanda <br/>
+:doughnut: = Amanda & Justin <br/>
 
-### DAY 0 5/16/19
+### DAY 0 Thursday 5/16/19 
+:doughnut:
+- Project prototype approved by Mr. K
+- Repo Google Form filled out
+- Started looking at sprites to use from the internet 
+- Started brainstorming which Pokémon to use as player & enemies
 
-### DAY 1
-### DAY 2
+### DAY 1 Friday 5/17/19
+:doughnut: 
+- Day of AP Exam, nothing much done
+- Continued looking at sprites & decided to use [Spriters-Resource.com](https://www.spriters-resource.com/ds_dsi/pokemonmysterydungeonexplorersoftimedarkness/) as our main source of sprites
+
+### DAY 2 Saturday 5/18/19
+:icecream: 
+- Started working on basic player movement (input via arrow keys)
+- Started working on enemy movement & tracking player
+
+:cookie: 
+- Started sprite-ing; grabbed sprites from Spriters-Resource and 
 ### DAY 3
 ### DAY 4
 ### DAY 5
