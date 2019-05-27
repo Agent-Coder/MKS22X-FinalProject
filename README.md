@@ -73,7 +73,7 @@ The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or G
 
 :cookie:
 - Started to work on Start Screen
-- Played around with [sketch.io](https://sketch.io/) to get a png file that will be used for the Start Screen
+- Played around with [sketch.io](https://sketch.io/) to create a png file that will be used for the Start Screen
 - Started to develop a method that'll allow a pattern of berry placement on the StartScreen (so it won't be all empty & blue) works for the top half
 - organized code by create a new tab for StartScreen to hold helper methods 
 
@@ -92,7 +92,7 @@ The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or G
 ### DAY 9 Saturday 5/25/19
 :cookie:
 - Added bottom half of StartScreen berryplacement, final touches on StartScreen
-- Fixed up level select icons, level select title 
+- Fixed up level select icons, level select title after playing around with fonts & deciding what looks good
 - Added character select title
 - Added animation and Pokedex entries when character is selected via mouse input
 - Organized a lot (regarding helper methods) to make code look less ugly
