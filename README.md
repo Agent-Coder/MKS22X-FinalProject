@@ -111,3 +111,7 @@ The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or G
 
 :doughnut:
 - Decided to include Meowth & Spoink as extra enemy Pokemon
+
+### DAY 11 Monday 5/27/19
+:cookie:
+- Added Pause menu & is mostly functional (requires level start method to be implemented)
