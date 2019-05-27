@@ -46,6 +46,9 @@ PImage ups1;
 PImage ups2;
 PImage downs1;
 PImage downs2;
+boolean pause = false;
+boolean pClick = false;
+
 abstract class Levels {
   Block[][] board=new Block[15][15];
   Player B;
@@ -203,7 +206,6 @@ class Level1 extends Levels {
   }
 }
 
-
 void setup() {
   size(750, 750);
   background = loadImage("StartScreen.png");
@@ -301,23 +303,35 @@ void draw() {
     detectPokemonSelect();
     animateCharSelect();
     drawReady();
-  }else if(starting()){A.play();}
-  
+  } else if (starting() && pause == false) {
+    A.play();
+  } else if (starting() && pause == true) {
+    background(20,52,123);
+  }
 }
+
 import java.util.*;
 Set<Character> keysDown= new HashSet<Character>();
 Set<Integer> keyCodesDown= new HashSet<Integer>();
+
 void keyPressed() {
   if (key==CODED) {
     keyCodesDown.add(keyCode);
   } else {
     keysDown.add(key);
   }
+  if (key == 'p' && pause == false) {
+    pause = true;
+  } else if (key == 'p' && pause == true) {
+    pause = false;
+  }
 }
+
 void keyReleased() {
   if (key==CODED) {
     keyCodesDown.remove(keyCode);
   } else {
     keysDown.remove(key);
   }
+
 }
