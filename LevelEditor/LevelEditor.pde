@@ -295,32 +295,44 @@ void draw() {
     drawBerries3();
     detectStartGame();
   }
-  else if (location.equals("levelSelect")&&!starting()) {
+  else if (location.equals("levelSelect")) {
     image(bluebackground, 0, 0);
     drawLevelScreen();
     detectLevelSelect();
     detectPokemonSelect();
     animateCharSelect();
     drawReady();
-  } else if (starting() && pause == false) {
+  } else if (location.equals("Level1") && pause == false) {
     A.play();
-  } else if (starting() && pause == true) {
-    background(151,223,237);
-    textSize(80);
-    fill(10,10,10);
-    text("PAUSED",215,307);
-    textSize(25);
-    text("Press p to unpause",260,335);
-    noFill();
-    rect(165,360,200,50,15);
-    rect(380,360,200,50,15);
-    rect(265,420,210,50,15);
-    textSize(20);
-    text("Level Select",213,392);
-    text("Restart Level",425,392);
-    text("Unpause",333,450);
-    
+  } 
+    if (pause == true) {
+      background(151,223,237);
+      textSize(80);
+      fill(10,10,10);
+      text("PAUSED",215,307);
+      textSize(25);
+      text("Press p to unpause",260,335);
+      noFill();
+      rect(165,360,200,50,15);
+      rect(380,360,200,50,15);
+      rect(265,420,210,50,15);
+      textSize(20);
+      text("Level Select",213,392);
+      text("Restart Level",425,392);
+      text("Unpause",333,450);
+      if (mousePressed && mX >= 164 && mX <= 369 && mY >= 360 && mY <= 412) {
+        location = "levelSelect";
+        pause = false;
+        //WE NEED A RESET LEVEL BUTTON
+      }
+      if (mousePressed && mX >= 376 && mX <= 583 && mY >= 360 && mY <412) {
+        //RESET LEVEL BUTTON
+      }
+      if (mousePressed && mX >= 262 && mX <= 478 && mY >= 420 && mY <473) {
+        pause = false;
+      }
   }
+  
 }
 
 import java.util.*;
