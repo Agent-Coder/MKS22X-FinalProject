@@ -74,8 +74,40 @@ The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or G
 :cookie:
 - Started to work on Start Screen
 - Played around with [sketch.io](https://sketch.io/) to get a png file that will be used for the Start Screen
+- Started to develop a method that'll allow a pattern of berry placement on the StartScreen (so it won't be all empty & blue) works for the top half
+- organized code by create a new tab for StartScreen to hold helper methods 
 
 ### DAY 7 Thursday 5/23/19
-### DAY 8 
-### DAY 9
+:cookie: 
+- Add mouse inputs on start screen to go into the level select screen
+- Find online source for icons for level select, did sprite-ing with photoshop
+
+
+### DAY 8 Friday 5/24/19
+:cookie: 
+- Add level number icons to level select
+- Add level select background
+- Played around with Processing built-in fonts
+
+### DAY 9 Saturday 5/25/19
+:cookie:
+- Added bottom half of StartScreen berryplacement, final touches on StartScreen
+- Fixed up level select icons, level select title 
+- Added character select title
+- Added animation and Pokedex entries when character is selected via mouse input
+- Organized a lot (regarding helper methods) to make code look less ugly
+- Basically finished all of StartScreen, LevelSelect (minus loading in actual levels)
+
+:doughnut:
+- Decide to have character select screen on level screen as well
+
 ### DAY 10
+:cookie:
+- Create & update README
+- Did sprites for Mewoth & Spoink, uploaded to Drive
+
+:icecream:
+- Fix branches to reflect merging and such
+
+:doughnut:
+- Decided to include Meowth & Spoink as extra enemy Pokemon
