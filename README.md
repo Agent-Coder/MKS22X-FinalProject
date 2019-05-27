@@ -31,14 +31,51 @@ The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or G
 :icecream: 
 - Started working on basic player movement (input via arrow keys)
 - Started working on enemy movement & tracking player
+- Start on level 1
 
 :cookie: 
-- Started sprite-ing; grabbed sprites from Spriters-Resource and 
-### DAY 3
-### DAY 4
-### DAY 5
-### DAY 6
-### DAY 7
-### DAY 8
+- Started sprite-ing; grabbed sprites for Glaceon, Manaphy from Spriters-Resource via screenshotting and using Photoshop to extract the sprites
+- Created separate Google Drive folder to save all the sprites 
+
+:doughnut: 
+- Decide to use Manaphy, Glaceon as two player Pokemon 
+- Decide to use Mamoswine, Tentacruel as two enemy Pokemon
+- Decide to have Snorlax as a big obstacle Pokemon (non movable)
+
+### DAY 3 Sunday 5/19/19
+:icecream:
+- Basic enemy, player movements done (though needs a lot of fixing)
+- Use Glaceon as default/testing character, sprites update every time it moves 
+
+:cookie:
+- Did sprites for Mamoswine, Tentacruel, Snorlax, ice block & uploaded to Drive
+- Attempt at adding floor tiles for level 1
+
+### DAY 4 Monday 5/20/19
+:icecream:
+- update level 1 to include smoother movements
+- Glaceon/Player idle/walking movements are smoother
+
+:cookie:
+- Did sprites for berries (all five: Lum, Oran, Sitrus, Razz, Nanab) & uploaded to Drive
+
+:doughnut:
+- Talked with Mr. K to discuss the issue about lagginess & frame problems
+- Realized images were not resized in setup and were resized each time it was drawn (taking up a lot of calculation space!) fixed this problem and frames went up a lot
+
+### DAY 5 Tuesday 5/21/19
+:doughnut: 
+- Attempt at working on a data structure that can keep count of unbreakable walls, breakable ice tiles, and walkable tiles
+
+### DAY 6 Wednesday 5/22/19
+:icecream:
+- Work on player creating ice blocks in all four directions
+
+:cookie:
+- Started to work on Start Screen
+- Played around with [sketch.io](https://sketch.io/) to get a png file that will be used for the Start Screen
+
+### DAY 7 Thursday 5/23/19
+### DAY 8 
 ### DAY 9
 ### DAY 10
