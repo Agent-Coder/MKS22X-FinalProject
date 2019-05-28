@@ -31,8 +31,8 @@ class Player {
   void display(PImage i, float x, float y) {
     image(i, x, y);
   }
-  void move() {
-    if (keyCodesDown.contains(RIGHT)) {
+  void move(boolean canMove) {
+    if (keyCodesDown.contains(RIGHT)&&canMove) {
       PImage r=rightm1;
       if (frameCount%30<10) {
         r=rightm1;
@@ -48,7 +48,7 @@ class Player {
         display(r, xcor, ycor);
       }
       prevKey="right";
-    } else if (keyCodesDown.contains(LEFT)) {
+    } else if (keyCodesDown.contains(LEFT)&&canMove) {
       PImage r=leftm1;
       if (frameCount%30<10) {
         r=leftm1;
@@ -64,7 +64,7 @@ class Player {
         display(r, xcor, ycor);
       }
       prevKey="left";
-    } else if (keyCodesDown.contains(DOWN)) {
+    } else if (keyCodesDown.contains(DOWN)&&canMove) {
       PImage r=downm1;
       if (frameCount%30<10) {
         r=downm1;
@@ -80,7 +80,7 @@ class Player {
         display(r, xcor, ycor);
       }
       prevKey="down";
-    } else if (keyCodesDown.contains(UP)) {
+    } else if (keyCodesDown.contains(UP)&&canMove) {
       PImage r=upm1;
       if (frameCount%30<10) {
         r=upm1;

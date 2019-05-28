@@ -127,8 +127,11 @@ class Level1 extends Levels {
       canMove=true;
     }
     //lvlStart1();
+    if(frameCount%15==0){
+      C.board();
+    }
     B.move(canMove);
-    C.update();
+    C.update(board);
     C.moveE();
     C.display();
   }

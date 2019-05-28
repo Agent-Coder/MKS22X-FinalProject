@@ -1,4 +1,4 @@
- 
+
 abstract class Block {
   int xB;
   int yB;
@@ -10,8 +10,13 @@ abstract class Block {
     type="block";
     destroyable=false;
   }
-
   abstract void display();
+  int getxB() {
+    return xB;
+  }
+  int getyB() {
+    return yB;
+  }
 }
 class BorderBlock extends Block {
   public BorderBlock(int x, int y) {

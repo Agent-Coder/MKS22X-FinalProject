@@ -29,21 +29,21 @@ class Enemies {
       }
     }
   }
-  void update() {
-    //System.out.println("--->"+((targety-110)/20));
+  void update(Block[][] gameBoard) {
     clear();
+    for(int i=0;i<gameBoard.length;i++){
+      for(int k=0;k<gameBoard[0].length;k++){
+        if (gameBoard[i][k]!=null){
+          grid[i][k]=-1;
+        }
+      }
+    }
     tx=target.getPX();
     ty=target.getPY();
-    fillGrid((int)(ty-50)/50, (int)(tx-50)/50, 1);
-    for (int i=0; i<grid.length; i++) {
-      grid[i][0]=-1;
-      grid[0][i]=-1;
-      grid[i][grid.length-1]=-1;
-      grid[grid.length-1][i]=-1;
-    }
+    fillGrid(round(ty/50), round(tx/50), 1);
     //board();
-    moveE();
     //System.out.println(target.getPX()+" "+target.getPY());
+    //moveE();
   }
   void fillGrid(int xer, int yer, int num) {
     if (xer<grid.length&&xer>=0&&yer>=0&&yer<grid.length&&grid[xer][yer]!=1&&(grid[xer][yer]==0||grid[xer][yer]>num)) {
@@ -65,14 +65,15 @@ class Enemies {
     //System.out.println(x+" "+y);
   }
   void moveE() {
-    int a=(int)(y-50)/50;
-    int b=(int)(x-50)/50;
+    int a=round((y)/50);
+    int b=round((x)/50);
     int smallest=grid[a][b];
     int index=-1;
     for (int i=0; i<4; i++) {
+      //board();
       if (a+moves[2*i]>=0&&a+moves[2*i]<grid.length&&b+moves[2*i+1]>=0&&b+moves[2*i+1]<grid.length) {
-        if (grid[a+moves[2*i]][b+moves[2*i+1]]<smallest&&grid[a+moves[2*i]][b+moves[2*i+1]]!=-1) {
-          smallest=grid[a+moves[2*i]][b+moves[2*i+1]];
+        if (grid[a+moves[2*i]][b+moves[2*i+1]]<=smallest&&grid[a+moves[2*i]][b+moves[2*i+1]]!=-1) {
+          smallest=grid[a+moves[2*i]][b+moves[2*i+1]];      
           index=i;
         }
       }
