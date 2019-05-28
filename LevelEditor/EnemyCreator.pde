@@ -70,7 +70,7 @@ class Enemies {
     for (int i=0; i<4; i++) {
       if (a+moves[2*i]>=0&&a+moves[2*i]<grid.length&&b+moves[2*i+1]>=0&&b+moves[2*i+1]<grid.length) {
         if (grid[a+moves[2*i]][b+moves[2*i+1]]<smallest&&grid[a+moves[2*i]][b+moves[2*i+1]]!=-1) {
-          println(grid[a+moves[2*i]][b+moves[2*i+1]]);
+          //println(grid[a+moves[2*i]][b+moves[2*i+1]]);
           //println(grid[a+moves[2*i]][b+moves[2*i+1]]);
           smallest=grid[a+moves[2*i]][b+moves[2*i+1]];
           index=i;
