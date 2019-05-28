@@ -60,10 +60,14 @@ abstract class Levels {
 }
 class Level1 extends Levels {
   ArrayList<Block> attacked;
+  ArrayList<Block> temporary;
+  boolean canMove=true;
   Tile[][] boardtile=new Tile[15][15];
   IceBlock[][] start = new IceBlock[15][15];
   public Level1() {
     super();
+    attacked=new ArrayList<Block>();
+    temporary=new ArrayList<Block>();
     board[7][3]=new IceBlock(200, 350);
     board[7][4]=new IceBlock(150, 350);
     board[7][5]=new IceBlock(250, 350);
@@ -102,27 +106,39 @@ class Level1 extends Levels {
     }
   }
   void play() {
-    //spaceTime();
     output();
-    attacked=attack();
-    while(){
+    temporary=attack();
+    int i=temporary.size()-1;
+    while (i>=0) {
+      attacked.add(temporary.get(i));
+      i--;
     }
-    output();
+    if (frameCount%10==0&&attacked.size()>0) {
+      Block temp=attacked.remove(attacked.size()-1);
+      if (board[temp.getyB()/50][temp.getxB()/50]==null) {
+        board[temp.getyB()/50][temp.getxB()/50]=new IceBlock(temp.getxB(), temp.getyB());
+      } else {
+        board[temp.getyB()/50][temp.getxB()/50]=null;
+      }
+    }
+    if (attacked.size()>0) {
+      canMove=false;
+    } else {
+      canMove=true;
+    }
     //lvlStart1();
-    B.move();
+    B.move(canMove);
     C.update();
     C.moveE();
     C.display();
   }
 
   ArrayList<Block> attack() {
+    ArrayList<Block> delete=new ArrayList<Block>();
     if (keysDown.contains(' ')) {
       int x=round(B.getPX()/50);
       int y=round(B.getPY()/50);
       int i;
-      ArrayList<Block> delete=new ArrayList<Block>();
-      //println(B.getPX());
-      //println(x);
       boolean blockHere=false;
       if (B.getPrevKey().equals("right")) {
         //println("yes");
@@ -131,7 +147,11 @@ class Level1 extends Levels {
         }
         i=x+1;
         while (i<board.length-1&&((blockHere&&board[y][i]!=null)||(!blockHere&&board[y][i]==null))) { 
-          delete.add(board[y][i]);
+          if (board[y][i]==null) {
+            delete.add(new IceBlock(i*50, y*50));
+          } else {
+            delete.add(board[y][i]);
+          }
           i++;
         }
       } else if (B.getPrevKey().equals("left")) {
@@ -140,7 +160,11 @@ class Level1 extends Levels {
         }
         i=x-1;
         while (i>=0&&((blockHere&&board[y][i]!=null)||(!blockHere&&board[y][i]==null))) {
-          delete.add(board[y][i]);
+          if (board[y][i]==null) {
+            delete.add(new IceBlock(i*50, y*50));
+          } else {
+            delete.add(board[y][i]);
+          }
           i--;
         }
       } else if (B.getPrevKey().equals("up")) {
@@ -149,7 +173,11 @@ class Level1 extends Levels {
         }
         i=y-1;
         while (i>=0&&((blockHere&&board[i][x]!=null)||(!blockHere&&board[i][x]==null))) {
-          delete.add(board[i][x]);
+          if (board[y][i]==null) {
+            delete.add(new IceBlock(x*50, i*50));
+          } else {
+            delete.add(board[i][x]);
+          }
           i--;
         }
       } else {
@@ -158,13 +186,17 @@ class Level1 extends Levels {
         }
         i=y+1;
         while (i<board.length-1&&((blockHere&&board[i][x]!=null)||(!blockHere&&board[i][x]==null))) {
-          delete.add(board[i][x]);
+          if (board[y][i]==null) {
+            delete.add(new IceBlock(x*50, i*50));
+          } else {
+            delete.add(board[i][x]);
+          }
           i++;
         }
       }
       keysDown.remove(' ');
-      return delete;
     }
+    return delete;
   }   
 
 
@@ -187,6 +219,7 @@ class Level1 extends Levels {
     start[11][7].display();
   }
 }
+
 
 
 void setup() {
