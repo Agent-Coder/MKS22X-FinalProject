@@ -1,12 +1,12 @@
 class Player {
-  PImage[] images={rightm1, rightm2, rightm3, 
-    leftm1, leftm2, leftm3, 
-    rights1, rights2, 
-    lefts1, lefts2, 
-    downm1, downm2, downm3, 
-    upm1, upm2, upm3, 
-    ups1, ups2, 
-    downs1, downs2};
+  PImage[] images={GlaceonMRight1, GlaceonMRight2, GlaceonMRight3, 
+    GlaceonMLeft1, GlaceonMLeft2, GlaceonMLeft3, 
+    GlaceonIRight1, GlaceonIRight2, 
+    GlaceonILeft1, GlaceonILeft2, 
+    GlaceonMDown1, GlaceonMDown2, GlaceonMDown3, 
+    GlaceonMUp1, GlaceonMUp2, GlaceonMUp3, 
+    GlaceonIUp1, GlaceonIUp2, 
+    GlaceonIDown1, GlaceonIDown2};
   Block[][] board;
   float x, y, xcor, ycor, speed;
   String prevKey;
@@ -33,13 +33,13 @@ class Player {
   }
   void move() {
     if (keyCodesDown.contains(RIGHT)) {
-      PImage r=rightm1;
+      PImage r=GlaceonMRight1;
       if (frameCount%30<10) {
-        r=rightm1;
+        r=GlaceonMRight1;
       } else if (frameCount%30<20) {
-        r=rightm2;
+        r=GlaceonMRight2;
       } else {
-        r=rightm3;
+        r=GlaceonMRight3;
       }
       if (xcor+speed<650&&board[round(ycor/50)][round((xcor+speed)/50)]==null) {
         xcor+=speed;
@@ -49,13 +49,13 @@ class Player {
       }
       prevKey="right";
     } else if (keyCodesDown.contains(LEFT)) {
-      PImage r=leftm1;
+      PImage r=GlaceonMLeft1;
       if (frameCount%30<10) {
-        r=leftm1;
+        r=GlaceonMLeft1;
       } else if (frameCount%30<20) {
-        r=leftm2;
+        r=GlaceonMLeft2;
       } else {
-        r=leftm3;
+        r=GlaceonMLeft3;
       }
       if (xcor+speed>=50&&board[round(ycor/50)][round((xcor-speed)/50)]==null) {
         xcor+=-1* speed;
@@ -65,13 +65,13 @@ class Player {
       }
       prevKey="left";
     } else if (keyCodesDown.contains(DOWN)) {
-      PImage r=downm1;
+      PImage r=GlaceonMDown1;
       if (frameCount%30<10) {
-        r=downm1;
+        r=GlaceonMDown1;
       } else if (frameCount%30<20) {
-        r=downm2;
+        r=GlaceonMDown2;
       } else {
-        r=downm3;
+        r=GlaceonMDown3;
       }
       if (ycor+speed<650&&board[round((ycor+speed)/50)][round(xcor/50)]==null) {
         ycor+=speed;
@@ -81,13 +81,13 @@ class Player {
       }
       prevKey="down";
     } else if (keyCodesDown.contains(UP)) {
-      PImage r=upm1;
+      PImage r=GlaceonMUp1;
       if (frameCount%30<10) {
-        r=upm1;
+        r=GlaceonMUp1;
       } else if (frameCount%30<10) {
-        r=upm2;
+        r=GlaceonMUp2;
       } else {
-        r=upm3;
+        r=GlaceonMUp3;
       }
       if (ycor-speed>50&&board[round((ycor-speed)/50)][round(xcor/50)]==null) {
         ycor-=speed;
@@ -99,27 +99,27 @@ class Player {
     } else {
       if (prevKey.equals("right")) {
         if (frameCount%30<15) {
-          display(rights1, xcor, ycor);
+          display(GlaceonIRight1, xcor, ycor);
         } else {
-          display(rights2, xcor, ycor);
+          display(GlaceonIRight2, xcor, ycor);
         }
       } else if (prevKey.equals("left")) {
         if (frameCount%30<15) {
-          display(lefts1, xcor, ycor);
+          display(GlaceonILeft1, xcor, ycor);
         } else {
-          display(lefts2, xcor, ycor);
+          display(GlaceonILeft2, xcor, ycor);
         }
       } else if (prevKey.equals("up")) {
         if (frameCount%30<15) {
-          display(ups1, xcor, ycor);
+          display(GlaceonIUp1, xcor, ycor);
         } else {
-          display(ups2, xcor, ycor);
+          display(GlaceonIUp2, xcor, ycor);
         }
       } else {
         if (frameCount%30<15) {
-          display(downs1, xcor, ycor);
+          display(GlaceonIDown1, xcor, ycor);
         } else {
-          display(downs2, xcor, ycor);
+          display(GlaceonIDown2, xcor, ycor);
         }
       }
     }
