@@ -32,42 +32,42 @@ void animateCharSelect() { //draw, animates
    if (playerChar.equals("")) {
         image(ManaphyIDown1,120,414);
         image(GlaceonIDown1,355,414);
-        image(EmpoleonIdle1,590,414);
+        image(EmpoleonIDown1,590,414);
       } else {     
       if (playerChar.equals("Manaphy")) {
         if (frameCount % 50 < 25) {
           image(ManaphyIDown1,120,414);
           image(GlaceonIDown1,355,414);
-          image(EmpoleonIdle1,590,414);
+          image(EmpoleonIDown1,590,414);
         }
         else {
           image(ManaphyIDown2,120,414);
           image(GlaceonIDown1,355,414);
-          image(EmpoleonIdle1,590,414);
+          image(EmpoleonIDown1,590,414);
         }
       }
      if (playerChar.equals("Glaceon")) {
        if (frameCount % 50 < 25) {
           image(ManaphyIDown1,120,414);
           image(GlaceonIDown1,355,414);
-          image(EmpoleonIdle1,590,414);
+          image(EmpoleonIDown1,590,414);
         }
         else {
           image(ManaphyIDown1,120,414);
           image(GlaceonIDown2,355,414);
-          image(EmpoleonIdle1,590,414);
+          image(EmpoleonIDown1,590,414);
       }
      }
      if (playerChar.equals("Empoleon")) {
        if (frameCount % 50 < 25) {
           image(ManaphyIDown1,120,414);
           image(GlaceonIDown1,355,414);
-          image(EmpoleonIdle1,590,414);
+          image(EmpoleonIDown1,590,414);
         }
         else {
           image(ManaphyIDown1,120,414);
           image(GlaceonIDown1,355,414);
-          image(EmpoleonIdle2,590,414);
+          image(EmpoleonIDown2,590,414);
       }
      }
    }

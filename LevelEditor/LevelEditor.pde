@@ -196,12 +196,12 @@ void setup() {
   setupText();
   ManaphyIDown1 = loadImage("ManaphyIdleDown1.png");
   ManaphyIDown2 = loadImage("ManaphyIdleDown2.png");
-  EmpoleonIdle1 = loadImage("EmpoleonIdleDown1.png");
-  EmpoleonIdle2 = loadImage("EmpoleonIdleDown2.png");
+  EmpoleonIDown1 = loadImage("EmpoleonIdleDown1.png");
+  EmpoleonIDown2 = loadImage("EmpoleonIdleDown2.png");
   ManaphyIDown1.resize(50, 50);
   ManaphyIDown2.resize(50, 50);
-  EmpoleonIdle1.resize(47, 55);
-  EmpoleonIdle2.resize(51, 55);
+  EmpoleonIDown1.resize(47, 55);
+  EmpoleonIDown2.resize(51, 55);
   GlaceonMRight1 = loadImage("GlaceonWalkRight1.png");
   GlaceonMRight2= loadImage("GlaceonWalkRight2.png");
   GlaceonMRight3 = loadImage("GlaceonWalkRight3.png");
