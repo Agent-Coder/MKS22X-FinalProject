@@ -10,6 +10,34 @@ abstract class Block {
     type="block";
     destroyable=false;
   }
+  void animate(int x, int y, boolean mode) {
+    int a;
+    if (mode) {
+      if (frameCount%20<4) {
+        image(IceA1, x, y);
+      } else if (frameCount%20<8) {
+        image(IceA2, x, y);
+      } else if (frameCount%20<12) {
+        image(IceA3, x, y);
+      } else if (frameCount%20<16) {
+        image(IceA4, x, y);
+      } else {
+        image(IceA5, x, y);
+      }
+    } else {
+      if (frameCount%20<4) {
+        image(IceA5, x, y);
+      } else if (frameCount%20<8) {
+        image(IceA4, x, y);
+      } else if (frameCount%20<12) {
+        image(IceA3, x, y);
+      } else if (frameCount%20<16) {
+        image(IceA2, x, y);
+      } else {
+        image(IceA1, x, y);
+      }
+    }
+  }
   abstract void display();
   int getxB() {
     return xB;
@@ -39,4 +67,6 @@ class IceBlock extends Block {
   void display() {
     image(ice, xB, yB);
   }
+
+  //}
 }
