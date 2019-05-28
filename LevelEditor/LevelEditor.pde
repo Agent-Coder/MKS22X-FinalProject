@@ -50,6 +50,7 @@ abstract class Levels {
   Block[][] board=new Block[15][15];
   Player B;
   Enemies C;
+  //Berries[] D;
   Block[][] map = new Block[15][15];
 
   public Levels() {
@@ -126,7 +127,6 @@ class Level1 extends Levels {
     } else {
       canMove=true;
     }
-    //lvlStart1();
     B.move(canMove);
     C.update(board);
     C.moveE();
@@ -172,7 +172,7 @@ class Level1 extends Levels {
         }
         i=y-1;
         while (i>=0&&((blockHere&&board[i][x]!=null)||(!blockHere&&board[i][x]==null))) {
-          if (board[y][i]==null) {
+          if (board[i][x]==null) {
             delete.add(new IceBlock(x*50, i*50));
           } else {
             delete.add(board[i][x]);
@@ -185,7 +185,7 @@ class Level1 extends Levels {
         }
         i=y+1;
         while (i<board.length-1&&((blockHere&&board[i][x]!=null)||(!blockHere&&board[i][x]==null))) {
-          if (board[y][i]==null) {
+          if (board[i][x]==null) {
             delete.add(new IceBlock(x*50, i*50));
           } else {
             delete.add(board[i][x]);
