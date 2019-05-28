@@ -32,7 +32,7 @@ class Enemies {
   void setGrid(Block[][] map) {
     for (int i=0; i<map.length; i++) {
       for (int j=0; j<map[0].length; j++) {
-        if(map[i][j]!=null){
+        if (map[i][j]!=null) {
           grid[i][j]=-1;
         }
       }
@@ -50,12 +50,10 @@ class Enemies {
       grid[i][grid.length-1]=-1;
       grid[grid.length-1][i]=-1;
     }
-    //board();
     moveE();
-    //System.out.println(target.getPX()+" "+target.getPY());
   }
   void fillGrid(int xer, int yer, int num) {
-    if (xer<grid.length&&xer>=0&&yer>=0&&yer<grid.length&&grid[xer][yer]!=1&&(grid[xer][yer]==0||grid[xer][yer]>num)) {
+    if (xer<grid.length&&xer>=0&&yer>=0&&yer<grid.length&&grid[xer][yer]!=1&&(grid[xer][yer]==0||grid[xer][yer]>num&&grid[xer][yer]!=-1)) {
       grid[xer][yer]=num;
       fillGrid(xer+1, yer, num+1);
       fillGrid(xer, yer+1, num+1);
@@ -72,14 +70,17 @@ class Enemies {
     for (int i=0; i<4; i++) {
       if (a+moves[2*i]>=0&&a+moves[2*i]<grid.length&&b+moves[2*i+1]>=0&&b+moves[2*i+1]<grid.length) {
         if (grid[a+moves[2*i]][b+moves[2*i+1]]<smallest&&grid[a+moves[2*i]][b+moves[2*i+1]]!=-1) {
+          println(grid[a+moves[2*i]][b+moves[2*i+1]]);
+          //println(grid[a+moves[2*i]][b+moves[2*i+1]]);
           smallest=grid[a+moves[2*i]][b+moves[2*i+1]];
           index=i;
         }
       }
     }
     if (index!=-1) {
-      y+=moves[2*index];
-      x+=moves[2*index+1];
+      println(x, y);
+      y+=moves[2*index]*2.5;
+      x+=moves[2*index+1]*2.5;
     }
   }
   void display() {

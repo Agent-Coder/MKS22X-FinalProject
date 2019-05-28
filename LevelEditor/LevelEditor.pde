@@ -107,7 +107,6 @@ class Level1 extends Levels {
     B.move();
     C.setGrid(board);
     C.update();
-    C.moveE();
     C.display();
   }
 
