@@ -117,26 +117,28 @@ class Level1 extends Levels {
       int x=round(B.getPX()/50);
       int y=round(B.getPY()/50);
       int i;
-      println(B.getPX());
-      println(x);
+      //println(B.getPX());
+      //println(x);
       boolean blockHere=false;
       if (B.getPrevKey().equals("right")) {
-        println("yes");
+        //println("yes");
         if (board[y][x+1]!=null) {
           blockHere=true;
         }
         i=x+1;
         while (i<board.length-1&&((blockHere&&board[y][i]!=null)||(!blockHere&&board[y][i]==null))) {
-          
-          if (!blockHere) {
-            println("what"+(i));
-            board[y][i]=new IceBlock(i*50, y*50);
-          } else {
-            println("say"+(i));
-            board[y][i]=null;
+          println(frameCount);
+          if (frameCount%5==0) {
+            
+            if (!blockHere) {
+              //println("what"+(i));
+              board[y][i]=new IceBlock(i*50, y*50);
+            } else {
+              //println("say"+(i));
+              board[y][i]=null;
+            }
+            i++;
           }
-          i++;
-         
         }
       } else if (B.getPrevKey().equals("left")) {
         if (board[y][x-1]!=null) {
@@ -293,16 +295,16 @@ void draw() {
     drawBerries2();
     drawBerries3();
     detectStartGame();
-  }
-  else if (location.equals("levelSelect")&&!starting()) {
+  } else if (location.equals("levelSelect")&&!starting()) {
     image(bluebackground, 0, 0);
     drawLevelScreen();
     detectLevelSelect();
     detectPokemonSelect();
     animateCharSelect();
     drawReady();
-  }else if(starting()){A.play();}
-  
+  } else if (starting()) {
+    A.play();
+  }
 }
 import java.util.*;
 Set<Character> keysDown= new HashSet<Character>();
