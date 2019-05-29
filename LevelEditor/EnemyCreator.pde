@@ -127,6 +127,12 @@ class Enemies {
   void display(PImage i) {
     image(i, x, y);
   }
+  float getX() {
+    return x;
+  }
+  float getY() {
+    return y;
+  }
 }
 class Spoink extends Enemies {
   public Spoink(Player a) {

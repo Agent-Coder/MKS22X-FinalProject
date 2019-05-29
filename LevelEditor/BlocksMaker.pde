@@ -45,6 +45,9 @@ abstract class Block {
   int getyB() {
     return yB;
   }
+  String getType() {
+    return type;
+  }
 }
 class BorderBlock extends Block {
   public BorderBlock(int x, int y) {

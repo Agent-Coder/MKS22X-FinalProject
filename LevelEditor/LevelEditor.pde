@@ -139,10 +139,13 @@ class Level1 extends Levels {
     }
     if (frameCount%20==0&&attacked.size()>0) {
       temp=attacked.remove(attacked.size()-1);
-      if (board[temp.getyB()/50][temp.getxB()/50]==null) {
+      if ((round(temp.getxB())==round(C.getX())&&round(temp.getyB())==round(C.getY()))) {
+        temp=null;
+        attacked.clear();
+      } else if (board[temp.getyB()/50][temp.getxB()/50]==null) {
         board[temp.getyB()/50][temp.getxB()/50]=new IceBlock(temp.getxB(), temp.getyB());
         make=true;
-      } else {
+      } else if(board[temp.getyB()/50][temp.getxB()/50].getType()!="borderblock"){
         board[temp.getyB()/50][temp.getxB()/50]=null;
         make=false;
       }
@@ -352,18 +355,18 @@ void setup() {
   downs2.resize(50, 50);
   ups1.resize(50, 50);
   ups2.resize(50, 50);
-  meowthRM1.resize(50,50);
-  meowthRM2.resize(50,50);
-  meowthRM3.resize(50,50);
-  meowthLM1.resize(50,50);
-  meowthLM2.resize(50,50);
-  meowthLM3.resize(50,50);
-  meowthDM1.resize(50,50);
-  meowthDM2.resize(50,50);
-  meowthDM3.resize(50,50);
-  meowthUM1.resize(50,50);
-  meowthUM2.resize(50,50);
-  meowthUM3.resize(50,50);
+  meowthRM1.resize(50, 50);
+  meowthRM2.resize(50, 50);
+  meowthRM3.resize(50, 50);
+  meowthLM1.resize(50, 50);
+  meowthLM2.resize(50, 50);
+  meowthLM3.resize(50, 50);
+  meowthDM1.resize(50, 50);
+  meowthDM2.resize(50, 50);
+  meowthDM3.resize(50, 50);
+  meowthUM1.resize(50, 50);
+  meowthUM2.resize(50, 50);
+  meowthUM3.resize(50, 50);
 } 
 void draw() {
   background(255);
