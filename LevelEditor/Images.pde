@@ -1,6 +1,7 @@
 PImage floor;
 PImage ice;
 
+PImage testSitrus;
 //GLACEON MOVE & IDLE IMAGES
 PImage GlaceonMRight1;
 PImage GlaceonMRight2;
@@ -66,7 +67,6 @@ PImage ManaphyIDown1;
 PImage ManaphyIDown2;
 PImage ManaphyIUp1;
 PImage ManaphyIUp2;
-
 
 
 PImage background;
