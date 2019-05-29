@@ -162,7 +162,6 @@ class Level1 extends Levels {
     B.move(canMove);
     C.update(board);
     C.moveE();
-    C.display();
   }
 
   ArrayList<Block> attack() {
@@ -314,18 +313,18 @@ void setup() {
   IceA3=loadImage("IceA3.png");
   IceA4=loadImage("IceA4.png");
   IceA5=loadImage("IceA5.png");
-  meowthRM1=loadImage("MeowthWalkRight1");
-  meowthRM2=loadImage("MeowthWalkRight2");
-  meowthRM3=loadImage("MeowthWalkRight3");
-  meowthLM1=loadImage("MeowthWalkLeft1");
-  meowthLM2=loadImage("MeowthWalkLeft2");
-  meowthLM3=loadImage("MeowthWalkLeft3");
-  meowthDM1=loadImage("MeowthWalkDown1");
-  meowthDM2=loadImage("MeowthWalkDown2");
-  meowthDM3=loadImage("MeowthWalkDown3");
-  meowthUM1=loadImage("MeowthWalkUp1");
-  meowthUM2=loadImage("MeowthWalkUp2");
-  meowthUM3=loadImage("MeowthWalkUp3");
+  meowthRM1=loadImage("MeowthWalkRight1.png");
+  meowthRM2=loadImage("MeowthWalkRight2.png");
+  meowthRM3=loadImage("MeowthWalkRight3.png");
+  meowthLM1=loadImage("MeowthWalkLeft1.png");
+  meowthLM2=loadImage("MeowthWalkLeft2.png");
+  meowthLM3=loadImage("MeowthWalkLeft3.png");
+  meowthDM1=loadImage("MeowthWalkDown1.png");
+  meowthDM2=loadImage("MeowthWalkDown2.png");
+  meowthDM3=loadImage("MeowthWalkDown3.png");
+  meowthUM1=loadImage("MeowthWalkUp1.png");
+  meowthUM2=loadImage("MeowthWalkUp2.png");
+  meowthUM3=loadImage("MeowthWalkUp3.png");
   IceA1.resize(50, 50);
   IceA2.resize(50, 50);
   IceA3.resize(50, 50);
@@ -353,6 +352,18 @@ void setup() {
   downs2.resize(50, 50);
   ups1.resize(50, 50);
   ups2.resize(50, 50);
+  meowthRM1.resize(50,50);
+  meowthRM2.resize(50,50);
+  meowthRM3.resize(50,50);
+  meowthLM1.resize(50,50);
+  meowthLM2.resize(50,50);
+  meowthLM3.resize(50,50);
+  meowthDM1.resize(50,50);
+  meowthDM2.resize(50,50);
+  meowthDM3.resize(50,50);
+  meowthUM1.resize(50,50);
+  meowthUM2.resize(50,50);
+  meowthUM3.resize(50,50);
 } 
 void draw() {
   background(255);
