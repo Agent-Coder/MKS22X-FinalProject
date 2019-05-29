@@ -115,3 +115,12 @@ The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or G
 ### DAY 11 Monday 5/27/19
 :cookie:
 - Added Pause menu & is mostly functional (requires level start method to be implemented), return to level select and unpause button works though! c:
+
+### DAY 12 Tuesday 5/28/19
+:cookie:
+- Did file reorganization (in levelEditor.pde, temporary level1); sprites are all in one folder and is accessible through loadImage("Sprites/(name)/(movement")
+- Created images.pde, importImages.pde 
+  - images.pde allows for initialization of PImage for each individual sprite 
+  - importImages.pde allows for loadImage() to be called for each individual sprite, references sprites in sprites folder
+- imported sprites for the three playable Pokemon
+
