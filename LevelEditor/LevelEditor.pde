@@ -46,6 +46,24 @@ PImage ups1;
 PImage ups2;
 PImage downs1;
 PImage downs2;
+PImage meowthRM1;
+PImage meowthRM2;
+PImage meowthRM3;
+PImage meowthLM1;
+PImage meowthLM2;
+PImage meowthLM3;
+PImage meowthDM1;
+PImage meowthDM2;
+PImage meowthDM3;
+PImage meowthUM1;
+PImage meowthUM2;
+PImage meowthUM3;
+PImage IceA1;
+PImage IceA2;
+PImage IceA3;
+PImage IceA4;
+PImage IceA5;
+
 abstract class Levels {
   Block[][] board=new Block[15][15];
   Player B;
@@ -63,6 +81,7 @@ class Level1 extends Levels {
   ArrayList<Block> attacked;
   ArrayList<Block> temporary;
   boolean canMove=true;
+  Block temp;
   Tile[][] boardtile=new Tile[15][15];
   IceBlock[][] start = new IceBlock[15][15];
   public Level1() {
@@ -107,6 +126,7 @@ class Level1 extends Levels {
     }
   }
   void play() {
+    boolean make=true;
     output();
     temporary=attack();
     int i=temporary.size()-1;
@@ -114,13 +134,21 @@ class Level1 extends Levels {
       attacked.add(temporary.get(i));
       i--;
     }
-    if (frameCount%10==0&&attacked.size()>0) {
-      Block temp=attacked.remove(attacked.size()-1);
+    if (attacked.size()==0) {
+      temp=null;
+    }
+    if (frameCount%20==0&&attacked.size()>0) {
+      temp=attacked.remove(attacked.size()-1);
       if (board[temp.getyB()/50][temp.getxB()/50]==null) {
         board[temp.getyB()/50][temp.getxB()/50]=new IceBlock(temp.getxB(), temp.getyB());
+        make=true;
       } else {
         board[temp.getyB()/50][temp.getxB()/50]=null;
+        make=false;
       }
+    }
+    if (temp!=null&&attacked.size()>0) {
+      temp.animate(temp.getxB(), temp.getyB(), make);
     }
     if (attacked.size()>0) {
       canMove=false;
@@ -129,8 +157,8 @@ class Level1 extends Levels {
     }
     //lvlStart1();
     /*if(frameCount%15==0){
-      //C.board();
-    }*/
+     //C.board();
+     }*/
     B.move(canMove);
     C.update(board);
     C.moveE();
@@ -281,6 +309,28 @@ void setup() {
   ups2 = loadImage("GlaceonBackIdle2.png");
   floor = loadImage("MoveTile1.png");
   ice=loadImage("Ice.png");
+  IceA1=loadImage("IceA1.png");
+  IceA2=loadImage("IceA2.png");
+  IceA3=loadImage("IceA3.png");
+  IceA4=loadImage("IceA4.png");
+  IceA5=loadImage("IceA5.png");
+  meowthRM1=loadImage("MeowthWalkRight1");
+  meowthRM2=loadImage("MeowthWalkRight2");
+  meowthRM3=loadImage("MeowthWalkRight3");
+  meowthLM1=loadImage("MeowthWalkLeft1");
+  meowthLM2=loadImage("MeowthWalkLeft2");
+  meowthLM3=loadImage("MeowthWalkLeft3");
+  meowthDM1=loadImage("MeowthWalkDown1");
+  meowthDM2=loadImage("MeowthWalkDown2");
+  meowthDM3=loadImage("MeowthWalkDown3");
+  meowthUM1=loadImage("MeowthWalkUp1");
+  meowthUM2=loadImage("MeowthWalkUp2");
+  meowthUM3=loadImage("MeowthWalkUp3");
+  IceA1.resize(50, 50);
+  IceA2.resize(50, 50);
+  IceA3.resize(50, 50);
+  IceA4.resize(50, 50);
+  IceA5.resize(50, 50);
   ice.resize(50, 49);
   floor.resize(50, 50);
   rightm1.resize(50, 50);
