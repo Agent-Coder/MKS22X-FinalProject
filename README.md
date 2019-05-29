@@ -123,4 +123,4 @@ The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or G
   - images.pde allows for initialization of PImage for each individual sprite 
   - importImages.pde allows for loadImage() to be called for each individual sprite, references sprites in sprites folder
 - imported sprites for the three playable Pokemon
-
+- implemented the other two playable Pokemon. Players now have access to three different Pokemon to play as!
