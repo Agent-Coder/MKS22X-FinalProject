@@ -90,6 +90,34 @@ PImage MeowthMUp1;
 PImage MeowthMUp2;
 PImage MeowthMUp3;
 
+//TENTACRUEL MOVE & IDLE IMAGES
+PImage TentacruelMRight1;
+PImage TentacruelMRight2;
+PImage TentacruelMRight3;
+PImage TentacruelMLeft1;
+PImage TentacruelMLeft2;
+PImage TentacruelMLeft3;
+PImage TentacruelMDown1;
+PImage TentacruelMDown2;
+PImage TentacruelMDown3;
+PImage TentacruelMUp1;
+PImage TentacruelMUp2;
+PImage TentacruelMUp3;
+
+//Spoink Move & Idle Images
+PImage SpoinkMRight1;
+PImage SpoinkMRight2;
+PImage SpoinkMRight3;
+PImage SpoinkMLeft1;
+PImage SpoinkMLeft2;
+PImage SpoinkMLeft3;
+PImage SpoinkMDown1;
+PImage SpoinkMDown2;
+PImage SpoinkMDown3;
+PImage SpoinkMUp1;
+PImage SpoinkMUp2;
+PImage SpoinkMUp3;
+
 //BERRIES
 PImage OranBerry;
 PImage NanabBerry;

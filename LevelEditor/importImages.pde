@@ -178,18 +178,18 @@ void importImages() {
   EmpoleonIUp2.resize(50,50);
   
   //Meowth Sprites (no idle)
-  MeowthMRight1=loadImage("MeowthWalkRight1.png");
-  MeowthMRight2=loadImage("MeowthWalkRight2.png");
-  MeowthMRight3=loadImage("MeowthWalkRight3.png");
-  MeowthMLeft1 =loadImage("MeowthWalkLeft1.png");
-  MeowthMLeft2 =loadImage("MeowthWalkLeft2.png");
-  MeowthMLeft3 =loadImage("MeowthWalkLeft3.png");
-  MeowthMDown1=loadImage("MeowthWalkDown1.png");
-  MeowthMDown2=loadImage("MeowthWalkDown2.png");
-  MeowthMDown3=loadImage("MeowthWalkDown3.png");
-  MeowthMUp1=loadImage("MeowthWalkUp1.png");
-  MeowthMUp2=loadImage("MeowthWalkUp2.png");
-  MeowthMUp3=loadImage("MeowthWalkUp3.png");
+  MeowthMRight1=loadImage("SPRITES/Meowth Sprites/MeowthWalkRight1.png");
+  MeowthMRight2=loadImage("SPRITES/Meowth Sprites/MeowthWalkRight2.png");
+  MeowthMRight3=loadImage("SPRITES/Meowth Sprites/MeowthWalkRight3.png");
+  MeowthMLeft1 =loadImage("SPRITES/Meowth Sprites/MeowthWalkLeft1.png");
+  MeowthMLeft2 =loadImage("SPRITES/Meowth Sprites/MeowthWalkLeft2.png");
+  MeowthMLeft3 =loadImage("SPRITES/Meowth Sprites/MeowthWalkLeft3.png");
+  MeowthMDown1=loadImage("SPRITES/Meowth Sprites/MeowthWalkDown1.png");
+  MeowthMDown2=loadImage("SPRITES/Meowth Sprites/MeowthWalkDown2.png");
+  MeowthMDown3=loadImage("SPRITES/Meowth Sprites/MeowthWalkDown3.png");
+  MeowthMUp1=loadImage("SPRITES/Meowth Sprites/MeowthWalkUp1.png");
+  MeowthMUp2=loadImage("SPRITES/Meowth Sprites/MeowthWalkUp2.png");
+  MeowthMUp3=loadImage("SPRITES/Meowth Sprites/MeowthWalkUp3.png");
   
   //Meowth Sprites resizes
   MeowthMRight1.resize(50, 50);
@@ -205,6 +205,60 @@ void importImages() {
   MeowthMUp2.resize(50, 50);
   MeowthMUp3.resize(50, 50);
   
+  //Tentacruel Sprites (no idle)
+  TentacruelMRight1 = loadImage("SPRITES/Tentacruel Sprites/TentacruelWalkRight1.png");
+  TentacruelMRight2 = loadImage("SPRITES/Tentacruel Sprites/TentacruelWalkRight2.png");
+  TentacruelMRight3 = loadImage("SPRITES/Tentacruel Sprites/TentacruelWalkRight3.png");
+  TentacruelMLeft1 = loadImage("SPRITES/Tentacruel Sprites/TentacruelWalkLeft1.png");
+  TentacruelMLeft2 = loadImage("SPRITES/Tentacruel Sprites/TentacruelWalkLeft2.png");
+  TentacruelMLeft3 = loadImage("SPRITES/Tentacruel Sprites/TentacruelWalkLeft3.png");
+  TentacruelMDown1 = loadImage("SPRITES/Tentacruel Sprites/TentacruelWalkDown1.png");
+  TentacruelMDown2 = loadImage("SPRITES/Tentacruel Sprites/TentacruelWalkDown2.png");
+  TentacruelMDown3 = loadImage("SPRITES/Tentacruel Sprites/TentacruelWalkDown3.png");
+  TentacruelMUp1 = loadImage("SPRITES/Tentacruel Sprites/TentacruelWalkUp1.png");
+  TentacruelMUp2 = loadImage("SPRITES/Tentacruel Sprites/TentacruelWalkUp2.png");
+  TentacruelMUp3 = loadImage("SPRITES/Tentacruel Sprites/TentacruelWalkUp3.png");
+  
+  //Tentacruel Sprites resizes
+  TentacruelMRight1.resize(50, 50);
+  TentacruelMRight2.resize(50, 50);
+  TentacruelMRight3.resize(50, 50);
+  TentacruelMLeft1.resize(50, 50);
+  TentacruelMLeft2.resize(50, 50);
+  TentacruelMLeft3.resize(50, 50);
+  TentacruelMDown1.resize(50, 50);
+  TentacruelMDown2.resize(50, 50);
+  TentacruelMDown3.resize(50, 50);
+  TentacruelMUp1.resize(50, 50);
+  TentacruelMUp2.resize(50, 50);
+  TentacruelMUp3.resize(50, 50);
+   //Spoink Sprites (no idle)
+  SpoinkMRight1 = loadImage("SPRITES/Spoink Sprites/SpoinkWalkRight1.png");
+  SpoinkMRight2 = loadImage("SPRITES/Spoink Sprites/SpoinkWalkRight2.png");
+  SpoinkMRight3 = loadImage("SPRITES/Spoink Sprites/SpoinkWalkRight3.png");
+  SpoinkMLeft1 = loadImage("SPRITES/Spoink Sprites/SpoinkWalkLeft1.png");
+  SpoinkMLeft2 = loadImage("SPRITES/Spoink Sprites/SpoinkWalkLeft2.png");
+  SpoinkMLeft3 = loadImage("SPRITES/Spoink Sprites/SpoinkWalkLeft3.png");
+  SpoinkMDown1 = loadImage("SPRITES/Spoink Sprites/SpoinkWalkDown1.png");
+  SpoinkMDown2 = loadImage("SPRITES/Spoink Sprites/SpoinkWalkDown2.png");
+  SpoinkMDown3 = loadImage("SPRITES/Spoink Sprites/SpoinkWalkDown3.png");
+  SpoinkMUp1 = loadImage("SPRITES/Spoink Sprites/SpoinkWalkUp1.png");
+  SpoinkMUp2 = loadImage("SPRITES/Spoink Sprites/SpoinkWalkUp2.png");
+  SpoinkMUp3 = loadImage("SPRITES/Spoink Sprites/SpoinkWalkUp3.png");
+  
+  //Spoink Sprites resizes;
+  SpoinkMRight1.resize(50, 50);
+  SpoinkMRight2.resize(50, 50);
+  SpoinkMRight3.resize(50, 50);
+  SpoinkMLeft1.resize(50, 50);
+  SpoinkMLeft2.resize(50, 50);
+  SpoinkMLeft3.resize(50, 50);
+  SpoinkMDown1.resize(50, 50);
+  SpoinkMDown2.resize(50, 50);
+  SpoinkMDown3.resize(50, 50);
+  SpoinkMUp1.resize(50, 50);
+  SpoinkMUp2.resize(50, 50);
+  SpoinkMUp3.resize(50, 50);
   
   floor = loadImage("MoveTile1.png");
   ice=loadImage("Ice.png");
