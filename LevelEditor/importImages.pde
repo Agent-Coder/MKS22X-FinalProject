@@ -9,11 +9,11 @@ void importImages() {
   bluebackground.resize(1000, 750);
   
   //Level Select level button icons sprites
-  one = loadImage("L1.png");
-  two = loadImage("L2.png");
-  three = loadImage("L3.png");
-  four = loadImage("L4.png");
-  five = loadImage("L5.png");
+  one = loadImage("SPRITES/Levels Icons/L1.png");
+  two = loadImage("SPRITES/Levels Icons/L2.png");
+  three = loadImage("SPRITES/Levels Icons/L3.png");
+  four = loadImage("SPRITES/Levels Icons/L4.png");
+  five = loadImage("SPRITES/Levels Icons/L5.png");
   
   //Level Select level button icons sprites resizes
   one.resize(100, 100);
@@ -42,6 +42,7 @@ void importImages() {
   GlaceonMUp1 = loadImage("SPRITES/Glaceon Sprites/GlaceonWalkUp1.png");
   GlaceonMUp2 = loadImage("SPRITES/Glaceon Sprites/GlaceonWalkUp2.png");
   GlaceonMUp3 = loadImage("SPRITES/Glaceon Sprites/GlaceonWalkUp3.png");
+  //idle
   GlaceonIRight1 = loadImage("SPRITES/Glaceon Sprites/GlaceonIdleRight1.png");
   GlaceonIRight2 = loadImage("SPRITES/Glaceon Sprites/GlaceonIdleRight2.png");
   GlaceonILeft1 = loadImage("SPRITES/Glaceon Sprites/GlaceonIdleLeft1.png");
@@ -73,8 +74,54 @@ void importImages() {
   GlaceonIUp1.resize(50, 50);
   GlaceonIUp2.resize(50, 50);
   
-  ManaphyIDown1 = loadImage("ManaphyIdleDown1.png");
-  ManaphyIDown2 = loadImage("ManaphyIdleDown2.png");
+  //Manaphy Sprites
+  ManaphyMRight1 = loadImage("SPRITES/Manaphy Sprites/ManaphyWalkRight1.png");
+  ManaphyMRight2 = loadImage("SPRITES/Manaphy Sprites/ManaphyWalkRight2.png");
+  ManaphyMRight3 = loadImage("SPRITES/Manaphy Sprites/ManaphyWalkRight3.png");
+  ManaphyMLeft1 = loadImage("SPRITES/Manaphy Sprites/ManaphyWalkLeft1.png");
+  ManaphyMLeft2 = loadImage("SPRITES/Manaphy Sprites/ManaphyWalkLeft2.png");
+  ManaphyMLeft3 = loadImage("SPRITES/Manaphy Sprites/ManaphyWalkLeft3.png");
+  ManaphyMDown1 = loadImage("SPRITES/Manaphy Sprites/ManaphyWalkDown1.png");
+  ManaphyMDown2 = loadImage("SPRITES/Manaphy Sprites/ManaphyWalkDown2.png");
+  ManaphyMDown3 = loadImage("SPRITES/Manaphy Sprites/ManaphyWalkDown3.png");
+  ManaphyMUp1 = loadImage("SPRITES/Manaphy Sprites/ManaphyWalkUp1.png");
+  ManaphyMUp2 = loadImage("SPRITES/Manaphy Sprites/ManaphyWalkUp2.png");
+  ManaphyMUp3 = loadImage("SPRITES/Manaphy Sprites/ManaphyWalkUp3.png");
+  //idle
+  ManaphyIRight1 = loadImage("SPRITES/Manaphy Sprites/ManaphyIdleRight1.png");
+  ManaphyIRight2 = loadImage("SPRITES/Manaphy Sprites/ManaphyIdleRight2.png");
+  ManaphyILeft1 = loadImage("SPRITES/Manaphy Sprites/ManaphyIdleLeft1.png");
+  ManaphyILeft2 = loadImage("SPRITES/Manaphy Sprites/ManaphyIdleLeft2.png");
+  ManaphyIDown1 = loadImage("SPRITES/Manaphy Sprites/ManaphyIdleDown1.png");
+  ManaphyIDown2 = loadImage("SPRITES/Manaphy Sprites/ManaphyIdleDown2.png");
+  ManaphyIUp1 = loadImage("SPRITES/Manaphy Sprites/ManaphyIdleUp1.png");
+  ManaphyIUp2 = loadImage("SPRITES/Manaphy Sprites/ManaphyIdleUp2.png");
+  
+  //Manaphy Sprites resizes
+  ManaphyMRight1.resize(50,50);
+  ManaphyMRight2.resize(50,50);
+  ManaphyMRight3.resize(50,50);
+  ManaphyMLeft1.resize(50,50);
+  ManaphyMLeft2.resize(50,50);
+  ManaphyMLeft3.resize(50,50);
+  ManaphyMDown1.resize(50,50);
+  ManaphyMDown2.resize(50,50);
+  ManaphyMDown3.resize(50,50);
+  ManaphyMUp1.resize(50,50);
+  ManaphyMUp2.resize(50,50);
+  ManaphyMUp3.resize(50,50);
+  ManaphyIRight1.resize(50,50);
+  ManaphyIRight2.resize(50,50);
+  ManaphyILeft1.resize(50,50);
+  ManaphyILeft2.resize(50,50);
+  ManaphyIDown1.resize(50,50);
+  ManaphyIDown2.resize(50,50);
+  ManaphyIUp1.resize(50,50);
+  ManaphyIUp2.resize(50,50);
+  
+  
+  
+
   EmpoleonIDown1 = loadImage("EmpoleonIdleDown1.png");
   EmpoleonIDown2 = loadImage("EmpoleonIdleDown2.png");
   ManaphyIDown1.resize(50, 50);
