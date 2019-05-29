@@ -13,29 +13,7 @@ PImage four;
 PImage five;
 PFont font;
 
-PImage meowthRM1;
-PImage meowthRM2;
-PImage meowthRM3;
-PImage meowthLM1;
-PImage meowthLM2;
-PImage meowthLM3;
-PImage meowthDM1;
-PImage meowthDM2;
-PImage meowthDM3;
-PImage meowthUM1;
-PImage meowthUM2;
-PImage meowthUM3;
-PImage IceA1;
-PImage IceA2;
-PImage IceA3;
-PImage IceA4;
-PImage IceA5;
-
-
-
 boolean pause = false;
-
-
 abstract class Levels {
   Block[][] board=new Block[15][15];
   Player B;
@@ -232,40 +210,6 @@ void setup() {
   size(750, 750);
   importImages();
   setupText();
-  IceA1=loadImage("IceA1.png");
-  IceA2=loadImage("IceA2.png");
-  IceA3=loadImage("IceA3.png");
-  IceA4=loadImage("IceA4.png");
-  IceA5=loadImage("IceA5.png");
-  meowthRM1=loadImage("MeowthWalkRight1.png");
-  meowthRM2=loadImage("MeowthWalkRight2.png");
-  meowthRM3=loadImage("MeowthWalkRight3.png");
-  meowthLM1=loadImage("MeowthWalkLeft1.png");
-  meowthLM2=loadImage("MeowthWalkLeft2.png");
-  meowthLM3=loadImage("MeowthWalkLeft3.png");
-  meowthDM1=loadImage("MeowthWalkDown1.png");
-  meowthDM2=loadImage("MeowthWalkDown2.png");
-  meowthDM3=loadImage("MeowthWalkDown3.png");
-  meowthUM1=loadImage("MeowthWalkUp1.png");
-  meowthUM2=loadImage("MeowthWalkUp2.png");
-  meowthUM3=loadImage("MeowthWalkUp3.png");
-  IceA1.resize(50, 50);
-  IceA2.resize(50, 50);
-  IceA3.resize(50, 50);
-  IceA4.resize(50, 50);
-  IceA5.resize(50, 50);
-  meowthRM1.resize(50, 50);
-  meowthRM2.resize(50, 50);
-  meowthRM3.resize(50, 50);
-  meowthLM1.resize(50, 50);
-  meowthLM2.resize(50, 50);
-  meowthLM3.resize(50, 50);
-  meowthDM1.resize(50, 50);
-  meowthDM2.resize(50, 50);
-  meowthDM3.resize(50, 50);
-  meowthUM1.resize(50, 50);
-  meowthUM2.resize(50, 50);
-  meowthUM3.resize(50, 50);
 }
 void draw() {
   background(255);

@@ -81,38 +81,38 @@ class Enemies {
     y+=dy;
     if (dx>0) {
       if (frameCount%30<10) {
-        pic=meowthRM1;
+        pic=MeowthMRight1;
       } else if (frameCount%30<20) {
-        pic=meowthRM2;
+        pic=MeowthMRight2;
       } else {
-        pic=meowthRM2;
+        pic=MeowthMRight3;
       }
       display(pic);
     } else if (dx<0) {
       if (frameCount%30<10) {
-        pic=meowthLM1;
+        pic=MeowthMLeft1;
       } else if (frameCount%30<20) {
-        pic=meowthLM2;
+        pic=MeowthMLeft2;
       } else {
-        pic=meowthLM3;
+        pic=MeowthMLeft3;
       }
       display(pic);
     } else if (dy>0) {
       if (frameCount%30<10) {
-        pic=meowthDM1;
+        pic=MeowthMDown1;
       } else if (frameCount%30<20) {
-        pic=meowthDM2;
+        pic=MeowthMDown2;
       } else {
-        pic=meowthDM3;
+        pic=MeowthMDown3;
       }
       display(pic);
     } else if (dy<0) {
       if (frameCount%30<10) {
-        pic=meowthUM1;
+        pic=MeowthMUp1;
       } else if (frameCount%30<20) {
-        pic=meowthUM2;
+        pic=MeowthMUp2;
       } else {
-        pic=meowthUM3;
+        pic=MeowthMUp3;
       }
       display(pic);
     }

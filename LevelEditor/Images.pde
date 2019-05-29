@@ -3,7 +3,13 @@ PImage ice;
 PImage background;
 PImage bluebackground;
 
-PImage testSitrus;
+//Ice Breaking Animation/Effect
+PImage IceA1;
+PImage IceA2;
+PImage IceA3;
+PImage IceA4;
+PImage IceA5;
+
 //GLACEON MOVE & IDLE IMAGES
 PImage GlaceonMRight1;
 PImage GlaceonMRight2;
@@ -69,6 +75,20 @@ PImage ManaphyIDown1;
 PImage ManaphyIDown2;
 PImage ManaphyIUp1;
 PImage ManaphyIUp2;
+
+//MEOWTH MOVE & IDLE IMAGES
+PImage MeowthMRight1;
+PImage MeowthMRight2;
+PImage MeowthMRight3;
+PImage MeowthMLeft1;
+PImage MeowthMLeft2;
+PImage MeowthMLeft3;
+PImage MeowthMDown1;
+PImage MeowthMDown2;
+PImage MeowthMDown3;
+PImage MeowthMUp1;
+PImage MeowthMUp2;
+PImage MeowthMUp3;
 
 //BERRIES
 PImage OranBerry;

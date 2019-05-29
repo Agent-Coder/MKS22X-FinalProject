@@ -21,6 +21,20 @@ void importImages() {
   four.resize(100, 100);
   five.resize(100, 100);
   
+  //Ice breaking animation
+  IceA1=loadImage("IceA1.png");
+  IceA2=loadImage("IceA2.png");
+  IceA3=loadImage("IceA3.png");
+  IceA4=loadImage("IceA4.png");
+  IceA5=loadImage("IceA5.png");
+
+  //Ice animation resizes
+  IceA1.resize(50, 50);
+  IceA2.resize(50, 50);
+  IceA3.resize(50, 50);
+  IceA4.resize(50, 50);
+  IceA5.resize(50, 50);
+  
   //Berry sprites 
   OranBerry = loadImage("SPRITES/Berries/OranBerry.png");
   LumBerry = loadImage("SPRITES/Berries/LumBerry.png");
@@ -162,6 +176,35 @@ void importImages() {
   EmpoleonIDown2.resize(50,50);
   EmpoleonIUp1.resize(47,50);
   EmpoleonIUp2.resize(50,50);
+  
+  //Meowth Sprites (no idle)
+  MeowthMRight1=loadImage("MeowthWalkRight1.png");
+  MeowthMRight2=loadImage("MeowthWalkRight2.png");
+  MeowthMRight3=loadImage("MeowthWalkRight3.png");
+  MeowthMLeft1 =loadImage("MeowthWalkLeft1.png");
+  MeowthMLeft2 =loadImage("MeowthWalkLeft2.png");
+  MeowthMLeft3 =loadImage("MeowthWalkLeft3.png");
+  MeowthMDown1=loadImage("MeowthWalkDown1.png");
+  MeowthMDown2=loadImage("MeowthWalkDown2.png");
+  MeowthMDown3=loadImage("MeowthWalkDown3.png");
+  MeowthMUp1=loadImage("MeowthWalkUp1.png");
+  MeowthMUp2=loadImage("MeowthWalkUp2.png");
+  MeowthMUp3=loadImage("MeowthWalkUp3.png");
+  
+  //Meowth Sprites resizes
+  MeowthMRight1.resize(50, 50);
+  MeowthMRight2.resize(50, 50);
+  MeowthMRight3.resize(50, 50);
+  MeowthMLeft1.resize(50, 50);
+  MeowthMLeft2.resize(50, 50);
+  MeowthMLeft3.resize(50, 50);
+  MeowthMDown1.resize(50, 50);
+  MeowthMDown2.resize(50, 50);
+  MeowthMDown3.resize(50, 50);
+  MeowthMUp1.resize(50, 50);
+  MeowthMUp2.resize(50, 50);
+  MeowthMUp3.resize(50, 50);
+  
   
   floor = loadImage("MoveTile1.png");
   ice=loadImage("Ice.png");
