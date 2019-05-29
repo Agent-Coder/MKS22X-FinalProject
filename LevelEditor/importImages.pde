@@ -1,5 +1,4 @@
 void importImages() {
-  
   //StartScreen, Level/Char Select Backgrounds
   background = loadImage("StartScreen.png");
   bluebackground = loadImage("BlueBackground.png");

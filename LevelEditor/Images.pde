@@ -1,5 +1,7 @@
 PImage floor;
 PImage ice;
+PImage background;
+PImage bluebackground;
 
 PImage testSitrus;
 //GLACEON MOVE & IDLE IMAGES
@@ -68,9 +70,7 @@ PImage ManaphyIDown2;
 PImage ManaphyIUp1;
 PImage ManaphyIUp2;
 
-
-PImage background;
-PImage bluebackground;
+//BERRIES
 PImage OranBerry;
 PImage NanabBerry;
 PImage RazzBerry;
