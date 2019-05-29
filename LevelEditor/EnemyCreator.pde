@@ -4,6 +4,7 @@ class Enemies {
   float y;
   float tx;
   float ty;
+  PImage pic;
   Player target;
   int[] moves=new int[8];
   public Enemies(Player a) {
@@ -83,7 +84,6 @@ class Enemies {
     }
   }
   void moveAnimation(int dx, int dy) {
-    PImage pic;
     x+=dx;
     y+=dy;
     if (dx>0) {
