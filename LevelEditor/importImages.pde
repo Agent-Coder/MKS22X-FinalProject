@@ -119,16 +119,51 @@ void importImages() {
   ManaphyIUp1.resize(50,50);
   ManaphyIUp2.resize(50,50);
   
+  //Empoleon Sprites
+  EmpoleonMRight1 = loadImage("SPRITES/Empoleon Sprites/EmpoleonWalkRight1.png");
+  EmpoleonMRight2 = loadImage("SPRITES/Empoleon Sprites/EmpoleonWalkRight2.png");
+  EmpoleonMRight3 = loadImage("SPRITES/Empoleon Sprites/EmpoleonWalkRight3.png");
+  EmpoleonMLeft1 = loadImage("SPRITES/Empoleon Sprites/EmpoleonWalkLeft1.png");
+  EmpoleonMLeft2 = loadImage("SPRITES/Empoleon Sprites/EmpoleonWalkLeft2.png");
+  EmpoleonMLeft3 = loadImage("SPRITES/Empoleon Sprites/EmpoleonWalkLeft3.png");
+  EmpoleonMDown1 = loadImage("SPRITES/Empoleon Sprites/EmpoleonWalkDown1.png");
+  EmpoleonMDown2 = loadImage("SPRITES/Empoleon Sprites/EmpoleonWalkDown2.png");
+  EmpoleonMDown3 = loadImage("SPRITES/Empoleon Sprites/EmpoleonWalkDown3.png");
+  EmpoleonMUp1 = loadImage("SPRITES/Empoleon Sprites/EmpoleonWalkUp1.png");
+  EmpoleonMUp2 = loadImage("SPRITES/Empoleon Sprites/EmpoleonWalkUp2.png");
+  EmpoleonMUp3 = loadImage("SPRITES/Empoleon Sprites/EmpoleonWalkUp3.png");
+  //idle
+  EmpoleonIRight1 = loadImage("SPRITES/Empoleon Sprites/EmpoleonIdleRight1.png");
+  EmpoleonIRight2 = loadImage("SPRITES/Empoleon Sprites/EmpoleonIdleRight2.png");
+  EmpoleonILeft1 = loadImage("SPRITES/Empoleon Sprites/EmpoleonIdleLeft1.png");
+  EmpoleonILeft2 = loadImage("SPRITES/Empoleon Sprites/EmpoleonIdleLeft2.png");
+  EmpoleonIDown1 = loadImage("SPRITES/Empoleon Sprites/EmpoleonIdleDown1.png");
+  EmpoleonIDown2 = loadImage("SPRITES/Empoleon Sprites/EmpoleonIdleDown2.png");
+  EmpoleonIUp1 = loadImage("SPRITES/Empoleon Sprites/EmpoleonIdleUp1.png");
+  EmpoleonIUp2 = loadImage("SPRITES/Empoleon Sprites/EmpoleonIdleUp2.png");
   
+  //Empoleon Sprites resizes
+  EmpoleonMRight1.resize(50,50);
+  EmpoleonMRight2.resize(50,50);
+  EmpoleonMRight3.resize(50,50);
+  EmpoleonMLeft1.resize(50,50);
+  EmpoleonMLeft2.resize(50,50);
+  EmpoleonMLeft3.resize(50,50);
+  EmpoleonMDown1.resize(50,50);
+  EmpoleonMDown2.resize(50,50);
+  EmpoleonMDown3.resize(50,50);
+  EmpoleonMUp1.resize(50,50);
+  EmpoleonMUp2.resize(50,50);
+  EmpoleonMUp3.resize(50,50);
+  EmpoleonIRight1 .resize(50,50);
+  EmpoleonIRight2.resize(50,50);
+  EmpoleonILeft1.resize(50,50);
+  EmpoleonILeft2.resize(50,50);
+  EmpoleonIDown1.resize(47,50);
+  EmpoleonIDown2.resize(50,50);
+  EmpoleonIUp1.resize(47,50);
+  EmpoleonIUp2.resize(50,50);
   
-
-  EmpoleonIDown1 = loadImage("EmpoleonIdleDown1.png");
-  EmpoleonIDown2 = loadImage("EmpoleonIdleDown2.png");
-  ManaphyIDown1.resize(50, 50);
-  ManaphyIDown2.resize(50, 50);
-  EmpoleonIDown1.resize(47, 55);
-  EmpoleonIDown2.resize(51, 55);
- 
   floor = loadImage("MoveTile1.png");
   ice=loadImage("Ice.png");
   ice.resize(50, 49);
