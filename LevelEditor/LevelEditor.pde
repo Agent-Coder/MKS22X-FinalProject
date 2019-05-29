@@ -342,5 +342,3 @@ void keyReleased() {
     keysDown.remove(key);
   }
 }
-
-//debug purposes
