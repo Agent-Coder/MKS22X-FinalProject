@@ -4,6 +4,7 @@ class Enemies {
   float y;
   float tx;
   float ty;
+  PImage pic;
   Player target;
   int[] moves=new int[8];
   public Enemies(Player a) {
@@ -32,9 +33,9 @@ class Enemies {
 
   void update(Block[][] gameBoard) {
     clear();
-    for(int i=0;i<gameBoard.length;i++){
-      for(int k=0;k<gameBoard[0].length;k++){
-        if (gameBoard[i][k]!=null){
+    for (int i=0; i<gameBoard.length; i++) {
+      for (int k=0; k<gameBoard[0].length; k++) {
+        if (gameBoard[i][k]!=null) {
           grid[i][k]=-1;
         }
       }
@@ -72,14 +73,58 @@ class Enemies {
       }
     }
     if (index!=-1) {
-      y+=moves[2*index]*2.5;
-      x+=moves[2*index+1]*2.5;
+      moveAnimation(moves[2*index+1], moves[2*index]);
     }
   }
-  void display() {
-    fill(255, 255, 255);
-    ellipseMode(CORNER);
-    ellipse(x, y, 50, 50);
+  void moveAnimation(int dx, int dy) {
+    x+=dx;
+    y+=dy;
+    if (dx>0) {
+      if (frameCount%30<10) {
+        pic=meowthRM1;
+      } else if (frameCount%30<20) {
+        pic=meowthRM2;
+      } else {
+        pic=meowthRM2;
+      }
+      display(pic);
+    } else if (dx<0) {
+      if (frameCount%30<10) {
+        pic=meowthLM1;
+      } else if (frameCount%30<20) {
+        pic=meowthLM2;
+      } else {
+        pic=meowthLM3;
+      }
+      display(pic);
+    } else if (dy>0) {
+      if (frameCount%30<10) {
+        pic=meowthDM1;
+      } else if (frameCount%30<20) {
+        pic=meowthDM2;
+      } else {
+        pic=meowthDM3;
+      }
+      display(pic);
+    } else if (dy<0) {
+      if (frameCount%30<10) {
+        pic=meowthUM1;
+      } else if (frameCount%30<20) {
+        pic=meowthUM2;
+      } else {
+        pic=meowthUM3;
+      }
+      display(pic);
+    }
+  }
+  void display(PImage i) {
+    image(i, x, y);
+  }
+  float getX() {
+    return x;
+  }
+  float getY() {
+    return y;
   }
 }
 class Spoink extends Enemies {
