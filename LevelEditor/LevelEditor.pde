@@ -1,13 +1,7 @@
 Level1 A=new Level1();
 float mX;
 float mY;
-PImage background;
-PImage bluebackground;
-PImage OranBerry;
-PImage NanabBerry;
-PImage RazzBerry;
-PImage SitrusBerry;
-PImage LumBerry;
+
 String location = "startScreen";
 int animateCount = 0;
 String playerChar = "";
@@ -18,34 +12,7 @@ PImage three;
 PImage four;
 PImage five;
 PFont font;
-PImage ManaphyIdle1;
-PImage ManaphyIdle2;
-PImage GlaceonIdle1;
-PImage GlaceonIdle2;
-PImage EmpoleonIdle1;
-PImage EmpoleonIdle2;
-PImage floor;
-PImage ice;
-PImage rightm1;
-PImage rightm2;
-PImage rightm3;
-PImage leftm1;
-PImage leftm2;
-PImage leftm3;
-PImage rights1;
-PImage rights2;
-PImage lefts1;
-PImage lefts2;
-PImage downm1;
-PImage downm2;
-PImage downm3;
-PImage upm1;
-PImage upm2;
-PImage upm3;
-PImage ups1;
-PImage ups2;
-PImage downs1;
-PImage downs2;
+
 PImage meowthRM1;
 PImage meowthRM2;
 PImage meowthRM3;
@@ -63,6 +30,11 @@ PImage IceA2;
 PImage IceA3;
 PImage IceA4;
 PImage IceA5;
+
+
+
+boolean pause = false;
+
 
 abstract class Levels {
   Block[][] board=new Block[15][15];
@@ -255,62 +227,11 @@ class Level1 extends Levels {
 
 
 
+
 void setup() {
   size(750, 750);
-  background = loadImage("StartScreen.png");
-  bluebackground = loadImage("BlueBackground.png");
-  OranBerry = loadImage("OranBerry.png");
-  LumBerry = loadImage("LumBerry.png");
-  SitrusBerry = loadImage("SitrusBerry.png");
-  RazzBerry = loadImage("RazzBerry.png");
-  NanabBerry = loadImage("NanabBerry.png");
-  background.resize(1000, 750);
-  bluebackground.resize(1000, 750);
-  one = loadImage("L1.png");
-  two = loadImage("L2.png");
-  three = loadImage("L3.png");
-  four = loadImage("L4.png");
-  five = loadImage("L5.png");
-  one.resize(100, 100);
-  two.resize(100, 100);
-  three.resize(100, 100);
-  four.resize(100, 100);
-  five.resize(100, 100);
+  importImages();
   setupText();
-  ManaphyIdle1 = loadImage("ManaphyIdleDown1.png");
-  ManaphyIdle2 = loadImage("ManaphyIdleDown2.png");
-  EmpoleonIdle1 = loadImage("EmpoleonIdleDown1.png");
-  EmpoleonIdle2 = loadImage("EmpoleonIdleDown2.png");
-  GlaceonIdle1 = loadImage("GlaceonIdleDown1.png");
-  GlaceonIdle2 = loadImage("GlaceonIdleDown2.png");
-  ManaphyIdle1.resize(50, 50);
-  ManaphyIdle2.resize(50, 50);
-  EmpoleonIdle1.resize(47, 55);
-  EmpoleonIdle2.resize(51, 55);
-  GlaceonIdle1.resize(50, 50);
-  GlaceonIdle2.resize(50, 50);
-  rightm1 = loadImage("GlaceonWalkRight1.png");
-  rightm2= loadImage("GlaceonWalkRight2.png");
-  rightm3 = loadImage("GlaceonWalkRight3.png");
-  leftm1 = loadImage("GlaceonWalkLeft1.png"); 
-  leftm2 = loadImage("GlaceonWalkLeft2.png");
-  leftm3 = loadImage("GlaceonWalkLeft3.png");
-  rights1 = loadImage("GlaceonRightIdle1.png");
-  rights2 = loadImage("GlaceonRightIdle2.png");
-  lefts1 = loadImage("GlaceonLeftIdle1.png");
-  lefts2 = loadImage("GlaceonLeftIdle2.png");
-  downm1 = loadImage("GlaceonWalkBack1.png");
-  downm2 = loadImage("GlaceonWalkBack2.png");
-  downm3 = loadImage("GlaceonWalkBack3.png");
-  upm1 = loadImage("GlaceonWalkFront1.png");
-  upm2 = loadImage("GlaceonWalkFront2.png");
-  upm3 = loadImage("GlaceonWalkFront3.png");
-  downs1 = loadImage("GlaceonFrontIdle1.png");
-  downs2 = loadImage("GlaceonFrontIdle2.png");
-  ups1 = loadImage("GlaceonBackIdle1.png");
-  ups2 = loadImage("GlaceonBackIdle2.png");
-  floor = loadImage("MoveTile1.png");
-  ice=loadImage("Ice.png");
   IceA1=loadImage("IceA1.png");
   IceA2=loadImage("IceA2.png");
   IceA3=loadImage("IceA3.png");
@@ -333,28 +254,6 @@ void setup() {
   IceA3.resize(50, 50);
   IceA4.resize(50, 50);
   IceA5.resize(50, 50);
-  ice.resize(50, 49);
-  floor.resize(50, 50);
-  rightm1.resize(50, 50);
-  rightm2.resize(50, 50);
-  rightm3.resize(50, 50);
-  leftm1.resize(50, 50) ;
-  leftm2.resize(50, 50);
-  leftm3.resize(50, 50);
-  rights1.resize(50, 50);
-  rights2.resize(50, 50);
-  lefts1.resize(50, 50);
-  lefts2.resize(50, 50);
-  downm1.resize(50, 50);
-  downm2.resize(50, 50);
-  downm3.resize(50, 50);
-  upm1.resize(50, 50);
-  upm2.resize(50, 50);
-  upm3.resize(50, 50);
-  downs1.resize(50, 50);
-  downs2.resize(50, 50);
-  ups1.resize(50, 50);
-  ups2.resize(50, 50);
   meowthRM1.resize(50, 50);
   meowthRM2.resize(50, 50);
   meowthRM3.resize(50, 50);
@@ -367,7 +266,7 @@ void setup() {
   meowthUM1.resize(50, 50);
   meowthUM2.resize(50, 50);
   meowthUM3.resize(50, 50);
-} 
+}
 void draw() {
   background(255);
   mX = mouseX;
@@ -378,27 +277,64 @@ void draw() {
     drawBerries2();
     drawBerries3();
     detectStartGame();
-  } else if (location.equals("levelSelect")&&!starting()) {
+  }
+  else if (location.equals("levelSelect")) {
     image(bluebackground, 0, 0);
     drawLevelScreen();
     detectLevelSelect();
     detectPokemonSelect();
     animateCharSelect();
     drawReady();
-  } else if (starting()) {
+  } else if (location.equals("Level1") && pause == false) {
     A.play();
+  } 
+    if (pause == true) {
+      background(151,223,237);
+      textSize(80);
+      fill(10,10,10);
+      text("PAUSED",215,307);
+      textSize(25);
+      text("Press p to unpause",260,335);
+      noFill();
+      rect(165,360,200,50,15);
+      rect(380,360,200,50,15);
+      rect(265,420,210,50,15);
+      textSize(20);
+      text("Level Select",213,392);
+      text("Restart Level",425,392);
+      text("Unpause",333,450);
+      if (mousePressed && mX >= 164 && mX <= 369 && mY >= 360 && mY <= 412) {
+        location = "levelSelect";
+        pause = false;
+        //WE NEED A RESET LEVEL BUTTON
+      }
+      if (mousePressed && mX >= 376 && mX <= 583 && mY >= 360 && mY <412) {
+        //RESET LEVEL BUTTON
+      }
+      if (mousePressed && mX >= 262 && mX <= 478 && mY >= 420 && mY <473) {
+        pause = false;
+      }
   }
+  
 }
+
 import java.util.*;
 Set<Character> keysDown= new HashSet<Character>();
 Set<Integer> keyCodesDown= new HashSet<Integer>();
+
 void keyPressed() {
   if (key==CODED) {
     keyCodesDown.add(keyCode);
   } else {
     keysDown.add(key);
   }
+  if (key == 'p' && pause == false) {
+    pause = true;
+  } else if (key == 'p' && pause == true) {
+    pause = false;
+  }
 }
+
 void keyReleased() {
   if (key==CODED) {
     keyCodesDown.remove(keyCode);
@@ -406,3 +342,5 @@ void keyReleased() {
     keysDown.remove(key);
   }
 }
+
+//debug purposes
