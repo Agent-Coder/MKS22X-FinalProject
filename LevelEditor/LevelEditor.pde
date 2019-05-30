@@ -20,17 +20,18 @@ abstract class Levels {
   Enemies C;
   //Berries[] D;
   Block[][] map = new Block[15][15];
-
+  ArrayList<Block> attacked;
+  ArrayList<Block> temporary;
+  ArrayList<Berries> berryCount;
+  boolean canMove=true;
   public Levels() {
     B=new Player(350, 350, board);
     C=new Enemies(B);
   };
   abstract void output();
+  abstract void createBerries();
 }
 class Level1 extends Levels {
-  ArrayList<Block> attacked;
-  ArrayList<Block> temporary;
-  boolean canMove=true;
   Block temp;
   Tile[][] boardtile=new Tile[15][15];
   IceBlock[][] start = new IceBlock[15][15];
@@ -38,6 +39,8 @@ class Level1 extends Levels {
     super();
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
+    berryCount=new ArrayList<Berries>();
+    createBerries();
     board[7][3]=new IceBlock(200, 350);
     board[7][4]=new IceBlock(150, 350);
     board[7][5]=new IceBlock(250, 350);
@@ -58,7 +61,16 @@ class Level1 extends Levels {
       }
     }
   }
-
+  void createBerries(){
+    berryCount.add(new OBerries(350,150));
+     berryCount.add(new OBerries(400,150));
+     berryCount.add(new OBerries(450,150));
+  }
+  void displayBerries(){
+    for (int i=0;i<berryCount.size();i++){
+      berryCount.get(i).display();
+    }
+  }
   void output() {
     for (int i=0; i<board.length; i++) {
       for (int j=0; j<board[0].length; j++) {
@@ -90,12 +102,12 @@ class Level1 extends Levels {
     if (frameCount%20==0&&attacked.size()>0) {
       temp=attacked.remove(attacked.size()-1);
       /*if ((round(temp.getxB())==round(C.getX())&&round(temp.getyB())==round(C.getY()))) {
-        temp=null;
-        attacked.clear();
-      } else */if (board[temp.getyB()/50][temp.getxB()/50]==null) {
+       temp=null;
+       attacked.clear();
+       } else */      if (board[temp.getyB()/50][temp.getxB()/50]==null) {
         board[temp.getyB()/50][temp.getxB()/50]=new IceBlock(temp.getxB(), temp.getyB());
         make=true;
-      } else if(board[temp.getyB()/50][temp.getxB()/50].getType()!="borderblock"){
+      } else if (board[temp.getyB()/50][temp.getxB()/50].getType()!="borderblock") {
         board[temp.getyB()/50][temp.getxB()/50]=null;
         make=false;
       }
@@ -112,9 +124,10 @@ class Level1 extends Levels {
     /*if(frameCount%15==0){
      //C.board();
      }*/
-      C.update(board);
+    C.update(board);
     C.moveE();
     B.move(canMove);
+    displayBerries();
   }
 
   ArrayList<Block> attack() {
@@ -221,8 +234,7 @@ void draw() {
     drawBerries2();
     drawBerries3();
     detectStartGame();
-  }
-  else if (location.equals("levelSelect")) {
+  } else if (location.equals("levelSelect")) {
     image(bluebackground, 0, 0);
     drawLevelScreen();
     detectLevelSelect();
@@ -232,34 +244,33 @@ void draw() {
   } else if (location.equals("Level1") && pause == false) {
     A.play();
   } 
-    if (pause == true) {
-      background(151,223,237);
-      textSize(80);
-      fill(10,10,10);
-      text("PAUSED",215,307);
-      textSize(25);
-      text("Press p to unpause",260,335);
-      noFill();
-      rect(165,360,200,50,15);
-      rect(380,360,200,50,15);
-      rect(265,420,210,50,15);
-      textSize(20);
-      text("Level Select",213,392);
-      text("Restart Level",425,392);
-      text("Unpause",333,450);
-      if (mousePressed && mX >= 164 && mX <= 369 && mY >= 360 && mY <= 412) {
-        location = "levelSelect";
-        pause = false;
-        //WE NEED A RESET LEVEL BUTTON
-      }
-      if (mousePressed && mX >= 376 && mX <= 583 && mY >= 360 && mY <412) {
-        //RESET LEVEL BUTTON
-      }
-      if (mousePressed && mX >= 262 && mX <= 478 && mY >= 420 && mY <473) {
-        pause = false;
-      }
+  if (pause == true) {
+    background(151, 223, 237);
+    textSize(80);
+    fill(10, 10, 10);
+    text("PAUSED", 215, 307);
+    textSize(25);
+    text("Press p to unpause", 260, 335);
+    noFill();
+    rect(165, 360, 200, 50, 15);
+    rect(380, 360, 200, 50, 15);
+    rect(265, 420, 210, 50, 15);
+    textSize(20);
+    text("Level Select", 213, 392);
+    text("Restart Level", 425, 392);
+    text("Unpause", 333, 450);
+    if (mousePressed && mX >= 164 && mX <= 369 && mY >= 360 && mY <= 412) {
+      location = "levelSelect";
+      pause = false;
+      //WE NEED A RESET LEVEL BUTTON
+    }
+    if (mousePressed && mX >= 376 && mX <= 583 && mY >= 360 && mY <412) {
+      //RESET LEVEL BUTTON
+    }
+    if (mousePressed && mX >= 262 && mX <= 478 && mY >= 420 && mY <473) {
+      pause = false;
+    }
   }
-  
 }
 
 import java.util.*;
