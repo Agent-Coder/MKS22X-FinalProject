@@ -118,6 +118,24 @@ PImage SpoinkMUp1;
 PImage SpoinkMUp2;
 PImage SpoinkMUp3;
 
+//Mamoswine Move & Idle Images
+PImage MamoswineMRight1;
+PImage MamoswineMRight2;
+PImage MamoswineMLeft1;
+PImage MamoswineMLeft2;
+PImage MamoswineMDown1;
+PImage MamoswineMDown2;
+PImage MamoswineMUp1;
+PImage MamoswineMUp2;
+PImage MamoswineIRight1;
+PImage MamoswineIRight2;
+PImage MamoswineILeft1;
+PImage MamoswineILeft2;
+PImage MamoswineIDown1;
+PImage MamoswineIDown2;
+PImage MamoswineIIp1;
+PImage MamoswineIUp2;
+
 //BERRIES
 PImage OranBerry;
 PImage NanabBerry;

@@ -232,6 +232,8 @@ void importImages() {
   TentacruelMUp1.resize(50, 50);
   TentacruelMUp2.resize(50, 50);
   TentacruelMUp3.resize(50, 50);
+  
+  
    //Spoink Sprites (no idle)
   SpoinkMRight1 = loadImage("SPRITES/Spoink Sprites/SpoinkWalkRight1.png");
   SpoinkMRight2 = loadImage("SPRITES/Spoink Sprites/SpoinkWalkRight2.png");
@@ -259,6 +261,42 @@ void importImages() {
   SpoinkMUp1.resize(50, 50);
   SpoinkMUp2.resize(50, 50);
   SpoinkMUp3.resize(50, 50);
+  
+  //Mamoswine Sprites //ONLY HAS TWO IDLE AND WALKING SPRITES EACH DIRECTION
+  MamoswineMRight1 = loadImage("SPRITES/Mamoswine Sprites/MamoswineWalkRight1.png");
+  MamoswineMRight2 = loadImage("SPRITES/Mamoswine Sprites/MamoswineWalkRight2.png");
+  MamoswineMLeft1 = loadImage("SPRITES/Mamoswine Sprites/MamoswineWalkLeft1.png");
+  MamoswineMLeft2 = loadImage("SPRITES/Mamoswine Sprites/MamoswineWalkLeft2.png");
+  MamoswineMDown1 = loadImage("SPRITES/Mamoswine Sprites/MamoswineWalkDown1.png");
+  MamoswineMDown2 = loadImage("SPRITES/Mamoswine Sprites/MamoswineWalkDown2.png");
+  MamoswineMUp1 = loadImage("SPRITES/Mamoswine Sprites/MamoswineWalkUp1.png");
+  MamoswineMUp2 = loadImage("SPRITES/Mamoswine Sprites/MamoswineWalkUp2.png");
+  MamoswineIRight1 = loadImage("SPRITES/Mamoswine Sprites/MamoswineIdleRight1.png");
+  MamoswineIRight2 = loadImage("SPRITES/Mamoswine Sprites/MamoswineIdleRight2.png");
+  MamoswineILeft1 = loadImage("SPRITES/Mamoswine Sprites/MamoswineIdleLeft1.png");
+  MamoswineILeft2 = loadImage("SPRITES/Mamoswine Sprites/MamoswineIdleLeft2.png");
+  MamoswineIDown1 = loadImage("SPRITES/Mamoswine Sprites/MamoswineIdleDown1.png");
+  MamoswineIDown2 = loadImage("SPRITES/Mamoswine Sprites/MamoswineIdleDown2.png");
+  MamoswineIIp1 = loadImage("SPRITES/Mamoswine Sprites/MamoswineIdleUp1.png");
+  MamoswineIUp2 = loadImage("SPRITES/Mamoswine Sprites/MamoswineIdleUp2.png");
+  
+  //Mamoswine Sprites resizes
+  MamoswineMRight1.resize(50, 50);
+  MamoswineMRight2.resize(50, 50);
+  MamoswineMLeft1.resize(50, 50);
+  MamoswineMLeft2.resize(50, 50);
+  MamoswineMDown1.resize(50, 50);
+  MamoswineMDown2.resize(50, 50);
+  MamoswineMUp1.resize(50, 50);
+  MamoswineMUp2.resize(50, 50);
+  MamoswineIRight1.resize(50, 50);
+  MamoswineIRight2.resize(50, 50);
+  MamoswineILeft1.resize(50, 50);
+  MamoswineILeft2.resize(50, 50);
+  MamoswineIDown1.resize(50, 50);
+  MamoswineIDown2.resize(50, 50);
+  MamoswineIIp1.resize(50, 50);
+  MamoswineIUp2.resize(50, 50);
   
   floor = loadImage("MoveTile1.png");
   ice=loadImage("Ice.png");
