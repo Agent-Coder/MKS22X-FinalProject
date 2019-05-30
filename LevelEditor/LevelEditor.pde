@@ -24,6 +24,11 @@ abstract class Levels {
   ArrayList<Block> temporary;
   ArrayList<Berries> berryCount;
   boolean canMove=true;
+  int oran;
+  int lum;
+  int nanab;
+  int sitrus;
+  int razz;
   public Levels() {
     B=new Player(350, 350, board);
     C=new Enemies(B);
@@ -61,32 +66,45 @@ class Level1 extends Levels {
       }
     }
   }
-  void createBerries(){
-    berryCount.add(new OBerries(250,100));
-     berryCount.add(new OBerries(300,100));
-    berryCount.add(new OBerries(350,100));
-     berryCount.add(new OBerries(400,100));
-     berryCount.add(new OBerries(450,100));
-     berryCount.add(new OBerries(600,250));
-     berryCount.add(new OBerries(600,300));
-     berryCount.add(new OBerries(600,350));
-     berryCount.add(new OBerries(600,400));
-      berryCount.add(new OBerries(600,450));
-      berryCount.add(new OBerries(250,600));
-     berryCount.add(new OBerries(300,600));
-    berryCount.add(new OBerries(350,600));
-     berryCount.add(new OBerries(400,600));
-     berryCount.add(new OBerries(450,600));
-     berryCount.add(new OBerries(450,100));
-     berryCount.add(new OBerries(100,250));
-     berryCount.add(new OBerries(100,300));
-     berryCount.add(new OBerries(100,350));
-     berryCount.add(new OBerries(100,400));
-      berryCount.add(new OBerries(100,450));
-     
+  void createBerries() {
+    berryCount.add(new OBerries(250, 100));
+    berryCount.add(new OBerries(300, 100));
+    berryCount.add(new OBerries(350, 100));
+    berryCount.add(new OBerries(400, 100));
+    berryCount.add(new OBerries(450, 100));
+    berryCount.add(new OBerries(600, 250));
+    berryCount.add(new OBerries(600, 300));
+    berryCount.add(new OBerries(600, 350));
+    berryCount.add(new OBerries(600, 400));
+    berryCount.add(new OBerries(600, 450));
+    berryCount.add(new OBerries(250, 600));
+    berryCount.add(new OBerries(300, 600));
+    berryCount.add(new OBerries(350, 600));
+    berryCount.add(new OBerries(400, 600));
+    berryCount.add(new OBerries(450, 600));
+    berryCount.add(new OBerries(450, 100));
+    berryCount.add(new OBerries(100, 250));
+    berryCount.add(new OBerries(100, 300));
+    berryCount.add(new OBerries(100, 350));
+    berryCount.add(new OBerries(100, 400));
+    berryCount.add(new OBerries(100, 450));
+    oran=25;
+    berryCount.add(new LBerries(50, 50));
+    berryCount.add(new LBerries(100, 50));
+    berryCount.add(new LBerries(50, 100));
+    berryCount.add(new LBerries(650, 650));
+    berryCount.add(new LBerries(650, 600));
+    berryCount.add(new LBerries(600, 650));
+    berryCount.add(new LBerries(650, 50));
+    berryCount.add(new LBerries(650, 100));
+    berryCount.add(new LBerries(600, 50));
+    berryCount.add(new LBerries(50, 650));
+    berryCount.add(new LBerries(50, 600));
+    berryCount.add(new LBerries(100, 650));
+    lum=12;
   }
-  void displayBerries(){
-    for (int i=0;i<berryCount.size();i++){
+  void displayBerries(int berryEnd) {
+    for (int i=0; i<berryEnd; i++) {
       berryCount.get(i).display();
     }
   }
@@ -107,11 +125,15 @@ class Level1 extends Levels {
     }
   }
   void play() {
-    displayBerries();
+    if (oran==0) {
+      displayBerries(25);
+    } else {
+      displayBerries(12);
+    }
     boolean make=true;
     output();
     temporary=attack();
-    
+
     int i=temporary.size()-1;
     while (i>=0) {
       attacked.add(temporary.get(i));
@@ -148,7 +170,6 @@ class Level1 extends Levels {
     C.update(board);
     C.moveE();
     B.move(canMove);
-    
   }
 
   ArrayList<Block> attack() {
