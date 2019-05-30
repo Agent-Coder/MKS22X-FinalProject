@@ -127,7 +127,8 @@ The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or G
 
 ### DAY 13 Wednesday 5/29/19
 :cookie:
-- Finished importing all the other sprites (Mamoswine, Spoink, Crystals, Ditto, Meowth, Tentacruel)
+- Did some spriteing with Crystals, Ditto sprites
+- Finished importing all the other sprites (Mamoswine, Spoink, Crystals, Ditto, Meowth, Tentacruel) into images.pde and importImages.pde
 - Did some code organization
 - Fixed bugs with the Pause button. Now does not work on start screen and level select screen, as intended
 - Started to play around with level2
