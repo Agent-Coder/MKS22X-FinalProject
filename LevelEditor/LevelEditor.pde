@@ -88,17 +88,19 @@ class Level1 extends Levels {
       berryCount.add(new OBerries(350, 100));
       berryCount.add(new OBerries(400, 100));
       berryCount.add(new OBerries(450, 100));
+      
       berryCount.add(new OBerries(600, 250));
       berryCount.add(new OBerries(600, 300));
       berryCount.add(new OBerries(600, 350));
       berryCount.add(new OBerries(600, 400));
       berryCount.add(new OBerries(600, 450));
+      
       berryCount.add(new OBerries(250, 600));
       berryCount.add(new OBerries(300, 600));
       berryCount.add(new OBerries(350, 600));
       berryCount.add(new OBerries(400, 600));
       berryCount.add(new OBerries(450, 600));
-      berryCount.add(new OBerries(450, 100));
+      
       berryCount.add(new OBerries(100, 250));
       berryCount.add(new OBerries(100, 300));
       berryCount.add(new OBerries(100, 350));
@@ -145,8 +147,7 @@ class Level1 extends Levels {
         
         collectBerries(oran);
         displayBerries(oran);
-      } else {
-        
+      } else {     
         collectBerries(lum);
         displayBerries(lum);
       }
