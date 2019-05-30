@@ -1,66 +1,19 @@
-Level1 A=new Level1();
+Level2 L2 = new Level2();
 
-float mX;
-float mY;
-
-String location = "startScreen";
-int animateCount = 0;
-String playerChar = "";
-String selectedLevel = "";
-PImage one;
-PImage two;
-PImage three;
-PImage four;
-PImage five;
-PFont font;
-
-boolean pause = false;
-boolean goVis = false;
-abstract class Levels {
-  Block[][] board=new Block[15][15];
-  Player B;
-  Enemies C;
-  //Berries[] D;
-  Block[][] map = new Block[15][15];
-
-  public Levels() {
-    B=new Player(350, 350, board);
-    C=new Enemies(B);
-  };
-  abstract void output();
-}
-class Level1 extends Levels {
+class Level2 extends Levels {
   ArrayList<Block> attacked;
   ArrayList<Block> temporary;
   boolean canMove=true;
   Block temp;
   Tile[][] boardtile=new Tile[15][15];
   IceBlock[][] start = new IceBlock[15][15];
-  public Level1() {
+  public Level2() {
     super();
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
     board[7][3]=new IceBlock(150, 350);
-    board[7][4]=new IceBlock(200, 350);
-    board[7][5]=new IceBlock(250, 350);
-    board[7][9]=new IceBlock(450, 350);
-    board[7][10]=new IceBlock(500, 350);
-    board[7][11]=new IceBlock(550, 350);
-    for (int i=0; i<board.length; i++) {
-      board[i][0]=new BorderBlock(i*50, 0);
-      board[0][i]=new BorderBlock(0, i*50);
-      board[i][board.length-1]=new BorderBlock(i*50, (board.length-1)*50);
-      board[board.length-1][i]=new BorderBlock((board.length-1)*50, i*50);
-      for (int j=0; j<board[0].length; j++) {
-        boardtile[i][j]=new Tile(i*50, j*50);
-        if (i>=3&&i<board.length-3&&((j>=8&&j<12)||(j>=3&&j<7))) {
-          board[j][i]=new IceBlock(i*50, j*50);
-        }
-        start[i][j]=new IceBlock(i*50, j*50);
-      }
-    }
   }
-
+  
   void output() {
     for (int i=0; i<board.length; i++) {
       for (int j=0; j<board[0].length; j++) {
@@ -183,100 +136,5 @@ class Level1 extends Levels {
     }
     return delete;
   }   
-
-}
-
-void setup() {
-  size(750, 750);
-  importImages();
-  setupText();
-}
-void draw() {
-  background(255);
-  mX = mouseX;
-  mY = mouseY;
-  if (location.equals("startScreen")) {
-    image(background, 0, 0);
-    drawBerries();
-    drawBerries2();
-    drawBerries3();
-    detectStartGame();
-  }
-  else if (location.equals("levelSelect")) {
-    image(bluebackground, 0, 0);
-    drawLevelScreen();
-    detectLevelSelect();
-    detectPokemonSelect();
-    animateCharSelect();
-    drawReady();
-    if (goVis) {
-      if (mousePressed && mX >= 617 && mX <683 && mY >= 684 && mY <=715) {
-        location = selectedLevel;
-      }
-    }
-  } else if (location.equals("1") && pause == false && goVis == true) {
-    A.play();
-  } else if (location.equals("2") && pause == false && goVis == true) {
-    L2.play();
-  }
-    if (pause == true) {
-      background(151,223,237);
-      textSize(80);
-      fill(10,10,10);
-      text("PAUSED",215,307);
-      textSize(25);
-      text("Press p to unpause",260,335);
-      noFill();
-      rect(165,360,200,50,15);
-      rect(380,360,200,50,15);
-      rect(265,420,210,50,15);
-      textSize(20);
-      text("Level Select",213,392);
-      text("Restart Level",425,392);
-      text("Unpause",333,450);
-      if (mousePressed && mX >= 164 && mX <= 369 && mY >= 360 && mY <= 412) {
-        location = "levelSelect";
-        pause = false;
-        goVis = false;
-        playerChar = "";
-        selectedLevel = "";
-        //WE NEED A RESET LEVEL BUTTON
-      }
-      if (mousePressed && mX >= 376 && mX <= 583 && mY >= 360 && mY <412) {
-        //RESET LEVEL BUTTON
-      }
-      if (mousePressed && mX >= 262 && mX <= 478 && mY >= 420 && mY <473) {
-        pause = false;
-      }
-  }
   
-}
-
-import java.util.*;
-Set<Character> keysDown= new HashSet<Character>();
-Set<Integer> keyCodesDown= new HashSet<Integer>();
-
-void keyPressed() {
-  if (key==CODED) {
-    keyCodesDown.add(keyCode);
-  } else {
-    keysDown.add(key);
-  }
-  if (!location.equals("levelSelect") && !location.equals("startScreen") && key == 'p' && pause == false) {
-    pause = true;
-  } else if (key == 'p' && pause == true) {
-    pause = false;
-  }
-}
-
-void keyReleased() {
-  if (key==CODED) {
-    keyCodesDown.remove(keyCode);
-  } else {
-    keysDown.remove(key);
-  }
-}
-
-void mousePressed() {
-  print("X: " + mX + ",Y: " + mY + "\n");
 }

@@ -81,6 +81,7 @@ void drawReady() {
   if (!selectedLevel.equals("") && !playerChar.equals("")) {
     textSize(35);
     text("GO!",620,710);
+    goVis = true;
   }
 }
 

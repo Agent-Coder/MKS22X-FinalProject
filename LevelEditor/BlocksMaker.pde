@@ -11,7 +11,6 @@ abstract class Block {
     destroyable=false;
   }
   void animate(int x, int y, boolean mode) {
-    int a;
     if (mode) {
       if (frameCount%20<4) {
         image(IceA1, x, y);
@@ -70,6 +69,15 @@ class IceBlock extends Block {
   void display() {
     image(ice, xB, yB);
   }
-
-  //}
+}
+class CrystalBlock extends Block {
+  public CrystalBlock(int x, int y) {
+    type = "crystalblock";
+    xB=x;
+    xB=y;
+    destroyable=false;
+  }
+  void display() {
+    image(CrystalBlue,xB,yB);
+  }
 }
