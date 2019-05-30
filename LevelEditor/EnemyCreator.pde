@@ -30,6 +30,7 @@ class Enemies {
       }
     }
   }
+
   void update(Block[][] gameBoard) {
     clear();
     for (int i=0; i<gameBoard.length; i++) {
@@ -41,13 +42,14 @@ class Enemies {
     }
     tx=target.getPX();
     ty=target.getPY();
+
     fillGrid(round(ty/50), round(tx/50), 1);
     //board();
     //System.out.println(target.getPX()+" "+target.getPY());
     //moveE();
   }
   void fillGrid(int xer, int yer, int num) {
-    if (xer<grid.length&&xer>=0&&yer>=0&&yer<grid.length&&grid[xer][yer]!=1&&(grid[xer][yer]==0||grid[xer][yer]>num)) {
+    if (xer<grid.length&&xer>=0&&yer>=0&&yer<grid.length&&grid[xer][yer]!=1&&(grid[xer][yer]==0||grid[xer][yer]>num&&grid[xer][yer]!=-1)) {
       grid[xer][yer]=num;
       fillGrid(xer+1, yer, num+1);
       fillGrid(xer, yer+1, num+1);
@@ -55,16 +57,7 @@ class Enemies {
       fillGrid(xer, yer-1, num+1);
     }
   }
-  void board() {
-    for (int i=0; i<grid.length; i++) {
-      for (int j=0; j<grid.length; j++) {
-        System.out.print(grid[i][j]+" ");
-      }
-      System.out.println();
-    }
-    System.out.println();
-    //System.out.println(x+" "+y);
-  }
+
   void moveE() {
     int a=round((y)/50);
     int b=round((x)/50);
@@ -88,38 +81,38 @@ class Enemies {
     y+=dy;
     if (dx>0) {
       if (frameCount%30<10) {
-        pic=meowthRM1;
+        pic=MeowthMRight1;
       } else if (frameCount%30<20) {
-        pic=meowthRM2;
+        pic=MeowthMRight2;
       } else {
-        pic=meowthRM2;
+        pic=MeowthMRight3;
       }
       display(pic);
     } else if (dx<0) {
       if (frameCount%30<10) {
-        pic=meowthLM1;
+        pic=MeowthMLeft1;
       } else if (frameCount%30<20) {
-        pic=meowthLM2;
+        pic=MeowthMLeft2;
       } else {
-        pic=meowthLM3;
+        pic=MeowthMLeft3;
       }
       display(pic);
     } else if (dy>0) {
       if (frameCount%30<10) {
-        pic=meowthDM1;
+        pic=MeowthMDown1;
       } else if (frameCount%30<20) {
-        pic=meowthDM2;
+        pic=MeowthMDown2;
       } else {
-        pic=meowthDM3;
+        pic=MeowthMDown3;
       }
       display(pic);
     } else if (dy<0) {
       if (frameCount%30<10) {
-        pic=meowthUM1;
+        pic=MeowthMUp1;
       } else if (frameCount%30<20) {
-        pic=meowthUM2;
+        pic=MeowthMUp2;
       } else {
-        pic=meowthUM3;
+        pic=MeowthMUp3;
       }
       display(pic);
     }

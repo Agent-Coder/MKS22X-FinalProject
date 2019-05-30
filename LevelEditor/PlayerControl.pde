@@ -1,12 +1,4 @@
 class Player {
-  PImage[] images={rightm1, rightm2, rightm3, 
-    leftm1, leftm2, leftm3, 
-    rights1, rights2, 
-    lefts1, lefts2, 
-    downm1, downm2, downm3, 
-    upm1, upm2, upm3, 
-    ups1, ups2, 
-    downs1, downs2};
   Block[][] board;
   float x, y, xcor, ycor, speed;
   String prevKey;
@@ -31,97 +23,284 @@ class Player {
   void display(PImage i, float x, float y) {
     image(i, x, y);
   }
+
   void move(boolean canMove) {
-    if (keyCodesDown.contains(RIGHT)&&canMove) {
-      PImage r=rightm1;
-      if (frameCount%30<10) {
-        r=rightm1;
-      } else if (frameCount%30<20) {
-        r=rightm2;
-      } else {
-        r=rightm3;
-      }
-      if (xcor+speed<650&&board[round(ycor/50)][round((xcor+speed)/50)]==null) {
-        xcor+=speed;
-        display(r, xcor+speed, ycor);
-      } else {
-        display(r, xcor, ycor);
-      }
-      prevKey="right";
-    } else if (keyCodesDown.contains(LEFT)&&canMove) {
-      PImage r=leftm1;
-      if (frameCount%30<10) {
-        r=leftm1;
-      } else if (frameCount%30<20) {
-        r=leftm2;
-      } else {
-        r=leftm3;
-      }
-      if (xcor+speed>=50&&board[round(ycor/50)][round((xcor-speed)/50)]==null) {
-        xcor+=-1* speed;
-        display(r, xcor-speed, ycor);
-      } else {
-        display(r, xcor, ycor);
-      }
-      prevKey="left";
-    } else if (keyCodesDown.contains(DOWN)&&canMove) {
-      PImage r=downm1;
-      if (frameCount%30<10) {
-        r=downm1;
-      } else if (frameCount%30<20) {
-        r=downm2;
-      } else {
-        r=downm3;
-      }
-      if (ycor+speed<650&&board[round((ycor+speed)/50)][round(xcor/50)]==null) {
-        ycor+=speed;
-        display(r, xcor, ycor+speed);
-      } else {
-        display(r, xcor, ycor);
-      }
-      prevKey="down";
-    } else if (keyCodesDown.contains(UP)&&canMove) {
-      PImage r=upm1;
-      if (frameCount%30<10) {
-        r=upm1;
-      } else if (frameCount%30<10) {
-        r=upm2;
-      } else {
-        r=upm3;
-      }
-      if (ycor-speed>50&&board[round((ycor-speed)/50)][round(xcor/50)]==null) {
-        ycor-=speed;
-        display(r, xcor, ycor-speed);
-      } else {
-        display(r, xcor, ycor);
-      }
-      prevKey="up";
-    } else {
-      if (prevKey.equals("right")) {
-        if (frameCount%30<15) {
-          display(rights1, xcor, ycor);
+    if (playerChar.equals("Glaceon")) {
+      if (keyCodesDown.contains(RIGHT)&&canMove) {
+        PImage r=GlaceonMRight1;
+        if (frameCount%30<10) {
+          r=GlaceonMRight1;
+        } else if (frameCount%30<20) {
+          r=GlaceonMRight2;
         } else {
-          display(rights2, xcor, ycor);
+          r=GlaceonMRight3;
         }
-      } else if (prevKey.equals("left")) {
-        if (frameCount%30<15) {
-          display(lefts1, xcor, ycor);
+        if (xcor+speed<650&&board[round(ycor/50)][round((xcor+speed)/50)]==null) {
+          xcor+=speed;
+          display(r, xcor+speed, ycor);
         } else {
-          display(lefts2, xcor, ycor);
+          display(r, xcor, ycor);
         }
-      } else if (prevKey.equals("up")) {
-        if (frameCount%30<15) {
-          display(ups1, xcor, ycor);
+        prevKey="right";
+      } else if (keyCodesDown.contains(LEFT)&&canMove) {
+        PImage r=GlaceonMLeft1;
+        if (frameCount%30<10) {
+          r=GlaceonMLeft1;
+        } else if (frameCount%30<20) {
+          r=GlaceonMLeft2;
         } else {
-          display(ups2, xcor, ycor);
+          r=GlaceonMLeft3;
         }
+        if (xcor+speed>=50&&board[round(ycor/50)][round((xcor-speed)/50)]==null) {
+          xcor+=-1* speed;
+          display(r, xcor-speed, ycor);
+        } else {
+          display(r, xcor, ycor);
+        }
+        prevKey="left";
+      } else if (keyCodesDown.contains(DOWN)&&canMove) {
+        PImage r=GlaceonMDown1;
+        if (frameCount%30<10) {
+          r=GlaceonMDown1;
+        } else if (frameCount%30<20) {
+          r=GlaceonMDown2;
+        } else {
+          r=GlaceonMDown3;
+        }
+        if (ycor+speed<650&&board[round((ycor+speed)/50)][round(xcor/50)]==null) {
+          ycor+=speed;
+          display(r, xcor, ycor+speed);
+        } else {
+          display(r, xcor, ycor);
+        }
+        prevKey="down";
+      } else if (keyCodesDown.contains(UP)&&canMove) {
+        PImage r=GlaceonMUp1;
+        if (frameCount%30<10) {
+          r=GlaceonMUp1;
+        } else if (frameCount%30<10) {
+          r=GlaceonMUp2;
+        } else {
+          r=GlaceonMUp3;
+        }
+        if (ycor-speed>50&&board[round((ycor-speed)/50)][round(xcor/50)]==null) {
+          ycor-=speed;
+          display(r, xcor, ycor-speed);
+        } else {
+          display(r, xcor, ycor);
+        }
+        prevKey="up";
       } else {
-        if (frameCount%30<15) {
-          display(downs1, xcor, ycor);
+        if (prevKey.equals("right")) {
+          if (frameCount%30<15) {
+            display(GlaceonIRight1, xcor, ycor);
+          } else {
+            display(GlaceonIRight2, xcor, ycor);
+          }
+        } else if (prevKey.equals("left")) {
+          if (frameCount%30<15) {
+            display(GlaceonILeft1, xcor, ycor);
+          } else {
+            display(GlaceonILeft2, xcor, ycor);
+          }
+        } else if (prevKey.equals("up")) {
+          if (frameCount%30<15) {
+            display(GlaceonIUp1, xcor, ycor);
+          } else {
+            display(GlaceonIUp2, xcor, ycor);
+          }
         } else {
-          display(downs2, xcor, ycor);
+          if (frameCount%30<15) {
+            display(GlaceonIDown1, xcor, ycor);
+          } else {
+            display(GlaceonIDown2, xcor, ycor);
+          }
         }
       }
+    } else if (playerChar.equals("Empoleon")) {
+        if (keyCodesDown.contains(RIGHT)&&canMove) {
+          PImage r=EmpoleonMRight1;
+          if (frameCount%30<10) {
+            r=EmpoleonMRight1;
+          } else if (frameCount%30<20) {
+            r=EmpoleonMRight2;
+          } else {
+            r=EmpoleonMRight3;
+          }
+          if (xcor+speed<650&&board[round(ycor/50)][round((xcor+speed)/50)]==null) {
+            xcor+=speed;
+            display(r, xcor+speed, ycor);
+          } else {
+            display(r, xcor, ycor);
+          }
+          prevKey="right";
+        } else if (keyCodesDown.contains(LEFT)&&canMove) {
+          PImage r=EmpoleonMLeft1;
+          if (frameCount%30<10) {
+            r=EmpoleonMLeft1;
+          } else if (frameCount%30<20) {
+            r=EmpoleonMLeft2;
+          } else {
+            r=EmpoleonMLeft3;
+          }
+          if (xcor+speed>=50&&board[round(ycor/50)][round((xcor-speed)/50)]==null) {
+            xcor+=-1* speed;
+            display(r, xcor-speed, ycor);
+          } else {
+            display(r, xcor, ycor);
+          }
+          prevKey="left";
+        } else if (keyCodesDown.contains(DOWN)&&canMove) {
+          PImage r=EmpoleonMDown1;
+          if (frameCount%30<10) {
+            r=EmpoleonMDown1;
+          } else if (frameCount%30<20) {
+            r=EmpoleonMDown2;
+          } else {
+            r=EmpoleonMDown3;
+          }
+          if (ycor+speed<650&&board[round((ycor+speed)/50)][round(xcor/50)]==null) {
+            ycor+=speed;
+            display(r, xcor, ycor+speed);
+          } else {
+            display(r, xcor, ycor);
+          }
+          prevKey="down";
+        } else if (keyCodesDown.contains(UP)&&canMove) {
+          PImage r=EmpoleonMUp1;
+          if (frameCount%30<10) {
+            r=EmpoleonMUp1;
+          } else if (frameCount%30<10) {
+            r=EmpoleonMUp2;
+          } else {
+            r=EmpoleonMUp3;
+          }
+          if (ycor-speed>50&&board[round((ycor-speed)/50)][round(xcor/50)]==null) {
+            ycor-=speed;
+            display(r, xcor, ycor-speed);
+          } else {
+            display(r, xcor, ycor);
+          }
+          prevKey="up";
+        } else {
+          if (prevKey.equals("right")) {
+            if (frameCount%30<15) {
+              display(EmpoleonIRight1, xcor, ycor);
+            } else {
+              display(EmpoleonIRight2, xcor, ycor);
+            }
+          } else if (prevKey.equals("left")) {
+            if (frameCount%30<15) {
+              display(EmpoleonILeft1, xcor, ycor);
+            } else {
+              display(EmpoleonILeft2, xcor, ycor);
+            }
+          } else if (prevKey.equals("up")) {
+            if (frameCount%30<15) {
+              display(EmpoleonIUp1, xcor, ycor);
+            } else {
+              display(EmpoleonIUp2, xcor, ycor);
+            }
+          } else {
+            if (frameCount%30<15) {
+              display(EmpoleonIDown1, xcor, ycor);
+            } else {
+              display(EmpoleonIDown2, xcor, ycor);
+            }
+          }
+        } 
+    } else { //Manaphy
+      if (keyCodesDown.contains(RIGHT)&&canMove) {
+          PImage r=ManaphyMRight1;
+          if (frameCount%30<10) {
+            r=ManaphyMRight1;
+          } else if (frameCount%30<20) {
+            r=ManaphyMRight2;
+          } else {
+            r=ManaphyMRight3;
+          }
+          if (xcor+speed<650&&board[round(ycor/50)][round((xcor+speed)/50)]==null) {
+            xcor+=speed;
+            display(r, xcor+speed, ycor);
+          } else {
+            display(r, xcor, ycor);
+          }
+          prevKey="right";
+        } else if (keyCodesDown.contains(LEFT)&&canMove) {
+          PImage r=ManaphyMLeft1;
+          if (frameCount%30<10) {
+            r=ManaphyMLeft1;
+          } else if (frameCount%30<20) {
+            r=ManaphyMLeft2;
+          } else {
+            r=ManaphyMLeft3;
+          }
+          if (xcor+speed>=50&&board[round(ycor/50)][round((xcor-speed)/50)]==null) {
+            xcor+=-1* speed;
+            display(r, xcor-speed, ycor);
+          } else {
+            display(r, xcor, ycor);
+          }
+          prevKey="left";
+        } else if (keyCodesDown.contains(DOWN)&&canMove) {
+          PImage r=ManaphyMDown1;
+          if (frameCount%30<10) {
+            r=ManaphyMDown1;
+          } else if (frameCount%30<20) {
+            r=ManaphyMDown2;
+          } else {
+            r=ManaphyMDown3;
+          }
+          if (ycor+speed<650&&board[round((ycor+speed)/50)][round(xcor/50)]==null) {
+            ycor+=speed;
+            display(r, xcor, ycor+speed);
+          } else {
+            display(r, xcor, ycor);
+          }
+          prevKey="down";
+        } else if (keyCodesDown.contains(UP)&&canMove) {
+          PImage r=ManaphyMUp1;
+          if (frameCount%30<10) {
+            r=ManaphyMUp1;
+          } else if (frameCount%30<10) {
+            r=ManaphyMUp2;
+          } else {
+            r=ManaphyMUp3;
+          }
+          if (ycor-speed>50&&board[round((ycor-speed)/50)][round(xcor/50)]==null) {
+            ycor-=speed;
+            display(r, xcor, ycor-speed);
+          } else {
+            display(r, xcor, ycor);
+          }
+          prevKey="up";
+        } else {
+          if (prevKey.equals("right")) {
+            if (frameCount%30<15) {
+              display(ManaphyIRight1, xcor, ycor);
+            } else {
+              display(ManaphyIRight2, xcor, ycor);
+            }
+          } else if (prevKey.equals("left")) {
+            if (frameCount%30<15) {
+              display(ManaphyILeft1, xcor, ycor);
+            } else {
+              display(ManaphyILeft2, xcor, ycor);
+            }
+          } else if (prevKey.equals("up")) {
+            if (frameCount%30<15) {
+              display(ManaphyIUp1, xcor, ycor);
+            } else {
+              display(ManaphyIUp2, xcor, ycor);
+            }
+          } else {
+            if (frameCount%30<15) {
+              display(ManaphyIDown1, xcor, ycor);
+            } else {
+              display(ManaphyIDown2, xcor, ycor);
+            }
+          }
+        } 
     }
   }
 }
