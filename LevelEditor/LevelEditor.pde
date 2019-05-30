@@ -35,6 +35,7 @@ abstract class Levels {
   };
   abstract void output();
   abstract void createBerries();
+  abstract void collectBerries();
 }
 class Level1 extends Levels {
   Block temp;
@@ -66,43 +67,50 @@ class Level1 extends Levels {
       }
     }
   }
-  void createBerries() {
-    berryCount.add(new OBerries(250, 100));
-    berryCount.add(new OBerries(300, 100));
-    berryCount.add(new OBerries(350, 100));
-    berryCount.add(new OBerries(400, 100));
-    berryCount.add(new OBerries(450, 100));
-    berryCount.add(new OBerries(600, 250));
-    berryCount.add(new OBerries(600, 300));
-    berryCount.add(new OBerries(600, 350));
-    berryCount.add(new OBerries(600, 400));
-    berryCount.add(new OBerries(600, 450));
-    berryCount.add(new OBerries(250, 600));
-    berryCount.add(new OBerries(300, 600));
-    berryCount.add(new OBerries(350, 600));
-    berryCount.add(new OBerries(400, 600));
-    berryCount.add(new OBerries(450, 600));
-    berryCount.add(new OBerries(450, 100));
-    berryCount.add(new OBerries(100, 250));
-    berryCount.add(new OBerries(100, 300));
-    berryCount.add(new OBerries(100, 350));
-    berryCount.add(new OBerries(100, 400));
-    berryCount.add(new OBerries(100, 450));
-    oran=25;
-    berryCount.add(new LBerries(50, 50));
-    berryCount.add(new LBerries(100, 50));
-    berryCount.add(new LBerries(50, 100));
-    berryCount.add(new LBerries(650, 650));
-    berryCount.add(new LBerries(650, 600));
-    berryCount.add(new LBerries(600, 650));
-    berryCount.add(new LBerries(650, 50));
-    berryCount.add(new LBerries(650, 100));
-    berryCount.add(new LBerries(600, 50));
-    berryCount.add(new LBerries(50, 650));
-    berryCount.add(new LBerries(50, 600));
-    berryCount.add(new LBerries(100, 650));
-    lum=12;
-  }
+  void collectBerries(int berryEnd) {
+    for (int i=0; i<berryEnd; i++) {
+      if (round(B.getPX())==berryCount.get(i).getBerryX()&&round(B.getPY())==berryCount.get(i).getBerryY()){
+        berryCount.remove(i);
+        if
+      }
+    }
+    void createBerries() {
+      berryCount.add(new OBerries(250, 100));
+      berryCount.add(new OBerries(300, 100));
+      berryCount.add(new OBerries(350, 100));
+      berryCount.add(new OBerries(400, 100));
+      berryCount.add(new OBerries(450, 100));
+      berryCount.add(new OBerries(600, 250));
+      berryCount.add(new OBerries(600, 300));
+      berryCount.add(new OBerries(600, 350));
+      berryCount.add(new OBerries(600, 400));
+      berryCount.add(new OBerries(600, 450));
+      berryCount.add(new OBerries(250, 600));
+      berryCount.add(new OBerries(300, 600));
+      berryCount.add(new OBerries(350, 600));
+      berryCount.add(new OBerries(400, 600));
+      berryCount.add(new OBerries(450, 600));
+      berryCount.add(new OBerries(450, 100));
+      berryCount.add(new OBerries(100, 250));
+      berryCount.add(new OBerries(100, 300));
+      berryCount.add(new OBerries(100, 350));
+      berryCount.add(new OBerries(100, 400));
+      berryCount.add(new OBerries(100, 450));
+      oran=25;
+      berryCount.add(new LBerries(50, 50));
+      berryCount.add(new LBerries(100, 50));
+      berryCount.add(new LBerries(50, 100));
+      berryCount.add(new LBerries(650, 650));
+      berryCount.add(new LBerries(650, 600));
+      berryCount.add(new LBerries(600, 650));
+      berryCount.add(new LBerries(650, 50));
+      berryCount.add(new LBerries(650, 100));
+      berryCount.add(new LBerries(600, 50));
+      berryCount.add(new LBerries(50, 650));
+      berryCount.add(new LBerries(50, 600));
+      berryCount.add(new LBerries(100, 650));
+      lum=12;
+    }
   void displayBerries(int berryEnd) {
     for (int i=0; i<berryEnd; i++) {
       berryCount.get(i).display();
@@ -125,10 +133,10 @@ class Level1 extends Levels {
     }
   }
   void play() {
-    if (oran==0) {
-      displayBerries(25);
+    if (oran!=0) {
+      displayBerries(oran);
     } else {
-      displayBerries(12);
+      displayBerries(lum);
     }
     boolean make=true;
     output();
