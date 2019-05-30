@@ -9,57 +9,62 @@ abstract class Berries {
     berryType="Berry";
     //berryCount=0;
   }
-  int getBerryX(){
-  return berryX;}
-  int getBerryY(){
-  return berryY;}
+  int getBerryX() {
+    return berryX;
+  }
+  int getBerryY() {
+    return berryY;
+  }
   /*int berryLeft() {
-    return berryCount;
-  }*/
+   return berryCount;
+   }*/
+  String getBerryType() {
+    return berryType;
+  }
   abstract void display();
 }
-class OBerries extends Berries{
+class OBerries extends Berries {
   public OBerries(int x, int y) {
     super(x, y);
     berryType="OranBerry";
   }
   void display() {
-    image(OranBerry, berryX, berryY);
+    image(OranBerry2, berryX, berryY);
   }
 }
-class LBerries extends Berries{
+class LBerries extends Berries {
   public LBerries(int x, int y) {
     super(x, y);
     berryType="LumBerry";
   }
   void display() {
-    image(LumBerry, berryX, berryY);
+    image(LumBerry2, berryX, berryY);
   }
 }
-class NBerries extends Berries{
+class NBerries extends Berries {
   public NBerries(int x, int y) {
     super(x, y);
     berryType="NanabBerry";
   }
   void display() {
-    image(NanabBerry,berryX, berryY);
+    image(NanabBerry2, berryX, berryY);
   }
 }
-class SBerries extends Berries{
+class SBerries extends Berries {
   public SBerries(int x, int y) {
     super(x, y);
     berryType="SitrusBerry";
   }
   void display() {
-    image(SitrusBerry,berryX, berryY);
+    image(SitrusBerry2, berryX, berryY);
   }
 }
-class RBerries extends Berries{
+class RBerries extends Berries {
   public RBerries(int x, int y) {
     super(x, y);
     berryType="RazzBerry";
   }
   void display() {
-    image(RazzBerry,berryX, berryY);
+    image(RazzBerry2, berryX, berryY);
   }
 }
