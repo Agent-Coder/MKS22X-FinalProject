@@ -124,3 +124,13 @@ The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or G
   - importImages.pde allows for loadImage() to be called for each individual sprite, references sprites in sprites folder
 - imported sprites for the three playable Pokemon
 - implemented the other two playable Pokemon. Players now have access to three different Pokemon to play as!
+
+### DAY 13 Wednesday 5/29/19
+:cookie:
+- Finished importing all the other sprites (Mamoswine, Spoink, Crystals, Ditto, Meowth, Tentacruel)
+- Did some code organization
+- Fixed bugs with the Pause button. Now does not work on start screen and level select screen, as intended
+- Started to play around with level2
+
+:doughnut:
+- Discussed designs of levels 2-5
