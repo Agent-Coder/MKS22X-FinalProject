@@ -136,6 +136,19 @@ PImage MamoswineIDown2;
 PImage MamoswineIIp1;
 PImage MamoswineIUp2;
 
+//Ditto Animation Sprites
+PImage Ditto1;
+PImage Ditto2;
+PImage Ditto3;
+
+//Crystal Sprites
+PImage CrystalBlue;
+PImage CrystalPurple;
+PImage CrystalGreen;
+PImage CrystalYellow;
+PImage CrystalOrange;
+PImage CrystalRed;
+
 //BERRIES
 PImage OranBerry;
 PImage NanabBerry;

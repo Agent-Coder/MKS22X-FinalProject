@@ -298,6 +298,28 @@ void importImages() {
   MamoswineIIp1.resize(50, 50);
   MamoswineIUp2.resize(50, 50);
   
+  //Ditto Sprites //only animation sprites to become player Pokemon
+  Ditto1 = loadImage("SPRITES/Ditto Sprites/Ditto1.png");
+  Ditto2 = loadImage("SPRITES/Ditto Sprites/Ditto2.png");
+  Ditto3 = loadImage("SPRITES/Ditto Sprites/Ditto3.png");
+  
+  //Ditto Sprites Resizes
+  Ditto1.resize(50,50);
+  Ditto2.resize(50,50);
+  Ditto3.resize(50,50);
+  
+  //Crystal Sprites
+  CrystalRed = loadImage("SPRITES/Crystal Sprites/CrystalRed.png");
+  CrystalYellow = loadImage("SPRITES/Crystal Sprites/CrystalYellow.png");
+  CrystalOrange = loadImage("SPRITES/Crystal Sprites/CrystalOrange.png");
+  CrystalBlue = loadImage("SPRITES/Crystal Sprites/CrystalBlue.png");
+  CrystalGreen = loadImage("SPRITES/Crystal Sprites/CrystalGreen.png");
+  CrystalPurple = loadImage("SPRITES/Crystal Sprites/CrystalPurple.png");
+  
+  //Crystal Sprites Resizes
+  //***NEED TO IMPLEMENT && TEST
+  
+  
   floor = loadImage("MoveTile1.png");
   ice=loadImage("Ice.png");
   ice.resize(50, 49);
