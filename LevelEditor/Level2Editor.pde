@@ -1,4 +1,4 @@
-Level2 L2 = new Level2();
+/*Level2 L2 = new Level2();
 
 class Level2 extends Levels {
   Random rng = new Random();
@@ -29,10 +29,10 @@ class Level2 extends Levels {
     }
     if (frameCount%20==0&&attacked.size()>0) {
       temp=attacked.remove(attacked.size()-1);
-      /*if ((round(temp.getxB())==round(C.getX())&&round(temp.getyB())==round(C.getY()))) {
+      if ((round(temp.getxB())==round(C.getX())&&round(temp.getyB())==round(C.getY()))) {
         temp=null;
         attacked.clear();
-      } else */if (board[temp.getyB()/50][temp.getxB()/50]==null) {
+      } else if (board[temp.getyB()/50][temp.getxB()/50]==null) {
         board[temp.getyB()/50][temp.getxB()/50]=new IceBlock(temp.getxB(), temp.getyB());
         make=true;
       } else if(board[temp.getyB()/50][temp.getxB()/50].getType()!="borderblock"){
@@ -65,4 +65,4 @@ class Level2 extends Levels {
         }
       }
   } 
-}
+}*/

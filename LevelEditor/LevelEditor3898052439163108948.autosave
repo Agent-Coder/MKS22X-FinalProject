@@ -26,9 +26,9 @@ abstract class Levels {
   ArrayList<Block> attacked;
   ArrayList<Block> temporary;
   ArrayList<Berries> berryCount;
-  Tile[][] boardtile=new Tile[15][15];
-  Block temp;
   boolean canMove=true;
+  Block temp;
+  Tile[][] boardtile=new Tile[15][15];
   int oran;
   int lum;
   int nanab;
@@ -269,6 +269,7 @@ class Level1 extends Levels {
 }
 
 
+
 void setup() {
   size(750, 750);
   importImages();
@@ -326,7 +327,7 @@ void draw() {
       pause = false;
     }
   } else if (location.equals("2") && pause == false && goVis == true) {
-    //L2.play();
+    L2.play();
   }
   if (pause == true) {
     background(151, 223, 237);
@@ -383,8 +384,4 @@ void keyReleased() {
   } else {
     keysDown.remove(key);
   }
-}
-
-void mousePressed() {
-  print("X: " + mX + ",Y: " + mY + "\n");
 }

@@ -79,9 +79,7 @@ class Enemies {
     if (index!=-1) {
       dx=moves[2*index+1];
       dy=moves[2*index];
-    }else{
-    dx=0;
-  dy=0;}
+    }
   }
 void moveAnimation() {
   x+=dx;
