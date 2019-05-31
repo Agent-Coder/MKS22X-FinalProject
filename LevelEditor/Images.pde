@@ -155,3 +155,8 @@ PImage NanabBerry;
 PImage RazzBerry;
 PImage SitrusBerry;
 PImage LumBerry;
+PImage OranBerry2;
+PImage NanabBerry2;
+PImage RazzBerry2;
+PImage SitrusBerry2;
+PImage LumBerry2;

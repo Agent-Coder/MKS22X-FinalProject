@@ -196,6 +196,7 @@ class Level1 extends Levels {
      }*/
     C.update(board);
     C.moveE();
+    C.moveAnimation();
     B.move(canMove);
   }
 
