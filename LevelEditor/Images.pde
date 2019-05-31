@@ -10,6 +10,20 @@ PImage IceA3;
 PImage IceA4;
 PImage IceA5;
 
+//Wall Sprites
+PImage WallBottom;
+PImage WallBottomAlt;
+PImage WallLeft;
+PImage WallLeftAlt;
+PImage WallRight;
+PImage WallRightAlt;
+PImage WallTop;
+PImage WallTopAlt;
+PImage WallTopRight;
+PImage WallTopLeft;
+PImage WallBottomRight;
+PImage WallBottomLeft;
+
 //GLACEON MOVE & IDLE IMAGES
 PImage GlaceonMRight1;
 PImage GlaceonMRight2;

@@ -1,11 +1,7 @@
-
-
 void detectStartGame() {
-  boolean prevent = true; //prevents automatic selection of Glaceon as character
-  if (prevent == true && mousePressed == true && mX >= 335 && mX <=425 &&
+  if (mousePressed == true && mX >= 335 && mX <=425 &&
       mY >= 395 && mY <=431) {
         location = "levelSelect";
-        prevent= false;
       }
 }
 
@@ -13,7 +9,6 @@ void detectLevelSelect() {
    if (mousePressed == true && mX >= 50 && mX <=150 &&
      mY >=160 && mY < 260) {
        selectedLevel = "1";
-       location = "Level1";
    }
    
    if (mousePressed == true && mX >= 180 && mX <=280 &&

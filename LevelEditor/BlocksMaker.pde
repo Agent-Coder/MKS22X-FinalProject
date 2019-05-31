@@ -11,7 +11,6 @@ abstract class Block {
     destroyable=false;
   }
   void animate(int x, int y, boolean mode) {
-    int a;
     if (mode) {
       if (frameCount%20<4) {
         image(IceA1, x, y);
@@ -50,16 +49,31 @@ abstract class Block {
   }
 }
 class BorderBlock extends Block {
+  int alt;
   public BorderBlock(int x, int y) {
+    Random rng = new Random();
+     alt = rng.nextInt(2);
     type="borderblock";
     xB=x;
     yB=y;
     destroyable=false;
   }
   void display() {
-    image(ice, xB, yB);
+    if (xB == 0) image(WallLeft,xB,yB);
+    if (xB == 0 && alt == 1) image(WallLeftAlt,xB,yB);
+    if (yB == 0) image(WallTop,xB,yB);
+    if (yB == 0 && alt == 1) image(WallTopAlt,xB,yB);
+    if (xB == 700) image(WallRight,xB,yB);
+    if (xB == 700 && alt == 1) image(WallRightAlt,xB,yB);
+    if (yB == 700) image(WallBottom,xB,yB);
+    if (yB == 700 && alt == 1) image(WallBottomAlt,xB,yB);
+    if (yB == 0 && xB == 700) image(WallTopRight,xB,yB);
+    if (yB == 0 && xB == 0) image(WallTopLeft,xB,yB);
+    if (yB == 700 && xB == 0) image(WallBottomLeft,xB,yB);
+    if (yB == 700 && xB == 700) image(WallBottomRight,xB,yB);
   }
 }
+
 class IceBlock extends Block {
   public IceBlock(int x, int y) {
     type="iceblock";
@@ -70,6 +84,15 @@ class IceBlock extends Block {
   void display() {
     image(ice, xB, yB);
   }
-
-  //}
+}
+class CrystalBlock extends Block {
+  public CrystalBlock(int x, int y) {
+    type = "crystalblock";
+    xB=x;
+    yB=y;
+    destroyable=false;
+  }
+  void display() {
+    image(CrystalBlue,xB,yB);
+  }
 }
