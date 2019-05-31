@@ -135,3 +135,11 @@ The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or G
 
 :doughnut:
 - Discussed designs of levels 2-5
+
+### DAY 14 Thursday 5/30/19
+:cookie:
+- Used photoshop to get and fix proper wall/border sprites to look natural and good
+- Wall sprites alternate between two possible sprites based on randomness
+- Played around with level2, started on spike generation 
+- Made level a nonabstract class, children subclasses level1,level2, etc
+
