@@ -4,6 +4,8 @@ class Enemies {
   float y;
   float tx;
   float ty;
+  float dx;
+  float dy;
   PImage pic;
   Player target;
   int[] moves=new int[8];
@@ -11,6 +13,8 @@ class Enemies {
     target=a;
     x=100;
     y=100;
+    dx=0;
+    dy=0;
     tx=a.getPX();
     ty=a.getPY();
     moves[0]=0;
@@ -73,59 +77,64 @@ class Enemies {
       }
     }
     if (index!=-1) {
-      moveAnimation(moves[2*index+1], moves[2*index]);
+      dx=moves[2*index+1];
+      dy=moves[2*index];
+    }else{
+    dx=0;
+  dy=0;}
+  }
+void moveAnimation() {
+  x+=dx;
+  y+=dy;
+  if (dx>0) {
+    if (frameCount%30<10) {
+      pic=MeowthMRight1;
+    } else if (frameCount%30<20) {
+      pic=MeowthMRight2;
+    } else {
+      pic=MeowthMRight3;
     }
-  }
-  void moveAnimation(int dx, int dy) {
-    x+=dx;
-    y+=dy;
-    if (dx>0) {
-      if (frameCount%30<10) {
-        pic=MeowthMRight1;
-      } else if (frameCount%30<20) {
-        pic=MeowthMRight2;
-      } else {
-        pic=MeowthMRight3;
-      }
-      display(pic);
-    } else if (dx<0) {
-      if (frameCount%30<10) {
-        pic=MeowthMLeft1;
-      } else if (frameCount%30<20) {
-        pic=MeowthMLeft2;
-      } else {
-        pic=MeowthMLeft3;
-      }
-      display(pic);
-    } else if (dy>0) {
-      if (frameCount%30<10) {
-        pic=MeowthMDown1;
-      } else if (frameCount%30<20) {
-        pic=MeowthMDown2;
-      } else {
-        pic=MeowthMDown3;
-      }
-      display(pic);
-    } else if (dy<0) {
-      if (frameCount%30<10) {
-        pic=MeowthMUp1;
-      } else if (frameCount%30<20) {
-        pic=MeowthMUp2;
-      } else {
-        pic=MeowthMUp3;
-      }
-      display(pic);
+    display(pic);
+  } else if (dx<0) {
+    if (frameCount%30<10) {
+      pic=MeowthMLeft1;
+    } else if (frameCount%30<20) {
+      pic=MeowthMLeft2;
+    } else {
+      pic=MeowthMLeft3;
     }
+    display(pic);
+  } else if (dy>0) {
+    if (frameCount%30<10) {
+      pic=MeowthMDown1;
+    } else if (frameCount%30<20) {
+      pic=MeowthMDown2;
+    } else {
+      pic=MeowthMDown3;
+    }
+    display(pic);
+  } else if (dy<0) {
+    if (frameCount%30<10) {
+      pic=MeowthMUp1;
+    } else if (frameCount%30<20) {
+      pic=MeowthMUp2;
+    } else {
+      pic=MeowthMUp3;
+    }
+    display(pic);
+  } else {
+    display(pic);
   }
-  void display(PImage i) {
-    image(i, x, y);
-  }
-  float getX() {
-    return x;
-  }
-  float getY() {
-    return y;
-  }
+}
+void display(PImage i) {
+  image(i, x, y);
+}
+float getX() {
+  return x;
+}
+float getY() {
+  return y;
+}
 }
 class Spoink extends Enemies {
   public Spoink(Player a) {

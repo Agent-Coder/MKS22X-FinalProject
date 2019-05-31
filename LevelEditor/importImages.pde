@@ -41,6 +41,17 @@ void importImages() {
   SitrusBerry = loadImage("SPRITES/Berries/SitrusBerry.png");
   RazzBerry = loadImage("SPRITES/Berries/RazzBerry.png");
   NanabBerry = loadImage("SPRITES/Berries/NanabBerry.png");
+  OranBerry2 = loadImage("SPRITES/Berries/OranBerry.png");
+  LumBerry2 = loadImage("SPRITES/Berries/LumBerry.png");
+  SitrusBerry2 = loadImage("SPRITES/Berries/SitrusBerry.png");
+  RazzBerry2 = loadImage("SPRITES/Berries/RazzBerry.png");
+  NanabBerry2 = loadImage("SPRITES/Berries/NanabBerry.png");
+  
+  OranBerry2.resize(50,50);
+  LumBerry2.resize(50,50);
+  SitrusBerry2.resize(50,50);
+  RazzBerry2.resize(50,50);
+  NanabBerry2.resize(50,50);
   
   //Glaceon Sprites
   GlaceonMRight1 = loadImage("SPRITES/Glaceon Sprites/GlaceonWalkRight1.png");
