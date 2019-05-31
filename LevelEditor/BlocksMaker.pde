@@ -62,8 +62,11 @@ class BorderBlock extends Block {
     if (xB == 0) image(WallLeft,xB,yB);
     if (xB == 0 && alt == 1) image(WallLeftAlt,xB,yB);
     if (yB == 0) image(WallTop,xB,yB);
+    if (yB == 0 && alt == 1) image(WallTopAlt,xB,yB);
     if (xB == 700) image(WallRight,xB,yB);
+    if (xB == 700 && alt == 1) image(WallRightAlt,xB,yB);
     if (yB == 700) image(WallBottom,xB,yB);
+    if (yB == 700 && alt == 1) image(WallBottomAlt,xB,yB);
     if (yB == 0 && xB == 700) image(WallTopRight,xB,yB);
     if (yB == 0 && xB == 0) image(WallTopLeft,xB,yB);
     if (yB == 700 && xB == 0) image(WallBottomLeft,xB,yB);
@@ -86,7 +89,7 @@ class CrystalBlock extends Block {
   public CrystalBlock(int x, int y) {
     type = "crystalblock";
     xB=x;
-    xB=y;
+    yB=y;
     destroyable=false;
   }
   void display() {

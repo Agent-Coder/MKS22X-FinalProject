@@ -345,7 +345,7 @@ void importImages() {
   CrystalPurple = loadImage("SPRITES/Crystal Sprites/CrystalPurple.png");
   
   //Crystal Sprites Resizes
-  //***NEED TO IMPLEMENT && TEST
+  CrystalBlue.resize(50,50);
   
   
   floor = loadImage("MoveTile1.png");
