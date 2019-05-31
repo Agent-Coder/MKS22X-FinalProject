@@ -2,7 +2,6 @@ Level2 L2 = new Level2();
 
 class Level2 extends Levels {
   Random rng = new Random();
-  Block[][] board=new Block[15][15];
   public Level2() {
     super();
     attacked=new ArrayList<Block>();
@@ -52,7 +51,7 @@ class Level2 extends Levels {
     C.update(board);
     C.moveE();
     B.move(canMove);
-    genSpikes();
+   // genSpikes();
   }    
 
 
