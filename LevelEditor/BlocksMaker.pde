@@ -49,7 +49,10 @@ abstract class Block {
   }
 }
 class BorderBlock extends Block {
+  int alt;
   public BorderBlock(int x, int y) {
+    Random rng = new Random();
+     alt = rng.nextInt(2);
     type="borderblock";
     xB=x;
     yB=y;
@@ -57,6 +60,7 @@ class BorderBlock extends Block {
   }
   void display() {
     if (xB == 0) image(WallLeft,xB,yB);
+    if (xB == 0 && alt == 1) image(WallLeftAlt,xB,yB);
     if (yB == 0) image(WallTop,xB,yB);
     if (xB == 700) image(WallRight,xB,yB);
     if (yB == 700) image(WallBottom,xB,yB);
