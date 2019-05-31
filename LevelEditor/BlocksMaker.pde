@@ -56,9 +56,17 @@ class BorderBlock extends Block {
     destroyable=false;
   }
   void display() {
-    image(ice, xB, yB);
+    if (xB == 0) image(WallLeft,xB,yB);
+    if (yB == 0) image(WallTop,xB,yB);
+    if (xB == 700) image(WallRight,xB,yB);
+    if (yB == 700) image(WallBottom,xB,yB);
+    if (yB == 0 && xB == 700) image(WallTopRight,xB,yB);
+    if (yB == 0 && xB == 0) image(WallTopLeft,xB,yB);
+    if (yB == 700 && xB == 0) image(WallBottomLeft,xB,yB);
+    if (yB == 700 && xB == 700) image(WallBottomRight,xB,yB);
   }
 }
+
 class IceBlock extends Block {
   public IceBlock(int x, int y) {
     type="iceblock";

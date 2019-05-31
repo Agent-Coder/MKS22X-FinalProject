@@ -35,6 +35,34 @@ void importImages() {
   IceA4.resize(50, 50);
   IceA5.resize(50, 50);
   
+  //Wall Sprites
+  WallBottom = loadImage("SPRITES/Wall Sprites/WallBottom.png");
+  WallBottomAlt = loadImage("SPRITES/Wall Sprites/WallBottomAlt.png");
+  WallLeft = loadImage("SPRITES/Wall Sprites/WallLeft.png");
+  WallLeftAlt = loadImage("SPRITES/Wall Sprites/WallLeftAlt.png");
+  WallRight = loadImage("SPRITES/Wall Sprites/WallRight.png");
+  WallRightAlt = loadImage("SPRITES/Wall Sprites/WallRightAlt.png");
+  WallTop = loadImage("SPRITES/Wall Sprites/WallTop.png");
+  WallTopAlt = loadImage("SPRITES/Wall Sprites/WallTopAlt.png");
+  WallTopRight = loadImage("SPRITES/Wall Sprites/WallTopRight.png");
+  WallTopLeft = loadImage("SPRITES/Wall Sprites/WallTopLeft.png");
+  WallBottomRight = loadImage("SPRITES/Wall Sprites/WallBottomRight.png");
+  WallBottomLeft = loadImage("SPRITES/Wall Sprites/WallBottomLeft.png");
+  
+  //Wall Sprites resizes
+  WallBottom.resize(50,50);
+  WallBottomAlt.resize(50,50);
+  WallLeft.resize(50,50);
+  WallLeftAlt.resize(50,50);
+  WallRight.resize(50,50);
+  WallRightAlt.resize(50,50);
+  WallTop.resize(50,50);
+  WallTopAlt.resize(50,50);
+  WallTopRight.resize(50,50);
+  WallTopLeft.resize(50,50);
+  WallBottomRight.resize(50,50);
+  WallBottomLeft.resize(50,50);
+  
   //Berry sprites 
   OranBerry = loadImage("SPRITES/Berries/OranBerry.png");
   LumBerry = loadImage("SPRITES/Berries/LumBerry.png");
