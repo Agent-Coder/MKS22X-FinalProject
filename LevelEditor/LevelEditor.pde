@@ -326,7 +326,7 @@ void draw() {
       pause = false;
     }
   } else if (location.equals("2") && pause == false && goVis == true) {
-    //L2.play();
+    L2.play();
   }
   if (pause == true) {
     background(151, 223, 237);

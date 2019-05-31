@@ -1,4 +1,4 @@
-/*Level2 L2 = new Level2();
+Level2 L2 = new Level2();
 
 class Level2 extends Levels {
   Random rng = new Random();
@@ -51,18 +51,23 @@ class Level2 extends Levels {
     C.update(board);
     C.moveE();
     B.move(canMove);
-   // genSpikes();
+    genSpikes();
   }    
 
 
   void genSpikes() {
-    if ((second()) % 10 == 0) {
+    if ((second() % 10 == 0 && millis() % 900 < 10)) {
       for (int i = 0; i < 15; i++) {
         for (int j = 0; j < 15; j++) {
-           board[j][i]=new CrystalBlock(i*50, j*50);
+           int randomNum = rng.nextInt(10);
+           if (randomNum < 4) board[j][i]=new CrystalBlock(i*50, j*50);
            print("spike now" + "\n");
          }
         }
       }
-  } 
-}*/
+  }
+  
+   void createBerries(){};
+   void collectBerries(int berryEnd){};
+   void displayBerries(int berryEnd){};;
+}
