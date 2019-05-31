@@ -51,18 +51,23 @@ class Level2 extends Levels {
     C.update(board);
     C.moveE();
     B.move(canMove);
-   // genSpikes();
+ //   genSpikes();
   }    
 
-
+/*
+//fix generation of spikes so that 
+//spikes have a 30% spawn chance on each walkable tile every 10 seconds
+//this is BROKEN right now
   void genSpikes() {
     if ((second()) % 10 == 0) {
       for (int i = 0; i < 15; i++) {
         for (int j = 0; j < 15; j++) {
-           board[j][i]=new CrystalBlock(i*50, j*50);
+           if (int n = rng.nextInt(10) < 4) board[j][i]=new CrystalBlock(i*50, j*50);
            print("spike now" + "\n");
+           print(n);
          }
         }
       }
   } 
+  */
 }

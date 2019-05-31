@@ -28,7 +28,6 @@ class Levels {
   boolean canMove=true;
   Block temp;
   Tile[][] boardtile=new Tile[15][15];
-  IceBlock[][] start = new IceBlock[15][15];
 
   public Levels() {
     B=new Player(350, 350, board);
@@ -138,7 +137,6 @@ class Level1 extends Levels {
         if (i>=3&&i<board.length-3&&((j>=8&&j<12)||(j>=3&&j<7))) {
           board[j][i]=new IceBlock(i*50, j*50);
         }
-        start[i][j]=new IceBlock(i*50, j*50);
       }
     }
   }
