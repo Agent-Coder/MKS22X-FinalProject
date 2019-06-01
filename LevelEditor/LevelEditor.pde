@@ -262,7 +262,9 @@ class Level1 extends Levels {
       canMove=true;
     }
     C.update(board);
-    C.moveE();
+    if (!C.trapped()) {
+      C.moveE();
+    }
     C.moveAnimation();
     B.move(canMove);
   }
@@ -383,8 +385,4 @@ void keyReleased() {
   } else {
     keysDown.remove(key);
   }
-}
-
-void mousePressed() {
-  print("X: " + mX + ",Y: " + mY + "\n");
 }

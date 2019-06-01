@@ -6,6 +6,7 @@ class Enemies {
   float ty;
   float dx;
   float dy;
+  int moveRotation;
   PImage pic;
   Player target;
   int[] moves=new int[8];
@@ -14,16 +15,17 @@ class Enemies {
     x=100;
     y=100;
     dx=0;
-    dy=0;
+    dy=-1;
     tx=a.getPX();
     ty=a.getPY();
+    moveRotation=3;
     moves[0]=0;
     moves[1]=1;
-    moves[2]=0;
-    moves[3]=-1;
-    moves[4]=-1;
-    moves[5]=0;
-    moves[6]=1;
+    moves[2]=1;
+    moves[3]=0;
+    moves[4]=0;
+    moves[5]=-1;
+    moves[6]=-1;
     moves[7]=0;
     clear();
   }
@@ -61,7 +63,24 @@ class Enemies {
       fillGrid(xer, yer-1, num+1);
     }
   }
-
+  boolean trapped(){
+    int a=round((y)/50);
+    int b=round((x)/50);
+    int smallest=grid[a][b];
+    //println(a+" "+b);
+    if(smallest==0){
+      if(grid[a+(int)dy][b+(int)dx]==-1){
+        moveRotation=(moveRotation-1)%3;
+        if(moveRotation==-1){
+          moveRotation=3;
+        }
+        dy=moves[2*moveRotation+1];
+        dx=moves[2*moveRotation];
+      }
+      return true;
+    }
+    return false;
+  }
   void moveE() {
     int a=round((y)/50);
     int b=round((x)/50);
