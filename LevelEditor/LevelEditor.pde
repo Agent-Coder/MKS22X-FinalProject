@@ -241,19 +241,22 @@ class Level1 extends Levels {
       temp=null;
       attacking=false;
     }
-      if (frameCount%20==0&&attacked.size()>0) {
-        temp=attacked.remove(attacked.size()-1);
-        /*if ((round(temp.getxB())==round(C.getX())&&round(temp.getyB())==round(C.getY()))) {
-         temp=null;
-         attacked.clear();
-         } else */        if (board[temp.getyB()/50][temp.getxB()/50]==null) {
-          board[temp.getyB()/50][temp.getxB()/50]=new IceBlock(temp.getxB(), temp.getyB());
-          make=true;
-        } else if (board[temp.getyB()/50][temp.getxB()/50].getType()!="borderblock") {
-          board[temp.getyB()/50][temp.getxB()/50]=null;
-          make=false;
-        }
+    if (frameCount%20==0&&attacked.size()>0) {
+      temp=attacked.remove(attacked.size()-1);
+      println("this is block X "+(temp.getxB()/50)+"this is enemy X "+round(C.getX()/50));
+      println("this is block Y "+(temp.getyB()/50)+"this is enemy Y "+round(C.getY()/50));
+      if ((temp.getxB()/50==round(C.getX()/50))&&(temp.getyB()==round(C.getY()))) {
+        println("YES");
+       temp=null;
+       attacked.clear();
+       } else if (board[temp.getyB()/50][temp.getxB()/50]==null) {
+        board[temp.getyB()/50][temp.getxB()/50]=new IceBlock(temp.getxB(), temp.getyB());
+        make=true;
+      } else if (board[temp.getyB()/50][temp.getxB()/50].getType()!="borderblock") {
+        board[temp.getyB()/50][temp.getxB()/50]=null;
+        make=false;
       }
+    }
     if (temp!=null&&attacked.size()>0) {
       temp.animate(temp.getxB(), temp.getyB(), make);
     }
