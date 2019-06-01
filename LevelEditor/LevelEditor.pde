@@ -21,6 +21,7 @@ abstract class Levels {
   Block[][] board=new Block[15][15];
   Player B;
   Enemies C;
+  boolean attacking=false;
   //Berries[] D;
   Block[][] map = new Block[15][15];
   ArrayList<Block> attacked;
@@ -220,7 +221,6 @@ class Level1 extends Levels {
 
   void play() {
     if (oran!=0) {
-
       collectBerries(oran);
       displayBerries(oran);
     } else {    
@@ -233,34 +233,37 @@ class Level1 extends Levels {
     temporary=attack();
 
     int i=temporary.size()-1;
-    while (i>=0) {
+    while (i>=0&&!attacking) {
       attacked.add(temporary.get(i));
       i--;
     }
     if (attacked.size()==0) {
       temp=null;
+      attacking=false;
     }
-    if (frameCount%20==0&&attacked.size()>0) {
-      temp=attacked.remove(attacked.size()-1);
-      /*if ((round(temp.getxB())==round(C.getX())&&round(temp.getyB())==round(C.getY()))) {
-       temp=null;
-       attacked.clear();
-       } else */      if (board[temp.getyB()/50][temp.getxB()/50]==null) {
-        board[temp.getyB()/50][temp.getxB()/50]=new IceBlock(temp.getxB(), temp.getyB());
-        make=true;
-      } else if (board[temp.getyB()/50][temp.getxB()/50].getType()!="borderblock") {
-        board[temp.getyB()/50][temp.getxB()/50]=null;
-        make=false;
+      if (frameCount%20==0&&attacked.size()>0) {
+        temp=attacked.remove(attacked.size()-1);
+        /*if ((round(temp.getxB())==round(C.getX())&&round(temp.getyB())==round(C.getY()))) {
+         temp=null;
+         attacked.clear();
+         } else */        if (board[temp.getyB()/50][temp.getxB()/50]==null) {
+          board[temp.getyB()/50][temp.getxB()/50]=new IceBlock(temp.getxB(), temp.getyB());
+          make=true;
+        } else if (board[temp.getyB()/50][temp.getxB()/50].getType()!="borderblock") {
+          board[temp.getyB()/50][temp.getxB()/50]=null;
+          make=false;
+        }
       }
-    }
     if (temp!=null&&attacked.size()>0) {
       temp.animate(temp.getxB(), temp.getyB(), make);
     }
     if (attacked.size()>0) {
       canMove=false;
+      attacking=true;
     } else {
       canMove=true;
     }
+
     C.update(board);
     if (!C.trapped()) {
       C.moveE();
