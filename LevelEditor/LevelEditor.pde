@@ -243,10 +243,7 @@ class Level1 extends Levels {
     }
     if (frameCount%20==0&&attacked.size()>0) {
       temp=attacked.remove(attacked.size()-1);
-      println("this is block X "+(temp.getxB()/50)+"this is enemy X "+round(C.getX()/50));
-      println("this is block Y "+(temp.getyB()/50)+"this is enemy Y "+round(C.getY()/50));
-      if ((temp.getxB()/50==round(C.getX()/50))&&(temp.getyB()==round(C.getY()))) {
-        println("YES");
+      if ((round(C.getX()/50) == temp.getxB()/50)&&(round(C.getY()/50) == temp.getyB()/50)) {
        temp=null;
        attacked.clear();
        } else if (board[temp.getyB()/50][temp.getxB()/50]==null) {
