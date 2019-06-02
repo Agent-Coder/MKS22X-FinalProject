@@ -37,7 +37,7 @@ abstract class Levels {
   int razz;
   public Levels() {
     B=new Player(350, 350, board);
-    C=new Enemies(B);
+    C=new Enemies(B, board);
   }
   void output() {
     for (int i=0; i<board.length; i++) {
@@ -59,8 +59,8 @@ abstract class Levels {
   ArrayList<Block> attack() {
     ArrayList<Block> delete=new ArrayList<Block>();
     if (keysDown.contains(' ')) {
-      int x=round(B.getPX()/50);
-      int y=round(B.getPY()/50);
+      int x=ceil(B.getPX()/50);
+      int y=ceil(B.getPY()/50);
       int i;
       boolean blockHere=false;
       if (B.getPrevKey().equals("right")) {
@@ -154,7 +154,7 @@ class Level1 extends Levels {
 
     for (int i=0; i<berryEnd; i++) {
 
-      if (round(B.getPX()/50)==berryCount.get(i).getBerryX()/50&&round(B.getPY()/50)==berryCount.get(i).getBerryY()/50) {
+      if (ceil(B.getPX()/50)==berryCount.get(i).getBerryX()/50&&ceil(B.getPY()/50)==berryCount.get(i).getBerryY()/50) {
         if (berryCount.get(i).getBerryType().equals("OranBerry")) {
           oran--;
         } else {
@@ -220,6 +220,7 @@ class Level1 extends Levels {
   IceBlock[][] start = new IceBlock[15][15];
 
   void play() {
+    int currentcount;
     if (oran!=0) {
       collectBerries(oran);
       displayBerries(oran);
@@ -243,10 +244,10 @@ class Level1 extends Levels {
     }
     if (frameCount%20==0&&attacked.size()>0) {
       temp=attacked.remove(attacked.size()-1);
-      if ((round(C.getX()/50) == temp.getxB()/50)&&(round(C.getY()/50) == temp.getyB()/50)) {
-       temp=null;
-       attacked.clear();
-       } else if (board[temp.getyB()/50][temp.getxB()/50]==null) {
+      if ((ceil(C.getX()/50) == temp.getxB()/50)&&(ceil(C.getY()/50) == temp.getyB()/50)) {
+        temp=null;
+        attacked.clear();
+      } else if (board[temp.getyB()/50][temp.getxB()/50]==null) {
         board[temp.getyB()/50][temp.getxB()/50]=new IceBlock(temp.getxB(), temp.getyB());
         make=true;
       } else if (board[temp.getyB()/50][temp.getxB()/50].getType()!="borderblock") {
@@ -265,9 +266,7 @@ class Level1 extends Levels {
     }
 
     C.update(board);
-    if (!C.trapped()) {
-      C.moveE();
-    }
+    C.moveE();
     C.moveAnimation();
     B.move(canMove);
   }

@@ -1,5 +1,6 @@
 class Enemies {
   int[][] grid=new int[15][15];
+  Block[][] board=new Block[15][15];
   float x;
   float y;
   float tx;
@@ -10,7 +11,7 @@ class Enemies {
   PImage pic;
   Player target;
   int[] moves=new int[8];
-  public Enemies(Player a) {
+  public Enemies(Player a, Block[][] iceBlock) {
     target=a;
     x=100;
     y=100;
@@ -19,6 +20,7 @@ class Enemies {
     tx=a.getPX();
     ty=a.getPY();
     moveRotation=3;
+    board=iceBlock;
     moves[0]=0;
     moves[1]=1;
     moves[2]=1;
@@ -41,7 +43,7 @@ class Enemies {
     clear();
     for (int i=0; i<gameBoard.length; i++) {
       for (int k=0; k<gameBoard[0].length; k++) {
-        if (gameBoard[i][k]!=null) {
+        if (i<0||k<0||i>board.length-1||k>board.length-1) {
           grid[i][k]=-1;
         }
       }
@@ -49,7 +51,7 @@ class Enemies {
     tx=target.getPX();
     ty=target.getPY();
 
-    fillGrid(round(ty/50), round(tx/50), 1);
+    fillGrid(ceil(ty/50), ceil(tx/50), 1);
     //board();
     //System.out.println(target.getPX()+" "+target.getPY());
     //moveE();
@@ -64,8 +66,8 @@ class Enemies {
     }
   }
   boolean trapped() {
-    int a=round((y)/50);
-    int b=round((x)/50);
+    int a=ceil((y)/50);
+    int b=ceil((x)/50);
     if (a<0||a>grid.length||b<0||b>grid.length) {
       dx=0;
       dy=0;
@@ -88,70 +90,72 @@ class Enemies {
     return false;
   }
   void moveE() {
-    int a=round((y)/50);
-    int b=round((x)/50);
-    if (a<0||a>grid.length||b<0||b>grid.length) {
-      dx=0;
-      dy=0;
-    } else {
-      int smallest=grid[a][b];
-      int index=-1;
-      for (int i=0; i<4; i++) {
-        //board();
-        if (a+moves[2*i]>=0&&a+moves[2*i]<grid.length&&b+moves[2*i+1]>=0&&b+moves[2*i+1]<grid.length) {
-          if (grid[a+moves[2*i]][b+moves[2*i+1]]<=smallest&&grid[a+moves[2*i]][b+moves[2*i+1]]!=-1) {
-            smallest=grid[a+moves[2*i]][b+moves[2*i+1]];      
-            index=i;
-          }
+    int a=ceil((y)/50);
+    int b=ceil((x)/50);
+    int smallest=grid[a][b];
+    int index=-1;
+    for (int i=0; i<4; i++) {
+      //board();
+      if (a+moves[2*i]>=0&&a+moves[2*i]<grid.length&&b+moves[2*i+1]>=0&&b+moves[2*i+1]<grid.length) {
+        if (grid[a+moves[2*i]][b+moves[2*i+1]]<=smallest&&grid[a+moves[2*i]][b+moves[2*i+1]]!=-1) {
+          smallest=grid[a+moves[2*i]][b+moves[2*i+1]];      
+          index=i;
         }
       }
-      if (index!=-1) {
-        dx=moves[2*index+1];
-        dy=moves[2*index];
-      }
+    }
+    if (index!=-1) {
+      dx=moves[2*index+1];
+      dy=moves[2*index];
     }
   }
   void moveAnimation() {
-    x+=dx;
-    y+=dy;
-    if (dx>0) {
-      if (frameCount%30<10) {
-        pic=MeowthMRight1;
-      } else if (frameCount%30<20) {
-        pic=MeowthMRight2;
+    if (board[(ceil(y+dy)/50)][(ceil(x+dx)/50)]==null) {
+      x+=dx;
+      y+=dy;
+      if (dx>0) {
+        if (frameCount%30<10) {
+          pic=MeowthMRight1;
+        } else if (frameCount%30<20) {
+          pic=MeowthMRight2;
+        } else {
+          pic=MeowthMRight3;
+        }
+        display(pic);
+      } else if (dx<0) {
+        if (frameCount%30<10) {
+          pic=MeowthMLeft1;
+        } else if (frameCount%30<20) {
+          pic=MeowthMLeft2;
+        } else {
+          pic=MeowthMLeft3;
+        }
+        display(pic);
+      } else if (dy>0) {
+        if (frameCount%30<10) {
+          pic=MeowthMDown1;
+        } else if (frameCount%30<20) {
+          pic=MeowthMDown2;
+        } else {
+          pic=MeowthMDown3;
+        }
+        display(pic);
+      } else if (dy<0) {
+        if (frameCount%30<10) {
+          pic=MeowthMUp1;
+        } else if (frameCount%30<20) {
+          pic=MeowthMUp2;
+        } else {
+          pic=MeowthMUp3;
+        }
+        display(pic);
       } else {
-        pic=MeowthMRight3;
+        display(MeowthMDown3);
+        
       }
-      display(pic);
-    } else if (dx<0) {
-      if (frameCount%30<10) {
-        pic=MeowthMLeft1;
-      } else if (frameCount%30<20) {
-        pic=MeowthMLeft2;
-      } else {
-        pic=MeowthMLeft3;
-      }
-      display(pic);
-    } else if (dy>0) {
-      if (frameCount%30<10) {
-        pic=MeowthMDown1;
-      } else if (frameCount%30<20) {
-        pic=MeowthMDown2;
-      } else {
-        pic=MeowthMDown3;
-      }
-      display(pic);
-    } else if (dy<0) {
-      if (frameCount%30<10) {
-        pic=MeowthMUp1;
-      } else if (frameCount%30<20) {
-        pic=MeowthMUp2;
-      } else {
-        pic=MeowthMUp3;
-      }
-      display(pic);
     } else {
-      display(MeowthMDown3);
+      board[(ceil(y+dy)/50)][(ceil(x+dx)/50)]=null;
+      dx=0;
+      dy=0;
     }
   }
   void display(PImage i) {
@@ -162,10 +166,5 @@ class Enemies {
   }
   float getY() {
     return y;
-  }
-}
-class Spoink extends Enemies {
-  public Spoink(Player a) {
-    super(a);
   }
 }
