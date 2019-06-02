@@ -59,8 +59,8 @@ abstract class Levels {
   ArrayList<Block> attack() {
     ArrayList<Block> delete=new ArrayList<Block>();
     if (keysDown.contains(' ')) {
-      int x=ceil(B.getPX()/50);
-      int y=ceil(B.getPY()/50);
+      int x=round(B.getPX()/50);
+      int y=round(B.getPY()/50);
       int i;
       boolean blockHere=false;
       if (B.getPrevKey().equals("right")) {
@@ -154,7 +154,7 @@ class Level1 extends Levels {
 
     for (int i=0; i<berryEnd; i++) {
 
-      if (ceil(B.getPX()/50)==berryCount.get(i).getBerryX()/50&&ceil(B.getPY()/50)==berryCount.get(i).getBerryY()/50) {
+      if (round(B.getPX()/50)==berryCount.get(i).getBerryX()/50&&round(B.getPY()/50)==berryCount.get(i).getBerryY()/50) {
         if (berryCount.get(i).getBerryType().equals("OranBerry")) {
           oran--;
         } else {
@@ -244,7 +244,7 @@ class Level1 extends Levels {
     }
     if (frameCount%20==0&&attacked.size()>0) {
       temp=attacked.remove(attacked.size()-1);
-      if ((ceil(C.getX()/50) == temp.getxB()/50)&&(ceil(C.getY()/50) == temp.getyB()/50)) {
+      if ((round(C.getX()/50) == temp.getxB()/50)&&(round(C.getY()/50) == temp.getyB()/50)) {
         temp=null;
         attacked.clear();
       } else if (board[temp.getyB()/50][temp.getxB()/50]==null) {

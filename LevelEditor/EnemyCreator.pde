@@ -7,14 +7,16 @@ class Enemies {
   float ty;
   float dx;
   float dy;
+  boolean moving;
   int moveRotation;
   PImage pic;
   Player target;
   int[] moves=new int[8];
   public Enemies(Player a, Block[][] iceBlock) {
+    moving=true;
     target=a;
-    x=100;
-    y=100;
+    x=125;
+    y=125;
     dx=0;
     dy=-1;
     tx=a.getPX();
@@ -51,7 +53,7 @@ class Enemies {
     tx=target.getPX();
     ty=target.getPY();
 
-    fillGrid(ceil(ty/50), ceil(tx/50), 1);
+    fillGrid(round(ty/50), round(tx/50), 1);
     //board();
     //System.out.println(target.getPX()+" "+target.getPY());
     //moveE();
@@ -66,8 +68,8 @@ class Enemies {
     }
   }
   boolean trapped() {
-    int a=ceil((y)/50);
-    int b=ceil((x)/50);
+    int a=round((y)/50);
+    int b=round((x)/50);
     if (a<0||a>grid.length||b<0||b>grid.length) {
       dx=0;
       dy=0;
@@ -90,8 +92,8 @@ class Enemies {
     return false;
   }
   void moveE() {
-    int a=ceil((y)/50);
-    int b=ceil((x)/50);
+    int a=round((y)/50);
+    int b=round((x)/50);
     int smallest=grid[a][b];
     int index=-1;
     for (int i=0; i<4; i++) {
@@ -109,9 +111,13 @@ class Enemies {
     }
   }
   void moveAnimation() {
-    if (board[(ceil(y+dy)/50)][(ceil(x+dx)/50)]==null) {
-      x+=dx;
-      y+=dy;
+    if(frameCount%5==4){
+    moving=true;}
+    if (board[(round(y+dy)/50)][(round(x+dx)/50)]==null) {
+      if (moving) {
+        x+=dx;
+        y+=dy;
+      }
       if (dx>0) {
         if (frameCount%30<10) {
           pic=MeowthMRight1;
@@ -150,17 +156,15 @@ class Enemies {
         display(pic);
       } else {
         display(MeowthMDown3);
-        
       }
     } else {
-      board[(ceil(y+dy)/50)][(ceil(x+dx)/50)]=null;
-      dx=0;
-      dy=0;
+      board[(round(y+dy)/50)][(round(x+dx)/50)]=null;
+      moving=false;
+      }
     }
-  }
-  void display(PImage i) {
-    image(i, x, y);
-  }
+    void display(PImage i) {
+      image(i, x-25, y-25);
+    }
   float getX() {
     return x;
   }
