@@ -7,12 +7,14 @@ class Enemies {
   float ty;
   float dx;
   float dy;
+  int currentFrame;
   boolean moving;
   int moveRotation;
   PImage pic;
   Player target;
   int[] moves=new int[8];
   public Enemies(Player a, Block[][] iceBlock) {
+    currentFrame=0;
     moving=true;
     target=a;
     x=125;
@@ -111,8 +113,9 @@ class Enemies {
     }
   }
   void moveAnimation() {
-    if(frameCount%5==4){
-    moving=true;}
+    if (frameCount-currentFrame==20) {
+      moving=true;
+    }
     if (board[(round(y+dy)/50)][(round(x+dx)/50)]==null) {
       if (moving) {
         x+=dx;
@@ -160,11 +163,12 @@ class Enemies {
     } else {
       board[(round(y+dy)/50)][(round(x+dx)/50)]=null;
       moving=false;
-      }
+      currentFrame=frameCount;
     }
-    void display(PImage i) {
-      image(i, x-25, y-25);
-    }
+  }
+  void display(PImage i) {
+    image(i, x-25, y-25);
+  }
   float getX() {
     return x;
   }
