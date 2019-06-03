@@ -81,7 +81,7 @@ abstract class Levels {
           blockHere=true;
         }
         i=x-1;
-        while (i>=0&&((blockHere&&board[y][i]!=null)||(!blockHere&&board[y][i]==null))) {
+        while (i>0&&((blockHere&&board[y][i]!=null)||(!blockHere&&board[y][i]==null))) {
           if (board[y][i]==null) {
             delete.add(new IceBlock(i*50, y*50));
           } else {
@@ -94,7 +94,7 @@ abstract class Levels {
           blockHere=true;
         }
         i=y-1;
-        while (i>=0&&((blockHere&&board[i][x]!=null)||(!blockHere&&board[i][x]==null))) {
+        while (i>0&&((blockHere&&board[i][x]!=null)||(!blockHere&&board[i][x]==null))) {
           if (board[i][x]==null) {
             delete.add(new IceBlock(x*50, i*50));
           } else {
@@ -220,10 +220,15 @@ class Level1 extends Levels {
   IceBlock[][] start = new IceBlock[15][15];
   int frameStart;
   boolean startFrame=true;
+  boolean make=true;
+  boolean lastBlock=false;
+  int frameBlocks=0;
+  int playerFrames=0;
   void play() {
     if (startFrame) {
       frameStart=frameCount;
-         startFrame=false;
+      startFrame=false;
+      frameBlocks=frameStart-20;
     }
     if (oran!=0) {
       collectBerries(oran);
@@ -233,38 +238,53 @@ class Level1 extends Levels {
       collectBerries(lum);
       displayBerries(lum);
     }
-    boolean make=true;
     output();
     temporary=attack();
-
     int i=temporary.size()-1;
     while (i>=0&&!attacking) {
       attacked.add(temporary.get(i));
       i--;
     }
-    if (attacked.size()==0) {
+    if (attacked.size()==0&&frameCount-playerFrames>20) {
       temp=null;
       attacking=false;
     }
-    if (frameCount%20==0&&attacked.size()>0) {
+    if (attacked.size()>0) {
+      attacking=true;
+    }
+    if (frameCount-playerFrames>=20&&attacked.size()>0) {
       temp=attacked.remove(attacked.size()-1);
-      if ((round(C.getX()/50) == temp.getxB()/50)&&(round(C.getY()/50) == temp.getyB()/50)) {
-        temp=null;
-        attacked.clear();
-      } else if (board[temp.getyB()/50][temp.getxB()/50]==null) {
-        board[temp.getyB()/50][temp.getxB()/50]=new IceBlock(temp.getxB(), temp.getyB());
-        make=true;
-      } else if (board[temp.getyB()/50][temp.getxB()/50].getType()!="borderblock") {
+      if (board[temp.getyB()/50][temp.getxB()/50]==null) {
+        make=true;  
+        playerFrames=frameCount;
+      } else if (board[temp.getyB()/50][temp.getxB()/50]!=null&&board[temp.getyB()/50][temp.getxB()/50].getType()!="borderblock") {
         board[temp.getyB()/50][temp.getxB()/50]=null;
         make=false;
+        playerFrames=frameCount;
       }
     }
-    if (temp!=null&&attacked.size()>0) {
-      temp.animate(temp.getxB(), temp.getyB(), make);
+
+    if (temp!=null) {
+
+      if (make) {
+        lastBlock=true;
+        temp.animate(temp.getxB(), temp.getyB(), make);
+        if (frameCount-playerFrames==19) {
+          if (abs((round(C.getX())-temp.getxB()))<50&&abs((round(C.getY())-temp.getyB()))<50) {
+            temp=null;      
+            attacked.clear();
+            lastBlock=false;
+          } else if (board[temp.getyB()/50][temp.getxB()/50]==null) {
+            board[temp.getyB()/50][temp.getxB()/50]=new IceBlock(temp.getxB(), temp.getyB());
+            lastBlock=false;
+          }
+        }
+      } else {
+        temp.animate(temp.getxB(), temp.getyB(), make);
+      }
     }
-    if (attacked.size()>0) {
+    if (attacked.size()>0&&frameCount-playerFrames>20) {
       canMove=false;
-      attacking=true;
     } else {
       canMove=true;
     }
