@@ -62,7 +62,7 @@ class BorderBlock extends Block {
   int alt;
   public BorderBlock(int x, int y) {
     Random rng = new Random();
-     alt = rng.nextInt(2);
+    alt = rng.nextInt(2);
     type="borderblock";
     xB=x;
     yB=y;
@@ -93,17 +93,6 @@ class IceBlock extends Block {
   }
   void display() {
     image(ice, xB, yB);
-  }
-}
-class CrystalBlock extends Block {
-  public CrystalBlock(int x, int y) {
-    type = "crystalblock";
-    xB=x;
-    yB=y;
-    destroyable=false;
-  }
-  void display() {
-    image(CrystalBlue,xB,yB);
   }
 }
 class CrystalBlock2 extends Block {

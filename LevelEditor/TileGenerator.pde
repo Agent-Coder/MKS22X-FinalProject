@@ -8,8 +8,18 @@ class Tile {
     yer=y;
   }
   void display() {
-    println("yes");
     image(floor, xer, yer);
+  }
+}
+
+class wTile extends Tile {
+  public wTile(int x, int y) {
+    super(x,y);
+    xer = x;
+    yer = y;
+  }
+  void display() {
+    image(CrystalBlue,xer,yer);
   }
 }
 

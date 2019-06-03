@@ -130,6 +130,7 @@ abstract class Levels {
   abstract void collectBerries(int berryEnd);
   abstract void displayBerries(int berryEnd);
 }
+
 class Level1 extends Levels {
   public Level1() {
     super();
@@ -356,7 +357,7 @@ void draw() {
     drawContinueScreen("2");
   }
   else if (location.equals("2") && pause == false && goVis == true) {
-    //L2.play();
+    L2.play();
   }
   else if (location.equals("deathScreen")) {
     dead = false;
@@ -420,4 +421,8 @@ void keyReleased() {
   } else {
     keysDown.remove(key);
   }
+}
+
+void mousePressed() {
+  print("\n" + "X: " + mX + "Y: " + mY);
 }

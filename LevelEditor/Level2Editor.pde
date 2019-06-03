@@ -1,5 +1,4 @@
-/*Level2 L2 = new Level2();
-
+Level2 L2 = new Level2();
 
 class Level2 extends Levels {
   Random rng = new Random();
@@ -12,13 +11,12 @@ class Level2 extends Levels {
     super();
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
-    
-   for (int i=0; i<board.length; i++) {
-      board[i][0]=new BorderBlock(i*50, 0);
-      board[0][i]=new BorderBlock(0, i*50);
-      board[i][board.length-1]=new BorderBlock(i*50, (board.length-1)*50);
-      board[board.length-1][i]=new BorderBlock((board.length-1)*50, i*50);     
-   }
+    for (int i=0; i<board.length; i++) {
+        board[i][0]=new BorderBlock(i*50, 0);
+        board[0][i]=new BorderBlock(0, i*50);
+        board[i][board.length-1]=new BorderBlock(i*50, (board.length-1)*50);
+        board[board.length-1][i]=new BorderBlock((board.length-1)*50, i*50);     
+     }
   }
   
   void play() {
@@ -47,7 +45,7 @@ class Level2 extends Levels {
       }
     }
     if (temp!=null&&attacked.size()>0) {
-      temp.animate(temp.getxB(), temp.getyB(), make,frameCount-playerFrames);
+    //  temp.animate(temp.getxB(), temp.getyB(), make,frameCount);
     }
     if (attacked.size()>0) {
       canMove=false;
@@ -68,29 +66,28 @@ class Level2 extends Levels {
       for (int i = 0; i < 15; i++) {
         for (int j = 0; j < 15; j++) {
            int randomNum = rng.nextInt(10);
-           if (randomNum < 4 && i != 0 && i != board.length-1 && j != 0 && j != board.length-1)  {
-             board[j][i]=new CrystalBlock(i*50, j*50);
+           if (randomNum < 4 && i != 0 && i != boardtile.length-1 && j != 0 && j != boardtile.length-1 && j!=3) {
              numbs.add(j);
              numbs.add(i);
+             boardtile[j][i]=new wTile(i*50, j*50);
            }
-           print("spike now" + "\n");
          }
         }
      }   
-    if (millis() > time2 + 2000 && rC == 0) {
+    if (millis() >= time2 + 3000 && rC == 0) {
+      rC = 1;
       while ( numbs.size() > 0) { 
-        rC = 1;
         int x = numbs.remove(0);
         int y = numbs.remove(0);
         board[x][y] = new CrystalBlock2(y*50,x*50);
       }
     }
-    if (millis() > time2 + 6000) {
+    if (millis() >= time2 + 7000) {
       for (int i = 0; i < 15; i++) {
         for (int j = 0; j < 15; j++) {
           if  (i != 0 && i != board.length-1 && j != 0 && j != board.length-1) {
+            boardtile[j][i] = null;
             board[j][i] = null;
-            print("nullnow");
             sCount = 0;
             time2 = millis();
             rC = 0;
@@ -103,4 +100,4 @@ class Level2 extends Levels {
    void createBerries(){};
    void collectBerries(int berryEnd){};
    void displayBerries(int berryEnd){};;
-}*/
+}

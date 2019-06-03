@@ -1,5 +1,3 @@
-
-
 void drawLevelScreen() { //goes in DRAW //top half level select
   image(one, 50, 160);
   image(two, 185, 160);
