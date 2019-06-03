@@ -1,7 +1,7 @@
 class Level3 extends Levels {
   public Level3() {
     B=new Player(350, 350, board, playerChar);
-    C=new Enemies(B, board,100,100);
+    C=new Ditto(B, board,300,300);
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
     berryCount=new ArrayList<Berries>();
@@ -98,7 +98,7 @@ class Level3 extends Levels {
   boolean lastBlock=false;
   int frameBlocks=0;
   int playerFrames=0;
-  void play() {
+  void play(String playChar) {
     if (startFrame) {
       frameStart=frameCount;
       startFrame=false;
@@ -161,11 +161,9 @@ class Level3 extends Levels {
     } else {
       canMove=true;
     }
-    C.update(board);
-    if (frameCount%50==frameStart%50) {
-      C.moveE();
-    }
-    C.moveAnimation();
+
+      C.moveE(playChar);
+
     B.move(canMove);
     if (round(C.getX()/50)==round(B.getPX()/50)&&round(C.getY()/50)==round(B.getPY()/50)) dead = true;
     if (berryCount.size() == 0) nextLevel = true;

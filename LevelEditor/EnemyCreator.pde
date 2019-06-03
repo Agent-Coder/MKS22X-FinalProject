@@ -66,7 +66,7 @@ class Enemies {
       fillGrid(xer, yer-1, num+1);
     }
   }
-  void moveE() {
+  void moveE(String avatar) {
     int a=round((y)/50);
     int b=round((x)/50);
     int smallest=grid[a][b];
@@ -168,12 +168,13 @@ class Enemies {
   }
 }
 class Ditto extends Enemies {
-  public Ditto(Player a, Block[][] iceBlock, int newx, int newy, String characterPick) {
+  boolean moving=true;
+  public Ditto(Player a, Block[][] iceBlock, int newx, int newy) {
     super( a, iceBlock, newx, newy);
   }
-    void moveE(boolean canMove) {
-    if (target.getCharacter().equals("Glaceon")) {
-      if (keyCodesDown.contains(RIGHT)&&canMove) {
+    void moveE(String avatar) {
+    if (avatar.equals("Glaceon")) {
+      if (keyCodesDown.contains(RIGHT)&&moving) {
         PImage r=GlaceonMRight1;
         if (frameCount%30<10) {
           r=GlaceonMRight1;
@@ -188,7 +189,7 @@ class Ditto extends Enemies {
         } else {
           display(r, x, y);
         }
-      } else if (keyCodesDown.contains(LEFT)&&canMove) {
+      } else if (keyCodesDown.contains(LEFT)&&moving) {
         PImage r=GlaceonMLeft1;
         if (frameCount%30<10) {
           r=GlaceonMLeft1;
@@ -203,7 +204,7 @@ class Ditto extends Enemies {
         } else {
           display(r, x, y);
         }
-      } else if (keyCodesDown.contains(DOWN)&&canMove) {
+      } else if (keyCodesDown.contains(DOWN)&&moving) {
         PImage r=GlaceonMDown1;
         if (frameCount%30<10) {
           r=GlaceonMDown1;
@@ -218,7 +219,7 @@ class Ditto extends Enemies {
         } else {
           display(r, x, y);
         }
-      } else if (keyCodesDown.contains(UP)&&canMove) {
+      } else if (keyCodesDown.contains(UP)&&moving) {
         PImage r=GlaceonMUp1;
         if (frameCount%30<10) {
           r=GlaceonMUp1;
@@ -260,8 +261,8 @@ class Ditto extends Enemies {
           }
         }
       }
-    } else if (target.getCharacter().equals("Empoleon")) {
-      if (keyCodesDown.contains(RIGHT)&&canMove) {
+    } else if (avatar.equals("Empoleon")) {
+      if (keyCodesDown.contains(RIGHT)&&moving) {
         PImage r=EmpoleonMRight1;
         if (frameCount%30<10) {
           r=EmpoleonMRight1;
@@ -276,7 +277,7 @@ class Ditto extends Enemies {
         } else {
           display(r, x, y);
         }
-      } else if (keyCodesDown.contains(LEFT)&&canMove) {
+      } else if (keyCodesDown.contains(LEFT)&&moving) {
         PImage r=EmpoleonMLeft1;
         if (frameCount%30<10) {
           r=EmpoleonMLeft1;
@@ -291,7 +292,7 @@ class Ditto extends Enemies {
         } else {
           display(r, x, y);
         }
-      } else if (keyCodesDown.contains(DOWN)&&canMove) {
+      } else if (keyCodesDown.contains(DOWN)&&moving) {
         PImage r=EmpoleonMDown1;
         if (frameCount%30<10) {
           r=EmpoleonMDown1;
@@ -306,7 +307,7 @@ class Ditto extends Enemies {
         } else {
           display(r, x, y);
         }
-      } else if (keyCodesDown.contains(UP)&&canMove) {
+      } else if (keyCodesDown.contains(UP)&&moving) {
         PImage r=EmpoleonMUp1;
         if (frameCount%30<10) {
           r=EmpoleonMUp1;
@@ -322,7 +323,7 @@ class Ditto extends Enemies {
           display(r, x, y);
         }
       } else {
-        if (prevKey.equals("right")) {
+        if (target.getPrevKey().equals("right")) {
           if (frameCount%30<15) {
             display(EmpoleonIRight1, x, y);
           } else {
@@ -349,7 +350,7 @@ class Ditto extends Enemies {
         }
       }
     } else { //Manaphy
-      if (keyCodesDown.contains(RIGHT)&&canMove) {
+      if (keyCodesDown.contains(RIGHT)&&moving) {
         PImage r=ManaphyMRight1;
         if (frameCount%30<10) {
           r=ManaphyMRight1;
@@ -364,7 +365,7 @@ class Ditto extends Enemies {
         } else {
           display(r, x, y);
         }
-      } else if (keyCodesDown.contains(LEFT)&&canMove) {
+      } else if (keyCodesDown.contains(LEFT)&&moving) {
         PImage r=ManaphyMLeft1;
         if (frameCount%30<10) {
           r=ManaphyMLeft1;
@@ -379,7 +380,7 @@ class Ditto extends Enemies {
         } else {
           display(r, x, y);
         }
-      } else if (keyCodesDown.contains(DOWN)&&canMove) {
+      } else if (keyCodesDown.contains(DOWN)&&moving) {
         PImage r=ManaphyMDown1;
         if (frameCount%30<10) {
           r=ManaphyMDown1;
@@ -394,7 +395,7 @@ class Ditto extends Enemies {
         } else {
           display(r, x, y);
         }
-      } else if (keyCodesDown.contains(UP)&&canMove) {
+      } else if (keyCodesDown.contains(UP)&&moving) {
         PImage r=ManaphyMUp1;
         if (frameCount%30<10) {
           r=ManaphyMUp1;
@@ -438,4 +439,8 @@ class Ditto extends Enemies {
       }
     }
   }
+  void display(PImage picture,float x,float y){
+    image(picture,x,y);
+  }
+  
 }

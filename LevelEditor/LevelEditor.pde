@@ -129,8 +129,8 @@ abstract class Levels {
 }
 class Level1 extends Levels {
   public Level1() {
-    B=new Player(350, 350, board,playerChar);
-    C=new Enemies(B, board,100,100);
+    B=new Player(350, 350, board, playerChar);
+    C=new Enemies(B, board, 100, 100);
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
     berryCount=new ArrayList<Berries>();
@@ -143,8 +143,8 @@ class Level1 extends Levels {
     board[7][11]=new IceBlock(550, 350);
     for (int i=0; i<board.length; i++) {
       board[i][0]=new BorderBlock(0, i*50);
-      board[0][i]=new BorderBlock(i*50,0);
-      board[i][board.length-1]=new BorderBlock((board.length-1)*50,i*50 );
+      board[0][i]=new BorderBlock(i*50, 0);
+      board[i][board.length-1]=new BorderBlock((board.length-1)*50, i*50 );
       board[board.length-1][i]=new BorderBlock(i*50, (board.length-1)*50);
       for (int j=0; j<board[0].length; j++) {
         boardtile[i][j]=new Tile(i*50, j*50);
@@ -230,7 +230,7 @@ class Level1 extends Levels {
       startFrame=false;
       frameBlocks=frameStart-20;
     }
-        output();
+    output();
     if (oran!=0) {
       collectBerries(oran);
       displayBerries(oran);
@@ -267,7 +267,7 @@ class Level1 extends Levels {
 
       if (make) {
         lastBlock=true;
-        temp.animate(temp.getxB(), temp.getyB(), make,frameCount-playerFrames);
+        temp.animate(temp.getxB(), temp.getyB(), make, frameCount-playerFrames);
         if (frameCount-playerFrames==19) {
           if (abs((round(C.getX())-temp.getxB()))<50&&abs((round(C.getY())-temp.getyB()))<50) {
             temp=null;      
@@ -279,7 +279,7 @@ class Level1 extends Levels {
           }
         }
       } else {
-        temp.animate(temp.getxB(), temp.getyB(), make,frameCount-playerFrames);
+        temp.animate(temp.getxB(), temp.getyB(), make, frameCount-playerFrames);
       }
     }
     if (attacked.size()>0||frameCount-playerFrames<20) {
@@ -289,11 +289,13 @@ class Level1 extends Levels {
     }
     C.update(board);
     if (frameCount%50==frameStart%50) {
-      C.moveE();
+      C.moveE(playerChar);
     }
     C.moveAnimation();
     B.move(canMove);
-    if (round(C.getX()/50)==round(B.getPX()/50)&&round(C.getY()/50)==round(B.getPY()/50)) dead = true;
+    if (round(C.getX()/50)==round(B.getPX()/50)&&round(C.getY()/50)==round(B.getPY()/50)) {
+      dead = true;
+    }
     if (berryCount.size() == 0) nextLevel = true;
   }
 }
@@ -305,6 +307,7 @@ void setup() {
   setupText();
 }
 void draw() {
+  int frameDead=0;
   background(255);
   for (int i=0; i<800; i+=50) {
     line(0, i, 800, i);
@@ -318,12 +321,11 @@ void draw() {
     drawBerries2();
     drawBerries3();
     detectStartGame();
-  } 
-  else if (location.equals("levelSelect")) {
+  } else if (location.equals("levelSelect")) {
     image(bluebackground, 0, 0);
     drawLevelScreen();
-    detectLevelSelect();
     detectPokemonSelect();
+    detectLevelSelect();
     animateCharSelect();
     drawReady();
     if (goVis) {
@@ -332,8 +334,7 @@ void draw() {
         plocation = selectedLevel;
       }
     }
-  } 
-  else if (location.equals("1") && pause == false && goVis == true) {
+  } else if (location.equals("1") && pause == false && goVis == true) {
     A.play();
     if (dead) {
       location="deathScreen";
@@ -343,19 +344,16 @@ void draw() {
       resetLevel();
       location = "1to2";
     }
-  }
-  else if (location.equals("1to2")) {
+  } else if (location.equals("1to2")) {
     nextLevel = false;
     drawContinueScreen("2");
-  }
-  else if (location.equals("2") && pause == false && goVis == true) {
+  } else if (location.equals("2") && pause == false && goVis == true) {
     //L2.play();
-  }
-  else if (location.equals("deathScreen")) {
+  } else if (location.equals("deathScreen")) {
     dead = false;
     drawDeathScreen();
-  }else if (location.equals("3") && pause == false && goVis == true) {
-    L3.play();
+  } else if (location.equals("3") && pause == false && goVis == true) {
+    L3.play(playerChar);
     if (dead) {
       location="deathScreen";
       resetLevel();
@@ -402,7 +400,7 @@ void draw() {
 import java.util.*;
 Set<Character> keysDown= new HashSet<Character>();
 Set<Integer> keyCodesDown= new HashSet<Integer>();
-
+boolean begin=true;
 void keyPressed() {
   if (key==CODED) {
     keyCodesDown.add(keyCode);
@@ -410,7 +408,7 @@ void keyPressed() {
     keysDown.add(key);
   }
   if (!location.equals("levelSelect") && !location.equals("startScreen") && !location.equals("deathScreen") &&
-  !location.equals("1to2") && key == 'p' && pause == false) {
+    !location.equals("1to2") && key == 'p' && pause == false) {
     pause = true;
   } else if (key == 'p' && pause == true) {
     pause = false;
