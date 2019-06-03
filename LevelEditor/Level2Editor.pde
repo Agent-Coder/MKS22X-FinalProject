@@ -2,9 +2,8 @@ Level2 L2 = new Level2();
 int time;
 int time2;
 int time3;
-int borderblockc = 0;
+int sCount = 0;
 ArrayList<Integer> numbs = new ArrayList<Integer>();
-int count;
 
 class Level2 extends Levels {
   Random rng = new Random();
@@ -63,8 +62,9 @@ class Level2 extends Levels {
 
   void genSpikes() {
     time = second() % 10;
-    if (time == 0 && millis() % 900 < 20) {
+    if (time == 0 && sCount == 0) {
       time2 = second();
+      sCount = sCount + 1;
       for (int i = 0; i < 15; i++) {
         for (int j = 0; j < 15; j++) {
            int randomNum = rng.nextInt(10);
@@ -78,10 +78,20 @@ class Level2 extends Levels {
         }
      }
      
-    if (second() == time2 + 5 && numbs.size() > 0) {
+    if (second() == time2 + 4 && numbs.size() > 0) {
+      time3 = second();
       int x = numbs.remove(0);
       int y = numbs.remove(0);
       board[x][y] = new CrystalBlock2(y*50,x*50);
+    }
+    
+    if (second() == time3 + 7) {
+      for (int i = 0; i < 15; i++) {
+        for (int j = 0; j < 15; j++) {
+          //reset all blocks
+            }
+          }
+        
     }
   }
   
