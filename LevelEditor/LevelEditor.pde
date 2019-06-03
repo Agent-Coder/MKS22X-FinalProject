@@ -225,7 +225,6 @@ class Level1 extends Levels {
       frameStart=frameCount;
          startFrame=false;
     }
-    println(C.getY()+"a");
     if (oran!=0) {
       collectBerries(oran);
       displayBerries(oran);
@@ -260,24 +259,17 @@ class Level1 extends Levels {
         make=false;
       }
     }
-    println(C.getY()+"b");
     if (temp!=null&&attacked.size()>0) {
       temp.animate(temp.getxB(), temp.getyB(), make);
     }
-    println(C.getY()+"c");
     if (attacked.size()>0) {
       canMove=false;
       attacking=true;
     } else {
       canMove=true;
     }
-    println(C.getY()+"d");
     C.update(board);
-    println(frameCount+"outside frame");
-    //C.display(MeowthMDown1);
     if (frameCount%50==frameStart%50) {
-      println(frameCount+"inside frame");
-      println(C.getY());
       C.moveE();
     }
     C.moveAnimation();

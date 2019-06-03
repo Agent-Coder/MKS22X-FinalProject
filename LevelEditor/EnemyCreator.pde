@@ -112,17 +112,20 @@ class Enemies {
     }
   }
   void moveAnimation() {
-    /*if (frameCount-currentFrame==20) {
+    if (frameCount-currentFrame==25) {
       moving=true;
     }
-    if (board[floor((y/50))+(int)dy][floor((x/50))+(int)dx]==null) {
+    if (board[round((y/50))+(int)dy][round((x/50))+(int)dx]==null) {
       if (moving) {
         x+=dx;
         y+=dy;
-      }*/
-      x+=dx;
-      y+=dy;
-      if (dx>0) {
+      }
+    } else {
+      board[round((y/50))+(int)dy][round((x/50))+(int)dx]=null;
+      moving=false;
+      currentFrame=frameCount;
+    }
+    if (dx>0) {
         if (frameCount%30<10) {
           pic=MeowthMRight1;
         } else if (frameCount%30<20) {
@@ -161,11 +164,6 @@ class Enemies {
       } else {
         display(MeowthMDown3);
       }
-    //} else {
-      //board[floor((y/50))+(int)dy][floor((x/50))+(int)dx]=null;
-      //moving=false;
-      //currentFrame=frameCount;
-    //}
   }
   void display(PImage i) {
     image(i, x, y);
