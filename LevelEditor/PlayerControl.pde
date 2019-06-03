@@ -23,7 +23,6 @@ class Player {
   void display(PImage i, float x, float y) {
     image(i, x, y);
   }
-
   void move(boolean canMove) {
     if (playerChar.equals("Glaceon")) {
       if (keyCodesDown.contains(RIGHT)&&canMove) {

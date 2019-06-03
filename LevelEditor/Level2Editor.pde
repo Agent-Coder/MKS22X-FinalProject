@@ -75,8 +75,7 @@ class Level2 extends Levels {
            print("spike now" + "\n");
          }
         }
-     }
-     
+     }   
     if (millis() > time2 + 2000 && rC == 0) {
       while ( numbs.size() > 0) { 
         rC = 1;
@@ -85,8 +84,6 @@ class Level2 extends Levels {
         board[x][y] = new CrystalBlock2(y*50,x*50);
       }
     }
-    
-    
     if (millis() > time2 + 6000) {
       for (int i = 0; i < 15; i++) {
         for (int j = 0; j < 15; j++) {
@@ -100,8 +97,6 @@ class Level2 extends Levels {
         }
       }
     }
-    
-    
   }
   
    void createBerries(){};

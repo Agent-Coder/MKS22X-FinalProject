@@ -3,6 +3,8 @@ Level1 A=new Level1();
 float mX;
 float mY;
 
+boolean dead = false;
+
 String location = "startScreen";
 int animateCount = 0;
 String playerChar = "";
@@ -265,6 +267,10 @@ class Level1 extends Levels {
     C.moveE();
     C.moveAnimation();
     B.move(canMove);
+    float xDist = abs(B.getPX() - C.getX());
+    float yDist = abs(B.getPY() - C.getY());
+    if (xDist < 20 && yDist < 20) dead = true;
+    print(dead);
   }
 }
 
@@ -298,6 +304,7 @@ void draw() {
     }
   } else if (location.equals("1") && pause == false && goVis == true) {
     A.play();
+    if (dead) location="levelSelect";
   } 
   if (pause == true) {
     background(151, 223, 237);
