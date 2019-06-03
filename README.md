@@ -144,6 +144,7 @@ The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or G
 - Made level a nonabstract class, children subclasses level1,level2, etc
 
 ## DAY 15 Friday 5/31/19
+:cookie:
 - Photoshopped floor tile sprites
 - Played around with level2 spike generation
 
