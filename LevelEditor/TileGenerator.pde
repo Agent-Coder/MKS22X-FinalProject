@@ -12,17 +12,15 @@ class Tile {
   }
 }
 
-//NEEDS EDITING & CHECKS
-class BerryTile {
+class TeleportationTile extends Tile{
   String type;
   int xer;
   int yer;
-  public BerryTile(int x, int y) {
-    type = "Berry";
-    xer = x;
-    yer = y;
+  public TeleportationTile(int x, int y) {
+    super(x,y);
+    type = "teleporttile";
   }
   void display() {
-    image(OranBerry, xer, yer, 50, 50);
+    image(floor, xer, yer, xer, yer);
   }
 }

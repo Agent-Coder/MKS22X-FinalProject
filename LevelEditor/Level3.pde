@@ -10,6 +10,18 @@ class Level3 extends Levels {
       for (int j=0; j<board[0].length; j++) {
         boardtile[i][j]=new Tile(i*50, j*50);
       }
+      boardtile[3][11]=null;//new TeleportationTile(550,150);
+      boardtile[3][3]=null;//new TeleportationTile(550, 150);
+      boardtile[11][3]=null;//new TeleportationTile(150, 550);
+      boardtile[11][11]=null;//new TeleportationTile(550, 550);
+      boardtile[5][board.length-2]=null;//new TeleportationTile(650,250);
+      boardtile[board.length-2][5]=null;//new TeleportationTile(250,650);
+      boardtile[1][5]=null;//new TeleportationTile(250,50);
+      boardtile[5][1]=null;//new TeleportationTile(50,250);
+      boardtile[1][9]=null;//new TeleportationTile(50,450);
+      boardtile[9][board.length-2]=null;//new TeleportationTile(700,450);
+      boardtile[board.length-2][9]=null;//new TeleportationTile(450,700);
+       boardtile[1][9]=null;//new TeleportationTile(50,450);
       board[i][board.length-1]=new BorderBlock( (board.length-1)*50, i*50);
       board[board.length-1][i]=new BorderBlock(i*50, (board.length-1)*50);
       board[i][0]=new BorderBlock(0, i*50);
