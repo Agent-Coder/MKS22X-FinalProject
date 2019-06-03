@@ -360,7 +360,7 @@ void importImages() {
   CrystalRed.resize(50,50);
   
   
-  floor = loadImage("MoveTile1.png");
+  floor = loadImage("SPRITES/SnowTile.png");
   ice=loadImage("Ice.png");
   ice.resize(50, 49);
   floor.resize(50, 50);

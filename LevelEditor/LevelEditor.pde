@@ -154,9 +154,7 @@ class Level1 extends Levels {
     }
   }
   void collectBerries(int berryEnd) {
-
     for (int i=0; i<berryEnd; i++) {
-
       if (round(B.getPX()/50)==berryCount.get(i).getBerryX()/50&&round(B.getPY()/50)==berryCount.get(i).getBerryY()/50) {
         if (berryCount.get(i).getBerryType().equals("OranBerry")) {
           oran--;
@@ -219,16 +217,14 @@ class Level1 extends Levels {
 
   boolean canMove=true;
   Block temp;
-  Tile[][] boardtile=new Tile[15][15];
-  IceBlock[][] start = new IceBlock[15][15];
+//  Tile[][] boardtile=new Tile[15][15];
+ // IceBlock[][] start = new IceBlock[15][15];
 
   void play() {
     if (oran!=0) {
-
       collectBerries(oran);
       displayBerries(oran);
     } else {    
-
       collectBerries(lum);
       displayBerries(lum);
     }
