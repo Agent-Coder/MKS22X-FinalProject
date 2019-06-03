@@ -11,7 +11,7 @@ abstract class Block {
     destroyable=false;
   }
   void animate(int x, int y, boolean mode) {
-    if (mode) {
+    if (!mode) {
       if (frameCount%20<4) {
         image(IceA1, x, y);
       } else if (frameCount%20<8) {
