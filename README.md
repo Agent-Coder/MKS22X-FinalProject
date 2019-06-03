@@ -143,3 +143,18 @@ The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or G
 - Played around with level2, started on spike generation 
 - Made level a nonabstract class, children subclasses level1,level2, etc
 
+## DAY 15 Friday 5/31/19
+- Photoshopped floor tile sprites
+- Played around with level2 spike generation
+
+## DAY 16 Saturday 6/1/19
+:cookie:
+- SAT & other events - was out and busy all day :(
+
+## Day 17 Sunday 6/2/19
+:cookie:
+- Coded half of level 2; spikes spawn and despawn randomly every couple of seconds
+- Added a death screen and various buttons on it for what the player can do when it comes in contact with an enemy
+- Added a continue screen and various buttons for what the player can do when it collects all the berries on one level
+- Debugged some bugs
+
