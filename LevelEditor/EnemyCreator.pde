@@ -56,8 +56,6 @@ class Enemies {
 
     fillGrid(round(ty/50), round(tx/50), 1);
     //board();
-    //System.out.println(target.getPX()+" "+target.getPY());
-    //moveE();
   }
   void fillGrid(int xer, int yer, int num) {
     if (xer<grid.length&&xer>=0&&yer>=0&&yer<grid.length&&grid[xer][yer]!=1&&(grid[xer][yer]==0||grid[xer][yer]>num&&grid[xer][yer]!=-1)) {
@@ -77,7 +75,6 @@ class Enemies {
       return true;
     } else {
       int smallest=grid[a][b];
-      //println(a+" "+b);
       if (smallest==0) {
         if (grid[a+(int)dy][b+(int)dx]==-1) {
           moveRotation=(moveRotation-1)%3;
@@ -110,10 +107,10 @@ class Enemies {
       dx=moves[2*index+1];
       dy=moves[2*index];
     }
-    if (board[round((y/50))+(int)dy][round((x/50))+(int)dx]!=null&&!board[round((y/50))+(int)dy][round((x/50))+(int)dx].getType().equals("borderblock")) {
+    if (board[a+(int)dy][b+(int)dx]!=null&&!board[a+(int)dy][b+(int)dx].getType().equals("borderblock")) {
       moving=false;
       currentFrame=frameCount;
-      board[round((y/50))+(int)dy][round((x/50))+(int)dx]=null;
+      board[a+(int)dy][b+(int)dx]=null;
     }
   }
   void moveAnimation() {
@@ -124,6 +121,21 @@ class Enemies {
     if (moving&&x+dx>0&&y+dy>0&&x+dx<700&&y+dy<700) {
       x+=dx;
       y+=dy;
+    }
+    PImage animated;
+    if (!moving) {
+      if (frameCount-currentFrame<10) {
+        animated=IceA1;
+      } else if (frameCount-currentFrame<20) {
+        animated=IceA2;
+      } else if (frameCount-currentFrame<30) {
+        animated=IceA3;
+      }else if (frameCount-currentFrame<40) {
+        animated=IceA4;
+      } else {
+        animated=IceA5;
+      }
+     displayer(animated,(int)(x+50*dx),(int)(y+50*dy));
     }
     if (dx>0) {
       if (frameCount%30<10) {
@@ -164,6 +176,9 @@ class Enemies {
     } else {
       display(MeowthMDown3);
     }
+  }
+  void displayer(PImage picture,int xB,int yB){
+    image(picture, xB, yB);
   }
   void display(PImage i) {
     image(i, x, y);

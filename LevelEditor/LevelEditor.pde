@@ -131,8 +131,8 @@ class Level1 extends Levels {
     temporary=new ArrayList<Block>();
     berryCount=new ArrayList<Berries>();
     createBerries();
-    board[7][3]=new IceBlock(200, 350);
-    board[7][4]=new IceBlock(150, 350);
+    board[7][3]=new IceBlock(150, 350);
+    board[7][4]=new IceBlock(200, 350);
     board[7][5]=new IceBlock(250, 350);
     board[7][9]=new IceBlock(450, 350);
     board[7][10]=new IceBlock(500, 350);
