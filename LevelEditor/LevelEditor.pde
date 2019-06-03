@@ -216,7 +216,6 @@ class Level1 extends Levels {
     }
   }
 
-  boolean canMove=true;
   Block temp;
   Tile[][] boardtile=new Tile[15][15];
   IceBlock[][] start = new IceBlock[15][15];
@@ -250,7 +249,7 @@ class Level1 extends Levels {
       temp=null;
       attacking=false;
     }
-    if (attacked.size()>0&&frameCount-playerFrames<20) {
+    if (attacked.size()>0||frameCount-playerFrames<20) {
       attacking=true;
     }
     if (frameCount-playerFrames>=20&&attacked.size()>0) {
@@ -280,11 +279,11 @@ class Level1 extends Levels {
             lastBlock=false;
           }
         }
-      } else{
+      } else {
         temp.animate(temp.getxB(), temp.getyB(), make);
       }
     }
-    if (attacked.size()>0&&frameCount-playerFrames<20) {
+    if (attacked.size()>0||frameCount-playerFrames<20) {
       canMove=false;
     } else {
       canMove=true;
