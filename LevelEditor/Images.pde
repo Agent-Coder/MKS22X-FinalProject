@@ -2,6 +2,7 @@ PImage floor;
 PImage ice;
 PImage background;
 PImage bluebackground;
+PImage warning;
 
 //Ice Breaking Animation/Effect
 PImage IceA1;

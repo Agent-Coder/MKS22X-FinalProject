@@ -19,6 +19,24 @@ class Level2 extends Levels {
      }
   }
   
+  void output() {
+    for (int i=0; i<board.length; i++) {
+      for (int j=0; j<board[0].length; j++) {
+        if (boardtile[i][j]!=null) {
+          boardtile[i][j].display();
+        }
+      }
+    }
+
+    for (int i=0; i<board.length; i++) {
+      for (int j=0; j<board[0].length; j++) {
+        if (board[i][j]!=null) {
+          board[i][j].display();
+        }
+      }
+    }
+  }
+  
   void play() {
     boolean make=true;
     output();
@@ -65,8 +83,9 @@ class Level2 extends Levels {
       sCount = sCount + 1;
       for (int i = 0; i < 15; i++) {
         for (int j = 0; j < 15; j++) {
+          boardtile[j][i] = new Tile(i*50,j*50);
            int randomNum = rng.nextInt(10);
-           if (randomNum < 4 && i != 0 && i != boardtile.length-1 && j != 0 && j != boardtile.length-1 && j!=3) {
+           if (randomNum < 4 && i != 0 && i != boardtile.length-1 && j != 0 && j != boardtile.length-1) {
              numbs.add(j);
              numbs.add(i);
              boardtile[j][i]=new wTile(i*50, j*50);
@@ -79,6 +98,7 @@ class Level2 extends Levels {
       while ( numbs.size() > 0) { 
         int x = numbs.remove(0);
         int y = numbs.remove(0);
+        boardtile[x][y] = new Tile(y*50,x*50);
         board[x][y] = new CrystalBlock2(y*50,x*50);
       }
     }

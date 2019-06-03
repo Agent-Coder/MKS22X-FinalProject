@@ -15,11 +15,12 @@ class Tile {
 class wTile extends Tile {
   public wTile(int x, int y) {
     super(x,y);
+    type = "tile";
     xer = x;
     yer = y;
   }
   void display() {
-    image(CrystalBlue,xer,yer);
+    image(warning,xer,yer);
   }
 }
 

@@ -358,9 +358,11 @@ void importImages() {
   //Crystal Sprites Resizes
   CrystalBlue.resize(50,50);
   CrystalRed.resize(50,50);
-  
+
   
   floor = loadImage("SPRITES/SnowTile.png");
+  warning = loadImage("SPRITES/Warning.png");
+  warning.resize(50,50);
   ice=loadImage("Ice.png");
   ice.resize(50, 49);
   floor.resize(50, 50);
