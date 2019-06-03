@@ -88,11 +88,16 @@ class Level2 extends Levels {
     if (second() == time3 + 7) {
       for (int i = 0; i < 15; i++) {
         for (int j = 0; j < 15; j++) {
-          //reset all blocks
-            }
+          if  (i != 0 && i != board.length-1 && j != 0 && j != board.length-1) {
+            board[j][i] = null;
+            print("nullnow");
+            sCount = 0;
           }
-        
+        }
+      }
     }
+    
+    
   }
   
    void createBerries(){};
