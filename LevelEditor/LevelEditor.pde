@@ -218,9 +218,14 @@ class Level1 extends Levels {
   Block temp;
   Tile[][] boardtile=new Tile[15][15];
   IceBlock[][] start = new IceBlock[15][15];
-
+  int frameStart;
+  boolean startFrame=true;
   void play() {
-    int currentcount;
+    if (startFrame) {
+      frameStart=frameCount;
+         startFrame=false;
+    }
+    println(C.getY()+"a");
     if (oran!=0) {
       collectBerries(oran);
       displayBerries(oran);
@@ -255,18 +260,26 @@ class Level1 extends Levels {
         make=false;
       }
     }
+    println(C.getY()+"b");
     if (temp!=null&&attacked.size()>0) {
       temp.animate(temp.getxB(), temp.getyB(), make);
     }
+    println(C.getY()+"c");
     if (attacked.size()>0) {
       canMove=false;
       attacking=true;
     } else {
       canMove=true;
     }
-
+    println(C.getY()+"d");
     C.update(board);
-    C.moveE();
+    println(frameCount+"outside frame");
+    //C.display(MeowthMDown1);
+    if (frameCount%50==frameStart%50) {
+      println(frameCount+"inside frame");
+      println(C.getY());
+      C.moveE();
+    }
     C.moveAnimation();
     B.move(canMove);
   }
@@ -280,6 +293,10 @@ void setup() {
 }
 void draw() {
   background(255);
+  for (int i=0; i<800; i+=50) {
+    line(0, i, 800, i);
+    line(i, 0, i, 800);
+  }
   mX = mouseX;
   mY = mouseY;
   if (location.equals("startScreen")) {
@@ -301,6 +318,7 @@ void draw() {
       }
     }
   } else if (location.equals("1") && pause == false && goVis == true) {
+
     A.play();
   } 
   if (pause == true) {

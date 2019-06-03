@@ -14,13 +14,12 @@ class Enemies {
   Player target;
   int[] moves=new int[8];
   public Enemies(Player a, Block[][] iceBlock) {
-    currentFrame=0;
     moving=true;
     target=a;
-    x=125;
-    y=125;
+    x=100;
+    y=100;
     dx=0;
-    dy=-1;
+    dy=1;
     tx=a.getPX();
     ty=a.getPY();
     moveRotation=3;
@@ -113,14 +112,16 @@ class Enemies {
     }
   }
   void moveAnimation() {
-    if (frameCount-currentFrame==20) {
+    /*if (frameCount-currentFrame==20) {
       moving=true;
     }
-    if (board[(round(y+dy)/50)][(round(x+dx)/50)]==null) {
+    if (board[floor((y/50))+(int)dy][floor((x/50))+(int)dx]==null) {
       if (moving) {
         x+=dx;
         y+=dy;
-      }
+      }*/
+      x+=dx;
+      y+=dy;
       if (dx>0) {
         if (frameCount%30<10) {
           pic=MeowthMRight1;
@@ -160,14 +161,14 @@ class Enemies {
       } else {
         display(MeowthMDown3);
       }
-    } else {
-      board[(round(y+dy)/50)][(round(x+dx)/50)]=null;
-      moving=false;
-      currentFrame=frameCount;
-    }
+    //} else {
+      //board[floor((y/50))+(int)dy][floor((x/50))+(int)dx]=null;
+      //moving=false;
+      //currentFrame=frameCount;
+    //}
   }
   void display(PImage i) {
-    image(i, x-25, y-25);
+    image(i, x, y);
   }
   float getX() {
     return x;
