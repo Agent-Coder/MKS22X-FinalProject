@@ -51,7 +51,7 @@ void detectPokemonSelect() {
 
 void resetLevel() {
   if (plocation.equals("1")) A = new Level1();
-  //if (plocation.equals("2")) L2 = new Level2();
+  if (plocation.equals("2")) L2 = new Level2();
     
 }
 

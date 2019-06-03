@@ -11,6 +11,8 @@ class Level2 extends Levels {
     super();
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
+    berryCount=new ArrayList<Berries>();
+    createBerries();
     for (int i=0; i<board.length; i++) {
         board[i][0]=new BorderBlock(i*50, 0);
         board[0][i]=new BorderBlock(0, i*50);
@@ -19,27 +21,109 @@ class Level2 extends Levels {
      }
   }
   
-  void output() {
-    for (int i=0; i<board.length; i++) {
-      for (int j=0; j<board[0].length; j++) {
-        if (boardtile[i][j]!=null) {
-          boardtile[i][j].display();
+  
+  ///
+  
+  void collectBerries(int berryEnd) {
+    for (int i=0; i<berryEnd; i++) {
+      if (round(B.getPX()/50)==berryCount.get(i).getBerryX()/50&&round(B.getPY()/50)==berryCount.get(i).getBerryY()/50) {
+        if (berryCount.get(i).getBerryType().equals("OranBerry")) {
+          oran--;
+        } else if (berryCount.get(i).getBerryType().equals("SitrusBerry")) {
+          sitrus--;
+        } else {
+          nanab--;
         }
+        berryCount.remove(i);
+        berryEnd--;
       }
     }
+  }
+  void createBerries() {
+    berryCount.add(new OBerries(200, 150));
+    berryCount.add(new OBerries(250, 150));
+    berryCount.add(new OBerries(300, 150));
+    berryCount.add(new OBerries(350, 150));
+    berryCount.add(new OBerries(400, 150));
+    berryCount.add(new OBerries(450, 150));
+    berryCount.add(new OBerries(500, 150));
+    
+    berryCount.add(new OBerries(200, 550));
+    berryCount.add(new OBerries(250, 550));
+    berryCount.add(new OBerries(300, 550));
+    berryCount.add(new OBerries(350, 550));
+    berryCount.add(new OBerries(400, 550));
+    berryCount.add(new OBerries(450, 550));
+    berryCount.add(new OBerries(500, 550));
+    
+    berryCount.add(new OBerries(150, 200));
+    berryCount.add(new OBerries(150, 250));
+    berryCount.add(new OBerries(150, 300));
+    berryCount.add(new OBerries(150, 350));
+    berryCount.add(new OBerries(150, 400));
+    berryCount.add(new OBerries(150, 450));
+    berryCount.add(new OBerries(150, 500));
+    
+    berryCount.add(new OBerries(550, 200));
+    berryCount.add(new OBerries(550, 250));
+    berryCount.add(new OBerries(550, 300));
+    berryCount.add(new OBerries(550, 350));
+    berryCount.add(new OBerries(550, 400));
+    berryCount.add(new OBerries(550, 450));
+    berryCount.add(new OBerries(550, 500));
+    oran=28;
+    
+    berryCount.add(new SBerries(50,50));
+    berryCount.add(new SBerries(50,650));
+    berryCount.add(new SBerries(650,50));
+    berryCount.add(new SBerries(650,650));
+    sitrus=4;
 
-    for (int i=0; i<board.length; i++) {
-      for (int j=0; j<board[0].length; j++) {
-        if (board[i][j]!=null) {
-          board[i][j].display();
-        }
-      }
+    berryCount.add(new NBerries(250, 200));
+    berryCount.add(new NBerries(300, 200));
+    berryCount.add(new NBerries(350, 200));
+    berryCount.add(new NBerries(400, 200));
+    berryCount.add(new NBerries(450, 200));
+    
+    berryCount.add(new NBerries(250, 500));
+    berryCount.add(new NBerries(300, 500));
+    berryCount.add(new NBerries(350, 500));
+    berryCount.add(new NBerries(400, 500));
+    berryCount.add(new NBerries(450, 500));
+    
+    berryCount.add(new NBerries(200, 250));
+    berryCount.add(new NBerries(200, 300));
+    berryCount.add(new NBerries(200, 350));
+    berryCount.add(new NBerries(200, 400));
+    berryCount.add(new NBerries(200, 450));
+    
+    berryCount.add(new NBerries(500, 250));
+    berryCount.add(new NBerries(500, 300));
+    berryCount.add(new NBerries(500, 350));
+    berryCount.add(new NBerries(500, 400));
+    berryCount.add(new NBerries(500, 450));
+    nanab=20;
+  }
+  
+  void displayBerries(int berryEnd) {
+    for (int i=0; i<berryEnd; i++) {
+      berryCount.get(i).display();
     }
   }
   
   void play() {
     boolean make=true;
     output();
+    if (oran!=0) {
+      collectBerries(oran);
+      displayBerries(oran);
+    } else if (sitrus!=0) {   
+      collectBerries(sitrus);
+      displayBerries(sitrus); 
+    } else {
+      collectBerries(nanab);
+      displayBerries(nanab);
+    }
     temporary=attack();
     int i=temporary.size()-1;
     while (i>=0) {
@@ -74,6 +158,7 @@ class Level2 extends Levels {
     C.moveE();
     B.move(canMove);
     genSpikes();
+    if (berryCount.size() == 0) nextLevel = true;
   }    
 
   void genSpikes() {
@@ -99,7 +184,7 @@ class Level2 extends Levels {
         int y = numbs.remove(0);
         boardtile[x][y] = new Tile(y*50,x*50);
         board[x][y] = new CrystalBlock2(y*50,x*50);
-        checkdead(x,y);
+      //  checkdead(x,y);
       }
     }
     if (millis() >= time2 + 7000) {
@@ -124,7 +209,4 @@ class Level2 extends Levels {
     }
   }
   */
-   void createBerries(){};
-   void collectBerries(int berryEnd){};
-   void displayBerries(int berryEnd){};;
 }

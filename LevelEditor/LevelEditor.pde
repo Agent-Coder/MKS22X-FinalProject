@@ -361,6 +361,14 @@ void draw() {
       location="deathScreen";
       resetLevel();
     }
+    if (nextLevel) {
+      resetLevel();
+      location = "2to3";
+    }
+  }
+  else if (location.equals("2to3")) {
+    nextLevel = false;
+    drawContinueScreen("3");
   }
   else if (location.equals("deathScreen")) {
     dead = false;
@@ -411,7 +419,7 @@ void keyPressed() {
     keysDown.add(key);
   }
   if (!location.equals("levelSelect") && !location.equals("startScreen") && !location.equals("deathScreen") &&
-  !location.equals("1to2") && key == 'p' && pause == false) {
+  !location.equals("1to2") && !location.equals("2to3") && key == 'p' && pause == false) {
     pause = true;
   } else if (key == 'p' && pause == true) {
     pause = false;
