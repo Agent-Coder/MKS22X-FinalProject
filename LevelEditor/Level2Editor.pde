@@ -1,8 +1,8 @@
 Level2 L2 = new Level2();
 int time;
 int time2;
-int time3;
 int sCount = 0;
+int rC = 0;
 ArrayList<Integer> numbs = new ArrayList<Integer>();
 
 class Level2 extends Levels {
@@ -61,14 +61,13 @@ class Level2 extends Levels {
 
 
   void genSpikes() {
-    time = second() % 10;
-    if (time == 0 && sCount == 0) {
-      time2 = second();
+    if (sCount == 0) {
+      time2 = millis();
       sCount = sCount + 1;
       for (int i = 0; i < 15; i++) {
         for (int j = 0; j < 15; j++) {
            int randomNum = rng.nextInt(10);
-           if (randomNum < 3 && i != 0 && i != board.length-1 && j != 0 && j != board.length-1)  {
+           if (randomNum < 4 && i != 0 && i != board.length-1 && j != 0 && j != board.length-1)  {
              board[j][i]=new CrystalBlock(i*50, j*50);
              numbs.add(j);
              numbs.add(i);
@@ -78,20 +77,25 @@ class Level2 extends Levels {
         }
      }
      
-    if (second() == time2 + 4 && numbs.size() > 0) {
-      time3 = second();
-      int x = numbs.remove(0);
-      int y = numbs.remove(0);
-      board[x][y] = new CrystalBlock2(y*50,x*50);
+    if (millis() > time2 + 2000 && rC == 0) {
+      while ( numbs.size() > 0) { 
+        rC = 1;
+        int x = numbs.remove(0);
+        int y = numbs.remove(0);
+        board[x][y] = new CrystalBlock2(y*50,x*50);
+      }
     }
     
-    if (second() == time3 + 7) {
+    
+    if (millis() > time2 + 6000) {
       for (int i = 0; i < 15; i++) {
         for (int j = 0; j < 15; j++) {
           if  (i != 0 && i != board.length-1 && j != 0 && j != board.length-1) {
             board[j][i] = null;
             print("nullnow");
             sCount = 0;
+            time2 = millis();
+            rC = 0;
           }
         }
       }
