@@ -21,6 +21,9 @@ class Player {
   float getPX() {
     return xcor;
   }
+  float getSpeed() {
+    return speed;
+  }
   float getPY() {
     return ycor;
   }
