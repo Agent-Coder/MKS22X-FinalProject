@@ -8,6 +8,7 @@ class Tile {
     yer=y;
   }
   void display() {
+    println("yes");
     image(floor, xer, yer);
   }
 }

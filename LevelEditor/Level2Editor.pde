@@ -1,4 +1,4 @@
-Level2 L2 = new Level2();
+/*Level2 L2 = new Level2();
 
 
 class Level2 extends Levels {
@@ -47,7 +47,7 @@ class Level2 extends Levels {
       }
     }
     if (temp!=null&&attacked.size()>0) {
-      temp.animate(temp.getxB(), temp.getyB(), make);
+      temp.animate(temp.getxB(), temp.getyB(), make,frameCount-playerFrames);
     }
     if (attacked.size()>0) {
       canMove=false;
@@ -103,4 +103,4 @@ class Level2 extends Levels {
    void createBerries(){};
    void collectBerries(int berryEnd){};
    void displayBerries(int berryEnd){};;
-}
+}*/

@@ -10,29 +10,39 @@ abstract class Block {
     type="block";
     destroyable=false;
   }
-  void animate(int x, int y, boolean mode) {
+  void animate(int x, int y, boolean mode,int frames) {
     if (!mode) {
-      if (frameCount%20<4) {
+      if (frames<4) {
+        println(1);
         image(IceA1, x, y);
-      } else if (frameCount%20<8) {
+      } else if (frames<8) {
+        println(2);
         image(IceA2, x, y);
-      } else if (frameCount%20<12) {
+      } else if (frames<12) {
+        println(3);
         image(IceA3, x, y);
-      } else if (frameCount%20<16) {
+      } else if (frames<16) {
+        println(4);
         image(IceA4, x, y);
       } else {
+        println(5);
         image(IceA5, x, y);
       }
     } else {
-      if (frameCount%20<4) {
+      if (frames<4) {
+        println(5);
         image(IceA5, x, y);
-      } else if (frameCount%20<8) {
+      } else if (frames<8) {
+        println(4);
         image(IceA4, x, y);
-      } else if (frameCount%20<12) {
+      } else if (frames<12) {
+        println(3);
         image(IceA3, x, y);
-      } else if (frameCount%20<16) {
+      } else if (frames<16) {
+        println(2);
         image(IceA2, x, y);
       } else {
+        println(1);
         image(IceA1, x, y);
       }
     }
