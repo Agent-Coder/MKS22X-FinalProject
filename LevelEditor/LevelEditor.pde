@@ -369,7 +369,8 @@ void keyPressed() {
   } else {
     keysDown.add(key);
   }
-  if (!location.equals("levelSelect") && !location.equals("startScreen") && !location.equals("deathScreen") && key == 'p' && pause == false) {
+  if (!location.equals("levelSelect") && !location.equals("startScreen") && !location.equals("deathScreen") &&
+  !location.equals("1to2") && key == 'p' && pause == false) {
     pause = true;
   } else if (key == 'p' && pause == true) {
     pause = false;

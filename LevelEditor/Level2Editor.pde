@@ -1,12 +1,13 @@
 Level2 L2 = new Level2();
-int time;
-int time2;
-int sCount = 0;
-int rC = 0;
-ArrayList<Integer> numbs = new ArrayList<Integer>();
+
 
 class Level2 extends Levels {
   Random rng = new Random();
+  int rC = 0;
+  int time;
+  int time2;
+  int sCount = 0;
+  ArrayList<Integer> numbs = new ArrayList<Integer>();
   public Level2() {
     super();
     attacked=new ArrayList<Block>();
