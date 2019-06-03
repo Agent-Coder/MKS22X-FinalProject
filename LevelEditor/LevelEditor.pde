@@ -357,6 +357,10 @@ void draw() {
   }
   else if (location.equals("2") && pause == false && goVis == true) {
     L2.play();
+    if (dead) {
+      location="deathScreen";
+      resetLevel();
+    }
   }
   else if (location.equals("deathScreen")) {
     dead = false;
@@ -423,5 +427,5 @@ void keyReleased() {
 }
 
 void mousePressed() {
-  print("\n" + "X: " + mX + "Y: " + mY);
+ // print("\n" + "X: " + mX + "Y: " + mY);
 }

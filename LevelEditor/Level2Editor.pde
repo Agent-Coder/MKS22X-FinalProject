@@ -76,7 +76,6 @@ class Level2 extends Levels {
     genSpikes();
   }    
 
-
   void genSpikes() {
     if (sCount == 0) {
       time2 = millis();
@@ -85,7 +84,7 @@ class Level2 extends Levels {
         for (int j = 0; j < 15; j++) {
           boardtile[j][i] = new Tile(i*50,j*50);
            int randomNum = rng.nextInt(10);
-           if (randomNum < 4 && i != 0 && i != boardtile.length-1 && j != 0 && j != boardtile.length-1) {
+           if (randomNum < 3 && i != 0 && i != boardtile.length-1 && j != 0 && j != boardtile.length-1) {
              numbs.add(j);
              numbs.add(i);
              boardtile[j][i]=new wTile(i*50, j*50);
@@ -100,6 +99,7 @@ class Level2 extends Levels {
         int y = numbs.remove(0);
         boardtile[x][y] = new Tile(y*50,x*50);
         board[x][y] = new CrystalBlock2(y*50,x*50);
+        checkdead(x,y);
       }
     }
     if (millis() >= time2 + 7000) {
@@ -117,6 +117,13 @@ class Level2 extends Levels {
     }
   }
   
+  /*
+  void checkdead(int x, int y) {
+      if (round(B.getPX()/50)== x &&round(B.getPY()/50)== y) {
+      dead = true;
+    }
+  }
+  */
    void createBerries(){};
    void collectBerries(int berryEnd){};
    void displayBerries(int berryEnd){};;
