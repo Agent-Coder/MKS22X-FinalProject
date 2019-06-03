@@ -99,7 +99,7 @@ class Enemies {
     int index=-1;
     for (int i=0; i<4; i++) {
       //board();
-      if (a+moves[2*i]>=0&&a+moves[2*i]<grid.length&&b+moves[2*i+1]>=0&&b+moves[2*i+1]<grid.length) {
+      if (a+moves[2*i]>0&&a+moves[2*i]<grid.length-1&&b+moves[2*i+1]>0&&b+moves[2*i+1]<grid.length-1) {
         if (grid[a+moves[2*i]][b+moves[2*i+1]]<=smallest&&grid[a+moves[2*i]][b+moves[2*i+1]]!=-1) {
           smallest=grid[a+moves[2*i]][b+moves[2*i+1]];      
           index=i;
@@ -110,60 +110,60 @@ class Enemies {
       dx=moves[2*index+1];
       dy=moves[2*index];
     }
-  }
-  void moveAnimation() {
-    if (frameCount-currentFrame==25) {
-      moving=true;
-    }
-    if (board[round((y/50))+(int)dy][round((x/50))+(int)dx]==null) {
-      if (moving) {
-        x+=dx;
-        y+=dy;
-      }
-    } else {
-      board[round((y/50))+(int)dy][round((x/50))+(int)dx]=null;
+    if (board[round((y/50))+(int)dy][round((x/50))+(int)dx]!=null&&!board[round((y/50))+(int)dy][round((x/50))+(int)dx].getType().equals("borderblock")) {
       moving=false;
       currentFrame=frameCount;
+      board[round((y/50))+(int)dy][round((x/50))+(int)dx]=null;
+    }
+  }
+  void moveAnimation() {
+    if (frameCount-currentFrame==50) {
+      moving=true;
+    }
+
+    if (moving&&x+dx>0&&y+dy>0&&x+dx<700&&y+dy<700) {
+      x+=dx;
+      y+=dy;
     }
     if (dx>0) {
-        if (frameCount%30<10) {
-          pic=MeowthMRight1;
-        } else if (frameCount%30<20) {
-          pic=MeowthMRight2;
-        } else {
-          pic=MeowthMRight3;
-        }
-        display(pic);
-      } else if (dx<0) {
-        if (frameCount%30<10) {
-          pic=MeowthMLeft1;
-        } else if (frameCount%30<20) {
-          pic=MeowthMLeft2;
-        } else {
-          pic=MeowthMLeft3;
-        }
-        display(pic);
-      } else if (dy>0) {
-        if (frameCount%30<10) {
-          pic=MeowthMDown1;
-        } else if (frameCount%30<20) {
-          pic=MeowthMDown2;
-        } else {
-          pic=MeowthMDown3;
-        }
-        display(pic);
-      } else if (dy<0) {
-        if (frameCount%30<10) {
-          pic=MeowthMUp1;
-        } else if (frameCount%30<20) {
-          pic=MeowthMUp2;
-        } else {
-          pic=MeowthMUp3;
-        }
-        display(pic);
+      if (frameCount%30<10) {
+        pic=MeowthMRight1;
+      } else if (frameCount%30<20) {
+        pic=MeowthMRight2;
       } else {
-        display(MeowthMDown3);
+        pic=MeowthMRight3;
       }
+      display(pic);
+    } else if (dx<0) {
+      if (frameCount%30<10) {
+        pic=MeowthMLeft1;
+      } else if (frameCount%30<20) {
+        pic=MeowthMLeft2;
+      } else {
+        pic=MeowthMLeft3;
+      }
+      display(pic);
+    } else if (dy>0) {
+      if (frameCount%30<10) {
+        pic=MeowthMDown1;
+      } else if (frameCount%30<20) {
+        pic=MeowthMDown2;
+      } else {
+        pic=MeowthMDown3;
+      }
+      display(pic);
+    } else if (dy<0) {
+      if (frameCount%30<10) {
+        pic=MeowthMUp1;
+      } else if (frameCount%30<20) {
+        pic=MeowthMUp2;
+      } else {
+        pic=MeowthMUp3;
+      }
+      display(pic);
+    } else {
+      display(MeowthMDown3);
+    }
   }
   void display(PImage i) {
     image(i, x, y);
