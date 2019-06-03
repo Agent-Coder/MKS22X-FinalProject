@@ -130,7 +130,6 @@ abstract class Levels {
   abstract void collectBerries(int berryEnd);
   abstract void displayBerries(int berryEnd);
 }
-
 class Level1 extends Levels {
   public Level1() {
     super();
