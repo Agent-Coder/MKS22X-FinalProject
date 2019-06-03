@@ -66,29 +66,6 @@ class Enemies {
       fillGrid(xer, yer-1, num+1);
     }
   }
-  boolean trapped() {
-    int a=round((y)/50);
-    int b=round((x)/50);
-    if (a<0||a>grid.length||b<0||b>grid.length) {
-      dx=0;
-      dy=0;
-      return true;
-    } else {
-      int smallest=grid[a][b];
-      if (smallest==0) {
-        if (grid[a+(int)dy][b+(int)dx]==-1) {
-          moveRotation=(moveRotation-1)%3;
-          if (moveRotation==-1) {
-            moveRotation=3;
-          }
-          dy=moves[2*moveRotation+1];
-          dx=moves[2*moveRotation];
-        }
-        return true;
-      }
-    }
-    return false;
-  }
   void moveE() {
     int a=round((y)/50);
     int b=round((x)/50);
@@ -191,7 +168,286 @@ class Enemies {
   }
 }
 class Ditto extends Enemies {
-  public Ditto(Player a, Block[][] iceBlock, int newx, int newy) {
+  public Ditto(Player a, Block[][] iceBlock, int newx, int newy, String characterPick) {
     super( a, iceBlock, newx, newy);
+  }
+    void moveE(boolean canMove) {
+    if (target.getCharacter().equals("Glaceon")) {
+      if (keyCodesDown.contains(RIGHT)&&canMove) {
+        PImage r=GlaceonMRight1;
+        if (frameCount%30<10) {
+          r=GlaceonMRight1;
+        } else if (frameCount%30<20) {
+          r=GlaceonMRight2;
+        } else {
+          r=GlaceonMRight3;
+        }
+        if (x+speed<650&&board[round(y/50)][round((x+speed)/50)]==null) {
+          x+=speed;
+          display(r, x+speed, y);
+        } else {
+          display(r, x, y);
+        }
+        target.getPrevKey()="right";
+      } else if (keyCodesDown.contains(LEFT)&&canMove) {
+        PImage r=GlaceonMLeft1;
+        if (frameCount%30<10) {
+          r=GlaceonMLeft1;
+        } else if (frameCount%30<20) {
+          r=GlaceonMLeft2;
+        } else {
+          r=GlaceonMLeft3;
+        }
+        if (x+speed>=50&&board[round(y/50)][round((x-speed)/50)]==null) {
+          x+=-1* speed;
+          display(r, x-speed, y);
+        } else {
+          display(r, x, y);
+        }
+        target.getPrevKey()="left";
+      } else if (keyCodesDown.contains(DOWN)&&canMove) {
+        PImage r=GlaceonMDown1;
+        if (frameCount%30<10) {
+          r=GlaceonMDown1;
+        } else if (frameCount%30<20) {
+          r=GlaceonMDown2;
+        } else {
+          r=GlaceonMDown3;
+        }
+        if (y+speed<650&&board[round((y+speed)/50)][round(x/50)]==null) {
+          y+=speed;
+          display(r, x, y+speed);
+        } else {
+          display(r, x, y);
+        }
+        target.getPrevKey()="down";
+      } else if (keyCodesDown.contains(UP)&&canMove) {
+        PImage r=GlaceonMUp1;
+        if (frameCount%30<10) {
+          r=GlaceonMUp1;
+        } else if (frameCount%30<10) {
+          r=GlaceonMUp2;
+        } else {
+          r=GlaceonMUp3;
+        }
+        if (y-speed>50&&board[round((y-speed)/50)][round(x/50)]==null) {
+          y-=speed;
+          display(r, x, y-speed);
+        } else {
+          display(r, x, y);
+        }
+        target.getPrevKey()="up";
+      } else {
+        if (target.getPrevKey().equals("right")) {
+          if (frameCount%30<15) {
+            display(GlaceonIRight1, x, y);
+          } else {
+            display(GlaceonIRight2, x, y);
+          }
+        } else if (target.getPrevKey().equals("left")) {
+          if (frameCount%30<15) {
+            display(GlaceonILeft1, x, y);
+          } else {
+            display(GlaceonILeft2, x, y);
+          }
+        } else if (target.getPrevKey().equals("up")) {
+          if (frameCount%30<15) {
+            display(GlaceonIUp1, x, y);
+          } else {
+            display(GlaceonIUp2, x, y);
+          }
+        } else {
+          if (frameCount%30<15) {
+            display(GlaceonIDown1, x, y);
+          } else {
+            display(GlaceonIDown2, x, y);
+          }
+        }
+      }
+    } else if (target.getCharacter().equals("Empoleon")) {
+      if (keyCodesDown.contains(RIGHT)&&canMove) {
+        PImage r=EmpoleonMRight1;
+        if (frameCount%30<10) {
+          r=EmpoleonMRight1;
+        } else if (frameCount%30<20) {
+          r=EmpoleonMRight2;
+        } else {
+          r=EmpoleonMRight3;
+        }
+        if (x+speed<650&&board[round(y/50)][round((x+speed)/50)]==null) {
+          x+=speed;
+          display(r, x+speed, y);
+        } else {
+          display(r, x, y);
+        }
+        target.getPrevKey()="right";
+      } else if (xLEFT)&&canMove) {
+        PImage r=EmpoleonMLeft1;
+        if (frameCount%30<10) {
+          r=EmpoleonMLeft1;
+        } else if (frameCount%30<20) {
+          r=EmpoleonMLeft2;
+        } else {
+          r=EmpoleonMLeft3;
+        }
+        if (x+speed>=50&&board[round(y/50)][round((x-speed)/50)]==null) {
+          x+=-1* speed;
+          display(r, x-speed, y);
+        } else {
+          display(r, x, y);
+        }
+        target.getPrevKey()="left";
+      } else if (keyCodesDown.contains(DOWN)&&canMove) {
+        PImage r=EmpoleonMDown1;
+        if (frameCount%30<10) {
+          r=EmpoleonMDown1;
+        } else if (frameCount%30<20) {
+          r=EmpoleonMDown2;
+        } else {
+          r=EmpoleonMDown3;
+        }
+        if (y+speed<650&&board[round((y+speed)/50)][round(x/50)]==null) {
+          y+=speed;
+          display(r, x, y+speed);
+        } else {
+          display(r, x, y);
+        }
+        target.getPrevKey()="down";
+      } else if (keyCodesDown.contains(UP)&&canMove) {
+        PImage r=EmpoleonMUp1;
+        if (frameCount%30<10) {
+          r=EmpoleonMUp1;
+        } else if (frameCount%30<10) {
+          r=EmpoleonMUp2;
+        } else {
+          r=EmpoleonMUp3;
+        }
+        if (y-speed>50&&board[round((y-speed)/50)][round(x/50)]==null) {
+          y-=speed;
+          display(r, x, y-speed);
+        } else {
+          display(r, x, y);
+        }
+        target.getPrevKey()="up";
+      } else {
+        if (target.getPrevKey().equals("right")) {
+          if (frameCount%30<15) {
+            display(EmpoleonIRight1, x, y);
+          } else {
+            display(EmpoleonIRight2, x, y);
+          }
+        } else if (target.getPrevKey().equals("left")) {
+          if (frameCount%30<15) {
+            display(EmpoleonILeft1, x, y);
+          } else {
+            display(EmpoleonILeft2, x, y);
+          }
+        } else if (target.getPrevKey().equals("up")) {
+          if (frameCount%30<15) {
+            display(EmpoleonIUp1, x, y);
+          } else {
+            display(EmpoleonIUp2, x, y);
+          }
+        } else {
+          if (frameCount%30<15) {
+            display(EmpoleonIDown1, x, y);
+          } else {
+            display(EmpoleonIDown2, x, y);
+          }
+        }
+      }
+    } else { //Manaphy
+      if (keyCodesDown.contains(RIGHT)&&canMove) {
+        PImage r=ManaphyMRight1;
+        if (frameCount%30<10) {
+          r=ManaphyMRight1;
+        } else if (frameCount%30<20) {
+          r=ManaphyMRight2;
+        } else {
+          r=ManaphyMRight3;
+        }
+        if (x+speed<650&&board[round(y/50)][round((x+speed)/50)]==null) {
+          x+=speed;
+          display(r, x+speed, y);
+        } else {
+          display(r, x, y);
+        }
+        target.getPrevKey()="right";
+      } else if (keyCodesDown.contains(LEFT)&&canMove) {
+        PImage r=ManaphyMLeft1;
+        if (frameCount%30<10) {
+          r=ManaphyMLeft1;
+        } else if (frameCount%30<20) {
+          r=ManaphyMLeft2;
+        } else {
+          r=ManaphyMLeft3;
+        }
+        if (x+speed>=50&&board[round(y/50)][round((x-speed)/50)]==null) {
+          x+=-1* speed;
+          display(r, x-speed, y);
+        } else {
+          display(r, x, y);
+        }
+        target.getPrevKey()="left";
+      } else if (keyCodesDown.contains(DOWN)&&canMove) {
+        PImage r=ManaphyMDown1;
+        if (frameCount%30<10) {
+          r=ManaphyMDown1;
+        } else if (frameCount%30<20) {
+          r=ManaphyMDown2;
+        } else {
+          r=ManaphyMDown3;
+        }
+        if (y+speed<650&&board[round((y+speed)/50)][round(x/50)]==null) {
+          y+=speed;
+          display(r, x, y+speed);
+        } else {
+          display(r, x, y);
+        }
+        target.getPrevKey()="down";
+      } else if (keyCodesDown.contains(UP)&&canMove) {
+        PImage r=ManaphyMUp1;
+        if (frameCount%30<10) {
+          r=ManaphyMUp1;
+        } else if (frameCount%30<10) {
+          r=ManaphyMUp2;
+        } else {
+          r=ManaphyMUp3;
+        }
+        if (y-speed>50&&board[round((y-speed)/50)][round(x/50)]==null) {
+          y-=speed;
+          display(r, x, y-speed);
+        } else {
+          display(r, x, y);
+        }
+        target.getPrevKey()="up";
+      } else {
+        if (target.getPrevKey().equals("right")) {
+          if (frameCount%30<15) {
+            display(ManaphyIRight1, x, y);
+          } else {
+            display(ManaphyIRight2, x, y);
+          }
+        } else if (target.getPrevKey().equals("left")) {
+          if (frameCount%30<15) {
+            display(ManaphyILeft1, x, y);
+          } else {
+            display(ManaphyILeft2, x, y);
+          }
+        } else if (target.getPrevKey().equals("up")) {
+          if (frameCount%30<15) {
+            display(ManaphyIUp1, x, y);
+          } else {
+            display(ManaphyIUp2, x, y);
+          }
+        } else {
+          if (frameCount%30<15) {
+            display(ManaphyIDown1, x, y);
+          } else {
+            display(ManaphyIDown2, x, y);
+          }
+        }
+      }
+    }
   }
 }

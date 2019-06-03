@@ -2,10 +2,14 @@ class Player {
   Block[][] board;
   float x, y, xcor, ycor, speed;
   String prevKey;
+  String character;
   String getPrevKey() {
     return prevKey;
   }
-  Player(float x, float y, Block[][] gameboard) {
+  String getCharacter() {
+    return character;
+  }
+  Player(float x, float y, Block[][] gameboard, String chararcter) {
     this.x = x;
     this.y = y;
     xcor=x;

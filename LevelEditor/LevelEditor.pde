@@ -129,7 +129,7 @@ abstract class Levels {
 }
 class Level1 extends Levels {
   public Level1() {
-    B=new Player(350, 350, board);
+    B=new Player(350, 350, board,playerChar);
     C=new Enemies(B, board,100,100);
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
