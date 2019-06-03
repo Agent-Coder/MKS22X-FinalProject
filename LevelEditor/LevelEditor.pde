@@ -247,6 +247,7 @@ class Level1 extends Levels {
     }
     if (attacked.size()==0&&frameCount-playerFrames>=20) {
       temp=null;
+      println("yes");
       attacking=false;
     }
     if (attacked.size()>0||frameCount-playerFrames<20) {
@@ -268,7 +269,7 @@ class Level1 extends Levels {
 
       if (make) {
         lastBlock=true;
-        temp.animate(temp.getxB(), temp.getyB(), make);
+        temp.animate(temp.getxB(), temp.getyB(), make,frameCount-playerFrames);
         if (frameCount-playerFrames==19) {
           if (abs((round(C.getX())-temp.getxB()))<50&&abs((round(C.getY())-temp.getyB()))<50) {
             temp=null;      
@@ -280,7 +281,8 @@ class Level1 extends Levels {
           }
         }
       } else {
-        temp.animate(temp.getxB(), temp.getyB(), make);
+        temp.animate(temp.getxB(), temp.getyB(), make,frameCount-playerFrames);
+        println("-----");
       }
     }
     if (attacked.size()>0||frameCount-playerFrames<20) {
@@ -294,9 +296,7 @@ class Level1 extends Levels {
     }
     C.moveAnimation();
     B.move(canMove);
-    float xDist = abs(B.getPX() - C.getX());
-    float yDist = abs(B.getPY() - C.getY());
-    if (xDist < 20 && yDist < 20) dead = true;
+    if (round(C.getX()/50)==round(B.getPX()/50)&&round(C.getY()/50)==round(B.getPY()/50)) dead = true;
     if (berryCount.size() == 0) nextLevel = true;
   }
 }
@@ -335,9 +335,6 @@ void draw() {
         plocation = selectedLevel;
       }
     }
-  } else if (location.equals("1") && pause == false && goVis == true) {
-
-    A.play();
   } 
   else if (location.equals("1") && pause == false && goVis == true) {
     A.play();
@@ -355,7 +352,7 @@ void draw() {
     drawContinueScreen("2");
   }
   else if (location.equals("2") && pause == false && goVis == true) {
-    L2.play();
+    //L2.play();
   }
   else if (location.equals("deathScreen")) {
     dead = false;
