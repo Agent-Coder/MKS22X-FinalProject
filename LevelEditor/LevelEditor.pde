@@ -1,4 +1,5 @@
 Level1 A=new Level1();
+Level3 L3=new Level3();
 
 float mX;
 float mY;
@@ -142,10 +143,10 @@ class Level1 extends Levels {
     board[7][10]=new IceBlock(500, 350);
     board[7][11]=new IceBlock(550, 350);
     for (int i=0; i<board.length; i++) {
-      board[i][0]=new BorderBlock(i*50, 0);
-      board[0][i]=new BorderBlock(0, i*50);
-      board[i][board.length-1]=new BorderBlock(i*50, (board.length-1)*50);
-      board[board.length-1][i]=new BorderBlock((board.length-1)*50, i*50);
+      board[i][0]=new BorderBlock(0, i*50);
+      board[0][i]=new BorderBlock(i*50,0);
+      board[i][board.length-1]=new BorderBlock((board.length-1)*50,i*50 );
+      board[board.length-1][i]=new BorderBlock(i*50, (board.length-1)*50);
       for (int j=0; j<board[0].length; j++) {
         boardtile[i][j]=new Tile(i*50, j*50);
         if (i>=3&&i<board.length-3&&((j>=8&&j<12)||(j>=3&&j<7))) {
@@ -217,7 +218,6 @@ class Level1 extends Levels {
   }
 
   Block temp;
-  Tile[][] boardtile=new Tile[15][15];
   IceBlock[][] start = new IceBlock[15][15];
   int frameStart;
   boolean startFrame=true;
@@ -231,6 +231,7 @@ class Level1 extends Levels {
       startFrame=false;
       frameBlocks=frameStart-20;
     }
+        output();
     if (oran!=0) {
       collectBerries(oran);
       displayBerries(oran);
@@ -238,7 +239,6 @@ class Level1 extends Levels {
       collectBerries(lum);
       displayBerries(lum);
     }
-    output();
     temporary=attack();
     int i=temporary.size()-1;
     while (i>=0&&!attacking) {
@@ -247,7 +247,6 @@ class Level1 extends Levels {
     }
     if (attacked.size()==0&&frameCount-playerFrames>=20) {
       temp=null;
-      println("yes");
       attacking=false;
     }
     if (attacked.size()>0||frameCount-playerFrames<20) {
@@ -282,7 +281,6 @@ class Level1 extends Levels {
         }
       } else {
         temp.animate(temp.getxB(), temp.getyB(), make,frameCount-playerFrames);
-        println("-----");
       }
     }
     if (attacked.size()>0||frameCount-playerFrames<20) {
@@ -357,6 +355,16 @@ void draw() {
   else if (location.equals("deathScreen")) {
     dead = false;
     drawDeathScreen();
+  }else if (location.equals("3") && pause == false && goVis == true) {
+    L3.play();
+    if (dead) {
+      location="deathScreen";
+      resetLevel();
+    }
+    if (nextLevel) {
+      resetLevel();
+      location = "2to3";
+    }
   }
 
   if (pause == true) {
