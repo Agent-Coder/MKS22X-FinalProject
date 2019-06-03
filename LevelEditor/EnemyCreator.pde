@@ -13,11 +13,11 @@ class Enemies {
   PImage pic;
   Player target;
   int[] moves=new int[8];
-  public Enemies(Player a, Block[][] iceBlock) {
+  public Enemies(Player a, Block[][] iceBlock,int newx, int newy) {
     moving=true;
     target=a;
-    x=100;
-    y=100;
+    x=newx;
+    y=newy;
     dx=0;
     dy=1;
     tx=a.getPX();

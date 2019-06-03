@@ -13,8 +13,17 @@ class Level3 extends Levels {
       board[board.length-1][i]=new BorderBlock(i*50, (board.length-1)*50);
       board[i][0]=new BorderBlock(0, i*50);
       board[0][i]=new BorderBlock(i*50, 0);
-      if (i==5) {
-        board[1][i]=new BorderBlock(i*50, 150);
+      if ((i<=4&&i>0)||(i>=10&&i<board.length-1)) {
+        board[1][i]=new obstacleBlock(i*50, 50);
+        board[i][1]=new obstacleBlock(50 ,i*50);
+        board[board.length-2][i]=new obstacleBlock(i*50, (board.length-2)*50);
+        board[i][board.length-2]=new obstacleBlock((board.length-2)*50, i*50);
+      }
+      if ((i<=4&&i>0)||(i>=10&&i<board.length-1)) {
+        board[2][i]=new obstacleBlock(i*50, 100);
+        board[i][2]=new obstacleBlock(100 ,i*50);
+        board[board.length-3][i]=new obstacleBlock(i*50, (board.length-3)*50);
+        board[i][board.length-3]=new obstacleBlock((board.length-3)*50, i*50);
       }
     }
   }
