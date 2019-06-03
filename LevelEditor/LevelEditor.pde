@@ -217,10 +217,11 @@ class Level1 extends Levels {
 
   boolean canMove=true;
   Block temp;
-//  Tile[][] boardtile=new Tile[15][15];
+ // Tile[][] boardtile=new Tile[15][15];
  // IceBlock[][] start = new IceBlock[15][15];
 
   void play() {
+    output();
     if (oran!=0) {
       collectBerries(oran);
       displayBerries(oran);
@@ -229,7 +230,6 @@ class Level1 extends Levels {
       displayBerries(lum);
     }
     boolean make=true;
-    output();
     temporary=attack();
 
     int i=temporary.size()-1;
