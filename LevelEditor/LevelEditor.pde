@@ -4,6 +4,7 @@ float mX;
 float mY;
 
 boolean dead = false;
+boolean nextLevel = false;
 String plocation;
 
 String location = "startScreen";
@@ -271,7 +272,7 @@ class Level1 extends Levels {
     float xDist = abs(B.getPX() - C.getX());
     float yDist = abs(B.getPY() - C.getY());
     if (xDist < 20 && yDist < 20) dead = true;
-   // print(dead);
+    if (berryCount.size() == 0) nextLevel = true;
   }
 }
 
@@ -312,34 +313,21 @@ void draw() {
       location="deathScreen";
       resetLevel();
     }
-  } 
+    if (nextLevel) {
+      resetLevel();
+      location = "1to2";
+    }
+  }
+  else if (location.equals("1to2")) {
+    nextLevel = false;
+    drawContinueScreen("2");
+  }
   else if (location.equals("2") && pause == false && goVis == true) {
     L2.play();
   }
   else if (location.equals("deathScreen")) {
     dead = false;
-    background(40,94,198);
-    textSize(80);
-    fill(255,255,255);
-    text("YOU DIED!", 175,340);
-    noFill();
-    rect(380, 360, 200, 50, 15);
-    rect(165, 360, 200, 50, 15);
-    textSize(20);
-    text("Level Select", 213, 392);
-    text("Restart Level", 425, 392);
-    if (mousePressed && mX >= 376 && mX <= 583 && mY >= 360 && mY <412) {
-      resetLevel();
-      location = plocation;
-    }
-     if (mousePressed && mX >= 164 && mX <= 369 && mY >= 360 && mY <= 412) {
-      location = "levelSelect";
-      pause = false;
-      goVis = false;
-      playerChar = "";
-      selectedLevel = "";
-      resetLevel();
-    }
+    drawDeathScreen();
   }
 
   if (pause == true) {
