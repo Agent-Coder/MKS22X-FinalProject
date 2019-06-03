@@ -43,6 +43,7 @@ abstract class Levels {
     B=new Player(350, 350, board);
     C=new Enemies(B, board);
   }
+  
   void output() {
     for (int i=0; i<board.length; i++) {
       for (int j=0; j<board[0].length; j++) {
@@ -60,6 +61,7 @@ abstract class Levels {
       }
     }
   }
+  
   ArrayList<Block> attack() {
     ArrayList<Block> delete=new ArrayList<Block>();
     if (keysDown.contains(' ')) {
@@ -217,7 +219,6 @@ class Level1 extends Levels {
   }
 
   Block temp;
-  Tile[][] boardtile=new Tile[15][15];
   IceBlock[][] start = new IceBlock[15][15];
   int frameStart;
   boolean startFrame=true;
@@ -225,7 +226,9 @@ class Level1 extends Levels {
   boolean lastBlock=false;
   int frameBlocks=0;
   int playerFrames=0;
+  
   void play() {
+    output();
     if (startFrame) {
       frameStart=frameCount;
       startFrame=false;
@@ -238,7 +241,6 @@ class Level1 extends Levels {
       collectBerries(lum);
       displayBerries(lum);
     }
-    output();
     temporary=attack();
     int i=temporary.size()-1;
     while (i>=0&&!attacking) {
@@ -309,10 +311,12 @@ void setup() {
 }
 void draw() {
   background(255);
+  /*
   for (int i=0; i<800; i+=50) {
     line(0, i, 800, i);
     line(i, 0, i, 800);
   }
+  */
   mX = mouseX;
   mY = mouseY;
   if (location.equals("startScreen")) {
