@@ -48,3 +48,9 @@ void detectPokemonSelect() {
        playerChar = "Empoleon";
      }
 }
+
+void resetLevel() {
+  if (plocation.equals("1")) A = new Level1();
+  if (plocation.equals("1")) L2 = new Level2();
+    
+}

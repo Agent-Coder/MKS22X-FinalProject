@@ -4,6 +4,7 @@ float mX;
 float mY;
 
 boolean dead = false;
+String plocation;
 
 String location = "startScreen";
 int animateCount = 0;
@@ -270,7 +271,7 @@ class Level1 extends Levels {
     float xDist = abs(B.getPX() - C.getX());
     float yDist = abs(B.getPY() - C.getY());
     if (xDist < 20 && yDist < 20) dead = true;
-    print(dead);
+   // print(dead);
   }
 }
 
@@ -290,7 +291,8 @@ void draw() {
     drawBerries2();
     drawBerries3();
     detectStartGame();
-  } else if (location.equals("levelSelect")) {
+  } 
+  else if (location.equals("levelSelect")) {
     image(bluebackground, 0, 0);
     drawLevelScreen();
     detectLevelSelect();
@@ -298,43 +300,48 @@ void draw() {
     animateCharSelect();
     drawReady();
     if (goVis) {
-      if (mousePressed && mX >= 617 && mX <683 && mY >= 684 && mY <=715) {
+      if (mousePressed && mX >= 617 && mX <683 && mY >= 684 && mY <=715) {//go button 
         location = selectedLevel;
+        plocation = selectedLevel;
       }
     }
-  } else if (location.equals("1") && pause == false && goVis == true) {
-    A.play();
-    if (dead) location="levelSelect";
   } 
-  if (pause == true) {
-    background(151, 223, 237);
+  else if (location.equals("1") && pause == false && goVis == true) {
+    A.play();
+    if (dead) {
+      location="deathScreen";
+      resetLevel();
+    }
+  } 
+  else if (location.equals("2") && pause == false && goVis == true) {
+    L2.play();
+  }
+  else if (location.equals("deathScreen")) {
+    dead = false;
+    background(40,94,198);
     textSize(80);
-    fill(10, 10, 10);
-    text("PAUSED", 215, 307);
-    textSize(25);
-    text("Press p to unpause", 260, 335);
+    fill(255,255,255);
+    text("YOU DIED!", 175,340);
     noFill();
-    rect(165, 360, 200, 50, 15);
     rect(380, 360, 200, 50, 15);
-    rect(265, 420, 210, 50, 15);
+    rect(165, 360, 200, 50, 15);
     textSize(20);
     text("Level Select", 213, 392);
     text("Restart Level", 425, 392);
-    text("Unpause", 333, 450);
-    if (mousePressed && mX >= 164 && mX <= 369 && mY >= 360 && mY <= 412) {
+    if (mousePressed && mX >= 376 && mX <= 583 && mY >= 360 && mY <412) {
+      resetLevel();
+      location = plocation;
+    }
+     if (mousePressed && mX >= 164 && mX <= 369 && mY >= 360 && mY <= 412) {
       location = "levelSelect";
       pause = false;
-      //WE NEED A RESET LEVEL BUTTON
+      goVis = false;
+      playerChar = "";
+      selectedLevel = "";
+      resetLevel();
     }
-    if (mousePressed && mX >= 376 && mX <= 583 && mY >= 360 && mY <412) {
-      //RESET LEVEL BUTTON
-    }
-    if (mousePressed && mX >= 262 && mX <= 478 && mY >= 420 && mY <473) {
-      pause = false;
-    }
-  } else if (location.equals("2") && pause == false && goVis == true) {
-    L2.play();
   }
+
   if (pause == true) {
     background(151, 223, 237);
     textSize(80);
@@ -356,10 +363,11 @@ void draw() {
       goVis = false;
       playerChar = "";
       selectedLevel = "";
-      //WE NEED A RESET LEVEL BUTTON
+      resetLevel();
     }
     if (mousePressed && mX >= 376 && mX <= 583 && mY >= 360 && mY <412) {
-      //RESET LEVEL BUTTON
+      resetLevel();
+      pause = false;
     }
     if (mousePressed && mX >= 262 && mX <= 478 && mY >= 420 && mY <473) {
       pause = false;
@@ -377,7 +385,7 @@ void keyPressed() {
   } else {
     keysDown.add(key);
   }
-  if (!location.equals("levelSelect") && !location.equals("startScreen") && key == 'p' && pause == false) {
+  if (!location.equals("levelSelect") && !location.equals("startScreen") && !location.equals("deathScreen") && key == 'p' && pause == false) {
     pause = true;
   } else if (key == 'p' && pause == true) {
     pause = false;
