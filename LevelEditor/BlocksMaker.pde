@@ -96,3 +96,14 @@ class CrystalBlock extends Block {
     image(CrystalBlue,xB,yB);
   }
 }
+class CrystalBlock2 extends Block {
+  public CrystalBlock2(int x, int y) {
+    type = "crystalblock";
+    xB=x;
+    yB=y;
+    destroyable=false;
+  }
+  void display() {
+    image(CrystalRed,xB,yB);
+  }
+}

@@ -357,6 +357,7 @@ void importImages() {
   
   //Crystal Sprites Resizes
   CrystalBlue.resize(50,50);
+  CrystalRed.resize(50,50);
   
   
   floor = loadImage("MoveTile1.png");
