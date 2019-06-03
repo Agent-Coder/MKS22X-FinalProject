@@ -13,7 +13,7 @@ class Enemies {
   PImage pic;
   Player target;
   int[] moves=new int[8];
-  public Enemies(Player a, Block[][] iceBlock,int newx, int newy) {
+  public Enemies(Player a, Block[][] iceBlock, int newx, int newy) {
     moving=true;
     target=a;
     x=newx;
@@ -130,12 +130,12 @@ class Enemies {
         animated=IceA2;
       } else if (frameCount-currentFrame<30) {
         animated=IceA3;
-      }else if (frameCount-currentFrame<40) {
+      } else if (frameCount-currentFrame<40) {
         animated=IceA4;
       } else {
         animated=IceA5;
       }
-     displayer(animated,(int)(x+50*dx),(int)(y+50*dy));
+      displayer(animated, (int)(x+50*dx), (int)(y+50*dy));
     }
     if (dx>0) {
       if (frameCount%30<10) {
@@ -177,7 +177,7 @@ class Enemies {
       display(MeowthMDown3);
     }
   }
-  void displayer(PImage picture,int xB,int yB){
+  void displayer(PImage picture, int xB, int yB) {
     image(picture, xB, yB);
   }
   void display(PImage i) {
@@ -188,5 +188,10 @@ class Enemies {
   }
   float getY() {
     return y;
+  }
+}
+class Ditto extends Enemies {
+  public Ditto(Player a, Block[][] iceBlock, int newx, int newy) {
+    super( a, iceBlock, newx, newy);
   }
 }

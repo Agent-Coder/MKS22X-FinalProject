@@ -1,6 +1,7 @@
 class Level3 extends Levels {
   public Level3() {
-    super();
+    B=new Player(350, 350, board);
+    C=new Enemies(B, board,100,100);
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
     berryCount=new ArrayList<Berries>();
