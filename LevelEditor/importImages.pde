@@ -304,6 +304,62 @@ void importImages() {
   SpoinkMUp2.resize(50, 50);
   SpoinkMUp3.resize(50, 50);
   
+  //Mismagius Sprites
+  MismagiusMRight1 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkRight1.png");
+  MismagiusMRight2 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkRight2.png");
+  MismagiusMRight3 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkRight3.png");
+  MismagiusMLeft1 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkLeft1.png");
+  MismagiusMLeft2 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkLeft2.png");
+  MismagiusMLeft3 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkLeft3.png");
+  MismagiusMDown1 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkDown1.png");
+  MismagiusMDown2 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkDown2.png");
+  MismagiusMDown3 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkDown3.png");
+  MismagiusMUp1 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkUp1.png");
+  MismagiusMUp2 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkUp2.png");
+  MismagiusMUp3 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkUp3.png");
+  
+  //Mismagius Sprites resizes
+  MismagiusMRight1.resize(50,50);
+  MismagiusMRight2.resize(50,50);
+  MismagiusMRight3.resize(50,50);
+  MismagiusMLeft1.resize(50,50);
+  MismagiusMLeft2.resize(50,50);
+  MismagiusMLeft3.resize(50,50);
+  MismagiusMDown1.resize(50,50);
+  MismagiusMDown2.resize(50,50);
+  MismagiusMDown3.resize(50,50);
+  MismagiusMUp1.resize(50,50);
+  MismagiusMUp2.resize(50,50);
+  MismagiusMUp3.resize(50,50);
+  
+  //Gengar Sprites 
+  GengarMRight1 = loadImage("SPRITES/Gengar Sprites/GengarWalkRight1.png");
+  GengarMRight2 = loadImage("SPRITES/Gengar Sprites/GengarWalkRight2.png");
+  GengarMRight3 = loadImage("SPRITES/Gengar Sprites/GengarWalkRight3.png");
+  GengarMLeft1 = loadImage("SPRITES/Gengar Sprites/GengarWalkLeft1.png");
+  GengarMLeft2 = loadImage("SPRITES/Gengar Sprites/GengarWalkLeft2.png");
+  GengarMLeft3 = loadImage("SPRITES/Gengar Sprites/GengarWalkLeft3.png");
+  GengarMDown1 = loadImage("SPRITES/Gengar Sprites/GengarWalkDown1.png");
+  GengarMDown2 = loadImage("SPRITES/Gengar Sprites/GengarWalkDown2.png");
+  GengarMDown3 = loadImage("SPRITES/Gengar Sprites/GengarWalkDown3.png");
+  GengarMUp1 = loadImage("SPRITES/Gengar Sprites/GengarWalkUp1.png");
+  GengarMUp2 = loadImage("SPRITES/Gengar Sprites/GengarWalkUp2.png");
+  GengarMUp3 = loadImage("SPRITES/Gengar Sprites/GengarWalkUp3.png");
+  
+  //Gengar Sprites resizes
+  GengarMRight1.resize(50,50);
+  GengarMRight2.resize(50,50);
+  GengarMRight3.resize(50,50);
+  GengarMLeft1.resize(50,50);
+  GengarMLeft2.resize(50,50);
+  GengarMLeft3.resize(50,50);
+  GengarMDown1.resize(50,50);
+  GengarMDown2.resize(50,50);
+  GengarMDown3.resize(50,50);
+  GengarMUp1.resize(50,50);
+  GengarMUp2.resize(50,50);
+  GengarMUp3.resize(50,50);
+  
   //Mamoswine Sprites //ONLY HAS TWO IDLE AND WALKING SPRITES EACH DIRECTION
   MamoswineMRight1 = loadImage("SPRITES/Mamoswine Sprites/MamoswineWalkRight1.png");
   MamoswineMRight2 = loadImage("SPRITES/Mamoswine Sprites/MamoswineWalkRight2.png");
@@ -321,7 +377,7 @@ void importImages() {
   MamoswineIDown2 = loadImage("SPRITES/Mamoswine Sprites/MamoswineIdleDown2.png");
   MamoswineIIp1 = loadImage("SPRITES/Mamoswine Sprites/MamoswineIdleUp1.png");
   MamoswineIUp2 = loadImage("SPRITES/Mamoswine Sprites/MamoswineIdleUp2.png");
-  
+
   //Mamoswine Sprites resizes
   MamoswineMRight1.resize(50, 50);
   MamoswineMRight2.resize(50, 50);

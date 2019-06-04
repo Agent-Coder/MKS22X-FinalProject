@@ -199,9 +199,7 @@ class Level3 extends Levels {
   }
   
   void checkdead(int x, int y) {
-      print("X: " + x + " Y: " + y + "\n");
       if (round(B.getPX()/50) == x && round(B.getPY()/50) == y) {
-        print("DEAD AT: " + x + ", " + y);
         dead = true;
       }
   }

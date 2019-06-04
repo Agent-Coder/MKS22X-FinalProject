@@ -82,10 +82,8 @@ class RBerries extends Berries {
   void badBerry() {
     if (millis()%12000>=6000) {
       bad=true;
-      //println("yes");
     } else {
       bad=false;
-      //println("no");
     }
   }
   boolean getBad(){return bad;}
