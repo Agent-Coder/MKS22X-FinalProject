@@ -9,6 +9,7 @@ class Level3 extends Levels {
   ArrayList<Integer> numbs = new ArrayList<Integer>();
   public Level3() {
     super();
+     B=new Player(350, 350, board, boardtile, playerChar);
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
     berryCount=new ArrayList<Berries>();
@@ -23,7 +24,7 @@ class Level3 extends Levels {
   
   void collectBerries(int berryEnd) {
     for (int i=0; i<berryEnd; i++) {
-      if (round(B.getPX()/50)==berryCount.get(i).getBerryX()/50&&round(B.getPY()/50)==berryCount.get(i).getBerryY()/50) {
+     if (round(B.getPX()/50)==berryCount.get(i).getBerryX()/50&&round(B.getPY()/50)==berryCount.get(i).getBerryY()/50) {
         if (berryCount.get(i).getBerryType().equals("OranBerry")) {
           oran--;
         } else if (berryCount.get(i).getBerryType().equals("SitrusBerry")) {

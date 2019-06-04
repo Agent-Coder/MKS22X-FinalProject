@@ -1,3 +1,5 @@
+Level4 L4 = new Level4();
+
 class Level4 extends Levels {
   ArrayList<Ditto> E;
   boolean[][] enemyLocation;

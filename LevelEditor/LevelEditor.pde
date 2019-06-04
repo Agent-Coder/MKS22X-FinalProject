@@ -1,5 +1,4 @@
 Level1 A=new Level1();
-//Level3 L3=new Level3();
 
 float mX;
 float mY;
@@ -28,7 +27,7 @@ abstract class Levels {
   Enemies C;
   boolean attacking=false;
   //Berries[] D;
-  Block[][] map;
+  Block[][] map = new Block[15][15];
   ArrayList<Block> attacked;
   ArrayList<Block> temporary;
   ArrayList<Berries> berryCount;
@@ -43,18 +42,18 @@ abstract class Levels {
   public Levels() {
     boardtile=new Tile[15][15];
     map = new Block[15][15];
-  attacking=false;
-  attacked=new ArrayList<Block>() ;
-  temporary=new ArrayList<Block>();
-   berryCount=new ArrayList<Berries>();
-   board=new Block[15][15];
-  temp=null;
-  canMove=true;
-  oran=0;
-  lum=0;
-  nanab=0;
-  sitrus=0;
-  razz=0;
+    attacking=false;
+    attacked=new ArrayList<Block>() ;
+    temporary=new ArrayList<Block>();
+    berryCount=new ArrayList<Berries>();
+    board=new Block[15][15];
+    temp=null;
+    canMove=true;
+    oran=0;
+    lum=0;
+    nanab=0;
+    sitrus=0;
+    razz=0;
   }
 
   void output() {
@@ -145,10 +144,10 @@ abstract class Levels {
 }
 class Level1 extends Levels {
   public Level1() {
-      super();
-       B=new Player(350, 350, board, boardtile, playerChar);
+    super();
+    B=new Player(350, 350, board, boardtile, playerChar);
     C=new Enemies(B, board,boardtile, 100, 100, "Meowth");
-      attacked=new ArrayList<Block>();
+    attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
     berryCount=new ArrayList<Berries>();
     createBerries();
@@ -164,7 +163,7 @@ class Level1 extends Levels {
       board[i][board.length-1]=new BorderBlock((board.length-1)*50, i*50 );
       board[board.length-1][i]=new BorderBlock(i*50, (board.length-1)*50);
       for (int j=0; j<board[0].length; j++) {
-        boardtile[j][i]=new Tile(j*50, j*50);
+        boardtile[j][i]=new Tile(i*50, j*50);
         if (i>=3&&i<board.length-3&&((j>=8&&j<12)||(j>=3&&j<7))) {
           board[j][i]=new IceBlock(i*50, j*50);
         }
@@ -388,10 +387,23 @@ void draw() {
       inhibit = false;
       location = "3to4";
     }
-  } else if (location.equals("3to4")) {
+  } 
+  else if (location.equals("3to4")) {
     nextLevel = false;
     drawContinueScreen("4");
-  } else if (location.equals("deathScreen")) {
+  }  
+  else if (location.equals("4") && pause == false && goVis == true) {
+    L4.play(playerChar);
+     if (dead) {
+      location = "deathScreen";
+      resetLevel();
+    }
+    if (nextLevel) {
+      resetLevel();
+      location="end";
+    }
+  }
+  else if (location.equals("deathScreen")) {
     dead = false;
     drawDeathScreen();
   }
