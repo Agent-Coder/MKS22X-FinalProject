@@ -60,7 +60,7 @@ class Player {
   void move(boolean canMove) {
     if (playerChar.equals("Glaceon")) {
       if (keyCodesDown.contains(RIGHT)&&canMove) {
-        PImage r=GlaceonMRight1;
+       PImage  r=GlaceonMRight1;
         if (frameCount%30<10) {
           r=GlaceonMRight1;
         } else if (frameCount%30<20) {
@@ -76,7 +76,7 @@ class Player {
         }
         prevKey="right";
       } else if (keyCodesDown.contains(LEFT)&&canMove) {
-        PImage r=GlaceonMLeft1;
+       PImage  r=GlaceonMLeft1;
         if (frameCount%30<10) {
           r=GlaceonMLeft1;
         } else if (frameCount%30<20) {
@@ -92,7 +92,7 @@ class Player {
         }
         prevKey="left";
       } else if (keyCodesDown.contains(DOWN)&&canMove) {
-        PImage r=GlaceonMDown1;
+       PImage  r=GlaceonMDown1;
         if (frameCount%30<10) {
           r=GlaceonMDown1;
         } else if (frameCount%30<20) {
@@ -108,7 +108,7 @@ class Player {
         }
         prevKey="down";
       } else if (keyCodesDown.contains(UP)&&canMove) {
-        PImage r=GlaceonMUp1;
+       PImage  r=GlaceonMUp1;
         if (frameCount%30<10) {
           r=GlaceonMUp1;
         } else if (frameCount%30<10) {
@@ -152,7 +152,7 @@ class Player {
       }
     } else if (playerChar.equals("Empoleon")) {
       if (keyCodesDown.contains(RIGHT)&&canMove) {
-        PImage r=EmpoleonMRight1;
+       PImage  r=EmpoleonMRight1;
         if (frameCount%30<10) {
           r=EmpoleonMRight1;
         } else if (frameCount%30<20) {
@@ -168,7 +168,7 @@ class Player {
         }
         prevKey="right";
       } else if (keyCodesDown.contains(LEFT)&&canMove) {
-        PImage r=EmpoleonMLeft1;
+       PImage  r=EmpoleonMLeft1;
         if (frameCount%30<10) {
           r=EmpoleonMLeft1;
         } else if (frameCount%30<20) {
@@ -184,7 +184,7 @@ class Player {
         }
         prevKey="left";
       } else if (keyCodesDown.contains(DOWN)&&canMove) {
-        PImage r=EmpoleonMDown1;
+       PImage  r=EmpoleonMDown1;
         if (frameCount%30<10) {
           r=EmpoleonMDown1;
         } else if (frameCount%30<20) {
@@ -200,7 +200,7 @@ class Player {
         }
         prevKey="down";
       } else if (keyCodesDown.contains(UP)&&canMove) {
-        PImage r=EmpoleonMUp1;
+       PImage  r=EmpoleonMUp1;
         if (frameCount%30<10) {
           r=EmpoleonMUp1;
         } else if (frameCount%30<10) {
@@ -244,7 +244,7 @@ class Player {
       }
     } else { //Manaphy
       if (keyCodesDown.contains(RIGHT)&&canMove) {
-        PImage r=ManaphyMRight1;
+       PImage  r=ManaphyMRight1;
         if (frameCount%30<10) {
           r=ManaphyMRight1;
         } else if (frameCount%30<20) {
@@ -260,7 +260,7 @@ class Player {
         }
         prevKey="right";
       } else if (keyCodesDown.contains(LEFT)&&canMove) {
-        PImage r=ManaphyMLeft1;
+       PImage  r=ManaphyMLeft1;
         if (frameCount%30<10) {
           r=ManaphyMLeft1;
         } else if (frameCount%30<20) {
@@ -276,7 +276,7 @@ class Player {
         }
         prevKey="left";
       } else if (keyCodesDown.contains(DOWN)&&canMove) {
-        PImage r=ManaphyMDown1;
+       PImage  r=ManaphyMDown1;
         if (frameCount%30<10) {
           r=ManaphyMDown1;
         } else if (frameCount%30<20) {
@@ -292,7 +292,7 @@ class Player {
         }
         prevKey="down";
       } else if (keyCodesDown.contains(UP)&&canMove) {
-        PImage r=ManaphyMUp1;
+       PImage  r=ManaphyMUp1;
         if (frameCount%30<10) {
           r=ManaphyMUp1;
         } else if (frameCount%30<10) {

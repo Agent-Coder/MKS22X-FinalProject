@@ -1,6 +1,9 @@
 class Level3 extends Levels {
   ArrayList<Ditto> E;
   boolean[][] enemyLocation;
+  boolean enemyAttacking=false;
+  ArrayList<Block> enemytemporary;
+  ArrayList<Block> enemyAttacked;
   public Level3() {
     B=new Player(350, 450, board, boardtile, playerChar);
     E=new ArrayList<Ditto>();
@@ -10,9 +13,11 @@ class Level3 extends Levels {
       E.add(new Ditto(B, board, boardtile, 500, 300+i*50));
       E.add(new Ditto(B, board, boardtile, 300+i*50, 500));
     }
-    enemyLocation=new boolean[15][15];
+    enemyLocation=new boolean[15][15];enemyHere();
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
+    enemytemporary=new ArrayList<Block>();
+    enemyAttacked=new ArrayList<Block>();
     berryCount=new ArrayList<Berries>();
     createBerries();
     for (int i=0; i<board.length; i++) {
@@ -61,15 +66,6 @@ class Level3 extends Levels {
     boardtile[board.length-2][9]=new TeleportationTile(450, 650);
     boardtile[1][9]=new TeleportationTile(450, 50);
     boardtile[9][1]=new TeleportationTile(50, 450);
-  }
-  void enemyCollide(Ditto enemy) {
-    for (int i=0; i<E.size(); i++) {
-      if (E.get(i)!=enemy&&(round(E.get(i).getX()/50)+E.get(i).getDx())-(round(enemy.getX()/50)+enemy.getDx())<25&&(round(E.get(i).getY()/50)+E.get(i).getDy())-(round(enemy.getY()/50)+enemy.getDy())<25) {
-        enemy.setMoving(false);
-      } else {
-        enemy.setMoving(true);
-      }
-    }
   }
   void collectBerries(int berryEnd) {
     for (int i=0; i<berryEnd; i++) {
@@ -150,10 +146,67 @@ class Level3 extends Levels {
       }
     }
     for (int c=0; c<E.size(); c++) {
+      //println(E.size())
       enemyLocation[round(E.get(c).getY()/50)][round(E.get(c).getX()/50)]=true;
     }
   }
-  Block temp;
+  void nextEMove() {
+   // println("---------------");
+    for(int i=0;i<E.size();i++){
+      E.get(i).setMoving(false);
+    }
+    if (keyCodesDown.contains(RIGHT)) {
+      for (int i=13; i>=1; i--) {
+        for (int x=0; x<E.size(); x++) {
+          if (round(E.get(x).getX()/50)==i&&board[floor(E.get(x).getY()/50)][floor(E.get(x).getX()/50)+1]==null&&!enemyLocation[round(E.get(x).getY()/50)][round(E.get(x).getX()/50)+1]) {
+            enemyLocation[round(E.get(x).getY()/50)][round(E.get(x).getX()/50)]=false;
+            enemyLocation[round(E.get(x).getY()/50)][round(E.get(x).getX()/50)+1]=true;
+            E.get(x).setMoving(true);
+          }
+        }
+      }
+    } else if (keyCodesDown.contains(LEFT)) {
+      for(int i=0;i<E.size();i++){
+      E.get(i).setMoving(false);
+    }
+      for (int i=1; i<=13; i++) {
+        for (int x=0; x<E.size(); x++) {
+          if (round(E.get(x).getX()/50)==i&&board[ceil(E.get(x).getY()/50)][ceil(E.get(x).getX()/50)-1]==null&&!enemyLocation[round(E.get(x).getY()/50)][round(E.get(x).getX()/50)-1]) {
+            enemyLocation[round(E.get(x).getY()/50)][round(E.get(x).getX()/50)]=false;
+            enemyLocation[round(E.get(x).getY()/50)][round(E.get(x).getX()/50)-1]=true;
+            E.get(x).setMoving(true);
+          } 
+        }
+      }
+    } else if (keyCodesDown.contains(UP)) {
+      for(int i=0;i<E.size();i++){
+      E.get(i).setMoving(false);
+    }
+      for (int i=1; i<=13; i++) {
+        for (int x=0; x<E.size(); x++) {
+          if (round(E.get(x).getY()/50)==i&&board[ceil(E.get(x).getY()/50)-1][ceil(E.get(x).getX()/50)]==null&&!enemyLocation[round(E.get(x).getY()/50)-1][round(E.get(x).getX()/50)]) {
+            enemyLocation[round(E.get(x).getY()/50)][round(E.get(x).getX()/50)]=false;
+            enemyLocation[round(E.get(x).getY()/50)-1][round(E.get(x).getX()/50)]=true;
+            E.get(x).setMoving(true);
+          } 
+        }
+      }
+    } else if (keyCodesDown.contains(DOWN)) {
+      for(int i=0;i<E.size();i++){
+      E.get(i).setMoving(false);
+    }
+      for (int i=13; i>=1; i--) {
+        for (int x=0; x<E.size(); x++) {
+          if (round(E.get(x).getY()/50)==i&&board[floor(E.get(x).getY()/50)+1][floor(E.get(x).getX()/50)]==null&&!enemyLocation[round(E.get(x).getY()/50)+1][round(E.get(x).getX()/50)]) {
+            enemyLocation[round(E.get(x).getY()/50)][round(E.get(x).getX()/50)]=false;
+            enemyLocation[round(E.get(x).getY()/50)+1][round(E.get(x).getX()/50)]=true;
+            E.get(x).setMoving(true);
+          }
+        }
+      }
+    }
+  }
+  Block enemytemp;
   IceBlock[][] start = new IceBlock[15][15];
   int frameStart;
   boolean startFrame=true;
@@ -222,34 +275,92 @@ class Level3 extends Levels {
         temp.animate(temp.getxB(), temp.getyB(), make, frameCount-playerFrames);
       }
     }
+    canMove=false;
     if (attacked.size()>0||frameCount-playerFrames<20) {
       canMove=false;
     } else {
       canMove=true;
     }
+  B.teleport();
     B.move(canMove);
-    B.teleport();
-    for (int iii=0; iii<E.size(); iii++) {
+    //if (frameCount%20==frameStart%20) {
+      enemyHere();
+      nextEMove();
+    //}
+      for (int iii=0; iii<E.size(); iii++) {
       E.get(iii).teleport();
       if (round(E.get(iii).getX()/50)==round(B.getPX()/50)&&round(E.get(iii).getY()/50)==round(B.getPY()/50)) dead = true;
       E.get(iii).determineMove();
-      enemyHere();
-    }
-    for (int ii=0; ii<E.size(); ii++) {
-      enemyMove=true;
-      //for (int ee=0; ee<E.size(); ee++) {
-      //println(enemyLocation[round(E.get(ii).getY()/50)+(int)E.get(ii).getDy()][round(E.get(ii).getX()/50)+(int)E.get(ii).getDx()]);
-
-      if (enemyLocation[round(E.get(ii).getY()/50)+(int)E.get(ii).getDy()][round(E.get(ii).getX()/50)+(int)E.get(ii).getDx()]) {
-        enemyMove=false;
-        //ee=E.size();
-      }
-      //}
-      E.get(ii).setMoving(enemyMove);
+      
     }
     for (int a=0; a<E.size(); a++) {
+
       E.get(a).moveE(playChar);
     }
     if (berryCount.size() == 0) nextLevel = true;
   }
+   ArrayList<Block> attackEnemy(Ditto d) {
+    ArrayList<Block> delete=new ArrayList<Block>();
+    if (keysDown.contains(' ')) {
+      int x=round(d.getX()/50);
+      int y=round(d.getY()/50);
+      int i;
+      boolean blockHere=false;
+      if (B.getPrevKey().equals("right")) {
+        if (board[y][x+1]!=null) {
+          blockHere=true;
+        }
+        i=x+1;
+        while (i<board.length-1&&((blockHere&&board[y][i]!=null)||(!blockHere&&board[y][i]==null))) { 
+          if (board[y][i]==null) {
+            delete.add(new IceBlock(i*50, y*50));
+          } else {
+            delete.add(board[y][i]);
+          }
+          i++;
+        }
+      } else if (B.getPrevKey().equals("left")) {
+        if (board[y][x-1]!=null) {
+          blockHere=true;
+        }
+        i=x-1;
+        while (i>0&&((blockHere&&board[y][i]!=null)||(!blockHere&&board[y][i]==null))) {
+          if (board[y][i]==null) {
+            delete.add(new IceBlock(i*50, y*50));
+          } else {
+            delete.add(board[y][i]);
+          }
+          i--;
+        }
+      } else if (B.getPrevKey().equals("up")) {
+        if (board[y-1][x]!=null) {
+          blockHere=true;
+        }
+        i=y-1;
+        while (i>0&&((blockHere&&board[i][x]!=null)||(!blockHere&&board[i][x]==null))) {
+          if (board[i][x]==null) {
+            delete.add(new IceBlock(x*50, i*50));
+          } else {
+            delete.add(board[i][x]);
+          }
+          i--;
+        }
+      } else {
+        if (board[y+1][x]!=null) {
+          blockHere=true;
+        }
+        i=y+1;
+        while (i<board.length-1&&((blockHere&&board[i][x]!=null)||(!blockHere&&board[i][x]==null))) {
+          if (board[i][x]==null) {
+            delete.add(new IceBlock(x*50, i*50));
+          } else {
+            delete.add(board[i][x]);
+          }
+          i++;
+        }
+      }
+      keysDown.remove(' ');
+    }
+    return delete;
+  } 
 }

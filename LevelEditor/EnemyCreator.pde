@@ -46,7 +46,7 @@ class Enemies {
     }
   }
   void teleport() {
-    if (floorTile[round(y/50)][round(x/50)].getType().equals("teleporttile")&&!isTeleport) {
+    if (floorTile[round(y/50)][round(x/50)].getType().equals("teleporttile")&&!isTeleport&&moving) {
       if (round(y/50)!=round(x/50)) {
         float temp=round(x/50);
         x=round(y/50)*50;
@@ -196,13 +196,13 @@ class Enemies {
   float getDx() {
     return dx;
   }
-  void setMoving(boolean canMove) {
-    moving=canMove;
-  }
 }
 class Ditto extends Enemies {
   public Ditto(Player a, Block[][] iceBlock, Tile[][] floorBoard, int newx, int newy) {
     super( a, iceBlock, floorBoard, newx, newy);
+  }
+  void setMoving(boolean canMove) {
+    moving=canMove;
   }
   void moveE(String avatar) {
     if (avatar.equals("Glaceon")) {
