@@ -42,6 +42,7 @@ class Level2 extends Levels {
   }
   
   void createBerries() {
+    /*
     berryCount.add(new RBerries(50, 50));
     berryCount.add(new RBerries(100, 50));
     berryCount.add(new RBerries(150, 50));
@@ -78,6 +79,28 @@ class Level2 extends Levels {
     berryCount.add(new RBerries(550,600));
     berryCount.add(new RBerries(550,550));
     razz= 32;
+    
+    berryCount.add(new LBerries(400,400));
+    berryCount.add(new LBerries(400,350));
+    berryCount.add(new LBerries(400,300));
+    berryCount.add(new LBerries(350,300));
+    berryCount.add(new LBerries(300,300));
+    berryCount.add(new LBerries(300,350));
+    berryCount.add(new LBerries(300,400));
+    berryCount.add(new LBerries(350,400));
+    lum = 8;
+    */
+    
+    berryCount.add(new SBerries(300,50));
+    berryCount.add(new SBerries(350,50));
+    berryCount.add(new SBerries(400,50));
+    berryCount.add(new SBerries(300,650));
+    berryCount.add(new SBerries(350,650));
+    berryCount.add(new SBerries(400,650));
+    berryCount.add(new SBerries(50,300));
+    berryCount.add(new SBerries(50,350));
+    berryCount.add(new SBerries(50,400));
+    sitrus = 9;
   }
   
   void displayBerries(int berryEnd) {
