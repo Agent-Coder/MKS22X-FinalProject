@@ -19,7 +19,7 @@ class Level2 extends Levels {
   }
   
   void collectBerries(int berryEnd) {
-    for (int i=0; i<berryEnd; i++) {
+      for (int i=0; i<berryEnd; i++) {
       if (round(B.getPX()/50)==berryCount.get(i).getBerryX()/50&&round(B.getPY()/50)==berryCount.get(i).getBerryY()/50) {
         if (berryCount.get(i).getBerryType().equals("RazzBerry")) {
           razz--;
