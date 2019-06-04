@@ -24,7 +24,7 @@ class TeleportationTile extends Tile {
     type = "teleporttile";
   }
   void display() {
-    image(floor, xer, yer, xer, yer);
+    image(portal, xer, yer, xer, yer);
   }
   String getType() {
     return type;

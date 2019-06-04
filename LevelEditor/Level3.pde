@@ -128,9 +128,16 @@ class Level3 extends Levels {
   }
   void displayBerries(int berryEnd) {
     for (int i=0; i<berryEnd; i++) {
-      berryCount.get(i).display();
+      
+      println(berryCount.get(i).getBad());
       if (berryCount.get(i).berryType.equals("RazzBerry")) {
         berryCount.get(i).badBerry();
+        if(berryCount.get(i).getBad()){
+        berryCount.get(i).displaySpecial();
+        }else{
+        berryCount.get(i).display();}
+      }else{
+      berryCount.get(i).display();
       }
     }
   }

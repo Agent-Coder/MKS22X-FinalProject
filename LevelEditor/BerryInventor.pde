@@ -11,7 +11,8 @@ abstract class Berries {
     //berryCount=0;
   }
   boolean getBad(){return bad;}
-
+void displaySpecial() {
+  }
   void badBerry() {
   }
   int getBerryX() {
@@ -74,6 +75,9 @@ class RBerries extends Berries {
   }
   void display() {
     image(RazzBerry2, berryX, berryY);
+  }
+  void displaySpecial() {
+    image(SpikyRazzBerry, berryX, berryY);
   }
   void badBerry() {
     if (millis()%12000>=6000) {

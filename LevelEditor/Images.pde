@@ -2,6 +2,7 @@ PImage floor;
 PImage ice;
 PImage background;
 PImage bluebackground;
+PImage portal;
 
 //Ice Breaking Animation/Effect
 PImage IceA1;
@@ -174,3 +175,4 @@ PImage NanabBerry2;
 PImage RazzBerry2;
 PImage SitrusBerry2;
 PImage LumBerry2;
+PImage SpikyRazzBerry;
