@@ -1,13 +1,15 @@
 Level2 L2 = new Level2();
 Enemies E2;
 Enemies E3;
+Enemies E4;
 
 class Level2 extends Levels {
   public Level2() {
     super();
     C=new Enemies(B, board, 100, 100, "Meowth");
     E2 = new Enemies(B, board,600,100,"Tentacruel");
-    E3 = new Enemies(B, board,600,600,"Tentacruel");
+    E3 = new Enemies(B, board,600,600,"Spoink");
+    E4 = new Enemies(B, board,100,600,"Tentacruel");
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
     berryCount=new ArrayList<Berries>();
@@ -141,7 +143,8 @@ class Level2 extends Levels {
         if (frameCount-playerFrames==19) {
           if (abs((round(C.getX())-temp.getxB()))<50&&abs((round(C.getY())-temp.getyB()))<50 ||
           abs((round(E2.getX())-temp.getxB()))<50&&abs((round(E2.getY())-temp.getyB()))<50 ||
-          abs((round(E3.getX())-temp.getxB()))<50&&abs((round(E3.getY())-temp.getyB()))<50) {
+          abs((round(E3.getX())-temp.getxB()))<50&&abs((round(E3.getY())-temp.getyB()))<50 || 
+          abs((round(E4.getX())-temp.getxB()))<50&&abs((round(E4.getY())-temp.getyB()))<50) {
             temp=null;      
             attacked.clear();
             lastBlock=false;
@@ -163,18 +166,22 @@ class Level2 extends Levels {
     C.update(board);
     E2.update(board);
     E3.update(board);
+    E4.update(board);
     if (frameCount%50==frameStart%50) {
       C.moveE();
       E2.moveE();
       E3.moveE();
+      E4.moveE();
     }
     E2.moveAnimation();
     E3.moveAnimation();
+    E4.moveAnimation();
     C.moveAnimation();
     B.move(canMove);
     if (round(C.getX()/50)==round(B.getPX()/50)&&round(C.getY()/50)==round(B.getPY()/50)) dead = true;
     if (round(E2.getX()/50)==round(B.getPX()/50)&&round(E2.getY()/50)==round(B.getPY()/50)) dead = true;
     if (round(E3.getX()/50)==round(B.getPX()/50)&&round(E3.getY()/50)==round(B.getPY()/50)) dead = true;
+    if (round(E4.getX()/50)==round(B.getPX()/50)&&round(E4.getY()/50)==round(B.getPY()/50)) dead = true;
  //   if (berryCount.size() == 0) nextLevel = true;
   }    
 }

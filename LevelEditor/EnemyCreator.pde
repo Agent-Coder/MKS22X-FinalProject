@@ -143,61 +143,74 @@ class Enemies {
       if (frameCount%30<10) {
         if (pkmn.equals("Meowth")) pic=MeowthMRight1;
         if (pkmn.equals("Tentacruel")) pic = TentacruelMRight1;
+        if (pkmn.equals("Spoink")) pic = SpoinkMRight1;
       } 
       else if (frameCount%30<20) {
         if (pkmn.equals("Meowth")) pic=MeowthMRight2;
         if (pkmn.equals("Tentacruel")) pic = TentacruelMRight2;
+        if (pkmn.equals("Spoink")) pic = SpoinkMRight2;
       } 
       else {
         if (pkmn.equals("Meowth")) pic=MeowthMRight3;
         if (pkmn.equals("Tentacruel")) pic = TentacruelMRight3;
+        if (pkmn.equals("Spoink")) pic = SpoinkMRight3;
       }
       display(pic);
     } else if (dx<0) {
       if (frameCount%30<10) {
         if (pkmn.equals("Meowth")) pic=MeowthMLeft1;
         if (pkmn.equals("Tentacruel")) pic = TentacruelMLeft1;
+        if (pkmn.equals("Spoink")) pic = SpoinkMLeft1;
       } 
       else if (frameCount%30<20) {
         if (pkmn.equals("Meowth")) pic=MeowthMLeft2;
         if (pkmn.equals("Tentacruel")) pic = TentacruelMLeft2;
+        if (pkmn.equals("Spoink")) pic = SpoinkMLeft2;
       } 
       else {
         if (pkmn.equals("Meowth")) pic=MeowthMLeft3;
         if (pkmn.equals("Tentacruel")) pic = TentacruelMLeft3;
+        if (pkmn.equals("Spoink")) pic = SpoinkMLeft3;
       }
       display(pic);
     } else if (dy>0) {
       if (frameCount%30<10) {
        if (pkmn.equals("Meowth")) pic=MeowthMDown1;
        if (pkmn.equals("Tentacruel")) pic = TentacruelMDown1;
+       if (pkmn.equals("Spoink")) pic = SpoinkMDown1;
       } 
       else if (frameCount%30<20) {
        if (pkmn.equals("Meowth")) pic=MeowthMDown2;
        if (pkmn.equals("Tentacruel")) pic = TentacruelMDown2;
+       if (pkmn.equals("Spoink")) pic = SpoinkMDown2;
       } 
       else {
        if (pkmn.equals("Meowth")) pic=MeowthMDown3;
        if (pkmn.equals("Tentacruel")) pic = TentacruelMDown3;
+       if (pkmn.equals("Spoink")) pic = SpoinkMDown3;
       }
       display(pic);
     } else if (dy<0) {
       if (frameCount%30<10) {
        if (pkmn.equals("Meowth")) pic=MeowthMUp1;
        if (pkmn.equals("Tentacruel")) pic = TentacruelMUp1;
+       if (pkmn.equals("Spoink")) pic = SpoinkMUp1;
       } 
       else if (frameCount%30<20) {
        if (pkmn.equals("Meowth")) pic=MeowthMUp2;
        if (pkmn.equals("Tentacruel")) pic = TentacruelMUp2;
+       if (pkmn.equals("Spoink")) pic = SpoinkMUp2;
       } 
       else {
        if (pkmn.equals("Meowth")) pic=MeowthMUp3;
        if (pkmn.equals("Tentacruel")) pic = TentacruelMUp3;
+       if (pkmn.equals("Spoink")) pic = SpoinkMUp3;
       }
       display(pic);
     } else {
        if (pkmn.equals("Mewoth")) display(MeowthMDown3);
        if (pkmn.equals("Tentacruel")) pic = TentacruelMDown3;
+       if (pkmn.equals("Spoink")) pic = SpoinkMDown3;
     }
   }
   void displayer(PImage picture,int xB,int yB){
