@@ -250,7 +250,6 @@ class Level1 extends Levels {
     }
     if (attacked.size()==0&&frameCount-playerFrames>=20) {
       temp=null;
-      println("yes");
       attacking=false;
     }
     if (attacked.size()>0||frameCount-playerFrames<20) {
@@ -285,7 +284,6 @@ class Level1 extends Levels {
         }
       } else {
         temp.animate(temp.getxB(), temp.getyB(), make,frameCount-playerFrames);
-        println("-----");
       }
     }
     if (attacked.size()>0||frameCount-playerFrames<20) {
@@ -356,6 +354,21 @@ void draw() {
     nextLevel = false;
     drawContinueScreen("2");
   }
+  else if (location.equals("2") && pause == false && goVis == true) {
+    L2.play();
+    if (dead) {
+      location = "deathScreen";
+      resetLevel();
+    }
+    if (nextLevel) {
+      resetLevel();
+      location="2to3";
+    }
+  }
+  else if (location.equals("2to3")) {
+    nextLevel = false;
+    drawContinueScreen("3");
+  } 
   else if (location.equals("3") && pause == false && goVis == true) {
     L3.play();
     inhibit = true;
