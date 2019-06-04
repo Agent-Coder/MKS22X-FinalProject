@@ -356,8 +356,8 @@ void draw() {
     nextLevel = false;
     drawContinueScreen("2");
   }
-  else if (location.equals("2") && pause == false && goVis == true) {
-    L2.play();
+  else if (location.equals("3") && pause == false && goVis == true) {
+    L3.play();
     inhibit = true;
     if (dead) {
       location="deathScreen";
@@ -367,12 +367,12 @@ void draw() {
     if (nextLevel) {
       resetLevel();
       inhibit = false;
-      location = "2to3";
+      location = "3to4";
     }
   }
-  else if (location.equals("2to3")) {
+  else if (location.equals("3to4")) {
     nextLevel = false;
-    drawContinueScreen("3");
+    drawContinueScreen("4");
   }
   else if (location.equals("deathScreen")) {
     dead = false;

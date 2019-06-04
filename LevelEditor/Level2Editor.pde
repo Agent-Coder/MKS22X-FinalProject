@@ -1,13 +1,13 @@
-Level2 L2 = new Level2();
+Level3 L3 = new Level3();
 
-class Level2 extends Levels {
+class Level3 extends Levels {
   Random rng = new Random();
   int rC = 0;
   int time;
   int time2;
   int sCount = 0;
   ArrayList<Integer> numbs = new ArrayList<Integer>();
-  public Level2() {
+  public Level3() {
     super();
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
