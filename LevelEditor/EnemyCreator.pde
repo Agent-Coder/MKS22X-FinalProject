@@ -190,6 +190,12 @@ class Enemies {
   float getY() {
     return y;
   }
+    float getDy(){
+    return dy;
+  }
+  float getDx(){
+    return dx;
+  }
    void setMoving(boolean canMove){
     moving=canMove;
   }
@@ -199,8 +205,20 @@ class Ditto extends Enemies {
   public Ditto(Player a, Block[][] iceBlock, Tile[][] floorBoard, int newx, int newy) {
     super( a, iceBlock, floorBoard, newx, newy);
   }
-  void setMoving(boolean canMove){
+   float getX() {
+    return x;
+  }
+  float getY() {
+    return y;
+  }
+   void setMoving(boolean canMove){
     moving=canMove;
+  }
+  float getDy(){
+    return dy;
+  }
+  float getDx(){
+    return dx;
   }
   void moveE(String avatar) {
     if (avatar.equals("Glaceon")) {
@@ -215,6 +233,7 @@ class Ditto extends Enemies {
           pic=GlaceonMRight3;
         }
         if (x+target.getSpeed()<650&&board[round(y/50)][round((x+target.getSpeed())/50)]==null) {
+          dx=target.getSpeed();
           x+=target.getSpeed();
           display(pic, x+target.getSpeed(), y);
         } else {
@@ -231,6 +250,7 @@ class Ditto extends Enemies {
           pic=GlaceonMLeft3;
         }
         if (x+target.getSpeed()>=50&&board[round(y/50)][round((x-target.getSpeed())/50)]==null) {
+          dx=-1*target.getSpeed();
           x+=-1* target.getSpeed();
           display(pic, x-target.getSpeed(), y);
         } else {
@@ -248,6 +268,7 @@ class Ditto extends Enemies {
         }
         if (y+target.getSpeed()<650&&board[round((y+target.getSpeed())/50)][round(x/50)]==null) {
           y+=target.getSpeed();
+          dy=1*target.getSpeed();
           display(pic, x, y+target.getSpeed());
         } else {
           display(pic, x, y);
@@ -264,6 +285,7 @@ class Ditto extends Enemies {
         }
         if (y-target.getSpeed()>50&&board[round((y-target.getSpeed())/50)][round(x/50)]==null) {
           y-=target.getSpeed();
+          dx=-1*target.getSpeed();
           display(pic, x, y-target.getSpeed());
         } else {
           display(pic, x, y);

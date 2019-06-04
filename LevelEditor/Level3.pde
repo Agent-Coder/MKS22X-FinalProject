@@ -63,7 +63,7 @@ class Level3 extends Levels {
   }
   void enemyCollide(Enemies enemy) {
     for (int i=0; i<12; i++) {
-      if (/*E.get(i)!=enemy&&*/(round(E.get(i).getX()/50)+E.get(i).dx)==(round(enemy.getX()/50)+enemy.dx)&&(round(E.get(i).getY()/50)+E.get(i).dy)==(round(enemy.getY()/50)+enemy.dy)) {
+      if (E.get(i)!=enemy&&(round(E.get(i).getX()/50)+E.get(i).getDx())-(round(enemy.getX()/50)+enemy.getDx())<25&&(round(E.get(i).getY()/50)+E.get(i).getDy())-(round(enemy.getY()/50)+enemy.getDy())<25) {
         enemy.setMoving(false);
       } else {
         enemy.setMoving(true);
@@ -73,10 +73,12 @@ class Level3 extends Levels {
   void collectBerries(int berryEnd) {
     for (int i=0; i<berryEnd; i++) {
       if (round(B.getPX()/50)==berryCount.get(i).getBerryX()/50&&round(B.getPY()/50)==berryCount.get(i).getBerryY()/50) {
-        if (berryCount.get(i).getBerryType().equals("OranBerry")) {
-          oran--;
+        if (berryCount.get(i).getBerryType().equals("RazzBerry")&&!berryCount.get(i).getBad()) {
+          razz--;
+        } else if (berryCount.get(i).getBerryType().equals("RazzBerry")&&berryCount.get(i).getBad()) {
+          dead=true;
         } else {
-          lum--;
+          sitrus--;
         }
         berryCount.remove(i);
         berryEnd--;
@@ -84,51 +86,52 @@ class Level3 extends Levels {
     }
   }
   void createBerries() {
-    berryCount.add(new OBerries(250, 100));
-    berryCount.add(new OBerries(300, 100));
-    berryCount.add(new OBerries(350, 100));
-    berryCount.add(new OBerries(400, 100));
-    berryCount.add(new OBerries(450, 100));
 
-    berryCount.add(new OBerries(600, 250));
-    berryCount.add(new OBerries(600, 300));
-    berryCount.add(new OBerries(600, 350));
-    berryCount.add(new OBerries(600, 400));
-    berryCount.add(new OBerries(600, 450));
+    berryCount.add(new RBerries(300, 100));
+    berryCount.add(new RBerries(400, 100));
+    berryCount.add(new RBerries(600, 300));
+    berryCount.add(new RBerries(600, 400));
+    berryCount.add(new RBerries(300, 600));
+    berryCount.add(new RBerries(400, 600));
+    berryCount.add(new RBerries(100, 300));
+    berryCount.add(new RBerries(100, 400));
+    razz=8;
 
-    berryCount.add(new OBerries(250, 600));
-    berryCount.add(new OBerries(300, 600));
-    berryCount.add(new OBerries(350, 600));
-    berryCount.add(new OBerries(400, 600));
-    berryCount.add(new OBerries(450, 600));
+    berryCount.add(new SBerries(250, 100));
+    berryCount.add(new SBerries(450, 100));
+    berryCount.add(new SBerries(200, 150));
+    berryCount.add(new SBerries(250, 150));
+    berryCount.add(new SBerries(450, 150));
+    berryCount.add(new SBerries(500, 150));
 
-    berryCount.add(new OBerries(100, 250));
-    berryCount.add(new OBerries(100, 300));
-    berryCount.add(new OBerries(100, 350));
-    berryCount.add(new OBerries(100, 400));
-    berryCount.add(new OBerries(100, 450));
-    oran=20;
-
-    berryCount.add(new LBerries(50, 50));
-    berryCount.add(new LBerries(100, 50));
-    berryCount.add(new LBerries(50, 100));
-
-    berryCount.add(new LBerries(650, 650));
-    berryCount.add(new LBerries(650, 600));
-    berryCount.add(new LBerries(600, 650));
-
-    berryCount.add(new LBerries(650, 50));
-    berryCount.add(new LBerries(650, 100));
-    berryCount.add(new LBerries(600, 50));
-
-    berryCount.add(new LBerries(50, 650));
-    berryCount.add(new LBerries(50, 600));
-    berryCount.add(new LBerries(100, 650));
-    lum=12;
+    berryCount.add(new SBerries(100, 250));
+    berryCount.add(new SBerries(150, 250));
+    berryCount.add(new SBerries(150, 200));
+    berryCount.add(new SBerries(150, 500));
+    berryCount.add(new SBerries(100, 450));
+    berryCount.add(new SBerries(150, 450));
+    
+    berryCount.add(new SBerries(250, 550));
+    berryCount.add(new SBerries(250, 600));
+    berryCount.add(new SBerries(200, 550));
+    berryCount.add(new SBerries(450, 600));
+    berryCount.add(new SBerries(450, 550));
+    berryCount.add(new SBerries(500, 550));
+    
+    berryCount.add(new SBerries(550, 500));
+    berryCount.add(new SBerries(550, 450));
+    berryCount.add(new SBerries(600, 450));
+    berryCount.add(new SBerries(550, 200));
+    berryCount.add(new SBerries(600, 250));
+    berryCount.add(new SBerries(550, 250));
+    sitrus=24;
   }
   void displayBerries(int berryEnd) {
     for (int i=0; i<berryEnd; i++) {
       berryCount.get(i).display();
+      if (berryCount.get(i).berryType.equals("RazzBerry")) {
+        berryCount.get(i).badBerry();
+      }
     }
   }
   Block temp;
@@ -146,12 +149,12 @@ class Level3 extends Levels {
       frameBlocks=frameStart-20;
     }
     output();
-    if (oran!=0) {
-      collectBerries(oran);
-      displayBerries(oran);
+    if (razz!=0) {
+      collectBerries(razz);
+      displayBerries(razz);
     } else {    
-      collectBerries(lum);
-      displayBerries(lum);
+      collectBerries(sitrus);
+      displayBerries(sitrus);
     }
     temporary=attack();
     int i=temporary.size()-1;
@@ -185,7 +188,7 @@ class Level3 extends Levels {
         temp.animate(temp.getxB(), temp.getyB(), make, frameCount-playerFrames);
         if (frameCount-playerFrames==19) {
           for (Enemies X : E) {
-            if (abs((round(C.getX())-temp.getxB()))<50&&abs((round(C.getY())-temp.getyB()))<50) {
+            if (abs((round(X.getX())-temp.getxB()))<50&&abs((round(X.getY())-temp.getyB()))<50) {
               temp=null;      
               attacked.clear();
               lastBlock=false;
@@ -207,7 +210,13 @@ class Level3 extends Levels {
     B.move(canMove);
     B.teleport();
     for (int ii=0; ii<12; ii++) {
-      enemyCollide(E.get(ii));
+      for (int ee=0; ee<12; ee++) {
+        if (E.get(ee)!=E.get(ii)&&(round(E.get(ee).getX()/50)+E.get(ee).getDx())-(round(E.get(ii).getX()/50)+E.get(ii).getDx())<25&&(round(E.get(ee).getY()/50)+E.get(ee).getDy())-(round(E.get(ii).getY()/50)+E.get(ii).getDy())<25) {
+          E.get(ii).setMoving(false);
+        } else {
+          E.get(ii).setMoving(true);
+        }
+      }
     }
     for (int iii=0; iii<12; iii++) {
       E.get(iii).moveE(playChar);
