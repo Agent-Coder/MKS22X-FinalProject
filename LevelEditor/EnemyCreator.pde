@@ -13,7 +13,9 @@ class Enemies {
   PImage pic;
   Player target;
   int[] moves=new int[8];
-  public Enemies(Player a, Block[][] iceBlock, int coordX, int coordY) {
+  String pkmn;
+  public Enemies(Player a, Block[][] iceBlock, int coordX, int coordY, String species) {
+    pkmn = species;
     moving=true;
     target=a;
     x=coordX;
