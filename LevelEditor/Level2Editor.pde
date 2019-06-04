@@ -12,15 +12,18 @@ class Level2 extends Levels {
         board[0][i]=new BorderBlock(0, i*50);
         board[i][board.length-1]=new BorderBlock(i*50, (board.length-1)*50);
         board[board.length-1][i]=new BorderBlock((board.length-1)*50, i*50);     
+        for (int j=0; j<board[0].length; j++) {
+          boardtile[i][j]=new Tile(i*50, j*50);
+        }
      }
   }
   
   void collectBerries(int berryEnd) {
     for (int i=0; i<berryEnd; i++) {
       if (round(B.getPX()/50)==berryCount.get(i).getBerryX()/50&&round(B.getPY()/50)==berryCount.get(i).getBerryY()/50) {
-        if (berryCount.get(i).getBerryType().equals("OranBerry")) {
+        if (berryCount.get(i).getBerryType().equals("RazzBerry")) {
           razz--;
-        } else if (berryCount.get(i).getBerryType().equals("SitrusBerry")) {
+        } else if (berryCount.get(i).getBerryType().equals("LumBerry")) {
           lum--;
         } else {
           sitrus--;
@@ -31,7 +34,45 @@ class Level2 extends Levels {
     }
   }
   
-  void createBerries() {}
+  void createBerries() {
+    berryCount.add(new RBerries(50, 50));
+    berryCount.add(new RBerries(100, 50));
+    berryCount.add(new RBerries(150, 50));
+    berryCount.add(new RBerries(50, 100));
+    berryCount.add(new RBerries(50, 150));
+    berryCount.add(new RBerries(100, 150));
+    berryCount.add(new RBerries(150, 100));
+    berryCount.add(new RBerries(150, 150));
+    
+    berryCount.add(new RBerries(650,50));
+    berryCount.add(new RBerries(600,50));
+    berryCount.add(new RBerries(550,50));
+    berryCount.add(new RBerries(550,100));
+    berryCount.add(new RBerries(650,100));
+    berryCount.add(new RBerries(550,150));
+    berryCount.add(new RBerries(600,150));
+    berryCount.add(new RBerries(650,150));
+    
+    berryCount.add(new RBerries(50,650));
+    berryCount.add(new RBerries(50,600));
+    berryCount.add(new RBerries(50,550));
+    berryCount.add(new RBerries(100,650));
+    berryCount.add(new RBerries(100,550));
+    berryCount.add(new RBerries(150,650));
+    berryCount.add(new RBerries(150,600));
+    berryCount.add(new RBerries(150,550));
+    
+    berryCount.add(new RBerries(650,650));
+    berryCount.add(new RBerries(650,600));
+    berryCount.add(new RBerries(650,550));
+    berryCount.add(new RBerries(600,650));
+    berryCount.add(new RBerries(600,550));
+    berryCount.add(new RBerries(550,650));
+    berryCount.add(new RBerries(550,600));
+    berryCount.add(new RBerries(550,550));
+    razz= 32;
+  }
+  
   void displayBerries(int berryEnd) {
     for (int i=0; i<berryEnd; i++) {
       berryCount.get(i).display();

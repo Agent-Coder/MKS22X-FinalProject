@@ -21,8 +21,6 @@ class Level3 extends Levels {
      }
   }
   
-  
-
   void collectBerries(int berryEnd) {
     for (int i=0; i<berryEnd; i++) {
       if (round(B.getPX()/50)==berryCount.get(i).getBerryX()/50&&round(B.getPY()/50)==berryCount.get(i).getBerryY()/50) {
