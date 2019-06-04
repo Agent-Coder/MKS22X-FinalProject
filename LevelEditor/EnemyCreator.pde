@@ -277,7 +277,6 @@ class Ditto extends Enemies {
   void moveE(String avatar) {
     if (avatar.equals("Glaceon")) {
       if (keyCodesDown.contains(RIGHT)&&moving) {
-        ////println("right");
         if (frameCount%30<10) {
           pic=GlaceonMRight1;
         } else if (frameCount%30<20) {
@@ -292,7 +291,6 @@ class Ditto extends Enemies {
           display(pic, x, y);
         }
       } else if (keyCodesDown.contains(LEFT)&&moving) {
-        //println("left");
         pic=GlaceonMLeft1;
         if (frameCount%30<10) {
           pic=GlaceonMLeft1;

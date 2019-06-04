@@ -127,8 +127,6 @@ class Level4 extends Levels {
   }
   void displayBerries(int berryEnd) {
     for (int i=0; i<berryEnd; i++) {
-
-      //println(berryCount.get(i).getBad());
       if (berryCount.get(i).berryType.equals("RazzBerry")) {
         berryCount.get(i).badBerry();
         if (berryCount.get(i).getBad()) {
@@ -148,12 +146,10 @@ class Level4 extends Levels {
       }
     }
     for (int c=0; c<E.size(); c++) {
-      //println(E.size())
       enemyLocation[round(E.get(c).getY()/50)][round(E.get(c).getX()/50)]=true;
     }
   }
   void nextEMove() {
-   // println("---------------");
     for(int i=0;i<E.size();i++){
       E.get(i).setMoving(false);
     }

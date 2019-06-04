@@ -38,6 +38,11 @@ class Level2 extends Levels {
     board[4][6]=new IceBlock(300,200);
     board[4][5]=new IceBlock(250,200);
     
+    board[5][10]=new IceBlock(500,250);
+    board[6][10]=new IceBlock(500,300);
+    board[7][10]=new IceBlock(500,350);
+    board[8][10]=new IceBlock(500,400);
+    board[9][10]=new IceBlock(500,450);
     
     for (int i=0; i<board.length; i++) {
         board[i][0]=new BorderBlock(i*50, 0);
@@ -205,7 +210,6 @@ class Level2 extends Levels {
         }
       } else {
         temp.animate(temp.getxB(), temp.getyB(), make,frameCount-playerFrames);
-        println("-----");
       }
     }
     if (attacked.size()>0||frameCount-playerFrames<20) {
