@@ -42,7 +42,6 @@ class Level2 extends Levels {
   }
   
   void createBerries() {
-    /*
     berryCount.add(new RBerries(50, 50));
     berryCount.add(new RBerries(100, 50));
     berryCount.add(new RBerries(150, 50));
@@ -89,7 +88,7 @@ class Level2 extends Levels {
     berryCount.add(new LBerries(300,400));
     berryCount.add(new LBerries(350,400));
     lum = 8;
-    */
+    
     
     berryCount.add(new SBerries(300,50));
     berryCount.add(new SBerries(350,50));
@@ -100,7 +99,10 @@ class Level2 extends Levels {
     berryCount.add(new SBerries(50,300));
     berryCount.add(new SBerries(50,350));
     berryCount.add(new SBerries(50,400));
-    sitrus = 9;
+    berryCount.add(new SBerries(650,300));
+    berryCount.add(new SBerries(650,350));
+    berryCount.add(new SBerries(650,400));
+    sitrus = 12;
   }
   
   void displayBerries(int berryEnd) {
@@ -205,6 +207,6 @@ class Level2 extends Levels {
     if (round(E2.getX()/50)==round(B.getPX()/50)&&round(E2.getY()/50)==round(B.getPY()/50)) dead = true;
     if (round(E3.getX()/50)==round(B.getPX()/50)&&round(E3.getY()/50)==round(B.getPY()/50)) dead = true;
     if (round(E4.getX()/50)==round(B.getPX()/50)&&round(E4.getY()/50)==round(B.getPY()/50)) dead = true;
- //   if (berryCount.size() == 0) nextLevel = true;
+    if (berryCount.size() == 0) nextLevel = true;
   }    
 }

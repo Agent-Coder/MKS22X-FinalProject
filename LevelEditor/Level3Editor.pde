@@ -151,8 +151,6 @@ class Level3 extends Levels {
     } else {
       canMove=true;
     }
-    C.update(board);
-    C.moveE();
     B.move(canMove);
     genSpikes();
     if (berryCount.size() == 0) nextLevel = true;
