@@ -10,16 +10,13 @@ class Enemies {
   float dy;
   int currentFrame;
   boolean moving;
-  boolean onTeleport;
   boolean isTeleport;
   int moveRotation;
   PImage pic;
   Player target;
   int[] moves=new int[8];
   public Enemies(Player a, Block[][] iceBlock, Tile[][] floorBoard, int newx, int newy) {
-    isTeleport=false;
-
-    onTeleport=false;    
+    isTeleport=false;    
     moving=true;
     target=a;
     x=newx;
@@ -48,31 +45,28 @@ class Enemies {
       }
     }
   }
-  void teleport() {
-    if (floorTile[round(y/50)][round(x/50)].getType().equals("teleporttile")/*&&!isTeleport&&!onTeleport*/) {
-      onTeleport=true;
-      println("teleporting");
+   void teleport() {
+    if (floorTile[round(y/50)][round(x/50)].getType().equals("teleporttile")&&!isTeleport) {
       if (round(y/50)!=round(x/50)) {
-        println("teleporting");
-        float temp=x;
-        x=y;
-        y=temp;
-        display(pic);
+        float temp=round(x/50);
+        x=round(y/50)*50;
+        y=temp*50;
         isTeleport=true;
       } else {
         if (round(y/50)==3) {
-          x=650;
-          y=650;
+          x=550;
+          y=550;
         } else {
           x=150;
           y=150;
         }
+        isTeleport=true;
       }
-    } else {
-      onTeleport=false;
+    } else if (!floorTile[round(y/50)][round(x/50)].getType().equals("teleporttile")) {
       isTeleport=false;
     }
   }
+
   void update(Block[][] gameBoard) {
     clear();
     for (int i=0; i<gameBoard.length; i++) {

@@ -1,7 +1,7 @@
 class Level3 extends Levels {
   public Level3() {
-    B=new Player(350, 350, board, boardtile, playerChar);
-    C=new Ditto(B, board, boardtile, 300, 300);
+    B=new Player(450, 450, board, boardtile, playerChar);
+    C=new Ditto(B, board, boardtile, 250, 250);
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
     berryCount=new ArrayList<Berries>();
@@ -10,18 +10,6 @@ class Level3 extends Levels {
       for (int j=0; j<board[0].length; j++) {
         boardtile[i][j]=new Tile(i*50, j*50);
       }
-      boardtile[3][11]=new TeleportationTile(550, 150);
-      boardtile[3][3]=new TeleportationTile(550, 150);
-      boardtile[11][3]=new TeleportationTile(150, 550);
-      boardtile[11][11]=new TeleportationTile(550, 550);
-      boardtile[5][board.length-2]=new TeleportationTile(650, 250);
-      boardtile[board.length-2][5]=new TeleportationTile(250, 650);
-      boardtile[1][5]=new TeleportationTile(250, 50);
-      boardtile[5][1]=new TeleportationTile(50, 250);
-      boardtile[9][board.length-2]=new TeleportationTile(700, 450);
-      boardtile[board.length-2][9]=new TeleportationTile(450, 700);
-      boardtile[1][9]=new TeleportationTile(50, 450);
-      boardtile[9][1]=new TeleportationTile(50, 450);
       board[i][board.length-1]=new BorderBlock( (board.length-1)*50, i*50);
       board[board.length-1][i]=new BorderBlock(i*50, (board.length-1)*50);
       board[i][0]=new BorderBlock(0, i*50);
@@ -39,6 +27,31 @@ class Level3 extends Levels {
         board[i][board.length-3]=new obstacleBlock((board.length-3)*50, i*50);
       }
     }
+      board[7][7]=new obstacleBlock(350,350);
+      board[7][8]=new obstacleBlock(400,350);
+      board[8][7]=new obstacleBlock(350,400);
+      board[6][7]=new obstacleBlock(350,300);
+      board[7][6]=new obstacleBlock(300,350);
+      board[6][6]=new obstacleBlock(300,300);
+      board[8][8]=new obstacleBlock(400,400);
+      board[8][6]=new obstacleBlock(300,400);
+      board[6][8]=new obstacleBlock(400,300);
+      board[10][10]=new obstacleBlock(500,500);
+      board[4][4]=new obstacleBlock(200,200);
+      board[4][10]=new obstacleBlock(200,500);
+      board[10][4]=new obstacleBlock(500,200);
+      boardtile[3][11]=new TeleportationTile(550, 150);
+      boardtile[3][3]=new TeleportationTile(550, 150);
+      boardtile[11][3]=new TeleportationTile(150, 550);
+      boardtile[11][11]=new TeleportationTile(550, 550);
+      boardtile[5][board.length-2]=new TeleportationTile(650, 250);
+      boardtile[board.length-2][5]=new TeleportationTile(250, 650);
+      boardtile[1][5]=new TeleportationTile(250, 50);
+      boardtile[5][1]=new TeleportationTile(50, 250);
+      boardtile[9][board.length-2]=new TeleportationTile(700, 450);
+      boardtile[board.length-2][9]=new TeleportationTile(450, 700);
+      boardtile[1][9]=new TeleportationTile(50, 450);
+      boardtile[9][1]=new TeleportationTile(50, 450);
   }
   void collectBerries(int berryEnd) {
     for (int i=0; i<berryEnd; i++) {

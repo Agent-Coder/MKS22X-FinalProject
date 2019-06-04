@@ -38,7 +38,7 @@ class Player {
         float temp=round(xcor/50);
         xcor=round(ycor/50)*50;
 
-        display(pic,x,y);        ycor=temp*50;
+        ycor=temp*50;
         isTeleport=true;
       } else {
         if (round(ycor/50)==3) {
