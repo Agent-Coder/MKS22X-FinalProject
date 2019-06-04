@@ -1,3 +1,5 @@
+Random rngSpe = new Random();
+
 class Enemies {
   int[][] grid=new int[15][15];
   Block[][] board=new Block[15][15];
@@ -14,8 +16,14 @@ class Enemies {
   Player target;
   int[] moves=new int[8];
   String pkmn;
+  float speedE =1;
+  float[] TentacruelSpeeds = {1.4, 1.5,};
   public Enemies(Player a, Block[][] iceBlock, int coordX, int coordY, String species) {
     pkmn = species;
+    if (pkmn.equals("Tentacruel")) {
+      int speC = int(rngSpe.nextInt(2));
+      speedE = TentacruelSpeeds[speC];
+    }
     moving=true;
     target=a;
     x=coordX;
@@ -121,8 +129,8 @@ class Enemies {
     }
 
     if (moving&&x+dx>0&&y+dy>0&&x+dx<700&&y+dy<700) {
-      x+=dx;
-      y+=dy;
+          x+=dx*speedE;
+          y+=dy*speedE;      
     }
     PImage animated;
     if (!moving) {
