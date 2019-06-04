@@ -6,10 +6,11 @@ Enemies E4;
 class Level2 extends Levels {
   public Level2() {
     super();
-    C=new Enemies(B, board, 100, 100, "Meowth");
-    E2 = new Enemies(B, board,600,100,"Tentacruel");
-    E3 = new Enemies(B, board,600,600,"Spoink");
-    E4 = new Enemies(B, board,100,600,"Tentacruel");
+     B=new Player(350, 350, board, boardtile, playerChar);
+    C=new Enemies(B, board, boardtile,100, 100, "Meowth");
+    E2 = new Enemies(B, board,boardtile,600,100,"Tentacruel");
+    E3 = new Enemies(B, board,boardtile,600,600,"Spoink");
+    E4 = new Enemies(B, board,boardtile,100,600,"Tentacruel");
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
     berryCount=new ArrayList<Berries>();

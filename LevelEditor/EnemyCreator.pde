@@ -3,6 +3,7 @@ Random rngSpe = new Random();
 class Enemies {
   int[][] grid=new int[15][15];
   Block[][] board=new Block[15][15];
+  Tile[][] floorTile=new Tile[15][15];
   float x;
   float y;
   float tx;
@@ -11,6 +12,7 @@ class Enemies {
   float dy;
   int currentFrame;
   boolean moving;
+  boolean isTeleport;
   int moveRotation;
   PImage pic;
   Player target;
@@ -18,22 +20,24 @@ class Enemies {
   String pkmn;
   float speedE =1;
   float[] TentacruelSpeeds = {1.4, 1.5,};
-  public Enemies(Player a, Block[][] iceBlock, int coordX, int coordY, String species) {
+  public Enemies(Player a, Block[][] iceBlock, Tile[][] floorBoard,int coordX, int coordY, String species) {
     pkmn = species;
     if (pkmn.equals("Tentacruel")) {
       int speC = int(rngSpe.nextInt(2));
       speedE = TentacruelSpeeds[speC];
     }
-    moving=true;
-    target=a;
     x=coordX;
     y=coordY;
+    isTeleport=false;    
+    moving=true;
+    target=a;
     dx=0;
     dy=1;
     tx=a.getPX();
     ty=a.getPY();
     moveRotation=3;
     board=iceBlock;
+    floorTile=floorBoard;
     moves[0]=0;
     moves[1]=1;
     moves[2]=1;
@@ -49,6 +53,27 @@ class Enemies {
       for (int j=0; j<grid.length; j++) {
         grid[i][j]=0;
       }
+    }
+  }
+  void teleport() {
+    if (floorTile[round(y/50)][round(x/50)].getType().equals("teleporttile")&&!isTeleport&&moving) {
+      if (round(y/50)!=round(x/50)) {
+        float temp=round(x/50);
+        x=round(y/50)*50;
+        y=temp*50;
+        isTeleport=true;
+      } else {
+        if (round(y/50)==3) {
+          x=550;
+          y=550;
+        } else {
+          x=150;
+          y=150;
+        }
+        isTeleport=true;
+      }
+    } else if (!floorTile[round(y/50)][round(x/50)].getType().equals("teleporttile")) {
+      isTeleport=false;
     }
   }
 
@@ -75,29 +100,6 @@ class Enemies {
       fillGrid(xer-1, yer, num+1);
       fillGrid(xer, yer-1, num+1);
     }
-  }
-  boolean trapped() {
-    int a=round((y)/50);
-    int b=round((x)/50);
-    if (a<0||a>grid.length||b<0||b>grid.length) {
-      dx=0;
-      dy=0;
-      return true;
-    } else {
-      int smallest=grid[a][b];
-      if (smallest==0) {
-        if (grid[a+(int)dy][b+(int)dx]==-1) {
-          moveRotation=(moveRotation-1)%3;
-          if (moveRotation==-1) {
-            moveRotation=3;
-          }
-          dy=moves[2*moveRotation+1];
-          dx=moves[2*moveRotation];
-        }
-        return true;
-      }
-    }
-    return false;
   }
   void moveE() {
     int a=round((y)/50);
@@ -127,7 +129,6 @@ class Enemies {
     if (frameCount-currentFrame==50) {
       moving=true;
     }
-
     if (moving&&x+dx>0&&y+dy>0&&x+dx<700&&y+dy<700) {
           x+=dx*speedE;
           y+=dy*speedE;      
@@ -140,12 +141,12 @@ class Enemies {
         animated=IceA2;
       } else if (frameCount-currentFrame<30) {
         animated=IceA3;
-      }else if (frameCount-currentFrame<40) {
+      } else if (frameCount-currentFrame<40) {
         animated=IceA4;
       } else {
         animated=IceA5;
       }
-     displayer(animated,(int)(x+50*dx),(int)(y+50*dy));
+      displayer(animated, (int)(x+50*dx), (int)(y+50*dy));
     }
     if (dx>0) {
       if (frameCount%30<10) {
@@ -221,7 +222,7 @@ class Enemies {
        if (pkmn.equals("Spoink")) pic = SpoinkMDown3;
     }
   }
-  void displayer(PImage picture,int xB,int yB){
+  void displayer(PImage picture, int xB, int yB) {
     image(picture, xB, yB);
   }
   void display(PImage i) {
@@ -232,5 +233,265 @@ class Enemies {
   }
   float getY() {
     return y;
+  }
+  float getDy() {
+    return dy;
+  }
+  float getDx() {
+    return dx;
+  }
+}
+class Ditto extends Enemies {
+  public Ditto(Player a, Block[][] iceBlock, Tile[][] floorBoard, int newx, int newy) {
+    super( a, iceBlock, floorBoard, newx, newy,"ditto");
+  }
+  void setMoving(boolean canMove) {
+    moving=canMove;
+  }
+  void moveE(String avatar) {
+    if (avatar.equals("Glaceon")) {
+      if (keyCodesDown.contains(RIGHT)&&moving) {
+        ////println("right");
+        if (frameCount%30<10) {
+          pic=GlaceonMRight1;
+        } else if (frameCount%30<20) {
+          pic=GlaceonMRight2;
+        } else {
+          pic=GlaceonMRight3;
+        }
+        if (x+target.getSpeed()<650&&board[round(y/50)][round((x+target.getSpeed())/50)]==null) {
+          x+=target.getSpeed();
+          display(pic, x+target.getSpeed(), y);
+        } else {
+          display(pic, x, y);
+        }
+      } else if (keyCodesDown.contains(LEFT)&&moving) {
+        //println("left");
+        pic=GlaceonMLeft1;
+        if (frameCount%30<10) {
+          pic=GlaceonMLeft1;
+        } else if (frameCount%30<20) {
+          pic=GlaceonMLeft2;
+        } else {
+          pic=GlaceonMLeft3;
+        }
+        if (x+target.getSpeed()>=50&&board[round(y/50)][round((x-target.getSpeed())/50)]==null) {
+          x+=-1* target.getSpeed();
+          display(pic, x-target.getSpeed(), y);
+        } else {
+          display(pic, x, y);
+        }
+      } else if (keyCodesDown.contains(DOWN)&&moving) {
+        //println("down");
+        pic=GlaceonMDown1;
+        if (frameCount%30<10) {
+          pic=GlaceonMDown1;
+        } else if (frameCount%30<20) {
+          pic=GlaceonMDown2;
+        } else {
+          pic=GlaceonMDown3;
+        }
+        if (y+target.getSpeed()<650&&board[round((y+target.getSpeed())/50)][round(x/50)]==null) {
+          y+=target.getSpeed();
+          display(pic, x, y+target.getSpeed());
+        } else {
+          display(pic, x, y);
+        }
+      } else if (keyCodesDown.contains(UP)&&moving) {
+        //println("up");
+
+        pic=GlaceonMUp1;
+        if (frameCount%30<10) {
+          pic=GlaceonMUp1;
+        } else if (frameCount%30<10) {
+          pic=GlaceonMUp2;
+        } else {
+          pic=GlaceonMUp3;
+        }
+        if (y-target.getSpeed()>50&&board[round((y-target.getSpeed())/50)][round(x/50)]==null) {
+          y-=target.getSpeed();
+          display(pic, x, y-target.getSpeed());
+        } else {
+          display(pic, x, y);
+        }
+      } else {
+        //println(moving);
+        if (frameCount%30<10) {
+          display(Ditto1, x, y);
+        } else if (frameCount%30<20) {
+          display(Ditto2, x, y);
+        } else {
+          display(Ditto3, x, y);
+        }
+      }
+    } else if (avatar.equals("Empoleon")) {
+      if (keyCodesDown.contains(RIGHT)&&moving) {
+        pic=EmpoleonMRight1;
+        if (frameCount%30<10) {
+          pic=EmpoleonMRight1;
+        } else if (frameCount%30<20) {
+          pic=EmpoleonMRight2;
+        } else {
+          pic=EmpoleonMRight3;
+        }
+        if (x+target.getSpeed()<650&&board[round(y/50)][round((x+target.getSpeed())/50)]==null) {
+          x+=target.getSpeed();
+          display(pic, x+target.getSpeed(), y);
+        } else {
+          display(pic, x, y);
+        }
+      } else if (keyCodesDown.contains(LEFT)&&moving) {
+        pic=EmpoleonMLeft1;
+        if (frameCount%30<10) {
+          pic=EmpoleonMLeft1;
+        } else if (frameCount%30<20) {
+          pic=EmpoleonMLeft2;
+        } else {
+          pic=EmpoleonMLeft3;
+        }
+        if (x+target.getSpeed()>=50&&board[round(y/50)][round((x-target.getSpeed())/50)]==null) {
+          x+=-1* target.getSpeed();
+          display(pic, x-target.getSpeed(), y);
+        } else {
+          display(pic, x, y);
+        }
+      } else if (keyCodesDown.contains(DOWN)&&moving) {
+        pic=EmpoleonMDown1;
+        if (frameCount%30<10) {
+          pic=EmpoleonMDown1;
+        } else if (frameCount%30<20) {
+          pic=EmpoleonMDown2;
+        } else {
+          pic=EmpoleonMDown3;
+        }
+        if (y+target.getSpeed()<650&&board[round((y+target.getSpeed())/50)][round(x/50)]==null) {
+          y+=target.getSpeed();
+          display(pic, x, y+target.getSpeed());
+        } else {
+          display(pic, x, y);
+        }
+      } else if (keyCodesDown.contains(UP)&&moving) {
+        pic=EmpoleonMUp1;
+        if (frameCount%30<10) {
+          pic=EmpoleonMUp1;
+        } else if (frameCount%30<10) {
+          pic=EmpoleonMUp2;
+        } else {
+          pic=EmpoleonMUp3;
+        }
+        if (y-target.getSpeed()>50&&board[round((y-target.getSpeed())/50)][round(x/50)]==null) {
+          y-=target.getSpeed();
+          display(pic, x, y-target.getSpeed());
+        } else {
+          display(pic, x, y);
+        }
+      } else {
+        if (frameCount%30<10) {
+          display(Ditto1, x, y);
+        } else if (frameCount%30<20) {
+          display(Ditto2, x, y);
+        } else {
+          display(Ditto3, x, y);
+        }
+      }
+    } else { //Manaphy
+      if (keyCodesDown.contains(RIGHT)&&moving) {
+        pic=ManaphyMRight1;
+        if (frameCount%30<10) {
+          pic=ManaphyMRight1;
+        } else if (frameCount%30<20) {
+          pic=ManaphyMRight2;
+        } else {
+          pic=ManaphyMRight3;
+        }
+        if (x+target.getSpeed()<650&&board[round(y/50)][round((x+target.getSpeed())/50)]==null) {
+          x+=target.getSpeed();
+          display(pic, x+target.getSpeed(), y);
+        } else {
+          display(pic, x, y);
+        }
+      } else if (keyCodesDown.contains(LEFT)&&moving) {
+        pic=ManaphyMLeft1;
+        if (frameCount%30<10) {
+          pic=ManaphyMLeft1;
+        } else if (frameCount%30<20) {
+          pic=ManaphyMLeft2;
+        } else {
+          pic=ManaphyMLeft3;
+        }
+        if (x+target.getSpeed()>=50&&board[round(y/50)][round((x-target.getSpeed())/50)]==null) {
+          x+=-1* target.getSpeed();
+          display(pic, x-target.getSpeed(), y);
+        } else {
+          display(pic, x, y);
+        }
+      } else if (keyCodesDown.contains(DOWN)&&moving) {
+        pic=ManaphyMDown1;
+        if (frameCount%30<10) {
+          pic=ManaphyMDown1;
+        } else if (frameCount%30<20) {
+          pic=ManaphyMDown2;
+        } else {
+          pic=ManaphyMDown3;
+        }
+        if (y+target.getSpeed()<650&&board[round((y+target.getSpeed())/50)][round(x/50)]==null) {
+          y+=target.getSpeed();
+          display(pic, x, y+target.getSpeed());
+        } else {
+          display(pic, x, y);
+        }
+      } else if (keyCodesDown.contains(UP)&&moving) {
+        pic=ManaphyMUp1;
+        if (frameCount%30<10) {
+          pic=ManaphyMUp1;
+        } else if (frameCount%30<10) {
+          pic=ManaphyMUp2;
+        } else {
+          pic=ManaphyMUp3;
+        }
+        if (y-target.getSpeed()>50&&board[round((y-target.getSpeed())/50)][round(x/50)]==null) {
+          y-=target.getSpeed();
+          display(pic, x, y-target.getSpeed());
+        } else {
+          display(pic, x, y);
+        }
+      } else {
+        //println("yeet");
+        if (frameCount%30<10) {
+          display(Ditto1, x, y);
+        } else if (frameCount%30<20) {
+          display(Ditto2, x, y);
+        } else {
+          display(Ditto3, x, y);
+        }
+      }
+    }
+  }
+  void stillMove() {
+    if (frameCount%30<10) {
+      display(Ditto1, x, y);
+    } else if (frameCount%30<20) {
+      display(Ditto2, x, y);
+    } else {
+      display(Ditto3, x, y);
+    }
+  }
+  void determineMove() {
+    if (keyCodesDown.contains(LEFT)) {
+      dx=-1;
+      dy=0;
+    } else if (keyCodesDown.contains(RIGHT)) {
+      dx=1;
+      dy=0;
+    } else if (keyCodesDown.contains(DOWN)){
+      dy=1;
+      dx=0;
+    }else{
+      dy=-1;
+      dx=0;
+    }
+  }
+  void display(PImage picture, float x, float y) {
+    image(picture, x, y);
   }
 }

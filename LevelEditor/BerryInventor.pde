@@ -2,12 +2,18 @@ abstract class Berries {
   String berryType;
   int berryX;
   int berryY;
+  boolean bad;
   //final int berryCount=0;
   public Berries(int x, int y) {
     berryX=x;
     berryY=y;
     berryType="Berry";
     //berryCount=0;
+  }
+  boolean getBad(){return bad;}
+void displaySpecial() {
+  }
+  void badBerry() {
   }
   int getBerryX() {
     return berryX;
@@ -58,13 +64,29 @@ class SBerries extends Berries {
   void display() {
     image(SitrusBerry2, berryX, berryY);
   }
+  //void move(){}
 }
 class RBerries extends Berries {
+  boolean bad;
   public RBerries(int x, int y) {
     super(x, y);
     berryType="RazzBerry";
+    bad=false;
   }
   void display() {
     image(RazzBerry2, berryX, berryY);
   }
+  void displaySpecial() {
+    image(SpikyRazzBerry, berryX, berryY);
+  }
+  void badBerry() {
+    if (millis()%12000>=6000) {
+      bad=true;
+      //println("yes");
+    } else {
+      bad=false;
+      //println("no");
+    }
+  }
+  boolean getBad(){return bad;}
 }

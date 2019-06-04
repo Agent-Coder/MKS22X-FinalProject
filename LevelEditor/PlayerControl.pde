@@ -1,11 +1,18 @@
 class Player {
   Block[][] board;
+  Tile[][] floorTile;
   float x, y, xcor, ycor, speed;
+  PImage pic;
+  boolean isTeleport;
   String prevKey;
+  String character;
   String getPrevKey() {
     return prevKey;
   }
-  Player(float x, float y, Block[][] gameboard) {
+  String getCharacter() {
+    return character;
+  }
+  Player(float x, float y, Block[][] gameboard,Tile[][] gameTile, String chararcter) {
     this.x = x;
     this.y = y;
     xcor=x;
@@ -13,12 +20,39 @@ class Player {
     speed=2.5;
     prevKey="right";
     board=gameboard;
+    floorTile=gameTile;
+    isTeleport=false;
   }
   float getPX() {
     return xcor;
   }
+  float getSpeed() {
+    return speed;
+  }
   float getPY() {
     return ycor;
+  }
+   void teleport() {
+    if (floorTile[round(ycor/50)][round(xcor/50)].getType().equals("teleporttile")&&!isTeleport) {
+      if (round(ycor/50)!=round(xcor/50)) {
+        float temp=round(xcor/50);
+        xcor=round(ycor/50)*50;
+
+        ycor=temp*50;
+        isTeleport=true;
+      } else {
+        if (round(ycor/50)==3) {
+          xcor=550;
+          ycor=550;
+        } else {
+          xcor=150;
+          ycor=150;
+        }
+        isTeleport=true;
+      }
+    } else if (!floorTile[round(ycor/50)][round(xcor/50)].getType().equals("teleporttile")) {
+      isTeleport=false;
+    }
   }
   void display(PImage i, float x, float y) {
     image(i, x, y);
@@ -26,7 +60,7 @@ class Player {
   void move(boolean canMove) {
     if (playerChar.equals("Glaceon")) {
       if (keyCodesDown.contains(RIGHT)&&canMove) {
-        PImage r=GlaceonMRight1;
+       PImage  r=GlaceonMRight1;
         if (frameCount%30<10) {
           r=GlaceonMRight1;
         } else if (frameCount%30<20) {
@@ -42,7 +76,7 @@ class Player {
         }
         prevKey="right";
       } else if (keyCodesDown.contains(LEFT)&&canMove) {
-        PImage r=GlaceonMLeft1;
+       PImage  r=GlaceonMLeft1;
         if (frameCount%30<10) {
           r=GlaceonMLeft1;
         } else if (frameCount%30<20) {
@@ -58,7 +92,7 @@ class Player {
         }
         prevKey="left";
       } else if (keyCodesDown.contains(DOWN)&&canMove) {
-        PImage r=GlaceonMDown1;
+       PImage  r=GlaceonMDown1;
         if (frameCount%30<10) {
           r=GlaceonMDown1;
         } else if (frameCount%30<20) {
@@ -74,7 +108,7 @@ class Player {
         }
         prevKey="down";
       } else if (keyCodesDown.contains(UP)&&canMove) {
-        PImage r=GlaceonMUp1;
+       PImage  r=GlaceonMUp1;
         if (frameCount%30<10) {
           r=GlaceonMUp1;
         } else if (frameCount%30<10) {
@@ -118,7 +152,7 @@ class Player {
       }
     } else if (playerChar.equals("Empoleon")) {
       if (keyCodesDown.contains(RIGHT)&&canMove) {
-        PImage r=EmpoleonMRight1;
+       PImage  r=EmpoleonMRight1;
         if (frameCount%30<10) {
           r=EmpoleonMRight1;
         } else if (frameCount%30<20) {
@@ -134,7 +168,7 @@ class Player {
         }
         prevKey="right";
       } else if (keyCodesDown.contains(LEFT)&&canMove) {
-        PImage r=EmpoleonMLeft1;
+       PImage  r=EmpoleonMLeft1;
         if (frameCount%30<10) {
           r=EmpoleonMLeft1;
         } else if (frameCount%30<20) {
@@ -150,7 +184,7 @@ class Player {
         }
         prevKey="left";
       } else if (keyCodesDown.contains(DOWN)&&canMove) {
-        PImage r=EmpoleonMDown1;
+       PImage  r=EmpoleonMDown1;
         if (frameCount%30<10) {
           r=EmpoleonMDown1;
         } else if (frameCount%30<20) {
@@ -166,7 +200,7 @@ class Player {
         }
         prevKey="down";
       } else if (keyCodesDown.contains(UP)&&canMove) {
-        PImage r=EmpoleonMUp1;
+       PImage  r=EmpoleonMUp1;
         if (frameCount%30<10) {
           r=EmpoleonMUp1;
         } else if (frameCount%30<10) {
@@ -210,7 +244,7 @@ class Player {
       }
     } else { //Manaphy
       if (keyCodesDown.contains(RIGHT)&&canMove) {
-        PImage r=ManaphyMRight1;
+       PImage  r=ManaphyMRight1;
         if (frameCount%30<10) {
           r=ManaphyMRight1;
         } else if (frameCount%30<20) {
@@ -226,7 +260,7 @@ class Player {
         }
         prevKey="right";
       } else if (keyCodesDown.contains(LEFT)&&canMove) {
-        PImage r=ManaphyMLeft1;
+       PImage  r=ManaphyMLeft1;
         if (frameCount%30<10) {
           r=ManaphyMLeft1;
         } else if (frameCount%30<20) {
@@ -242,7 +276,7 @@ class Player {
         }
         prevKey="left";
       } else if (keyCodesDown.contains(DOWN)&&canMove) {
-        PImage r=ManaphyMDown1;
+       PImage  r=ManaphyMDown1;
         if (frameCount%30<10) {
           r=ManaphyMDown1;
         } else if (frameCount%30<20) {
@@ -258,7 +292,7 @@ class Player {
         }
         prevKey="down";
       } else if (keyCodesDown.contains(UP)&&canMove) {
-        PImage r=ManaphyMUp1;
+       PImage  r=ManaphyMUp1;
         if (frameCount%30<10) {
           r=ManaphyMUp1;
         } else if (frameCount%30<10) {

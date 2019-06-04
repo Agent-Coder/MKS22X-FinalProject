@@ -2,7 +2,8 @@ void importImages() {
   //StartScreen, Level/Char Select Backgrounds
   background = loadImage("StartScreen.png");
   bluebackground = loadImage("BlueBackground.png");
-  
+  portal=loadImage("SPRITES/WarpTile.png");
+  portal.resize(50,50);
   //StartScreen, Level/Char Select Backgrounds resizes
   background.resize(1000, 750);
   bluebackground.resize(1000, 750);
@@ -74,12 +75,14 @@ void importImages() {
   SitrusBerry2 = loadImage("SPRITES/Berries/SitrusBerry.png");
   RazzBerry2 = loadImage("SPRITES/Berries/RazzBerry.png");
   NanabBerry2 = loadImage("SPRITES/Berries/NanabBerry.png");
+  SpikyRazzBerry=loadImage("SPRITES/Berries/SpikyRazzBerry.png");
   
   OranBerry2.resize(50,50);
   LumBerry2.resize(50,50);
   SitrusBerry2.resize(50,50);
   RazzBerry2.resize(50,50);
   NanabBerry2.resize(50,50);
+  SpikyRazzBerry.resize(50,50);
   
   //Glaceon Sprites
   GlaceonMRight1 = loadImage("SPRITES/Glaceon Sprites/GlaceonWalkRight1.png");

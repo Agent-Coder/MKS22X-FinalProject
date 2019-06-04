@@ -10,6 +10,9 @@ class Tile {
   void display() {
     image(floor, xer, yer);
   }
+  String getType() {
+    return type;
+  }
 }
 
 class wTile extends Tile {
@@ -34,7 +37,16 @@ class BerryTile {
     xer = x;
     yer = y;
   }
+}
+class TeleportationTile extends Tile {
+  public TeleportationTile(int x, int y) {
+    super(x,y);
+    type = "teleporttile";
+  }
   void display() {
-    image(OranBerry, xer, yer, 50, 50);
+    image(portal, xer, yer);
+  }
+  String getType() {
+    return type;
   }
 }
