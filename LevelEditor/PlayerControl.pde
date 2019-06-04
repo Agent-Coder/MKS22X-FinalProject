@@ -2,6 +2,8 @@ class Player {
   Block[][] board;
   Tile[][] floorTile;
   float x, y, xcor, ycor, speed;
+  PImage pic;
+  boolean isTeleport;
   String prevKey;
   String character;
   String getPrevKey() {
@@ -19,6 +21,7 @@ class Player {
     prevKey="right";
     board=gameboard;
     floorTile=gameTile;
+    isTeleport=false;
   }
   float getPX() {
     return xcor;
@@ -28,6 +31,28 @@ class Player {
   }
   float getPY() {
     return ycor;
+  }
+   void teleport() {
+    if (floorTile[round(ycor/50)][round(xcor/50)].getType().equals("teleporttile")&&!isTeleport) {
+      if (round(y/50)!=round(xcor/50)) {
+        float temp=round(xcor/50);
+        xcor=round(ycor/50)*50;
+
+        display(pic,x,y);        ycor=temp*50;
+        isTeleport=true;
+      } else {
+        if (round(ycor/50)==3) {
+          xcor=550;
+          ycor=550;
+        } else {
+          xcor=150;
+          ycor=150;
+        }
+        isTeleport=true;
+      }
+    } else if (!floorTile[round(ycor/50)][round(xcor/50)].getType().equals("teleporttile")) {
+      isTeleport=false;
+    }
   }
   void display(PImage i, float x, float y) {
     image(i, x, y);

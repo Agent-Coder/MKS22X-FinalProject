@@ -176,6 +176,7 @@ class Level3 extends Levels {
     C.moveE(playChar);
     C.teleport();
     B.move(canMove);
+    B.teleport();
     if (round(C.getX()/50)==round(B.getPX()/50)&&round(C.getY()/50)==round(B.getPY()/50)) dead = true;
     if (berryCount.size() == 0) nextLevel = true;
   }

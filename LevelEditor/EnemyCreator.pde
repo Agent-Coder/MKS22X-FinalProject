@@ -10,6 +10,7 @@ class Enemies {
   float dy;
   int currentFrame;
   boolean moving;
+  boolean onTeleport;
   boolean isTeleport;
   int moveRotation;
   PImage pic;
@@ -17,6 +18,8 @@ class Enemies {
   int[] moves=new int[8];
   public Enemies(Player a, Block[][] iceBlock, Tile[][] floorBoard, int newx, int newy) {
     isTeleport=false;
+
+    onTeleport=false;    
     moving=true;
     target=a;
     x=newx;
@@ -46,24 +49,27 @@ class Enemies {
     }
   }
   void teleport() {
-    if (floorTile[round(y/50)][round(x/50)].getType().equals("teleporttile")&&!isTeleport) {
+    if (floorTile[round(y/50)][round(x/50)].getType().equals("teleporttile")/*&&!isTeleport&&!onTeleport*/) {
+      onTeleport=true;
+      println("teleporting");
       if (round(y/50)!=round(x/50)) {
-        float temp=round(x/50);
-        x=round(y/50)*50;
-        y=temp*50;
+        println("teleporting");
+        float temp=x;
+        x=y;
+        y=temp;
         display(pic);
         isTeleport=true;
       } else {
         if (round(y/50)==3) {
-          x=550;
-          y=550;
+          x=650;
+          y=650;
         } else {
           x=150;
           y=150;
         }
-        isTeleport=true;
       }
-    } else if (!floorTile[round(y/50)][round(x/50)].getType().equals("teleporttile")) {
+    } else {
+      onTeleport=false;
       isTeleport=false;
     }
   }
@@ -260,30 +266,12 @@ class Ditto extends Enemies {
           display(pic, x, y);
         }
       } else {
-        if (target.getPrevKey().equals("right")) {
-          if (frameCount%30<15) {
-            display(GlaceonIRight1, x, y);
-          } else {
-            display(GlaceonIRight2, x, y);
-          }
-        } else if (target.getPrevKey().equals("left")) {
-          if (frameCount%30<15) {
-            display(GlaceonILeft1, x, y);
-          } else {
-            display(GlaceonILeft2, x, y);
-          }
-        } else if (target.getPrevKey().equals("up")) {
-          if (frameCount%30<15) {
-            display(GlaceonIUp1, x, y);
-          } else {
-            display(GlaceonIUp2, x, y);
-          }
+        if (frameCount%30<10) {
+          display(Ditto1, x, y);
+        } else if (frameCount%30<20) {
+          display(Ditto2, x, y);
         } else {
-          if (frameCount%30<15) {
-            display(GlaceonIDown1, x, y);
-          } else {
-            display(GlaceonIDown2, x, y);
-          }
+          display(Ditto3, x, y);
         }
       }
     } else if (avatar.equals("Empoleon")) {
@@ -348,30 +336,12 @@ class Ditto extends Enemies {
           display(pic, x, y);
         }
       } else {
-        if (target.getPrevKey().equals("right")) {
-          if (frameCount%30<15) {
-            display(EmpoleonIRight1, x, y);
-          } else {
-            display(EmpoleonIRight2, x, y);
-          }
-        } else if (target.getPrevKey().equals("left")) {
-          if (frameCount%30<15) {
-            display(EmpoleonILeft1, x, y);
-          } else {
-            display(EmpoleonILeft2, x, y);
-          }
-        } else if (target.getPrevKey().equals("up")) {
-          if (frameCount%30<15) {
-            display(EmpoleonIUp1, x, y);
-          } else {
-            display(EmpoleonIUp2, x, y);
-          }
+        if (frameCount%30<10) {
+          display(Ditto1, x, y);
+        } else if (frameCount%30<20) {
+          display(Ditto2, x, y);
         } else {
-          if (frameCount%30<15) {
-            display(EmpoleonIDown1, x, y);
-          } else {
-            display(EmpoleonIDown2, x, y);
-          }
+          display(Ditto3, x, y);
         }
       }
     } else { //Manaphy
@@ -436,30 +406,12 @@ class Ditto extends Enemies {
           display(pic, x, y);
         }
       } else {
-        if (target.getPrevKey().equals("right")) {
-          if (frameCount%30<15) {
-            display(ManaphyIRight1, x, y);
-          } else {
-            display(ManaphyIRight2, x, y);
-          }
-        } else if (target.getPrevKey().equals("left")) {
-          if (frameCount%30<15) {
-            display(ManaphyILeft1, x, y);
-          } else {
-            display(ManaphyILeft2, x, y);
-          }
-        } else if (target.getPrevKey().equals("up")) {
-          if (frameCount%30<15) {
-            display(ManaphyIUp1, x, y);
-          } else {
-            display(ManaphyIUp2, x, y);
-          }
+        if (frameCount%30<10) {
+          display(Ditto1, x, y);
+        } else if (frameCount%30<20) {
+          display(Ditto2, x, y);
         } else {
-          if (frameCount%30<15) {
-            display(ManaphyIDown1, x, y);
-          } else {
-            display(ManaphyIDown2, x, y);
-          }
+          display(Ditto3, x, y);
         }
       }
     }
