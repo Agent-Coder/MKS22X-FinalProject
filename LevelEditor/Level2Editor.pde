@@ -14,6 +14,24 @@ class Level2 extends Levels {
     temporary=new ArrayList<Block>();
     berryCount=new ArrayList<Berries>();
     createBerries();
+
+    board[10][4]=new IceBlock(200,500);
+    board[9][4]=new IceBlock(200,450);
+    board[8][4]=new IceBlock(200,400);
+    board[7][4]=new IceBlock(200,350);
+    board[6][4]=new IceBlock(200,300);
+    board[5][4]=new IceBlock(200,250);
+    board[4][4]=new IceBlock(200,200);
+    
+    board[10][9]=new IceBlock(200,750);
+    board[9][9]=new IceBlock(200,700);
+    board[8][9]=new IceBlock(200,650);
+    board[7][9]=new IceBlock(200,600);
+    board[6][9]=new IceBlock(200,550);
+    board[5][9]=new IceBlock(200,500);
+    board[4][9]=new IceBlock(200,450);
+
+
     for (int i=0; i<board.length; i++) {
         board[i][0]=new BorderBlock(i*50, 0);
         board[0][i]=new BorderBlock(0, i*50);
