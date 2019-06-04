@@ -141,42 +141,63 @@ class Enemies {
     }
     if (dx>0) {
       if (frameCount%30<10) {
-        pic=MeowthMRight1;
-      } else if (frameCount%30<20) {
-        pic=MeowthMRight2;
-      } else {
-        pic=MeowthMRight3;
+        if (pkmn.equals("Meowth")) pic=MeowthMRight1;
+        if (pkmn.equals("Tentacruel")) pic = TentacruelMRight1;
+      } 
+      else if (frameCount%30<20) {
+        if (pkmn.equals("Meowth")) pic=MeowthMRight2;
+        if (pkmn.equals("Tentacruel")) pic = TentacruelMRight2;
+      } 
+      else {
+        if (pkmn.equals("Meowth")) pic=MeowthMRight3;
+        if (pkmn.equals("Tentacruel")) pic = TentacruelMRight3;
       }
       display(pic);
     } else if (dx<0) {
       if (frameCount%30<10) {
-        pic=MeowthMLeft1;
-      } else if (frameCount%30<20) {
-        pic=MeowthMLeft2;
-      } else {
-        pic=MeowthMLeft3;
+        if (pkmn.equals("Meowth")) pic=MeowthMLeft1;
+        if (pkmn.equals("Tentacruel")) pic = TentacruelMLeft1;
+      } 
+      else if (frameCount%30<20) {
+        if (pkmn.equals("Meowth")) pic=MeowthMLeft2;
+        if (pkmn.equals("Tentacruel")) pic = TentacruelMLeft2;
+      } 
+      else {
+        if (pkmn.equals("Meowth")) pic=MeowthMLeft3;
+        if (pkmn.equals("Tentacruel")) pic = TentacruelMLeft3;
       }
       display(pic);
     } else if (dy>0) {
       if (frameCount%30<10) {
-        pic=MeowthMDown1;
-      } else if (frameCount%30<20) {
-        pic=MeowthMDown2;
-      } else {
-        pic=MeowthMDown3;
+       if (pkmn.equals("Meowth")) pic=MeowthMDown1;
+       if (pkmn.equals("Tentacruel")) pic = TentacruelMDown1;
+      } 
+      else if (frameCount%30<20) {
+       if (pkmn.equals("Meowth")) pic=MeowthMDown2;
+       if (pkmn.equals("Tentacruel")) pic = TentacruelMDown2;
+      } 
+      else {
+       if (pkmn.equals("Meowth")) pic=MeowthMDown3;
+       if (pkmn.equals("Tentacruel")) pic = TentacruelMDown3;
       }
       display(pic);
     } else if (dy<0) {
       if (frameCount%30<10) {
-        pic=MeowthMUp1;
-      } else if (frameCount%30<20) {
-        pic=MeowthMUp2;
-      } else {
-        pic=MeowthMUp3;
+       if (pkmn.equals("Meowth")) pic=MeowthMUp1;
+       if (pkmn.equals("Tentacruel")) pic = TentacruelMUp1;
+      } 
+      else if (frameCount%30<20) {
+       if (pkmn.equals("Meowth")) pic=MeowthMUp2;
+       if (pkmn.equals("Tentacruel")) pic = TentacruelMUp2;
+      } 
+      else {
+       if (pkmn.equals("Meowth")) pic=MeowthMUp3;
+       if (pkmn.equals("Tentacruel")) pic = TentacruelMUp3;
       }
       display(pic);
     } else {
-      display(MeowthMDown3);
+       if (pkmn.equals("Mewoth")) display(MeowthMDown3);
+       if (pkmn.equals("Tentacruel")) pic = TentacruelMDown3;
     }
   }
   void displayer(PImage picture,int xB,int yB){

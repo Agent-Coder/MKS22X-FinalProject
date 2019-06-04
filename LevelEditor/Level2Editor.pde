@@ -4,7 +4,7 @@ class Level2 extends Levels {
   public Level2() {
     super();
     C=new Enemies(B, board, 100, 100, "Meowth");
-    E2 = new Enemies(B, board,200,200,"Mamoswine");
+    E2 = new Enemies(B, board,200,200,"Tentacruel");
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
     berryCount=new ArrayList<Berries>();
