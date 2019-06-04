@@ -21,6 +21,7 @@ class Level2 extends Levels {
      }
   }
   
+  
 
   void collectBerries(int berryEnd) {
     for (int i=0; i<berryEnd; i++) {

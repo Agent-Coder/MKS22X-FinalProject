@@ -21,6 +21,7 @@ PFont font;
 boolean pause = false;
 boolean goVis = false;
 
+boolean inhibit = false;
 abstract class Levels {
   Block[][] board=new Block[15][15];
   Player B;
@@ -64,7 +65,7 @@ abstract class Levels {
   
   ArrayList<Block> attack() {
     ArrayList<Block> delete=new ArrayList<Block>();
-    if (keysDown.contains(' ')) {
+    if (keysDown.contains(' ') && inhibit == false) {
       int x=round(B.getPX()/50);
       int y=round(B.getPY()/50);
       int i;
@@ -357,12 +358,15 @@ void draw() {
   }
   else if (location.equals("2") && pause == false && goVis == true) {
     L2.play();
+    inhibit = true;
     if (dead) {
       location="deathScreen";
+      inhibit = false;
       resetLevel();
     }
     if (nextLevel) {
       resetLevel();
+      inhibit = false;
       location = "2to3";
     }
   }
@@ -376,6 +380,7 @@ void draw() {
   }
 
   if (pause == true) {
+    inhibit = false;
     background(151, 223, 237);
     textSize(80);
     fill(10, 10, 10);
