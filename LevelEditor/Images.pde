@@ -149,6 +149,20 @@ PImage MismagiusMUp1;
 PImage MismagiusMUp2;
 PImage MismagiusMUp3;
 
+//Gengar Move & Idle Images
+PImage GengarMRight1;
+PImage GengarMRight2;
+PImage GengarMRight3;
+PImage GengarMLeft1;
+PImage GengarMLeft2;
+PImage GengarMLeft3;
+PImage GengarMDown1;
+PImage GengarMDown2;
+PImage GengarMDown3;
+PImage GengarMUp1;
+PImage GengarMUp2;
+PImage GengarMUp3;
+
 //Mamoswine Move & Idle Images
 PImage MamoswineMRight1;
 PImage MamoswineMRight2;
