@@ -42,7 +42,7 @@ abstract class Levels {
   int razz;
   public Levels() {
     B=new Player(350, 350, board);
-    C=new Enemies(B, board);
+    C=new Enemies(B, board, 100, 100);
   }
   
   void output() {
