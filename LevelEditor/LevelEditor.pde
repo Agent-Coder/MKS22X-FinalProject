@@ -1,5 +1,6 @@
+import processing.sound.*;
 Level1 A=new Level1();
-
+SoundFile file;
 float mX;
 float mY;
 
@@ -146,7 +147,7 @@ class Level1 extends Levels {
   public Level1() {
     super();
     B=new Player(350, 350, board, boardtile, playerChar);
-    C=new Enemies(B, board,boardtile, 100, 100, "Meowth");
+    C=new Enemies(B, board, boardtile, 100, 100, "Meowth");
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
     berryCount=new ArrayList<Berries>();
@@ -323,6 +324,8 @@ void setup() {
   size(750, 750);
   importImages();
   setupText();
+  //file = new SoundFile(this, "Pokemon.mp3");
+  //file.play();
 }
 void draw() {
   int frameDead=0;
@@ -334,6 +337,7 @@ void draw() {
     drawBerries();
     drawBerries2();
     drawBerries3();
+    //file.play();
     detectStartGame();
   } else if (location.equals("levelSelect")) {
     image(bluebackground, 0, 0);
@@ -387,14 +391,12 @@ void draw() {
       inhibit = false;
       location = "3to4";
     }
-  } 
-  else if (location.equals("3to4")) {
+  } else if (location.equals("3to4")) {
     nextLevel = false;
     drawContinueScreen("4");
-  }  
-  else if (location.equals("4") && pause == false && goVis == true) {
+  } else if (location.equals("4") && pause == false && goVis == true) {
     L4.play(playerChar);
-     if (dead) {
+    if (dead) {
       location = "deathScreen";
       resetLevel();
     }
@@ -402,8 +404,7 @@ void draw() {
       resetLevel();
       location="end";
     }
-  }
-  else if (location.equals("deathScreen")) {
+  } else if (location.equals("deathScreen")) {
     dead = false;
     drawDeathScreen();
   }
