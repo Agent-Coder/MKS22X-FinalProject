@@ -182,7 +182,7 @@ class Level2 extends Levels {
         int y = numbs.remove(0);
         boardtile[x][y] = new Tile(y*50,x*50);
         board[x][y] = new CrystalBlock2(y*50,x*50);
-      //  checkdead(x,y);
+        checkdead(y,x); //weird convention/coord system but i think it works
       }
     }
     if (millis() >= time2 + 7000) {
@@ -200,11 +200,12 @@ class Level2 extends Levels {
     }
   }
   
-  /*
   void checkdead(int x, int y) {
-      if (round(B.getPX()/50)== x &&round(B.getPY()/50)== y) {
-      dead = true;
-    }
+      print("X: " + x + " Y: " + y + "\n");
+      if (round(B.getPX()/50) == x && round(B.getPY()/50) == y) {
+        print("DEAD AT: " + x + ", " + y);
+        dead = true;
+      }
   }
-  */
+  
 }
