@@ -45,7 +45,7 @@ class Enemies {
       }
     }
   }
-   void teleport() {
+  void teleport() {
     if (floorTile[round(y/50)][round(x/50)].getType().equals("teleporttile")&&!isTeleport) {
       if (round(y/50)!=round(x/50)) {
         float temp=round(x/50);
@@ -91,7 +91,7 @@ class Enemies {
       fillGrid(xer, yer-1, num+1);
     }
   }
-  void moveE(String avatar) {
+  void moveE() {
     int a=round((y)/50);
     int b=round((x)/50);
     int smallest=grid[a][b];
@@ -190,39 +190,22 @@ class Enemies {
   float getY() {
     return y;
   }
-    float getDy(){
+  float getDy() {
     return dy;
   }
-  float getDx(){
+  float getDx() {
     return dx;
   }
-   void setMoving(boolean canMove){
+  void setMoving(boolean canMove) {
     moving=canMove;
   }
 }
 class Ditto extends Enemies {
-  boolean moving;
   public Ditto(Player a, Block[][] iceBlock, Tile[][] floorBoard, int newx, int newy) {
     super( a, iceBlock, floorBoard, newx, newy);
   }
-   float getX() {
-    return x;
-  }
-  float getY() {
-    return y;
-  }
-   void setMoving(boolean canMove){
-    moving=canMove;
-  }
-  float getDy(){
-    return dy;
-  }
-  float getDx(){
-    return dx;
-  }
   void moveE(String avatar) {
     if (avatar.equals("Glaceon")) {
-      
       if (keyCodesDown.contains(RIGHT)&&moving) {
         ////println("right");
         if (frameCount%30<10) {
@@ -233,7 +216,6 @@ class Ditto extends Enemies {
           pic=GlaceonMRight3;
         }
         if (x+target.getSpeed()<650&&board[round(y/50)][round((x+target.getSpeed())/50)]==null) {
-          dx=target.getSpeed();
           x+=target.getSpeed();
           display(pic, x+target.getSpeed(), y);
         } else {
@@ -250,7 +232,6 @@ class Ditto extends Enemies {
           pic=GlaceonMLeft3;
         }
         if (x+target.getSpeed()>=50&&board[round(y/50)][round((x-target.getSpeed())/50)]==null) {
-          dx=-1*target.getSpeed();
           x+=-1* target.getSpeed();
           display(pic, x-target.getSpeed(), y);
         } else {
@@ -268,13 +249,13 @@ class Ditto extends Enemies {
         }
         if (y+target.getSpeed()<650&&board[round((y+target.getSpeed())/50)][round(x/50)]==null) {
           y+=target.getSpeed();
-          dy=1*target.getSpeed();
           display(pic, x, y+target.getSpeed());
         } else {
           display(pic, x, y);
         }
       } else if (keyCodesDown.contains(UP)&&moving) {
         //println("up");
+
         pic=GlaceonMUp1;
         if (frameCount%30<10) {
           pic=GlaceonMUp1;
@@ -285,7 +266,6 @@ class Ditto extends Enemies {
         }
         if (y-target.getSpeed()>50&&board[round((y-target.getSpeed())/50)][round(x/50)]==null) {
           y-=target.getSpeed();
-          dx=-1*target.getSpeed();
           display(pic, x, y-target.getSpeed());
         } else {
           display(pic, x, y);
@@ -441,6 +421,30 @@ class Ditto extends Enemies {
           display(Ditto3, x, y);
         }
       }
+    }
+  }
+  void stillMove() {
+    if (frameCount%30<10) {
+      display(Ditto1, x, y);
+    } else if (frameCount%30<20) {
+      display(Ditto2, x, y);
+    } else {
+      display(Ditto3, x, y);
+    }
+  }
+  void determineMove() {
+    if (keyCodesDown.contains(LEFT)) {
+      dx=-1;
+      dy=0;
+    } else if (keyCodesDown.contains(RIGHT)) {
+      dx=1;
+      dy=0;
+    } else if (keyCodesDown.contains(DOWN)){
+      dy=1;
+      dx=0;
+    }else{
+      dy=-1;
+      dx=0;
     }
   }
   void display(PImage picture, float x, float y) {

@@ -289,7 +289,7 @@ class Level1 extends Levels {
     }
     C.update(board);
     if (frameCount%50==frameStart%50) {
-      C.moveE(playerChar);
+      C.moveE();
     }
     C.moveAnimation();
     B.move(canMove);
@@ -309,10 +309,6 @@ void setup() {
 void draw() {
   int frameDead=0;
   background(255);
-  for (int i=0; i<800; i+=50) {
-    line(0, i, 800, i);
-    line(i, 0, i, 800);
-  }
   mX = mouseX;
   mY = mouseY;
   if (location.equals("startScreen")) {
@@ -394,6 +390,10 @@ void draw() {
     if (mousePressed && mX >= 262 && mX <= 478 && mY >= 420 && mY <473) {
       pause = false;
     }
+  }
+   for (int i=0; i<800; i+=50) {
+    line(0, i, 800, i);
+    line(i, 0, i, 800);
   }
 }
 

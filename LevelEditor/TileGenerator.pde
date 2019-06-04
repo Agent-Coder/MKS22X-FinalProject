@@ -16,15 +16,12 @@ class Tile {
 }
 
 class TeleportationTile extends Tile {
-  String type;
-  int xer;
-  int yer;
   public TeleportationTile(int x, int y) {
-    super(x, y);
+    super(x,y);
     type = "teleporttile";
   }
   void display() {
-    image(portal, xer, yer, xer, yer);
+    image(portal, xer, yer);
   }
   String getType() {
     return type;

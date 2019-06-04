@@ -1,15 +1,16 @@
 class Level3 extends Levels {
-  ArrayList<Enemies> E;
+  ArrayList<Ditto> E;
+  boolean[][] enemyLocation;
   public Level3() {
     B=new Player(350, 450, board, boardtile, playerChar);
-    E=new ArrayList<Enemies>();
+    E=new ArrayList<Ditto>();
     for (int i=0; i<3; i++) {
       E.add(new Ditto(B, board, boardtile, 300+i*50, 200));
       E.add(new Ditto(B, board, boardtile, 200, 300+i*50));
       E.add(new Ditto(B, board, boardtile, 500, 300+i*50));
       E.add(new Ditto(B, board, boardtile, 300+i*50, 500));
     }
-
+    enemyLocation=new boolean[15][15];
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
     berryCount=new ArrayList<Berries>();
@@ -49,20 +50,20 @@ class Level3 extends Levels {
     board[4][10]=new obstacleBlock(200, 500);
     board[10][4]=new obstacleBlock(500, 200);
     boardtile[3][11]=new TeleportationTile(550, 150);
-    boardtile[3][3]=new TeleportationTile(550, 150);
+    boardtile[3][3]=new TeleportationTile(150, 150);
     boardtile[11][3]=new TeleportationTile(150, 550);
     boardtile[11][11]=new TeleportationTile(550, 550);
     boardtile[5][board.length-2]=new TeleportationTile(650, 250);
     boardtile[board.length-2][5]=new TeleportationTile(250, 650);
     boardtile[1][5]=new TeleportationTile(250, 50);
     boardtile[5][1]=new TeleportationTile(50, 250);
-    boardtile[9][board.length-2]=new TeleportationTile(700, 450);
-    boardtile[board.length-2][9]=new TeleportationTile(450, 700);
-    boardtile[1][9]=new TeleportationTile(50, 450);
+    boardtile[9][board.length-2]=new TeleportationTile(650, 450);
+    boardtile[board.length-2][9]=new TeleportationTile(450, 650);
+    boardtile[1][9]=new TeleportationTile(450, 50);
     boardtile[9][1]=new TeleportationTile(50, 450);
   }
-  void enemyCollide(Enemies enemy) {
-    for (int i=0; i<12; i++) {
+  void enemyCollide(Ditto enemy) {
+    for (int i=0; i<E.size(); i++) {
       if (E.get(i)!=enemy&&(round(E.get(i).getX()/50)+E.get(i).getDx())-(round(enemy.getX()/50)+enemy.getDx())<25&&(round(E.get(i).getY()/50)+E.get(i).getDy())-(round(enemy.getY()/50)+enemy.getDy())<25) {
         enemy.setMoving(false);
       } else {
@@ -110,14 +111,14 @@ class Level3 extends Levels {
     berryCount.add(new SBerries(150, 500));
     berryCount.add(new SBerries(100, 450));
     berryCount.add(new SBerries(150, 450));
-    
+
     berryCount.add(new SBerries(250, 550));
     berryCount.add(new SBerries(250, 600));
     berryCount.add(new SBerries(200, 550));
     berryCount.add(new SBerries(450, 600));
     berryCount.add(new SBerries(450, 550));
     berryCount.add(new SBerries(500, 550));
-    
+
     berryCount.add(new SBerries(550, 500));
     berryCount.add(new SBerries(550, 450));
     berryCount.add(new SBerries(600, 450));
@@ -128,17 +129,28 @@ class Level3 extends Levels {
   }
   void displayBerries(int berryEnd) {
     for (int i=0; i<berryEnd; i++) {
-      
-      println(berryCount.get(i).getBad());
+
+      //println(berryCount.get(i).getBad());
       if (berryCount.get(i).berryType.equals("RazzBerry")) {
         berryCount.get(i).badBerry();
-        if(berryCount.get(i).getBad()){
-        berryCount.get(i).displaySpecial();
-        }else{
-        berryCount.get(i).display();}
-      }else{
-      berryCount.get(i).display();
+        if (berryCount.get(i).getBad()) {
+          berryCount.get(i).displaySpecial();
+        } else {
+          berryCount.get(i).display();
+        }
+      } else {
+        berryCount.get(i).display();
       }
+    }
+  }
+  void enemyHere() {
+    for (int a=0; a<15; a++) {
+      for (int b=0; b<15; b++) {
+        enemyLocation[a][b]=false;
+      }
+    }
+    for (int c=0; c<E.size(); c++) {
+      enemyLocation[round(E.get(c).getY()/50)][round(E.get(c).getX()/50)]=true;
     }
   }
   Block temp;
@@ -147,6 +159,7 @@ class Level3 extends Levels {
   boolean startFrame=true;
   boolean make=true;
   boolean lastBlock=false;
+  boolean enemyMove=true;
   int frameBlocks=0;
   int playerFrames=0;
   void play(String playChar) {
@@ -216,19 +229,26 @@ class Level3 extends Levels {
     }
     B.move(canMove);
     B.teleport();
-    for (int ii=0; ii<12; ii++) {
-      for (int ee=0; ee<12; ee++) {
-        if (E.get(ee)!=E.get(ii)&&(round(E.get(ee).getX()/50)+E.get(ee).getDx())-(round(E.get(ii).getX()/50)+E.get(ii).getDx())<25&&(round(E.get(ee).getY()/50)+E.get(ee).getDy())-(round(E.get(ii).getY()/50)+E.get(ii).getDy())<25) {
-          E.get(ii).setMoving(false);
-        } else {
-          E.get(ii).setMoving(true);
-        }
-      }
-    }
-    for (int iii=0; iii<12; iii++) {
-      E.get(iii).moveE(playChar);
+    for (int iii=0; iii<E.size(); iii++) {
       E.get(iii).teleport();
       if (round(E.get(iii).getX()/50)==round(B.getPX()/50)&&round(E.get(iii).getY()/50)==round(B.getPY()/50)) dead = true;
+      E.get(iii).determineMove();
+      enemyHere();
+    }
+    for (int ii=0; ii<E.size(); ii++) {
+      enemyMove=true;
+      //for (int ee=0; ee<E.size(); ee++) {
+      //println(enemyLocation[round(E.get(ii).getY()/50)+(int)E.get(ii).getDy()][round(E.get(ii).getX()/50)+(int)E.get(ii).getDx()]);
+
+      if (enemyLocation[round(E.get(ii).getY()/50)+(int)E.get(ii).getDy()][round(E.get(ii).getX()/50)+(int)E.get(ii).getDx()]) {
+        enemyMove=false;
+        //ee=E.size();
+      }
+      //}
+      E.get(ii).setMoving(enemyMove);
+    }
+    for (int a=0; a<E.size(); a++) {
+      E.get(a).moveE(playChar);
     }
     if (berryCount.size() == 0) nextLevel = true;
   }
