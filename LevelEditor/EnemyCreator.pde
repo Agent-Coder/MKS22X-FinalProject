@@ -119,7 +119,6 @@ class Enemies {
     if (frameCount-currentFrame==50) {
       moving=true;
     }
-
     if (moving&&x+dx>0&&y+dy>0&&x+dx<700&&y+dy<700) {
       x+=dx;
       y+=dy;
@@ -191,16 +190,23 @@ class Enemies {
   float getY() {
     return y;
   }
+   void setMoving(boolean canMove){
+    moving=canMove;
+  }
 }
 class Ditto extends Enemies {
   boolean moving;
   public Ditto(Player a, Block[][] iceBlock, Tile[][] floorBoard, int newx, int newy) {
     super( a, iceBlock, floorBoard, newx, newy);
-    moving=true;
+  }
+  void setMoving(boolean canMove){
+    moving=canMove;
   }
   void moveE(String avatar) {
     if (avatar.equals("Glaceon")) {
+      
       if (keyCodesDown.contains(RIGHT)&&moving) {
+        ////println("right");
         if (frameCount%30<10) {
           pic=GlaceonMRight1;
         } else if (frameCount%30<20) {
@@ -215,6 +221,7 @@ class Ditto extends Enemies {
           display(pic, x, y);
         }
       } else if (keyCodesDown.contains(LEFT)&&moving) {
+        //println("left");
         pic=GlaceonMLeft1;
         if (frameCount%30<10) {
           pic=GlaceonMLeft1;
@@ -230,6 +237,7 @@ class Ditto extends Enemies {
           display(pic, x, y);
         }
       } else if (keyCodesDown.contains(DOWN)&&moving) {
+        //println("down");
         pic=GlaceonMDown1;
         if (frameCount%30<10) {
           pic=GlaceonMDown1;
@@ -245,6 +253,7 @@ class Ditto extends Enemies {
           display(pic, x, y);
         }
       } else if (keyCodesDown.contains(UP)&&moving) {
+        //println("up");
         pic=GlaceonMUp1;
         if (frameCount%30<10) {
           pic=GlaceonMUp1;
@@ -260,6 +269,7 @@ class Ditto extends Enemies {
           display(pic, x, y);
         }
       } else {
+        //println(moving);
         if (frameCount%30<10) {
           display(Ditto1, x, y);
         } else if (frameCount%30<20) {
@@ -400,6 +410,7 @@ class Ditto extends Enemies {
           display(pic, x, y);
         }
       } else {
+        //println("yeet");
         if (frameCount%30<10) {
           display(Ditto1, x, y);
         } else if (frameCount%30<20) {

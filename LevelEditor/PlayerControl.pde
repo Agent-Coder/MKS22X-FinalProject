@@ -34,7 +34,7 @@ class Player {
   }
    void teleport() {
     if (floorTile[round(ycor/50)][round(xcor/50)].getType().equals("teleporttile")&&!isTeleport) {
-      if (round(y/50)!=round(xcor/50)) {
+      if (round(ycor/50)!=round(xcor/50)) {
         float temp=round(xcor/50);
         xcor=round(ycor/50)*50;
 
