@@ -1,7 +1,7 @@
 class Level3 extends Levels {
   public Level3() {
-    B=new Player(350, 350, board, playerChar);
-    C=new Ditto(B, board,300,300);
+    B=new Player(350, 350, board, boardtile, playerChar);
+    C=new Ditto(B, board, boardtile, 300, 300);
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
     berryCount=new ArrayList<Berries>();
@@ -10,31 +10,31 @@ class Level3 extends Levels {
       for (int j=0; j<board[0].length; j++) {
         boardtile[i][j]=new Tile(i*50, j*50);
       }
-      boardtile[3][11]=null;//new TeleportationTile(550,150);
-      boardtile[3][3]=null;//new TeleportationTile(550, 150);
-      boardtile[11][3]=null;//new TeleportationTile(150, 550);
-      boardtile[11][11]=null;//new TeleportationTile(550, 550);
-      boardtile[5][board.length-2]=null;//new TeleportationTile(650,250);
-      boardtile[board.length-2][5]=null;//new TeleportationTile(250,650);
-      boardtile[1][5]=null;//new TeleportationTile(250,50);
-      boardtile[5][1]=null;//new TeleportationTile(50,250);
-      boardtile[1][9]=null;//new TeleportationTile(50,450);
-      boardtile[9][board.length-2]=null;//new TeleportationTile(700,450);
-      boardtile[board.length-2][9]=null;//new TeleportationTile(450,700);
-       boardtile[1][9]=null;//new TeleportationTile(50,450);
+      boardtile[3][11]=new TeleportationTile(550, 150);
+      boardtile[3][3]=new TeleportationTile(550, 150);
+      boardtile[11][3]=new TeleportationTile(150, 550);
+      boardtile[11][11]=new TeleportationTile(550, 550);
+      boardtile[5][board.length-2]=new TeleportationTile(650, 250);
+      boardtile[board.length-2][5]=new TeleportationTile(250, 650);
+      boardtile[1][5]=new TeleportationTile(250, 50);
+      boardtile[5][1]=new TeleportationTile(50, 250);
+      boardtile[9][board.length-2]=new TeleportationTile(700, 450);
+      boardtile[board.length-2][9]=new TeleportationTile(450, 700);
+      boardtile[1][9]=new TeleportationTile(50, 450);
+      boardtile[9][1]=new TeleportationTile(50, 450);
       board[i][board.length-1]=new BorderBlock( (board.length-1)*50, i*50);
       board[board.length-1][i]=new BorderBlock(i*50, (board.length-1)*50);
       board[i][0]=new BorderBlock(0, i*50);
       board[0][i]=new BorderBlock(i*50, 0);
       if ((i<=4&&i>0)||(i>=10&&i<board.length-1)) {
         board[1][i]=new obstacleBlock(i*50, 50);
-        board[i][1]=new obstacleBlock(50 ,i*50);
+        board[i][1]=new obstacleBlock(50, i*50);
         board[board.length-2][i]=new obstacleBlock(i*50, (board.length-2)*50);
         board[i][board.length-2]=new obstacleBlock((board.length-2)*50, i*50);
       }
       if ((i<=4&&i>0)||(i>=10&&i<board.length-1)) {
         board[2][i]=new obstacleBlock(i*50, 100);
-        board[i][2]=new obstacleBlock(100 ,i*50);
+        board[i][2]=new obstacleBlock(100, i*50);
         board[board.length-3][i]=new obstacleBlock(i*50, (board.length-3)*50);
         board[i][board.length-3]=new obstacleBlock((board.length-3)*50, i*50);
       }
@@ -101,7 +101,6 @@ class Level3 extends Levels {
       berryCount.get(i).display();
     }
   }
-
   Block temp;
   IceBlock[][] start = new IceBlock[15][15];
   int frameStart;
@@ -174,8 +173,8 @@ class Level3 extends Levels {
       canMove=true;
     }
 
-      C.moveE(playChar);
-
+    C.moveE(playChar);
+    C.teleport();
     B.move(canMove);
     if (round(C.getX()/50)==round(B.getPX()/50)&&round(C.getY()/50)==round(B.getPY()/50)) dead = true;
     if (berryCount.size() == 0) nextLevel = true;

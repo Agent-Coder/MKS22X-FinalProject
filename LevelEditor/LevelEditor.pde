@@ -129,8 +129,8 @@ abstract class Levels {
 }
 class Level1 extends Levels {
   public Level1() {
-    B=new Player(350, 350, board, playerChar);
-    C=new Enemies(B, board, 100, 100);
+    B=new Player(350, 350, board, boardtile, playerChar);
+    C=new Enemies(B, board, boardtile, 100, 100);
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
     berryCount=new ArrayList<Berries>();
@@ -147,7 +147,7 @@ class Level1 extends Levels {
       board[i][board.length-1]=new BorderBlock((board.length-1)*50, i*50 );
       board[board.length-1][i]=new BorderBlock(i*50, (board.length-1)*50);
       for (int j=0; j<board[0].length; j++) {
-        boardtile[i][j]=new Tile(i*50, j*50);
+        boardtile[j][i]=new Tile(j*50, j*50);
         if (i>=3&&i<board.length-3&&((j>=8&&j<12)||(j>=3&&j<7))) {
           board[j][i]=new IceBlock(i*50, j*50);
         }

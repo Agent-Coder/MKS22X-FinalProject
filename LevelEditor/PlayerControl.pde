@@ -1,5 +1,6 @@
 class Player {
   Block[][] board;
+  Tile[][] floorTile;
   float x, y, xcor, ycor, speed;
   String prevKey;
   String character;
@@ -9,7 +10,7 @@ class Player {
   String getCharacter() {
     return character;
   }
-  Player(float x, float y, Block[][] gameboard, String chararcter) {
+  Player(float x, float y, Block[][] gameboard,Tile[][] gameTile, String chararcter) {
     this.x = x;
     this.y = y;
     xcor=x;
@@ -17,6 +18,7 @@ class Player {
     speed=2.5;
     prevKey="right";
     board=gameboard;
+    floorTile=gameTile;
   }
   float getPX() {
     return xcor;

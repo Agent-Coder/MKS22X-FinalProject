@@ -10,17 +10,23 @@ class Tile {
   void display() {
     image(floor, xer, yer);
   }
+  String getType() {
+    return type;
+  }
 }
 
-class TeleportationTile extends Tile{
+class TeleportationTile extends Tile {
   String type;
   int xer;
   int yer;
   public TeleportationTile(int x, int y) {
-    super(x,y);
+    super(x, y);
     type = "teleporttile";
   }
   void display() {
     image(floor, xer, yer, xer, yer);
+  }
+  String getType() {
+    return type;
   }
 }

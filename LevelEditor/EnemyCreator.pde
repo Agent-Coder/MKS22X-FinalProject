@@ -1,6 +1,7 @@
 class Enemies {
   int[][] grid=new int[15][15];
   Block[][] board=new Block[15][15];
+  Tile[][] floorTile=new Tile[15][15];
   float x;
   float y;
   float tx;
@@ -9,11 +10,13 @@ class Enemies {
   float dy;
   int currentFrame;
   boolean moving;
+  boolean isTeleport;
   int moveRotation;
   PImage pic;
   Player target;
   int[] moves=new int[8];
-  public Enemies(Player a, Block[][] iceBlock, int newx, int newy) {
+  public Enemies(Player a, Block[][] iceBlock, Tile[][] floorBoard, int newx, int newy) {
+    isTeleport=false;
     moving=true;
     target=a;
     x=newx;
@@ -24,6 +27,7 @@ class Enemies {
     ty=a.getPY();
     moveRotation=3;
     board=iceBlock;
+    floorTile=floorBoard;
     moves[0]=0;
     moves[1]=1;
     moves[2]=1;
@@ -41,7 +45,28 @@ class Enemies {
       }
     }
   }
-
+  void teleport() {
+    if (floorTile[round(y/50)][round(x/50)].getType().equals("teleporttile")&&!isTeleport) {
+      if (round(y/50)!=round(x/50)) {
+        float temp=round(x/50);
+        x=round(y/50)*50;
+        y=temp*50;
+        display(pic);
+        isTeleport=true;
+      } else {
+        if (round(y/50)==3) {
+          x=550;
+          y=550;
+        } else {
+          x=150;
+          y=150;
+        }
+        isTeleport=true;
+      }
+    } else if (!floorTile[round(y/50)][round(x/50)].getType().equals("teleporttile")) {
+      isTeleport=false;
+    }
+  }
   void update(Block[][] gameBoard) {
     clear();
     for (int i=0; i<gameBoard.length; i++) {
@@ -168,71 +193,71 @@ class Enemies {
   }
 }
 class Ditto extends Enemies {
-  boolean moving=true;
-  public Ditto(Player a, Block[][] iceBlock, int newx, int newy) {
-    super( a, iceBlock, newx, newy);
+  boolean moving;
+  public Ditto(Player a, Block[][] iceBlock, Tile[][] floorBoard, int newx, int newy) {
+    super( a, iceBlock, floorBoard, newx, newy);
+    moving=true;
   }
-    void moveE(String avatar) {
+  void moveE(String avatar) {
     if (avatar.equals("Glaceon")) {
       if (keyCodesDown.contains(RIGHT)&&moving) {
-        PImage r=GlaceonMRight1;
         if (frameCount%30<10) {
-          r=GlaceonMRight1;
+          pic=GlaceonMRight1;
         } else if (frameCount%30<20) {
-          r=GlaceonMRight2;
+          pic=GlaceonMRight2;
         } else {
-          r=GlaceonMRight3;
+          pic=GlaceonMRight3;
         }
         if (x+target.getSpeed()<650&&board[round(y/50)][round((x+target.getSpeed())/50)]==null) {
           x+=target.getSpeed();
-          display(r, x+target.getSpeed(), y);
+          display(pic, x+target.getSpeed(), y);
         } else {
-          display(r, x, y);
+          display(pic, x, y);
         }
       } else if (keyCodesDown.contains(LEFT)&&moving) {
-        PImage r=GlaceonMLeft1;
+        pic=GlaceonMLeft1;
         if (frameCount%30<10) {
-          r=GlaceonMLeft1;
+          pic=GlaceonMLeft1;
         } else if (frameCount%30<20) {
-          r=GlaceonMLeft2;
+          pic=GlaceonMLeft2;
         } else {
-          r=GlaceonMLeft3;
+          pic=GlaceonMLeft3;
         }
         if (x+target.getSpeed()>=50&&board[round(y/50)][round((x-target.getSpeed())/50)]==null) {
           x+=-1* target.getSpeed();
-          display(r, x-target.getSpeed(), y);
+          display(pic, x-target.getSpeed(), y);
         } else {
-          display(r, x, y);
+          display(pic, x, y);
         }
       } else if (keyCodesDown.contains(DOWN)&&moving) {
-        PImage r=GlaceonMDown1;
+        pic=GlaceonMDown1;
         if (frameCount%30<10) {
-          r=GlaceonMDown1;
+          pic=GlaceonMDown1;
         } else if (frameCount%30<20) {
-          r=GlaceonMDown2;
+          pic=GlaceonMDown2;
         } else {
-          r=GlaceonMDown3;
+          pic=GlaceonMDown3;
         }
         if (y+target.getSpeed()<650&&board[round((y+target.getSpeed())/50)][round(x/50)]==null) {
           y+=target.getSpeed();
-          display(r, x, y+target.getSpeed());
+          display(pic, x, y+target.getSpeed());
         } else {
-          display(r, x, y);
+          display(pic, x, y);
         }
       } else if (keyCodesDown.contains(UP)&&moving) {
-        PImage r=GlaceonMUp1;
+        pic=GlaceonMUp1;
         if (frameCount%30<10) {
-          r=GlaceonMUp1;
+          pic=GlaceonMUp1;
         } else if (frameCount%30<10) {
-          r=GlaceonMUp2;
+          pic=GlaceonMUp2;
         } else {
-          r=GlaceonMUp3;
+          pic=GlaceonMUp3;
         }
         if (y-target.getSpeed()>50&&board[round((y-target.getSpeed())/50)][round(x/50)]==null) {
           y-=target.getSpeed();
-          display(r, x, y-target.getSpeed());
+          display(pic, x, y-target.getSpeed());
         } else {
-          display(r, x, y);
+          display(pic, x, y);
         }
       } else {
         if (target.getPrevKey().equals("right")) {
@@ -263,64 +288,64 @@ class Ditto extends Enemies {
       }
     } else if (avatar.equals("Empoleon")) {
       if (keyCodesDown.contains(RIGHT)&&moving) {
-        PImage r=EmpoleonMRight1;
+        pic=EmpoleonMRight1;
         if (frameCount%30<10) {
-          r=EmpoleonMRight1;
+          pic=EmpoleonMRight1;
         } else if (frameCount%30<20) {
-          r=EmpoleonMRight2;
+          pic=EmpoleonMRight2;
         } else {
-          r=EmpoleonMRight3;
+          pic=EmpoleonMRight3;
         }
         if (x+target.getSpeed()<650&&board[round(y/50)][round((x+target.getSpeed())/50)]==null) {
           x+=target.getSpeed();
-          display(r, x+target.getSpeed(), y);
+          display(pic, x+target.getSpeed(), y);
         } else {
-          display(r, x, y);
+          display(pic, x, y);
         }
       } else if (keyCodesDown.contains(LEFT)&&moving) {
-        PImage r=EmpoleonMLeft1;
+        pic=EmpoleonMLeft1;
         if (frameCount%30<10) {
-          r=EmpoleonMLeft1;
+          pic=EmpoleonMLeft1;
         } else if (frameCount%30<20) {
-          r=EmpoleonMLeft2;
+          pic=EmpoleonMLeft2;
         } else {
-          r=EmpoleonMLeft3;
+          pic=EmpoleonMLeft3;
         }
         if (x+target.getSpeed()>=50&&board[round(y/50)][round((x-target.getSpeed())/50)]==null) {
           x+=-1* target.getSpeed();
-          display(r, x-target.getSpeed(), y);
+          display(pic, x-target.getSpeed(), y);
         } else {
-          display(r, x, y);
+          display(pic, x, y);
         }
       } else if (keyCodesDown.contains(DOWN)&&moving) {
-        PImage r=EmpoleonMDown1;
+        pic=EmpoleonMDown1;
         if (frameCount%30<10) {
-          r=EmpoleonMDown1;
+          pic=EmpoleonMDown1;
         } else if (frameCount%30<20) {
-          r=EmpoleonMDown2;
+          pic=EmpoleonMDown2;
         } else {
-          r=EmpoleonMDown3;
+          pic=EmpoleonMDown3;
         }
         if (y+target.getSpeed()<650&&board[round((y+target.getSpeed())/50)][round(x/50)]==null) {
           y+=target.getSpeed();
-          display(r, x, y+target.getSpeed());
+          display(pic, x, y+target.getSpeed());
         } else {
-          display(r, x, y);
+          display(pic, x, y);
         }
       } else if (keyCodesDown.contains(UP)&&moving) {
-        PImage r=EmpoleonMUp1;
+        pic=EmpoleonMUp1;
         if (frameCount%30<10) {
-          r=EmpoleonMUp1;
+          pic=EmpoleonMUp1;
         } else if (frameCount%30<10) {
-          r=EmpoleonMUp2;
+          pic=EmpoleonMUp2;
         } else {
-          r=EmpoleonMUp3;
+          pic=EmpoleonMUp3;
         }
         if (y-target.getSpeed()>50&&board[round((y-target.getSpeed())/50)][round(x/50)]==null) {
           y-=target.getSpeed();
-          display(r, x, y-target.getSpeed());
+          display(pic, x, y-target.getSpeed());
         } else {
-          display(r, x, y);
+          display(pic, x, y);
         }
       } else {
         if (target.getPrevKey().equals("right")) {
@@ -351,64 +376,64 @@ class Ditto extends Enemies {
       }
     } else { //Manaphy
       if (keyCodesDown.contains(RIGHT)&&moving) {
-        PImage r=ManaphyMRight1;
+        pic=ManaphyMRight1;
         if (frameCount%30<10) {
-          r=ManaphyMRight1;
+          pic=ManaphyMRight1;
         } else if (frameCount%30<20) {
-          r=ManaphyMRight2;
+          pic=ManaphyMRight2;
         } else {
-          r=ManaphyMRight3;
+          pic=ManaphyMRight3;
         }
         if (x+target.getSpeed()<650&&board[round(y/50)][round((x+target.getSpeed())/50)]==null) {
           x+=target.getSpeed();
-          display(r, x+target.getSpeed(), y);
+          display(pic, x+target.getSpeed(), y);
         } else {
-          display(r, x, y);
+          display(pic, x, y);
         }
       } else if (keyCodesDown.contains(LEFT)&&moving) {
-        PImage r=ManaphyMLeft1;
+        pic=ManaphyMLeft1;
         if (frameCount%30<10) {
-          r=ManaphyMLeft1;
+          pic=ManaphyMLeft1;
         } else if (frameCount%30<20) {
-          r=ManaphyMLeft2;
+          pic=ManaphyMLeft2;
         } else {
-          r=ManaphyMLeft3;
+          pic=ManaphyMLeft3;
         }
         if (x+target.getSpeed()>=50&&board[round(y/50)][round((x-target.getSpeed())/50)]==null) {
           x+=-1* target.getSpeed();
-          display(r, x-target.getSpeed(), y);
+          display(pic, x-target.getSpeed(), y);
         } else {
-          display(r, x, y);
+          display(pic, x, y);
         }
       } else if (keyCodesDown.contains(DOWN)&&moving) {
-        PImage r=ManaphyMDown1;
+        pic=ManaphyMDown1;
         if (frameCount%30<10) {
-          r=ManaphyMDown1;
+          pic=ManaphyMDown1;
         } else if (frameCount%30<20) {
-          r=ManaphyMDown2;
+          pic=ManaphyMDown2;
         } else {
-          r=ManaphyMDown3;
+          pic=ManaphyMDown3;
         }
         if (y+target.getSpeed()<650&&board[round((y+target.getSpeed())/50)][round(x/50)]==null) {
           y+=target.getSpeed();
-          display(r, x, y+target.getSpeed());
+          display(pic, x, y+target.getSpeed());
         } else {
-          display(r, x, y);
+          display(pic, x, y);
         }
       } else if (keyCodesDown.contains(UP)&&moving) {
-        PImage r=ManaphyMUp1;
+        pic=ManaphyMUp1;
         if (frameCount%30<10) {
-          r=ManaphyMUp1;
+          pic=ManaphyMUp1;
         } else if (frameCount%30<10) {
-          r=ManaphyMUp2;
+          pic=ManaphyMUp2;
         } else {
-          r=ManaphyMUp3;
+          pic=ManaphyMUp3;
         }
         if (y-target.getSpeed()>50&&board[round((y-target.getSpeed())/50)][round(x/50)]==null) {
           y-=target.getSpeed();
-          display(r, x, y-target.getSpeed());
+          display(pic, x, y-target.getSpeed());
         } else {
-          display(r, x, y);
+          display(pic, x, y);
         }
       } else {
         if (target.getPrevKey().equals("right")) {
@@ -439,8 +464,7 @@ class Ditto extends Enemies {
       }
     }
   }
-  void display(PImage picture,float x,float y){
-    image(picture,x,y);
+  void display(PImage picture, float x, float y) {
+    image(picture, x, y);
   }
-  
 }
