@@ -23,15 +23,21 @@ class Level2 extends Levels {
     board[5][4]=new IceBlock(200,250);
     board[4][4]=new IceBlock(200,200);
     
-    board[10][9]=new IceBlock(200,750);
-    board[9][9]=new IceBlock(200,700);
-    board[8][9]=new IceBlock(200,650);
-    board[7][9]=new IceBlock(200,600);
-    board[6][9]=new IceBlock(200,550);
-    board[5][9]=new IceBlock(200,500);
-    board[4][9]=new IceBlock(200,450);
-
-
+    board[10][5]=new IceBlock(250,500);
+    board[10][6]=new IceBlock(300,500);
+    board[10][7]=new IceBlock(350,500);
+    board[10][8]=new IceBlock(400,500);
+    board[10][9]=new IceBlock(450,500);
+    board[10][10]=new IceBlock(500,500);
+    
+    board[4][10]=new IceBlock(500,200);
+    board[4][9]=new IceBlock(450,200);
+    board[4][8]=new IceBlock(400,200);
+    board[4][7]=new IceBlock(350,200);
+    board[4][6]=new IceBlock(300,200);
+    board[4][5]=new IceBlock(250,200);
+    
+    
     for (int i=0; i<board.length; i++) {
         board[i][0]=new BorderBlock(i*50, 0);
         board[0][i]=new BorderBlock(0, i*50);
