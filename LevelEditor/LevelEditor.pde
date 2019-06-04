@@ -1,6 +1,6 @@
-import processing.sound.*;
+//import processing.sound.*;
 Level1 A=new Level1();
-SoundFile file;
+//SoundFile file;
 float mX;
 float mY;
 

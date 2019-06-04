@@ -165,7 +165,7 @@ class Level3 extends Levels {
         for (int j = 0; j < 15; j++) {
           boardtile[j][i] = new Tile(i*50,j*50);
            int randomNum = rng.nextInt(10);
-           if (randomNum < 3 && i != 0 && i != boardtile.length-1 && j != 0 && j != boardtile.length-1) {
+           if (randomNum < 5 && i != 0 && i != boardtile.length-1 && j != 0 && j != boardtile.length-1) {
              numbs.add(j);
              numbs.add(i);
              boardtile[j][i]=new wTile(i*50, j*50);
