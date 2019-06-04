@@ -135,6 +135,20 @@ PImage SpoinkMUp1;
 PImage SpoinkMUp2;
 PImage SpoinkMUp3;
 
+//Mismagius Move & Idle Images
+PImage MismagiusMRight1;
+PImage MismagiusMRight2;
+PImage MismagiusMRight3;
+PImage MismagiusMLeft1;
+PImage MismagiusMLeft2;
+PImage MismagiusMLeft3;
+PImage MismagiusMDown1;
+PImage MismagiusMDown2;
+PImage MismagiusMDown3;
+PImage MismagiusMUp1;
+PImage MismagiusMUp2;
+PImage MismagiusMUp3;
+
 //Mamoswine Move & Idle Images
 PImage MamoswineMRight1;
 PImage MamoswineMRight2;

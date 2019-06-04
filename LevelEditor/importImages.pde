@@ -304,6 +304,20 @@ void importImages() {
   SpoinkMUp2.resize(50, 50);
   SpoinkMUp3.resize(50, 50);
   
+  //Mismagius Sprites
+  MismagiusMRight1 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkRight1.png");
+  MismagiusMRight2 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkRight2.png");
+  MismagiusMRight3 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkRight3.png");
+  MismagiusMLeft1 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkLeft1.png");
+  MismagiusMLeft2 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkLeft2.png");
+  MismagiusMLeft3 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkLeft3.png");
+  MismagiusMDown1 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkDown1.png");
+  MismagiusMDown2 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkDown2.png");
+  MismagiusMDown3 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkDown3.png");
+  MismagiusMUp1 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkUp1.png");
+  MismagiusMUp2 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkUp2.png");
+  MismagiusMUp3 = loadImage("SPRITES/Mismagius Sprites/MismagiusWalkUp3.png");
+  
   //Mamoswine Sprites //ONLY HAS TWO IDLE AND WALKING SPRITES EACH DIRECTION
   MamoswineMRight1 = loadImage("SPRITES/Mamoswine Sprites/MamoswineWalkRight1.png");
   MamoswineMRight2 = loadImage("SPRITES/Mamoswine Sprites/MamoswineWalkRight2.png");
@@ -321,7 +335,7 @@ void importImages() {
   MamoswineIDown2 = loadImage("SPRITES/Mamoswine Sprites/MamoswineIdleDown2.png");
   MamoswineIIp1 = loadImage("SPRITES/Mamoswine Sprites/MamoswineIdleUp1.png");
   MamoswineIUp2 = loadImage("SPRITES/Mamoswine Sprites/MamoswineIdleUp2.png");
-  
+
   //Mamoswine Sprites resizes
   MamoswineMRight1.resize(50, 50);
   MamoswineMRight2.resize(50, 50);
