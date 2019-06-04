@@ -136,7 +136,8 @@ class Level2 extends Levels {
         lastBlock=true;
         temp.animate(temp.getxB(), temp.getyB(), make,frameCount-playerFrames);
         if (frameCount-playerFrames==19) {
-          if (abs((round(C.getX())-temp.getxB()))<50&&abs((round(C.getY())-temp.getyB()))<50) {
+          if (abs((round(C.getX())-temp.getxB()))<50&&abs((round(C.getY())-temp.getyB()))<50 ||
+          abs((round(E2.getX())-temp.getxB()))<50&&abs((round(E2.getY())-temp.getyB()))<50) {
             temp=null;      
             attacked.clear();
             lastBlock=false;
