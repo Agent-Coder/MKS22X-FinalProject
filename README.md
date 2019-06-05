@@ -269,3 +269,6 @@ while avoiding enemies. Any contact will result in death, forcing you to restart
 - A LOT!!!! of final touches and edits!!! Many debugging and fixing errors 
 - Documentation (final log updates, directions, etc.)
 
+## Day 20 Doomsday 6/5/19
+:doughnut:
+- Finished the project! Hoping we did not miss to fix a bug/error after countless hours of debugging and testing
