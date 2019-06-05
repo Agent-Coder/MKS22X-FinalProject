@@ -251,3 +251,7 @@ The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or G
 - Level 4 Done
 - Ditto movement done
 
+:doughnut:
+- A LOT!!!! of final touches and edits!!!
+- Documentation (final log updates, directions, etc.)
+
