@@ -287,3 +287,4 @@ Here's a photo of Manaphy cuz why not c:
 - This project would not be possible with [Spriters-Resource.com](https://www.spriters-resource.com/ds_dsi/pokemonmysterydungeonexplorersoftimedarkness/), where we got most/all of our sprites from for this project. Sprites are originally from the Pokemon Mystery Dungeon games
 - Branches were works in progress and do not contain the functional game. A lot of experimental stuff can be found in the branches. However, only the master branch contains the full and functional game.
 - LevelEditor/SPRITES folder contains all of the sprites used in this project! (though some sprites aren't used because of changes in plans)
+- BerryConquest is the same thing as LevelEditor, but has the title of the game as the folder name. 
