@@ -64,6 +64,7 @@ Here's a photo of Manaphy cuz why not c:
 - Basic enemy, player movements done (though needs a lot of fixing)
 - Use Glaceon as default/testing character, sprites update every time it moves 
 - Created Borders of board that enemy and player do not walk onto
+
 :cookie:
 - Did sprites for Mamoswine, Tentacruel, Snorlax, ice block & uploaded to Drive
 - Attempt at adding floor tiles for level 1
@@ -78,6 +79,7 @@ Here's a photo of Manaphy cuz why not c:
 :cookie:
 - Did sprites for berries (all five: Lum, Oran, Sitrus, Razz, Nanab) & uploaded to Drive
 - Added IceSetup to setup initial iceblock placement
+
 :doughnut:
 - Talked with Mr. K to discuss the issue about lagginess & frame problems
 - Realized images were not resized in setup and were resized each time it was drawn (taking up a lot of calculation space!) fixed this problem and frames went up a lot
@@ -107,6 +109,7 @@ Here's a photo of Manaphy cuz why not c:
 :cookie: 
 - Add mouse inputs on start screen to go into the level select screen
 - Find online source for icons for level select, did sprite-ing with photoshop
+
 :icecream:
 - Working on making iceblocks dissapear with effect
 - Trying to use frameCount to make effect work
@@ -130,9 +133,11 @@ Here's a photo of Manaphy cuz why not c:
 - Added animation and Pokedex entries when character is selected via mouse input
 - Organized a lot (regarding helper methods) to make code look less ugly
 - Basically finished all of StartScreen, LevelSelect (minus loading in actual levels)
+
 :icecream:
 - Figured out how to use hash maps
 - Deleting Ice Blocks semi-working
+
 :doughnut:
 - Decide to have character select screen on level screen as well
 
@@ -146,6 +151,7 @@ Here's a photo of Manaphy cuz why not c:
 - Fixed multiple bugs relating to the destruction of border blocks
 - Made attack so now there is blocks being destroyed and created when space bar is pressed
 - Level redirection fixed
+
 :doughnut:
 - Decided to include Meowth & Spoink as extra enemy Pokemon
 
@@ -209,6 +215,7 @@ Here's a photo of Manaphy cuz why not c:
 :cookie:
 - Photoshopped floor tile sprites
 - Played around with level3 spike generation
+
 :icecream:
 - Random movement when Meowth is trapped
 - Meowth adjustments when the player surrounds itself and no path to player
@@ -216,6 +223,7 @@ Here's a photo of Manaphy cuz why not c:
 ## DAY 16 Saturday 6/1/19
 :cookie:
 - SAT & other events - was out and busy all day :(
+
 :icecream:
 - Mainly fixing bugs such as ice block firing and enemy is in front of it and attacking before first attack is done
 
@@ -225,6 +233,7 @@ Here's a photo of Manaphy cuz why not c:
 - Added a death screen and various buttons on it for what the player can do when it comes in contact with an enemy
 - Added a continue screen and various buttons for what the player can do when it collects all the berries on one level
 - Debugged some bugs
+
 :icecream:
 - Meowth can break ice and proper stop movement is in place when breaking ice
 - Meowth does not walk between tiles(efficiency)
