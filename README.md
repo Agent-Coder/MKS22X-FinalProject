@@ -24,8 +24,6 @@ while avoiding enemies. Any contact will result in death, forcing you to restart
 7. Once you beat all four levels, congrats! You collected every berry! Thanks for stopping by and playing :)
 ![](GithubImages/ManaphyGithub.jpg)
 
-***Note: Program make take around 10 seconds to load due to audio file addition
-
 ## Development Logs:
 :cookie: = Justin <br/>
 :icecream: = Amanda <br/>
