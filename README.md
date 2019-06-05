@@ -266,6 +266,6 @@ while avoiding enemies. Any contact will result in death, forcing you to restart
 - Ditto movement done
 
 :doughnut:
-- A LOT!!!! of final touches and edits!!!
+- A LOT!!!! of final touches and edits!!! Many debugging and fixing errors 
 - Documentation (final log updates, directions, etc.)
 
