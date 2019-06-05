@@ -3,12 +3,10 @@ abstract class Block {
   int xB;
   int yB;
   String type;
-  boolean destroyable;
   public Block() {
     xB=0;
     yB=0;
     type="block";
-    destroyable=false;
   }
   void animate(int x, int y, boolean mode, int frames) {
     if (!mode) {
@@ -56,7 +54,6 @@ class BorderBlock extends Block {
     type="borderblock";
     xB=x;
     yB=y;
-    destroyable=false;
   }
   void display() {
     if (xB == 0) image(WallLeft, xB, yB);
@@ -79,7 +76,6 @@ class IceBlock extends Block {
     type="iceblock";
     xB=x;
     yB=y;
-    destroyable=true;
   }
   void display() {
     image(ice, xB, yB);
@@ -90,7 +86,6 @@ class CrystalBlock extends Block {
     type = "crystalblock";
     xB=x;
     yB=y;
-    destroyable=false;
   }
   void display() {
     image(CrystalBlue, xB, yB);
@@ -101,7 +96,6 @@ class CrystalBlock2 extends Block {
     type = "crystalblock";
     xB=x;
     yB=y;
-    destroyable=false;
   }
   void display() {
     image(CrystalRed, xB, yB);

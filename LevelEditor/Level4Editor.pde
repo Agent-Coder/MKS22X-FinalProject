@@ -4,8 +4,6 @@ class Level4 extends Levels {
   ArrayList<Ditto> E;
   boolean[][] enemyLocation;
   boolean enemyAttacking=false;
-  ArrayList<Block> enemytemporary;
-  ArrayList<Block> enemyAttacked;
   public Level4() {
     B=new Player(350, 450, board, boardtile, playerChar);
     E=new ArrayList<Ditto>();
@@ -19,8 +17,6 @@ class Level4 extends Levels {
     enemyHere();
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
-    enemytemporary=new ArrayList<Block>();
-    enemyAttacked=new ArrayList<Block>();
     berryCount=new ArrayList<Berries>();
     createBerries();
     for (int i=0; i<board.length; i++) {
@@ -205,8 +201,6 @@ class Level4 extends Levels {
       }
     }
   }
-  Block enemytemp;
-  IceBlock[][] start = new IceBlock[15][15];
   int frameStart;
   boolean startFrame=true;
   boolean make=true;

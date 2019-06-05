@@ -2,7 +2,6 @@ Level3 L3 = new Level3();
 
 class Level3 extends Levels {
   Block temp;
-  IceBlock[][] start = new IceBlock[15][15];
   int frameStart;
   boolean startFrame=true;
   boolean make=true;
@@ -208,7 +207,7 @@ void displayBerries(int berryEnd) {
           }
         }
       }
-    }   
+    }  
     if (millis() >= time2 + 3000 && rC == 0) {
       rC = 1;
       while ( numbs.size() > 0) { 
@@ -231,19 +230,6 @@ void displayBerries(int berryEnd) {
           }
         }
       }
-    }
-  }
-  void printing() {
-    println();
-    for (int a=0; a<15; a++) {
-      for (int b=0; b<15; b++) {
-        if (board[a][b]!=null) {
-          print(1+" ");
-        } else {
-          print(2+" ");
-        }
-      }
-      println();
     }
   }
   void checkdead(int x, int y) {

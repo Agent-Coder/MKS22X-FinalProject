@@ -13,13 +13,12 @@ class Enemies {
   int currentFrame;
   boolean moving;
   boolean isTeleport;
-  int moveRotation;
   PImage pic;
   Player target;
   int[] moves=new int[8];
   String pkmn;
   float speedE =1;
-  float[] TentacruelSpeeds = {1.4, 1.5, };
+  float[] TentacruelSpeeds = {1, 1 };
   public Enemies(Player a, Block[][] iceBlock, Tile[][] floorBoard, int coordX, int coordY, String species) {
     pkmn = species;
     if (pkmn.equals("Tentacruel")) {
@@ -35,7 +34,6 @@ class Enemies {
     dy=1;
     tx=a.getPX();
     ty=a.getPY();
-    moveRotation=3;
     board=iceBlock;
     floorTile=floorBoard;
     moves[0]=0;
@@ -108,7 +106,7 @@ class Enemies {
     int index=-1;
     for (int i=0; i<4; i++) {
       //board();
-      if (a+moves[2*i]>0&&a+moves[2*i]<grid.length-1&&b+moves[2*i+1]>0&&b+moves[2*i+1]<grid.length-1) {
+      if (a+speedE*moves[2*i]>0&&a+speedE*moves[2*i]<grid.length-1&&b+speedE*moves[2*i+1]>0&&b+speedE*moves[2*i+1]<grid.length-1) {
         if (grid[a+moves[2*i]][b+moves[2*i+1]]<=smallest&&grid[a+moves[2*i]][b+moves[2*i+1]]!=-1) {
           smallest=grid[a+moves[2*i]][b+moves[2*i+1]];      
           index=i;
@@ -119,17 +117,17 @@ class Enemies {
       dx=moves[2*index+1];
       dy=moves[2*index];
     }
-    if (board[a+(int)dy][b+(int)dx]!=null&&!board[a+(int)dy][b+(int)dx].getType().equals("borderblock")) {
+    if (board[a+(int)(speedE*dy)][b+(int)(speedE*dx)]!=null&&!board[a+(int)(speedE*dy)][b+(int)(speedE*dx)].getType().equals("borderblock")) {
       moving=false;
       currentFrame=frameCount;
-      board[a+(int)dy][b+(int)dx]=null;
+      board[a+(int)(speedE*dy)][b+(int)(speedE*dx)]=null;
     }
   }
   void moveAnimation() {
     if (frameCount-currentFrame==50) {
       moving=true;
     }
-    if (moving&&x+dx>0&&y+dy>0&&x+dx<700&&y+dy<700) {
+    if (moving&&x+dx*speedE>0&&y+dy*speedE>0&&x+dx*speedE<700&&y+dy*speedE<700) {
       x+=dx*speedE;
       y+=dy*speedE;
     }
@@ -481,15 +479,6 @@ class Ditto extends Enemies {
           display(Ditto3, x, y);
         }
       }
-    }
-  }
-  void stillMove() {
-    if (frameCount%30<10) {
-      display(Ditto1, x, y);
-    } else if (frameCount%30<20) {
-      display(Ditto2, x, y);
-    } else {
-      display(Ditto3, x, y);
     }
   }
   void determineMove() {

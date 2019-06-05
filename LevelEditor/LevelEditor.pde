@@ -1,6 +1,7 @@
 import processing.sound.*;
 Level1 A=new Level1();
 SoundFile file;
+SoundFile file2;
 float mX;
 float mY;
 
@@ -27,7 +28,6 @@ abstract class Levels {
   Enemies C;
   boolean attacking=false;
   //Berries[] D;
-  Block[][] map = new Block[15][15];
   ArrayList<Block> attacked;
   ArrayList<Block> temporary;
   ArrayList<Berries> berryCount;
@@ -41,7 +41,6 @@ abstract class Levels {
   int razz;
   public Levels() {
     boardtile=new Tile[15][15];
-    map = new Block[15][15];
     attacking=false;
     attacked=new ArrayList<Block>() ;
     temporary=new ArrayList<Block>();
@@ -89,7 +88,7 @@ abstract class Levels {
         while (i<board.length-1&&((blockHere&&board[y][i]!=null&&board[y][i].getType().equals("iceblock"))||(!blockHere&&board[y][i]==null))) { 
           if (board[y][i]==null) {
             delete.add(new IceBlock(i*50, y*50));
-          } else{
+          } else {
             delete.add(board[y][i]);
           }
           i++;
@@ -233,7 +232,6 @@ class Level1 extends Levels {
   }
 
   Block temp;
-  IceBlock[][] start = new IceBlock[15][15];
   int frameStart;
   boolean startFrame=true;
   boolean make=true;
@@ -317,21 +315,28 @@ class Level1 extends Levels {
   }
 }
 
-
+boolean beginSing=true;
+  boolean beginSing2=true;
 void setup() {
   size(750, 750);
   importImages();
   setupText();
   file = new SoundFile(this, "Pokemon.mp3");
-  file.play();
+  file2 = new SoundFile(this, "Pokemon2.mp3");
+  //file.loop();
 }
 void draw() {
   int frameDead=0;
   background(255);
   mX = mouseX;
   mY = mouseY;
+  //file.loop();
   if (location.equals("startScreen")) {
     image(background, 0, 0);
+    if (beginSing) {
+      file.loop();
+        beginSing=false;
+    }
     drawBerries();
     drawBerries2();
     drawBerries3();
@@ -339,6 +344,7 @@ void draw() {
     detectStartGame();
   } else if (location.equals("levelSelect")) {
     image(bluebackground, 0, 0);
+    file.stop();
     drawLevelScreen();
     detectPokemonSelect();
     detectLevelSelect();
@@ -465,8 +471,4 @@ void keyReleased() {
   } else {
     keysDown.remove(key);
   }
-}
-
-void mousePressed() {
-  print("X: " + mX + " Y: " + mY + "\n");
 }
