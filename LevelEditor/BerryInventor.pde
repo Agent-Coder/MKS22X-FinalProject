@@ -5,13 +5,14 @@ abstract class Berries {
   boolean bad;
   //final int berryCount=0;
   public Berries(int x, int y) {
-    berryX=x;
+     berryX=x;
     berryY=y;
     berryType="Berry";
-    //berryCount=0;
   }
-  boolean getBad(){return bad;}
-void displaySpecial() {
+  boolean getBad() {
+    return bad;
+  }
+  void displaySpecial() {
   }
   void badBerry() {
   }
@@ -64,7 +65,6 @@ class SBerries extends Berries {
   void display() {
     image(SitrusBerry2, berryX, berryY);
   }
-  //void move(){}
 }
 class RBerries extends Berries {
   boolean bad;
@@ -86,5 +86,7 @@ class RBerries extends Berries {
       bad=false;
     }
   }
-  boolean getBad(){return bad;}
+  boolean getBad() {
+    return bad;
+  }
 }

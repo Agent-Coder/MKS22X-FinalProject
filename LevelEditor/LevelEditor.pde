@@ -1,6 +1,9 @@
-//import processing.sound.*;
+import processing.sound.*;
 Level1 A=new Level1();
-//SoundFile file;
+
+SoundFile file;
+SoundFile file2;
+
 float mX;
 float mY;
 
@@ -27,7 +30,6 @@ abstract class Levels {
   Enemies C;
   boolean attacking=false;
   //Berries[] D;
-  Block[][] map = new Block[15][15];
   ArrayList<Block> attacked;
   ArrayList<Block> temporary;
   ArrayList<Berries> berryCount;
@@ -41,7 +43,6 @@ abstract class Levels {
   int razz;
   public Levels() {
     boardtile=new Tile[15][15];
-    map = new Block[15][15];
     attacking=false;
     attacked=new ArrayList<Block>() ;
     temporary=new ArrayList<Block>();
@@ -89,7 +90,7 @@ abstract class Levels {
         while (i<board.length-1&&((blockHere&&board[y][i]!=null&&board[y][i].getType().equals("iceblock"))||(!blockHere&&board[y][i]==null))) { 
           if (board[y][i]==null) {
             delete.add(new IceBlock(i*50, y*50));
-          } else{
+          } else {
             delete.add(board[y][i]);
           }
           i++;
@@ -233,7 +234,6 @@ class Level1 extends Levels {
   }
 
   Block temp;
-  IceBlock[][] start = new IceBlock[15][15];
   int frameStart;
   boolean startFrame=true;
   boolean make=true;
@@ -317,27 +317,36 @@ class Level1 extends Levels {
   }
 }
 
-
+boolean beginSing=true;
+  boolean beginSing2=true;
 void setup() {
   size(750, 750);
   importImages();
   setupText();
- // file = new SoundFile(this, "Pokemon.mp3");
- // file.play();
+  file = new SoundFile(this, "Pokemon.mp3");
+  file2 = new SoundFile(this, "Pokemon2.mp3");
+  //file.loop();
 }
 void draw() {
   int frameDead=0;
   background(255);
   mX = mouseX;
   mY = mouseY;
+  //file.loop();
   if (location.equals("startScreen")) {
     image(background, 0, 0);
+    file2.stop();
+    if (beginSing) {
+      file.loop();
+        beginSing=false;
+    }
     drawBerries();
     drawBerries2();
     drawBerries3();
     //file.play();
     detectStartGame();
   } else if (location.equals("levelSelect")) {
+    file2.stop();
     image(bluebackground, 0, 0);
     drawLevelScreen();
     detectPokemonSelect();
@@ -351,6 +360,7 @@ void draw() {
       }
     }
   } else if (location.equals("1") && pause == false && goVis == true) {
+    file.stop();
     A.play();
     if (dead) {
       location="deathScreen";
@@ -364,6 +374,7 @@ void draw() {
     nextLevel = false;
     drawContinueScreen("2");
   } else if (location.equals("2") && pause == false && goVis == true) {
+    file.stop();
     L2.play();
     if (dead) {
       location = "deathScreen";
@@ -377,6 +388,7 @@ void draw() {
     nextLevel = false;
     drawContinueScreen("3");
   } else if (location.equals("3") && pause == false && goVis == true) {
+    file.stop();
     L3.play();
     inhibit = true;
     if (dead) {
@@ -395,6 +407,7 @@ void draw() {
     drawContinueScreen("4");
   } 
   else if (location.equals("4") && pause == false && goVis == true) {
+    file.stop();
     L4.play(playerChar);
     if (dead) {
       location = "deathScreen";

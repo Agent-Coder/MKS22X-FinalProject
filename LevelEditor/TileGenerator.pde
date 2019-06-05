@@ -26,6 +26,7 @@ class wTile extends Tile {
     image(warning,xer,yer);
   }
 }
+
 class fTile extends Tile {
   public fTile(int x, int y) {
     super(x,y);
@@ -37,16 +38,6 @@ class fTile extends Tile {
     image(grass,xer,yer);
   }
 }
-class BerryTile {
-  String type;
-  int xer;
-  int yer;
-  public BerryTile(int x, int y) {
-    type = "Berry";
-    xer = x;
-    yer = y;
-  }
-}
 
 class TeleportationTile extends Tile {
   public TeleportationTile(int x, int y) {
@@ -55,8 +46,5 @@ class TeleportationTile extends Tile {
   }
   void display() {
     image(portal, xer, yer);
-  }
-  String getType() {
-    return type;
   }
 }
