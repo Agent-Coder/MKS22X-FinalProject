@@ -16,7 +16,6 @@ PImage one;
 PImage two;
 PImage three;
 PImage four;
-PImage five;
 PFont font;
 boolean pause = false;
 boolean goVis = false;

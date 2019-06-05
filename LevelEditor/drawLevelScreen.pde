@@ -3,7 +3,6 @@ void drawLevelScreen() { //goes in DRAW //top half level select
   image(two, 185, 160);
   image(three, 320, 160);
   image(four, 455, 160);
-  image(five, 590, 160);
   fill(0,46,67);
   textSize(60);
   text("LEVEL SELECT", 165,100);

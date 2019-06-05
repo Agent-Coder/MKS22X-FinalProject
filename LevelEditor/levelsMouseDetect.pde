@@ -25,11 +25,6 @@ void detectLevelSelect() {
      mY >=160 && mY < 260) {
        selectedLevel = "4";
    }
-   
-   if (mousePressed == true && mX >= 590 && mX <=690 &&
-     mY >=160 && mY < 260) {
-       selectedLevel = "5";
-   }
 }
   
 void detectPokemonSelect() {
@@ -53,11 +48,5 @@ void resetLevel() {
   if (plocation.equals("1")) A = new Level1();
   if (plocation.equals("2")) L2 = new Level2();
   if (plocation.equals("3")) L3 = new Level3();
-  if (plocation.equals("4")) L4 = new Level4();
-    
+  if (plocation.equals("4")) L4 = new Level4(); 
 }
-
-
-
-
-//CONTINUE

@@ -13,14 +13,12 @@ void importImages() {
   two = loadImage("SPRITES/Levels Icons/L2.png");
   three = loadImage("SPRITES/Levels Icons/L3.png");
   four = loadImage("SPRITES/Levels Icons/L4.png");
-  five = loadImage("SPRITES/Levels Icons/L5.png");
   
   //Level Select level button icons sprites resizes
   one.resize(100, 100);
   two.resize(100, 100);
   three.resize(100, 100);
   four.resize(100, 100);
-  five.resize(100, 100);
   
   //Ice breaking animation
   IceA1=loadImage("IceA1.png");
