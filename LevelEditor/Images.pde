@@ -216,12 +216,3 @@ PImage RazzBerry2;
 PImage SitrusBerry2;
 PImage LumBerry2;
 PImage SpikyRazzBerry;
-
-//Attack/Hurt Sprites
-PImage EmpoleonHurt;
-PImage GlaceonHurt;
-PImage ManaphyHurt;
-PImage MeowthAttack;
-PImage TentacruelAttack;
-PImage MismagiusAttack;
-PImage SpoinkAttack;

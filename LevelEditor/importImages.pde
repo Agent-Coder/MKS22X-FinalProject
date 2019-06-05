@@ -446,20 +446,4 @@ void importImages() {
   ice.resize(50, 49);
   floor.resize(50, 50);
   
-  EmpoleonHurt=loadImage("Sprites/hurt sprites/EmpoleonHurt.png");
-  GlaceonHurt=loadImage("Sprites/hurt sprites/GlaceonHurt.png");
-  ManaphyHurt=loadImage("Sprites/hurt sprites/ManaphyHurt.png");
-  MeowthAttack=loadImage("Sprites/hurt sprites/MeowthAttack.png");
-  TentacruelAttack=loadImage("Sprites/hurt sprites/TentacruelAttack.png");
-  MismagiusAttack=loadImage("Sprites/hurt sprites/MismagiusAttack.png");
-  SpoinkAttack=loadImage("Sprites/hurt sprites/SpoinkAttack.png");
-  
-  EmpoleonHurt.resize(50,60);
-  GlaceonHurt.resize(50,50);
-  ManaphyHurt.resize(50,50);
-  
-  TentacruelAttack.resize(50,50);
-  MismagiusAttack.resize(50,60);
-  SpoinkAttack.resize(50,55);
-  MeowthAttack.resize(75,75);
 }
