@@ -19,8 +19,8 @@ class Enemies {
   int[] moves=new int[8];
   String pkmn;
   float speedE =1;
-  float[] TentacruelSpeeds = {1.4, 1.5,};
-  public Enemies(Player a, Block[][] iceBlock, Tile[][] floorBoard,int coordX, int coordY, String species) {
+  float[] TentacruelSpeeds = {1.4, 1.5, };
+  public Enemies(Player a, Block[][] iceBlock, Tile[][] floorBoard, int coordX, int coordY, String species) {
     pkmn = species;
     if (pkmn.equals("Tentacruel")) {
       int speC = int(rngSpe.nextInt(2));
@@ -130,8 +130,8 @@ class Enemies {
       moving=true;
     }
     if (moving&&x+dx>0&&y+dy>0&&x+dx<700&&y+dy<700) {
-          x+=dx*speedE;
-          y+=dy*speedE;      
+      x+=dx*speedE;
+      y+=dy*speedE;
     }
     PImage animated;
     if (!moving) {
@@ -155,15 +155,13 @@ class Enemies {
         if (pkmn.equals("Spoink")) pic = SpoinkMRight1;
         if (pkmn.equals("Gengar")) pic = GengarMRight1;
         if (pkmn.equals("Mismagius")) pic = MismagiusMRight1;
-      } 
-      else if (frameCount%30<20) {
+      } else if (frameCount%30<20) {
         if (pkmn.equals("Meowth")) pic=MeowthMRight2;
         if (pkmn.equals("Tentacruel")) pic = TentacruelMRight2;
         if (pkmn.equals("Spoink")) pic = SpoinkMRight2;
         if (pkmn.equals("Gengar")) pic = GengarMRight2;
         if (pkmn.equals("Mismagius")) pic = MismagiusMRight2;
-      } 
-      else {
+      } else {
         if (pkmn.equals("Meowth")) pic=MeowthMRight3;
         if (pkmn.equals("Tentacruel")) pic = TentacruelMRight3;
         if (pkmn.equals("Spoink")) pic = SpoinkMRight3;
@@ -178,15 +176,13 @@ class Enemies {
         if (pkmn.equals("Spoink")) pic = SpoinkMLeft1;
         if (pkmn.equals("Gengar")) pic = GengarMLeft1;
         if (pkmn.equals("Mismagius")) pic = MismagiusMLeft1;
-      } 
-      else if (frameCount%30<20) {
+      } else if (frameCount%30<20) {
         if (pkmn.equals("Meowth")) pic=MeowthMLeft2;
         if (pkmn.equals("Tentacruel")) pic = TentacruelMLeft2;
         if (pkmn.equals("Spoink")) pic = SpoinkMLeft2;
         if (pkmn.equals("Gengar")) pic = GengarMLeft2;
         if (pkmn.equals("Mismagius")) pic = MismagiusMLeft2;
-      } 
-      else {
+      } else {
         if (pkmn.equals("Meowth")) pic=MeowthMLeft3;
         if (pkmn.equals("Tentacruel")) pic = TentacruelMLeft3;
         if (pkmn.equals("Spoink")) pic = SpoinkMLeft3;
@@ -196,56 +192,52 @@ class Enemies {
       display(pic);
     } else if (dy>0) {
       if (frameCount%30<10) {
-       if (pkmn.equals("Meowth")) pic=MeowthMDown1;
-       if (pkmn.equals("Tentacruel")) pic = TentacruelMDown1;
-       if (pkmn.equals("Spoink")) pic = SpoinkMDown1;
-       if (pkmn.equals("Gengar")) pic = GengarMDown1;
-       if (pkmn.equals("Mismagius")) pic = MismagiusMDown1;
-      } 
-      else if (frameCount%30<20) {
-       if (pkmn.equals("Meowth")) pic=MeowthMDown2;
-       if (pkmn.equals("Tentacruel")) pic = TentacruelMDown2;
-       if (pkmn.equals("Spoink")) pic = SpoinkMDown2;
-       if (pkmn.equals("Gengar")) pic = GengarMDown2;
-       if (pkmn.equals("Mismagius")) pic = MismagiusMDown2;
-      } 
-      else {
-       if (pkmn.equals("Meowth")) pic=MeowthMDown3;
-       if (pkmn.equals("Tentacruel")) pic = TentacruelMDown3;
-       if (pkmn.equals("Spoink")) pic = SpoinkMDown3;
-       if (pkmn.equals("Gengar")) pic = GengarMDown3;
-       if (pkmn.equals("Mismagius")) pic = MismagiusMDown3;
+        if (pkmn.equals("Meowth")) pic=MeowthMDown1;
+        if (pkmn.equals("Tentacruel")) pic = TentacruelMDown1;
+        if (pkmn.equals("Spoink")) pic = SpoinkMDown1;
+        if (pkmn.equals("Gengar")) pic = GengarMDown1;
+        if (pkmn.equals("Mismagius")) pic = MismagiusMDown1;
+      } else if (frameCount%30<20) {
+        if (pkmn.equals("Meowth")) pic=MeowthMDown2;
+        if (pkmn.equals("Tentacruel")) pic = TentacruelMDown2;
+        if (pkmn.equals("Spoink")) pic = SpoinkMDown2;
+        if (pkmn.equals("Gengar")) pic = GengarMDown2;
+        if (pkmn.equals("Mismagius")) pic = MismagiusMDown2;
+      } else {
+        if (pkmn.equals("Meowth")) pic=MeowthMDown3;
+        if (pkmn.equals("Tentacruel")) pic = TentacruelMDown3;
+        if (pkmn.equals("Spoink")) pic = SpoinkMDown3;
+        if (pkmn.equals("Gengar")) pic = GengarMDown3;
+        if (pkmn.equals("Mismagius")) pic = MismagiusMDown3;
       }
       display(pic);
     } else if (dy<0) {
       if (frameCount%30<10) {
-       if (pkmn.equals("Meowth")) pic=MeowthMUp1;
-       if (pkmn.equals("Tentacruel")) pic = TentacruelMUp1;
-       if (pkmn.equals("Spoink")) pic = SpoinkMUp1;
-       if (pkmn.equals("Gengar")) pic = GengarMUp1;
-       if (pkmn.equals("Mismagius")) pic = MismagiusMUp1;
-      } 
-      else if (frameCount%30<20) {
-       if (pkmn.equals("Meowth")) pic=MeowthMUp2;
-       if (pkmn.equals("Tentacruel")) pic = TentacruelMUp2;
-       if (pkmn.equals("Spoink")) pic = SpoinkMUp2;
-       if (pkmn.equals("Gengar")) pic = GengarMUp2;
-       if (pkmn.equals("Mismagius")) pic = MismagiusMUp2;
-      } 
-      else {
-       if (pkmn.equals("Meowth")) pic=MeowthMUp3;
-       if (pkmn.equals("Tentacruel")) pic = TentacruelMUp3;
-       if (pkmn.equals("Spoink")) pic = SpoinkMUp3;
-       if (pkmn.equals("Gengar")) pic = GengarMUp3;
-       if (pkmn.equals("Mismagius")) pic = MismagiusMUp3;
+        if (pkmn.equals("Meowth")) pic=MeowthMUp1;
+        if (pkmn.equals("Tentacruel")) pic = TentacruelMUp1;
+        if (pkmn.equals("Spoink")) pic = SpoinkMUp1;
+        if (pkmn.equals("Gengar")) pic = GengarMUp1;
+        if (pkmn.equals("Mismagius")) pic = MismagiusMUp1;
+      } else if (frameCount%30<20) {
+        if (pkmn.equals("Meowth")) pic=MeowthMUp2;
+        if (pkmn.equals("Tentacruel")) pic = TentacruelMUp2;
+        if (pkmn.equals("Spoink")) pic = SpoinkMUp2;
+        if (pkmn.equals("Gengar")) pic = GengarMUp2;
+        if (pkmn.equals("Mismagius")) pic = MismagiusMUp2;
+      } else {
+        if (pkmn.equals("Meowth")) pic=MeowthMUp3;
+        if (pkmn.equals("Tentacruel")) pic = TentacruelMUp3;
+        if (pkmn.equals("Spoink")) pic = SpoinkMUp3;
+        if (pkmn.equals("Gengar")) pic = GengarMUp3;
+        if (pkmn.equals("Mismagius")) pic = MismagiusMUp3;
       }
       display(pic);
     } else {
-       if (pkmn.equals("Mewoth")) display(MeowthMDown3);
-       if (pkmn.equals("Tentacruel")) pic = TentacruelMDown3;
-       if (pkmn.equals("Spoink")) pic = SpoinkMDown3;
-       if (pkmn.equals("Mismagius")) pic = MismagiusMDown3;
-       else pic = GengarMDown3;
+      if (pkmn.equals("Mewoth")) display(MeowthMDown3);
+      if (pkmn.equals("Tentacruel")) pic = TentacruelMDown3;
+      if (pkmn.equals("Spoink")) pic = SpoinkMDown3;
+      if (pkmn.equals("Mismagius")) pic = MismagiusMDown3;
+      else pic = GengarMDown3;
     }
   }
   void displayer(PImage picture, int xB, int yB) {
@@ -269,7 +261,7 @@ class Enemies {
 }
 class Ditto extends Enemies {
   public Ditto(Player a, Block[][] iceBlock, Tile[][] floorBoard, int newx, int newy) {
-    super( a, iceBlock, floorBoard, newx, newy,"ditto");
+    super( a, iceBlock, floorBoard, newx, newy, "ditto");
   }
   void setMoving(boolean canMove) {
     moving=canMove;
@@ -507,15 +499,92 @@ class Ditto extends Enemies {
     } else if (keyCodesDown.contains(RIGHT)) {
       dx=1;
       dy=0;
-    } else if (keyCodesDown.contains(DOWN)){
+    } else if (keyCodesDown.contains(DOWN)) {
       dy=1;
       dx=0;
-    }else{
+    } else {
       dy=-1;
       dx=0;
     }
   }
   void display(PImage picture, float x, float y) {
     image(picture, x, y);
+  }
+}
+class Mismagius extends Enemies {
+  public Mismagius(Player a, Block[][] iceBlock, Tile[][] floorBoard, int newx, int newy) {
+    super(a, iceBlock, floorBoard, newx, newy, "Mismagius");
+  }
+  void moveE() {
+    int a=round((y)/50);
+    int b=round((x)/50);
+    int smallest=grid[a][b];
+    int index=-1;
+    for (int i=0; i<4; i++) {
+      //board();
+      if (a+moves[2*i]>0&&a+moves[2*i]<grid.length-1&&b+moves[2*i+1]>0&&b+moves[2*i+1]<grid.length-1) {
+        if (grid[a+moves[2*i]][b+moves[2*i+1]]<=smallest&&grid[a+moves[2*i]][b+moves[2*i+1]]!=-1) {
+          smallest=grid[a+moves[2*i]][b+moves[2*i+1]];      
+          index=i;
+        }
+      }
+    }
+    if (index!=-1) {
+      dx=moves[2*index+1];
+      dy=moves[2*index];
+    }
+    if (a+(int)dy<=0||b+(int)dx<=0||a+(int)dy>=board.length-1||b+(int)dx>=board.length-1) {
+      moving=false;
+      currentFrame=frameCount;
+      //board[a+(int)dy][b+(int)dx]=null;
+    }
+  }
+  void moveAnimation() {
+    if (frameCount-currentFrame==50) {
+      moving=true;
+    }
+    if (moving&&x+dx>0&&y+dy>0&&x+dx<700&&y+dy<700) {
+      x+=dx*speedE;
+      y+=dy*speedE;
+    }
+    if (dx>0) {
+      if (frameCount%30<10) {
+        pic = MismagiusMRight1;
+      } else if (frameCount%30<20) {
+        pic = MismagiusMRight2;
+      } else {
+        pic = MismagiusMRight3;
+      }
+      display(pic);
+    } else if (dx<0) {
+      if (frameCount%30<10) {
+        pic = MismagiusMLeft1;
+      } else if (frameCount%30<20) {
+        pic = MismagiusMLeft2;
+      } else {
+        pic = MismagiusMLeft3;
+      }
+      display(pic);
+    } else if (dy>0) {
+      if (frameCount%30<10) {
+        if (pkmn.equals("Mismagius")) pic = MismagiusMDown1;
+      } else if (frameCount%30<20) {
+        pic = MismagiusMDown2;
+      } else {
+        pic = MismagiusMDown3;
+      }
+      display(pic);
+    } else if (dy<0) {
+      if (frameCount%30<10) {
+        pic = MismagiusMUp1;
+      } else if (frameCount%30<20) {
+        pic = MismagiusMUp2;
+      } else {
+        pic = MismagiusMUp3;
+      }
+      display(pic);
+    } else {
+      pic = MismagiusMDown3;
+    }
   }
 }

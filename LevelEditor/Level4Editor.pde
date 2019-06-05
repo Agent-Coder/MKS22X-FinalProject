@@ -264,6 +264,7 @@ class Level4 extends Levels {
               temp=null;      
               attacked.clear();
               lastBlock=false;
+              a=E.size();
             } else if (board[temp.getyB()/50][temp.getxB()/50]==null) {
               board[temp.getyB()/50][temp.getxB()/50]=new IceBlock(temp.getxB(), temp.getyB());
               lastBlock=false;
