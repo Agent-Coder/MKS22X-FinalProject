@@ -6,29 +6,24 @@ void detectStartGame() {
 }
 
 void detectLevelSelect() {
-   if (mousePressed == true && mX >= 50 && mX <=150 &&
+   if (mousePressed == true && mX >= 100 && mX <=200 &&
      mY >=160 && mY < 260) {
        selectedLevel = "1";
    }
    
-   if (mousePressed == true && mX >= 180 && mX <=280 &&
+   if (mousePressed == true && mX >= 255 && mX <=355 &&
      mY >=160 && mY < 260) {
        selectedLevel = "2";
    }
      
-   if (mousePressed == true && mX >= 320 && mX <=420 &&
+   if (mousePressed == true && mX >= 410 && mX <=510 &&
      mY >=160 && mY < 260) {
        selectedLevel = "3";
    }
    
-   if (mousePressed == true && mX >= 454 && mX <=554 &&
+   if (mousePressed == true && mX >= 565 && mX <=665 &&
      mY >=160 && mY < 260) {
        selectedLevel = "4";
-   }
-   
-   if (mousePressed == true && mX >= 590 && mX <=690 &&
-     mY >=160 && mY < 260) {
-       selectedLevel = "5";
    }
 }
   
@@ -53,11 +48,5 @@ void resetLevel() {
   if (plocation.equals("1")) A = new Level1();
   if (plocation.equals("2")) L2 = new Level2();
   if (plocation.equals("3")) L3 = new Level3();
-  if (plocation.equals("4")) L4 = new Level4();
-    
+  if (plocation.equals("4")) L4 = new Level4(); 
 }
-
-
-
-
-//CONTINUE

@@ -16,7 +16,6 @@ PImage one;
 PImage two;
 PImage three;
 PImage four;
-PImage five;
 PFont font;
 boolean pause = false;
 boolean goVis = false;
@@ -466,4 +465,8 @@ void keyReleased() {
   } else {
     keysDown.remove(key);
   }
+}
+
+void mousePressed() {
+  print("X: " + mX + " Y: " + mY + "\n");
 }

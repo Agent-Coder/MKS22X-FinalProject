@@ -44,6 +44,17 @@ class Level2 extends Levels {
     board[8][10]=new IceBlock(500,400);
     board[9][10]=new IceBlock(500,450);
     
+    board[8][8]=new IceBlock(400,400);
+    board[8][7]=new IceBlock(350,400);
+    board[8][6]=new IceBlock(300,400);
+    board[7][8]=new IceBlock(400,350);
+    board[7][6]=new IceBlock(300,350);
+    board[6][6]=new IceBlock(300,300);
+    board[6][7]=new IceBlock(350,300);
+    board[6][8]=new IceBlock(400,300);
+    
+    
+    
     for (int i=0; i<board.length; i++) {
         board[i][0]=new BorderBlock(i*50, 0);
         board[0][i]=new BorderBlock(0, i*50);
@@ -58,8 +69,8 @@ class Level2 extends Levels {
   void collectBerries(int berryEnd) {
       for (int i=0; i<berryEnd; i++) {
       if (round(B.getPX()/50)==berryCount.get(i).getBerryX()/50&&round(B.getPY()/50)==berryCount.get(i).getBerryY()/50) {
-        if (berryCount.get(i).getBerryType().equals("RazzBerry")) {
-          razz--;
+        if (berryCount.get(i).getBerryType().equals("OranBerry")) {
+          oran--;
         } else if (berryCount.get(i).getBerryType().equals("LumBerry")) {
           lum--;
         } else {
@@ -72,42 +83,42 @@ class Level2 extends Levels {
   }
   
   void createBerries() {
-    berryCount.add(new RBerries(50, 50));
-    berryCount.add(new RBerries(100, 50));
-    berryCount.add(new RBerries(150, 50));
-    berryCount.add(new RBerries(50, 100));
-    berryCount.add(new RBerries(50, 150));
-    berryCount.add(new RBerries(100, 150));
-    berryCount.add(new RBerries(150, 100));
-    berryCount.add(new RBerries(150, 150));
+    berryCount.add(new OBerries(50, 50));
+    berryCount.add(new OBerries(100, 50));
+    berryCount.add(new OBerries(150, 50));
+    berryCount.add(new OBerries(50, 100));
+    berryCount.add(new OBerries(50, 150));
+    berryCount.add(new OBerries(100, 150));
+    berryCount.add(new OBerries(150, 100));
+    berryCount.add(new OBerries(150, 150));
     
-    berryCount.add(new RBerries(650,50));
-    berryCount.add(new RBerries(600,50));
-    berryCount.add(new RBerries(550,50));
-    berryCount.add(new RBerries(550,100));
-    berryCount.add(new RBerries(650,100));
-    berryCount.add(new RBerries(550,150));
-    berryCount.add(new RBerries(600,150));
-    berryCount.add(new RBerries(650,150));
+    berryCount.add(new OBerries(650,50));
+    berryCount.add(new OBerries(600,50));
+    berryCount.add(new OBerries(550,50));
+    berryCount.add(new OBerries(550,100));
+    berryCount.add(new OBerries(650,100));
+    berryCount.add(new OBerries(550,150));
+    berryCount.add(new OBerries(600,150));
+    berryCount.add(new OBerries(650,150));
     
-    berryCount.add(new RBerries(50,650));
-    berryCount.add(new RBerries(50,600));
-    berryCount.add(new RBerries(50,550));
-    berryCount.add(new RBerries(100,650));
-    berryCount.add(new RBerries(100,550));
-    berryCount.add(new RBerries(150,650));
-    berryCount.add(new RBerries(150,600));
-    berryCount.add(new RBerries(150,550));
+    berryCount.add(new OBerries(50,650));
+    berryCount.add(new OBerries(50,600));
+    berryCount.add(new OBerries(50,550));
+    berryCount.add(new OBerries(100,650));
+    berryCount.add(new OBerries(100,550));
+    berryCount.add(new OBerries(150,650));
+    berryCount.add(new OBerries(150,600));
+    berryCount.add(new OBerries(150,550));
     
-    berryCount.add(new RBerries(650,650));
-    berryCount.add(new RBerries(650,600));
-    berryCount.add(new RBerries(650,550));
-    berryCount.add(new RBerries(600,650));
-    berryCount.add(new RBerries(600,550));
-    berryCount.add(new RBerries(550,650));
-    berryCount.add(new RBerries(550,600));
-    berryCount.add(new RBerries(550,550));
-    razz= 32;
+    berryCount.add(new OBerries(650,650));
+    berryCount.add(new OBerries(650,600));
+    berryCount.add(new OBerries(650,550));
+    berryCount.add(new OBerries(600,650));
+    berryCount.add(new OBerries(600,550));
+    berryCount.add(new OBerries(550,650));
+    berryCount.add(new OBerries(550,600));
+    berryCount.add(new OBerries(550,550));
+    oran= 32;
     
     berryCount.add(new LBerries(400,400));
     berryCount.add(new LBerries(400,350));
@@ -157,9 +168,9 @@ class Level2 extends Levels {
       startFrame=false;
       frameBlocks=frameStart-20;
     }
-    if (razz!=0) {
-      collectBerries(razz);
-      displayBerries(razz);
+    if (oran!=0) {
+      collectBerries(oran);
+      displayBerries(oran);
     } else if (lum!=0) {   
       collectBerries(lum);
       displayBerries(lum); 
