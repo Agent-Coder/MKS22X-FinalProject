@@ -351,7 +351,6 @@ void draw() {
       }
     }
   } else if (location.equals("1") && pause == false && goVis == true) {
-        location="end";
     A.play();
     if (dead) {
       location="deathScreen";

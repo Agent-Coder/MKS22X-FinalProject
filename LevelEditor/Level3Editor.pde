@@ -32,7 +32,7 @@ class Level3 extends Levels {
       board[board.length-1][i]=new BorderBlock((board.length-1)*50, i*50);
     }
   }
-void displayBerries(int berryEnd) {
+  void displayBerries(int berryEnd) {
     for (int i=0; i<berryEnd; i++) {
       berryCount.get(i).display();
     }
@@ -127,9 +127,12 @@ void displayBerries(int berryEnd) {
     if (oran!=0) {
       collectBerries(oran);
       displayBerries(oran);
+    } else if (sitrus!=0) {
+      collectBerries(sitrus);
+      displayBerries(sitrus);
     } else {    
-      collectBerries(lum);
-      displayBerries(lum);
+      collectBerries(nanab);
+      displayBerries(nanab);
     }
     temporary=attack();
     int i=temporary.size()-1;
