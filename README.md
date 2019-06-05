@@ -1,10 +1,10 @@
 # MKS22X-FinalProject: BERRY CONQUEST
-  Welcome to our final project! We've developed a game based off *[Bad Ice Cream](https://www.crazygames.com/game/bad-ice-cream)*, but with an unique twist: we've added Pokémon to it! This project was created by [Amanda Zheng](https://github.com/Agent-Coder) and [Justin Chen](https://github.com/jcmmii) over the span of a bit over two weeks, so it while it won't contain as many features as the original game, we hope that the game is still enjoyable nonetheless. 
+  Welcome to our final project! We've developed a game based off *[Bad Ice Cream](https://www.crazygames.com/game/bad-ice-cream)*, but with an unique twist: we've added Pokémon to it! This project was created by [Amanda Zheng](https://github.com/Agent-Coder) and [Justin Chen](https://github.com/jcmmii) over the span of about three weeks, so it while it may not contain as many features as the original game, we hope that the game is still enjoyable nonetheless. 
 
 -------
 
 ## Project Description:
-The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or Glaceon. The objective is to go through each level and attempt to get all the berries without being attacked by various enemy Pokémon. If an enemy comes in contact with the player, the player will have to restart the level. Players will have to navigate through not only enemies but obstacles scattered throughout each level. Players will also have the ability to create ice blocks as obstacles for enemies. However, those ice blocks can become obstacles for the players themselves. The player beats the game once they've completed all 4 levels. 
+The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or Glaceon. The objective is to go through each level and attempt to get all the berries without being attacked by various enemy Pokémon or dying to various obstacles. If an enemy comes in contact with the player, the player will have to restart the level. Players will have to navigate through not only enemies but obstacles scattered throughout each level. Players will also have the ability to create ice blocks as obstacles for enemies. However, those ice blocks can become obstacles for the players if they trap themselves. Some enemies can break/go through ice blocks to try to get to the player. The player beats the game once they've completed all 4 levels. 
   
 ## Directions:
 Controls: 
@@ -20,7 +20,7 @@ Controls:
 4. Move around using arrow keys, press space bar to generate ice blocks (in a row, be careful, you can't move at all while attacking). Your objective? *Grab all the berries on the screen without getting killed by enemies* You can't kill enemies! You just have to keep on running to grab all the berries while avoiding enemies. *Any* contact with enemy Pokemon will result in death, forcing you to restart the level :(
 5. In level 3, Mismagius is a ghost type Pokemon, enabling her to pass through the crystals. As a non-ghost type Pokemon, you can't pass through the crystals. Your goal is to get all the berries while avoiding Mismagius and dodging all the crystals that pop up from the ground every couple of seconds.
 6. In level 4, a horde of Ditto appears! Dittos copy your every movement and even look like your Pokemon! The Dittos are very crafty, so every couple of seconds they replace the razz berries with poisoned ones. Grabbing a poisoned berry will result in death :( Make sure to use the crystal walls, ice blocks, and warp tiles to your advantage! This level is hard, so good luck!
-7. Once you beat all four levels, congrats! A congratulatory screen will pop up. Thanks for playing :)
+7. Once you beat all four levels, congrats! A *really nice looking* congratulatory screen will pop up. Thanks for playing :)
 
 Here's a photo of Manaphy cuz why not c:
 ![](GithubImages/ManaphyGithub.jpg)
