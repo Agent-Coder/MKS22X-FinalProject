@@ -1,6 +1,6 @@
-//import processing.sound.*;
+import processing.sound.*;
 Level1 A=new Level1();
-//SoundFile file;
+SoundFile file;
 float mX;
 float mY;
 
@@ -76,7 +76,7 @@ abstract class Levels {
 
   ArrayList<Block> attack() {
     ArrayList<Block> delete=new ArrayList<Block>();
-    if (keysDown.contains(' ') && inhibit == false) {
+    if (keysDown.contains(' ') ) {
       int x=round(B.getPX()/50);
       int y=round(B.getPY()/50);
       int i;
@@ -86,10 +86,10 @@ abstract class Levels {
           blockHere=true;
         }
         i=x+1;
-        while (i<board.length-1&&((blockHere&&board[y][i]!=null)||(!blockHere&&board[y][i]==null))) { 
+        while (i<board.length-1&&((blockHere&&board[y][i]!=null&&board[y][i].getType().equals("iceblock"))||(!blockHere&&board[y][i]==null))) { 
           if (board[y][i]==null) {
             delete.add(new IceBlock(i*50, y*50));
-          } else {
+          } else{
             delete.add(board[y][i]);
           }
           i++;
@@ -99,7 +99,7 @@ abstract class Levels {
           blockHere=true;
         }
         i=x-1;
-        while (i>0&&((blockHere&&board[y][i]!=null)||(!blockHere&&board[y][i]==null))) {
+        while (i>0&&((blockHere&&board[y][i]!=null&&board[y][i].getType().equals("iceblock"))||(!blockHere&&board[y][i]==null))) {
           if (board[y][i]==null) {
             delete.add(new IceBlock(i*50, y*50));
           } else {
@@ -112,7 +112,7 @@ abstract class Levels {
           blockHere=true;
         }
         i=y-1;
-        while (i>0&&((blockHere&&board[i][x]!=null)||(!blockHere&&board[i][x]==null))) {
+        while (i>0&&((blockHere&&board[i][x]!=null&&board[i][x].getType().equals("iceblock"))||(!blockHere&&board[i][x]==null))) {
           if (board[i][x]==null) {
             delete.add(new IceBlock(x*50, i*50));
           } else {
@@ -125,7 +125,7 @@ abstract class Levels {
           blockHere=true;
         }
         i=y+1;
-        while (i<board.length-1&&((blockHere&&board[i][x]!=null)||(!blockHere&&board[i][x]==null))) {
+        while (i<board.length-1&&((blockHere&&board[i][x]!=null&&board[i][x].getType().equals("iceblock"))||(!blockHere&&board[i][x]==null))) {
           if (board[i][x]==null) {
             delete.add(new IceBlock(x*50, i*50));
           } else {
@@ -248,7 +248,6 @@ class Level1 extends Levels {
       startFrame=false;
       frameBlocks=frameStart-20;
     }
-    output();
     if (oran!=0) {
       collectBerries(oran);
       displayBerries(oran);
@@ -323,8 +322,8 @@ void setup() {
   size(750, 750);
   importImages();
   setupText();
-  //file = new SoundFile(this, "Pokemon.mp3");
-  //file.play();
+  file = new SoundFile(this, "Pokemon.mp3");
+  file.play();
 }
 void draw() {
   int frameDead=0;
