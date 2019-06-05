@@ -5,9 +5,9 @@ abstract class Berries {
   boolean bad;
   //final int berryCount=0;
   public Berries(int x, int y) {
-    //berryCount=0;
-  }
-  void move() {
+     berryX=x;
+    berryY=y;
+    berryType="Berry";
   }
   boolean getBad() {
     return bad;

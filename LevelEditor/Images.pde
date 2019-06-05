@@ -27,6 +27,16 @@ PImage WallTopLeft;
 PImage WallBottomRight;
 PImage WallBottomLeft;
 
+//Final Wall Sprites
+PImage fWallBottom;
+PImage fWallLeft;
+PImage fWallRight;
+PImage fWallTop;
+PImage fWallTopRight;
+PImage fWallTopLeft;
+PImage fWallBottomRight;
+PImage fWallBottomLeft;
+PImage grass;
 //GLACEON MOVE & IDLE IMAGES
 PImage GlaceonMRight1;
 PImage GlaceonMRight2;

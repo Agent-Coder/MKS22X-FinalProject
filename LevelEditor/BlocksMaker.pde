@@ -71,6 +71,27 @@ class BorderBlock extends Block {
   }
 }
 
+class fBlock extends Block {
+  int alt;
+  public fBlock(int x, int y) {
+    Random rng = new Random();
+    alt = rng.nextInt(2);
+    type="borderblock";
+    xB=x;
+    yB=y;
+  }
+  void display() {
+    if (xB == 0) image(fWallLeft, xB, yB);
+    if (yB == 0) image(fWallTop, xB, yB);
+    if (xB == 700) image(fWallRight, xB, yB);
+    if (yB == 700) image(fWallBottom, xB, yB);
+    if (yB == 0 && xB == 700) image(fWallTopRight, xB, yB);
+    if (yB == 0 && xB == 0) image(fWallTopLeft, xB, yB);
+    if (yB == 700 && xB == 0) image(fWallBottomLeft, xB, yB);
+    if (yB == 700 && xB == 700) image(fWallBottomRight, xB, yB);
+  }
+}
+
 class IceBlock extends Block {
   public IceBlock(int x, int y) {
     type="iceblock";

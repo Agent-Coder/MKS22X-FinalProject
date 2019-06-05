@@ -1,7 +1,9 @@
 import processing.sound.*;
 Level1 A=new Level1();
+
 SoundFile file;
 SoundFile file2;
+
 float mX;
 float mY;
 
@@ -333,6 +335,7 @@ void draw() {
   //file.loop();
   if (location.equals("startScreen")) {
     image(background, 0, 0);
+    file2.stop();
     if (beginSing) {
       file.loop();
         beginSing=false;
@@ -343,8 +346,8 @@ void draw() {
     //file.play();
     detectStartGame();
   } else if (location.equals("levelSelect")) {
+    file2.stop();
     image(bluebackground, 0, 0);
-    file.stop();
     drawLevelScreen();
     detectPokemonSelect();
     detectLevelSelect();
@@ -357,6 +360,7 @@ void draw() {
       }
     }
   } else if (location.equals("1") && pause == false && goVis == true) {
+    file.stop();
     A.play();
     if (dead) {
       location="deathScreen";
@@ -370,6 +374,7 @@ void draw() {
     nextLevel = false;
     drawContinueScreen("2");
   } else if (location.equals("2") && pause == false && goVis == true) {
+    file.stop();
     L2.play();
     if (dead) {
       location = "deathScreen";
@@ -383,6 +388,7 @@ void draw() {
     nextLevel = false;
     drawContinueScreen("3");
   } else if (location.equals("3") && pause == false && goVis == true) {
+    file.stop();
     L3.play();
     inhibit = true;
     if (dead) {
@@ -395,10 +401,13 @@ void draw() {
       inhibit = false;
       location = "3to4";
     }
-  } else if (location.equals("3to4")) {
+  } 
+  else if (location.equals("3to4")) {
     nextLevel = false;
     drawContinueScreen("4");
-  } else if (location.equals("4") && pause == false && goVis == true) {
+  } 
+  else if (location.equals("4") && pause == false && goVis == true) {
+    file.stop();
     L4.play(playerChar);
     if (dead) {
       location = "deathScreen";
@@ -408,7 +417,13 @@ void draw() {
       resetLevel();
       location="end";
     }
-  } else if (location.equals("deathScreen")) {
+  } 
+  else if (location.equals("end")) {
+      nextLevel = false;
+      resetLevel();
+      drawEndScreen();
+  }
+  else if (location.equals("deathScreen")) {
     dead = false;
     drawDeathScreen();
   }
@@ -457,8 +472,8 @@ void keyPressed() {
     keysDown.add(key);
   }
   if (!location.equals("levelSelect") && !location.equals("startScreen") && !location.equals("deathScreen") &&
-    !location.equals("1to2") && !location.equals("2to3") && key == 'p' && pause == false) {
-
+    !location.equals("1to2") && !location.equals("2to3") && !location.equals("3to4") && !location.equals("end") &&
+    key == 'p' && pause == false) {
     pause = true;
   } else if (key == 'p' && pause == true) {
     pause = false;

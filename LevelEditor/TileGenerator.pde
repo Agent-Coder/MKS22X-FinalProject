@@ -27,6 +27,18 @@ class wTile extends Tile {
   }
 }
 
+class fTile extends Tile {
+  public fTile(int x, int y) {
+    super(x,y);
+    type = "tile";
+    xer = x;
+    yer = y;
+  }
+  void display() {
+    image(grass,xer,yer);
+  }
+}
+
 class TeleportationTile extends Tile {
   public TeleportationTile(int x, int y) {
     super(x,y);
