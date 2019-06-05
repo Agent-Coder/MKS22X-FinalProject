@@ -193,7 +193,7 @@ The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or G
 ## DAY 15 Friday 5/31/19
 :cookie:
 - Photoshopped floor tile sprites
-- Played around with level2 spike generation
+- Played around with level3 spike generation
 :icecream:
 - Random movement when Meowth is trapped
 - Meowth adjustments when the player surrounds itself and no path to player
@@ -206,7 +206,7 @@ The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or G
 
 ## Day 17 Sunday 6/2/19
 :cookie:
-- Coded half of level 2; spikes spawn and despawn randomly every couple of seconds
+- Coded half of level 3; spikes spawn and despawn randomly every couple of seconds
 - Added a death screen and various buttons on it for what the player can do when it comes in contact with an enemy
 - Added a continue screen and various buttons for what the player can do when it collects all the berries on one level
 - Debugged some bugs
@@ -216,14 +216,15 @@ The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or G
 - Meowth does not blink when breaking ice
 - Stopped Meowth from destroying borders
 - Animated Meowth breaking ice
-## Day 18 Sunday 6/3/19
+## Day 18 Monday 6/3/19
 :cookie:
-- Added continue screen to go to next level after all berries are collected
-- Displayed snow tiles
-- Working on Level 2
-- Level two spikes image and function
-- Crystal Detection and warning signs
-- Worked on berries in Level 2
+- Added continue screen to go to next level
+- Worked on and finished timing of crystal generation in level three, added warning signs as well
+- Imported sprites for level3 crystals and warning signs
+- Player dies if on the same tile as crystal
+- Level three is finished
+- Started working on level 2
+
 :icecream:
 - Fixed ice block bugs such as last block not showing up
 - Added obstacle block that can't be destroyed but is not on border
@@ -231,12 +232,22 @@ The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or G
 - Made new Enemy Ditto
 - Teleportation and teleportation tiles
 - Enemy Dependent on player movement
-## Day 19 Sunday 6/4/19
+
+:doughnut: 
+- Agreed to only have 4 levels but with many more features in each individual level!
+- Move original level 2 to level3, add easier level2
+
+## Day 19 Tuesday 6/4/19
 :cookie:
-- Level 2 and Level 3 special parts done
-- Added New Enemy
+- Finished level2
+- Did Sprites for Mismagius
+- A LOT of debugging 
+- Added end screen for when player beats the game
+- Removed level 5
+
 :icecream:
 - Finished new type of berry 
+- Added Mismagius to level3
 - Level 4 Done
 - Ditto movement done
 
