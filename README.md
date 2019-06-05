@@ -211,7 +211,7 @@ Here's a photo of Manaphy cuz why not c:
 - Finished Level one berry setup
 - Collection of berries works and counter works too
 
-## DAY 15 Friday 5/31/19
+### DAY 15 Friday 5/31/19
 :cookie:
 - Photoshopped floor tile sprites
 - Played around with level3 spike generation
@@ -220,14 +220,14 @@ Here's a photo of Manaphy cuz why not c:
 - Random movement when Meowth is trapped
 - Meowth adjustments when the player surrounds itself and no path to player
 
-## DAY 16 Saturday 6/1/19
+### DAY 16 Saturday 6/1/19
 :cookie:
 - SAT & other events - was out and busy all day :(
 
 :icecream:
 - Mainly fixing bugs such as ice block firing and enemy is in front of it and attacking before first attack is done
 
-## Day 17 Sunday 6/2/19
+### Day 17 Sunday 6/2/19
 :cookie:
 - Coded half of level 3; spikes spawn and despawn randomly every couple of seconds
 - Added a death screen and various buttons on it for what the player can do when it comes in contact with an enemy
@@ -240,7 +240,7 @@ Here's a photo of Manaphy cuz why not c:
 - Meowth does not blink when breaking ice
 - Stopped Meowth from destroying borders
 - Animated Meowth breaking ice
-## Day 18 Monday 6/3/19
+### Day 18 Monday 6/3/19
 :cookie:
 - Added continue screen to go to next level
 - Worked on and finished timing of crystal generation in level three, added warning signs as well
@@ -261,7 +261,7 @@ Here's a photo of Manaphy cuz why not c:
 - Agreed to only have 4 levels but with many more features in each individual level!
 - Move original level 2 to level3, add easier level2
 
-## Day 19 Tuesday 6/4/19
+### Day 19 Tuesday 6/4/19
 :cookie:
 - Finished level2
 - Did Sprites for Mismagius
@@ -279,11 +279,11 @@ Here's a photo of Manaphy cuz why not c:
 - A LOT!!!! of final touches and edits!!! Many debugging and fixing errors 
 - Documentation (final log updates, directions, etc.)
 
-## Day 20 Doomsday 6/5/19
+### Day 20 Doomsday 6/5/19
 :doughnut:
 - Finished the project! Hoping we did not miss to fix a bug/error after countless hours of debugging and testing
 
-## Notes: 
+### Notes: 
 - This project would not be possible with [Spriters-Resource.com](https://www.spriters-resource.com/ds_dsi/pokemonmysterydungeonexplorersoftimedarkness/), where we got most/all of our sprites from for this project. Sprites are originally from the Pokemon Mystery Dungeon games
 - Branches were works in progress and do not contain the functional game. A lot of experimental stuff can be found in the branches. However, only the master branch contains the full and functional game.
 - LevelEditor/SPRITES folder contains all of the sprites used in this project! (though some sprites aren't used because of changes in plans)
