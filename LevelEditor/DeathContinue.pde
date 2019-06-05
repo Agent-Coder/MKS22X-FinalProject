@@ -13,6 +13,7 @@ void drawDeathScreen() {
     textSize(20);
     text("Level Select", 213, 392);
     text("Restart Level", 425, 392);
+
     if (mousePressed && mX >= 376 && mX <= 583 && mY >= 360 && mY <412) {
       resetLevel();
       location = plocation;
