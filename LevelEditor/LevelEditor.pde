@@ -352,6 +352,7 @@ void draw() {
       }
     }
   } else if (location.equals("1") && pause == false && goVis == true) {
+    location="end";
     A.play();
     if (dead) {
       location="deathScreen";
@@ -390,10 +391,12 @@ void draw() {
       inhibit = false;
       location = "3to4";
     }
-  } else if (location.equals("3to4")) {
+  } 
+  else if (location.equals("3to4")) {
     nextLevel = false;
     drawContinueScreen("4");
-  } else if (location.equals("4") && pause == false && goVis == true) {
+  } 
+  else if (location.equals("4") && pause == false && goVis == true) {
     L4.play(playerChar);
     if (dead) {
       location = "deathScreen";
@@ -403,7 +406,14 @@ void draw() {
       resetLevel();
       location="end";
     }
-  } else if (location.equals("deathScreen")) {
+  } 
+  else if (location.equals("end")) {
+      nextLevel = false;
+      resetLevel();
+      drawEndScreen();
+      
+  }
+  else if (location.equals("deathScreen")) {
     dead = false;
     drawDeathScreen();
   }
@@ -452,8 +462,8 @@ void keyPressed() {
     keysDown.add(key);
   }
   if (!location.equals("levelSelect") && !location.equals("startScreen") && !location.equals("deathScreen") &&
-    !location.equals("1to2") && !location.equals("2to3") && key == 'p' && pause == false) {
-
+    !location.equals("1to2") && !location.equals("2to3") && !location.equals("3to4") && !location.equals("end") &&
+    key == 'p' && pause == false) {
     pause = true;
   } else if (key == 'p' && pause == true) {
     pause = false;

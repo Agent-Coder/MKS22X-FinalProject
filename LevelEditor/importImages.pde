@@ -62,6 +62,28 @@ void importImages() {
   WallBottomRight.resize(50,50);
   WallBottomLeft.resize(50,50);
   
+  //Final Wall Sprites
+  fWallBottom = loadImage("SPRITES/Wall Sprites/FWallDown.png");
+  fWallLeft = loadImage("SPRITES/Wall Sprites/FWallLeft.png");  
+  fWallRight = loadImage("SPRITES/Wall Sprites/FWallRight.png");
+  fWallTop = loadImage("SPRITES/Wall Sprites/FWallUp.png");
+  fWallTopRight = loadImage("SPRITES/Wall Sprites/FWallUpRight.png");
+  fWallTopLeft = loadImage("SPRITES/Wall Sprites/FWallUpLeft.png");
+  fWallBottomRight = loadImage("SPRITES/Wall Sprites/FWallDownRight.png");
+  fWallBottomLeft = loadImage("SPRITES/Wall Sprites/FWallDownLeft.png");
+  grass = loadImage("SPRITES/Wall Sprites/Mid.png");
+  
+  //Final Wall Resizes
+  fWallBottom.resize(50,50);
+  fWallLeft.resize(50,50);
+  fWallRight.resize(50,50);
+  fWallTop.resize(50,50);
+  fWallTopRight.resize(50,50);
+  fWallTopLeft.resize(50,50);
+  fWallBottomRight.resize(50,50);
+  fWallBottomLeft.resize(50,50);
+  grass.resize(50,50);
+  
   //Berry sprites 
   OranBerry = loadImage("SPRITES/Berries/OranBerry.png");
   LumBerry = loadImage("SPRITES/Berries/LumBerry.png");
