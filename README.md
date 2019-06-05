@@ -22,6 +22,7 @@ while avoiding enemies. Any contact will result in death, forcing you to restart
 5. In level 3, Mismagius is a ghost type Pokemon, enabling her to pass through the crystals. As a non-ghost type Pokemon, you can't pass through the crystals. Your goal is to get all the berries while avoiding Mismagius and dodging all the crystals that pop up from the ground every couple of seconds.
 6. In level 4, a horde of Ditto appeared! Dittos copy your every movement and even look like you! The Dittos are very crafty, so every couple of seconds they replace the berries you're supposed to get with poisoned ones. Grabbing a poisoned berry will result in death :( Make sure to use the crystal walls and warp tiles to your advantage! This level is hard, so good luck!
 7. Once you beat all four levels, congrats! You collected every berry! Thanks for stopping by and playing :)
+![Manaphy](https://drive.google.com/file/d/1VhBpIwaBn6HIxisQs9kUZxBQJ_xzcQ6K/view)
 
 ## Development Logs:
 :cookie: = Justin <br/>
