@@ -7,14 +7,17 @@
 The player chooses one of the three Pokémon to play as: Manaphy, Empoleon, or Glaceon. The objective is to go through each level and attempt to get all the berries without being attacked by various enemy Pokémon. If an enemy comes in contact with the player, the player will have to restart the level. Players will have to navigate through not only enemies but obstacles scattered throughout each level. Players will also have the ability to create ice blocks as obstacles for enemies. However, those ice blocks can become obstacles for the players themselves. The player beats the game once they've completed all 5 levels. 
   
 ## Directions:
-* Use arrow keys to move
-* Press P to pause on any level
-* Space bar generates an ice attack (but be careful! you can't move while ice attack is being carried out)
+Controls: 
+```
+- Arrow keys for movement
+- P keyboard button to pause on any level
+- Space bar generates an ice attack (but be careful! you can't move while attacking)
+```
 
 1. Download our repo, files, and Processing (if you don't have it already).
 2. Click run/play on the upper left side once you've downloaded everything
 3. Press play, bringing you to the level&character select screen. Be sure to choose both a level and a Pokemon (Manaphy, Empoloen, or Glaceon) for the GO button to appear, bringing you into the game. Because our game is relatively short, you have access to all four levels from the start, but its recommended you start from level 1!
-4. Move around using arrow keys, press space bar to generate ice blocks (in a row). Your objective? *Grab all the berries on the screen without getting killed by enemies* You can't kill enemies! You just have to keep on running to grab all the berries
+4. Move around using arrow keys, press space bar to generate ice blocks (in a row, be careful, you can't move at all while attacking). Your objective? *Grab all the berries on the screen without getting killed by enemies* You can't kill enemies! You just have to keep on running to grab all the berries
 while avoiding enemies. Any contact will result in death, forcing you to restart the level :(
 5. In level 3, Mismagius is a ghost type Pokemon, enabling her to pass through the crystals. As a non-ghost type Pokemon, you can't pass through the crystals. Your goal is to get all the berries while avoiding Mismagius and dodging all the crystals that pop up from the ground every couple of seconds.
 6. In level 4, a horde of Ditto appeared! Dittos copy your every movement and even look like you! The Dittos are very crafty, so every couple of seconds they replace the berries you're supposed to get with poisoned ones. Grabbing a poisoned berry will result in death :( Make sure to use the crystal walls and warp tiles to your advantage! This level is hard, so good luck!
