@@ -1,6 +1,6 @@
-import processing.sound.*;
+//import processing.sound.*;
 Level1 A=new Level1();
-SoundFile file;
+//SoundFile file;
 float mX;
 float mY;
 
@@ -322,8 +322,8 @@ void setup() {
   size(750, 750);
   importImages();
   setupText();
-  file = new SoundFile(this, "Pokemon.mp3");
-  file.play();
+ // file = new SoundFile(this, "Pokemon.mp3");
+ // file.play();
 }
 void draw() {
   int frameDead=0;
@@ -351,7 +351,6 @@ void draw() {
       }
     }
   } else if (location.equals("1") && pause == false && goVis == true) {
-    location="end";
     A.play();
     if (dead) {
       location="deathScreen";
@@ -410,7 +409,6 @@ void draw() {
       nextLevel = false;
       resetLevel();
       drawEndScreen();
-      
   }
   else if (location.equals("deathScreen")) {
     dead = false;

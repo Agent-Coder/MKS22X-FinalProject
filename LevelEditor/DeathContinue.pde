@@ -84,25 +84,27 @@ void drawEndScreen() {
     textSize(80);
     fill(0,0,0);
     stroke(0,0,0);
-    text("Congrats!", 195,340);
-    textSize(22);
-    text("You collected all the berries!",230,380);
+    text("Congrats!", 200,340);
+    textSize(25);
+    text("You collected all the berries!",218,395);
     noFill();
-    rect(265, 400, 200, 50, 15);
+    rect(265, 430, 200, 50, 15);
     textSize(20);
-    text("Level Select", 313, 432);
-    if (mousePressed && mX >= 263 && mX <= 468 && mY >= 400 && mY <= 460) {
+    text("Level Select", 313, 463);
+    if (mousePressed && mX >= 267 && mX <= 467 && mY >= 435 && mY <= 485) {
       location = "levelSelect";
       pause = false;
       goVis = false;
       playerChar = "";
       selectedLevel = "";
       resetLevel();
+      drawn = false;
     }
-    image(RazzBerry2,50,650);
-    image(RazzBerry2,50,50);
-    image(RazzBerry2,650,50);
-    image(RazzBerry2,650,650);
+    image(NanabBerry2,50,650);
+    image(NanabBerry2,50,50);
+    image(NanabBerry2,650,50);
+    image(NanabBerry2,650,650);
+    
     image(OranBerry2,100,50);
     image(OranBerry2,50,100);
     image(OranBerry2,50,600);
@@ -111,6 +113,46 @@ void drawEndScreen() {
     image(OranBerry2,650,600);
     image(OranBerry2,600,50);
     image(OranBerry2,650,100);
+    
+    image(LumBerry2,150,50);
+    image(LumBerry2,100,100);
+    image(LumBerry2,50,150); 
+    image(LumBerry2,50,550);
+    image(LumBerry2,100,600);
+    image(LumBerry2,150,650);
+    image(LumBerry2,650,550);
+    image(LumBerry2,600,600);
+    image(LumBerry2,550,650);
+    image(LumBerry2,550,50);
+    image(LumBerry2,600,100);
+    image(LumBerry2,650,150);
+    
+    image(SitrusBerry2,200,200);
+    image(SitrusBerry2,250,200);
+    image(SitrusBerry2,300,200);
+    image(SitrusBerry2,350,200);
+    image(SitrusBerry2,400,200);
+    image(SitrusBerry2,450,200);
+    image(SitrusBerry2,500,200);
+    image(SitrusBerry2,200,500);
+    image(SitrusBerry2,250,500);
+    image(SitrusBerry2,300,500);
+    image(SitrusBerry2,350,500);
+    image(SitrusBerry2,400,500);
+    image(SitrusBerry2,450,500);
+    image(SitrusBerry2,500,500);
+    
+    image(RazzBerry2,100,250);
+    image(RazzBerry2,100,300);
+    image(RazzBerry2,100,350);
+    image(RazzBerry2,100,400);
+    image(RazzBerry2,100,450);
+    
+    image(RazzBerry2,600,250);
+    image(RazzBerry2,600,300);
+    image(RazzBerry2,600,350);
+    image(RazzBerry2,600,400);
+    image(RazzBerry2,600,450);
     
     
 }
