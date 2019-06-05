@@ -19,7 +19,7 @@ class Level3 extends Levels {
   public Level3() {
     super();
     B=new Player(350, 350, board, boardtile, playerChar);
-    C=new Mismagius(B, board, boardtile, 200, 200);
+    C=new Mismagius(B, board, boardtile, 350, 600);
     attacked=new ArrayList<Block>();
     temporary=new ArrayList<Block>();
     berryCount=new ArrayList<Berries>();

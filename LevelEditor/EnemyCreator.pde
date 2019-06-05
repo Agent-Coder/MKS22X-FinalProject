@@ -18,7 +18,7 @@ class Enemies {
   int[] moves=new int[8];
   String pkmn;
   float speedE =1;
-  float[] TentacruelSpeeds = {1, 1 };
+  float[] TentacruelSpeeds = {1.05, 1.1, };
   public Enemies(Player a, Block[][] iceBlock, Tile[][] floorBoard, int coordX, int coordY, String species) {
     pkmn = species;
     if (pkmn.equals("Tentacruel")) {

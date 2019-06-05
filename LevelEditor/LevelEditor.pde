@@ -1,8 +1,8 @@
-import processing.sound.*;
+//import processing.sound.*;
 Level1 A=new Level1();
 
-SoundFile file;
-SoundFile file2;
+//SoundFile file;
+//SoundFile file2;
 
 float mX;
 float mY;
@@ -323,8 +323,8 @@ void setup() {
   size(750, 750);
   importImages();
   setupText();
-  file = new SoundFile(this, "Pokemon.mp3");
-  file2 = new SoundFile(this, "Pokemon2.mp3");
+ // file = new SoundFile(this, "Pokemon.mp3");
+ // file2 = new SoundFile(this, "Pokemon2.mp3");
   //file.loop();
 }
 void draw() {
@@ -335,18 +335,18 @@ void draw() {
   //file.loop();
   if (location.equals("startScreen")) {
     image(background, 0, 0);
-    file2.stop();
-    if (beginSing) {
-      file.loop();
-        beginSing=false;
-    }
+  //  file2.stop();
+   // if (beginSing) {
+   //   file.loop();
+   //     beginSing=false;
+   // }
     drawBerries();
     drawBerries2();
     drawBerries3();
     //file.play();
     detectStartGame();
   } else if (location.equals("levelSelect")) {
-    file2.stop();
+  //  file2.stop();
     image(bluebackground, 0, 0);
     drawLevelScreen();
     detectPokemonSelect();
@@ -360,7 +360,7 @@ void draw() {
       }
     }
   } else if (location.equals("1") && pause == false && goVis == true) {
-    file.stop();
+//    file.stop();
     A.play();
     if (dead) {
       location="deathScreen";
@@ -374,7 +374,7 @@ void draw() {
     nextLevel = false;
     drawContinueScreen("2");
   } else if (location.equals("2") && pause == false && goVis == true) {
-    file.stop();
+ //   file.stop();
     L2.play();
     if (dead) {
       location = "deathScreen";
@@ -388,7 +388,7 @@ void draw() {
     nextLevel = false;
     drawContinueScreen("3");
   } else if (location.equals("3") && pause == false && goVis == true) {
-    file.stop();
+  //  file.stop();
     L3.play();
     inhibit = true;
     if (dead) {
@@ -407,7 +407,7 @@ void draw() {
     drawContinueScreen("4");
   } 
   else if (location.equals("4") && pause == false && goVis == true) {
-    file.stop();
+  //  file.stop();
     L4.play(playerChar);
     if (dead) {
       location = "deathScreen";
@@ -421,6 +421,7 @@ void draw() {
   else if (location.equals("end")) {
       nextLevel = false;
       resetLevel();
+     // if (beginSing2){file2.loop();beginSing2=false};
       drawEndScreen();
   }
   else if (location.equals("deathScreen")) {
