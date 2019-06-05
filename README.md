@@ -19,7 +19,7 @@ Controls:
 3. Press play, bringing you to the level&character select screen. Be sure to choose both a level and a Pokemon (Manaphy, Empoleon, or Glaceon) for the GO button to appear, bringing you into the game. Because our game is relatively short, you have access to all four levels from the start, but its recommended you start from level 1!
 4. Move around using arrow keys, press space bar to generate ice blocks (in a row, be careful, you can't move at all while attacking). Your objective? *Grab all the berries on the screen without getting killed by enemies* You can't kill enemies! You just have to keep on running to grab all the berries while avoiding enemies. *Any* contact with enemy Pokemon will result in death, forcing you to restart the level :(
 5. In level 3, Mismagius is a ghost type Pokemon, enabling her to pass through the crystals. As a non-ghost type Pokemon, you can't pass through the crystals. Your goal is to get all the berries while avoiding Mismagius and dodging all the crystals that pop up from the ground every couple of seconds.
-6. In level 4, a horde of Ditto appears! Dittos copy your every movement and even look like your Pokemon! The Dittos are very crafty, so every couple of seconds they replace the razz berries with poisoned ones. Grabbing a poisoned berry will result in death :( Make sure to use the crystal walls, ice blocks, and warp tiles to your advantage! This level is hard, so good luck!
+6. In level 4, a horde of Ditto appears! Dittos copy your every movement and even look like your Pokemon! The Dittos are very crafty, so every couple of seconds they replace the razz(red) berries with poisoned ones. Grabbing a poisoned berry will result in death :( Make sure to use the crystal walls, ice blocks, and warp tiles to your advantage! This level is hard, so good luck!
 7. Once you beat all four levels, congrats! A *really nice looking* congratulatory screen will pop up. Thanks for playing :)
 
 Here's a photo of Manaphy cuz why not c:
@@ -273,3 +273,8 @@ Here's a photo of Manaphy cuz why not c:
 ## Day 20 Doomsday 6/5/19
 :doughnut:
 - Finished the project! Hoping we did not miss to fix a bug/error after countless hours of debugging and testing
+
+## Notes: 
+- This project would not be possible with [Spriters-Resource.com](https://www.spriters-resource.com/ds_dsi/pokemonmysterydungeonexplorersoftimedarkness/), where we got most/all of our sprites from for this project. Sprites are originally from the Pokemon Mystery Dungeon games
+- Branches were works in progress and do not contain the functional game. A lot of experimental stuff can be found in the branches. However, only the master branch contains the full and functional game.
+- LevelEditor/SPRITES folder contains all of the sprites used in this project! (though some sprites aren't used because of changes in plans)
